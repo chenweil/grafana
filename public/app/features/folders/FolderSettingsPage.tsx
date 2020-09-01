@@ -55,10 +55,10 @@ export class FolderSettingsPage extends PureComponent<Props, State> {
     evt.preventDefault();
 
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete',
-      text: `Do you want to delete this folder and all its dashboards?`,
+      title: '删除',
+      text: `您是否要删除此文件夹及其所有仪表板?`,
       icon: 'trash-alt',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         this.props.deleteFolder(this.props.folder.uid);
       },
@@ -86,10 +86,10 @@ export class FolderSettingsPage extends PureComponent<Props, State> {
               </div>
               <div className="gf-form-button-row">
                 <button type="submit" className="btn btn-primary" disabled={!folder.canSave || !folder.hasChanged}>
-                  Save
+                  保存
                 </button>
                 <button className="btn btn-danger" onClick={this.onDelete} disabled={!folder.canSave}>
-                  Delete
+                  删除
                 </button>
               </div>
             </form>

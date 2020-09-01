@@ -6,7 +6,7 @@ import { processAclItems } from 'app/core/utils/acl';
 export const initialState: FolderState = {
   id: 0,
   uid: 'loading',
-  title: 'loading',
+  title: '加载中',
   url: '',
   canSave: false,
   hasChanged: false,

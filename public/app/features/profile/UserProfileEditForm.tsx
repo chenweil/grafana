@@ -21,11 +21,11 @@ export const UserProfileEditForm: FC<Props> = ({ user, isSavingUser, updateProfi
     <Form onSubmit={onSubmitProfileUpdate} validateOn="onBlur">
       {({ register, errors }) => {
         return (
-          <FieldSet label="Edit Profile">
-            <Field label="Name" invalid={!!errors.name} error="Name is required">
+          <FieldSet label="编辑个人资料">
+            <Field label="Name" invalid={!!errors.name} error="名称为必填项">
               <Input name="name" ref={register({ required: true })} placeholder="Name" defaultValue={user.name} />
             </Field>
-            <Field label="Email" invalid={!!errors.email} error="Email is required" disabled={disableLoginForm}>
+            <Field label="电子邮件" invalid={!!errors.email} error="电子邮件为必填项" disabled={disableLoginForm}>
               <Input
                 name="email"
                 ref={register({ required: true })}
@@ -34,18 +34,18 @@ export const UserProfileEditForm: FC<Props> = ({ user, isSavingUser, updateProfi
                 suffix={<InputSuffix />}
               />
             </Field>
-            <Field label="Username" disabled={disableLoginForm}>
+            <Field label="用户名" disabled={disableLoginForm}>
               <Input
                 name="login"
                 ref={register}
                 defaultValue={user.login}
-                placeholder="Username"
+                placeholder="用户名"
                 suffix={<InputSuffix />}
               />
             </Field>
             <div className="gf-form-button-row">
               <Button variant="primary" disabled={isSavingUser}>
-                Save
+                保存
               </Button>
             </div>
           </FieldSet>
@@ -59,7 +59,7 @@ export default UserProfileEditForm;
 
 const InputSuffix: FC = () => {
   return disableLoginForm ? (
-    <Tooltip content="Login Details Locked - managed in another system.">
+    <Tooltip content="登录详细信息已锁定-在另一个系统中进行管理。">
       <Icon name="lock" />
     </Tooltip>
   ) : null;

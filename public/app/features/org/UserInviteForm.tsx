@@ -42,7 +42,7 @@ export const UserInviteForm: FC<Props> = ({ updateLocation }) => {
     try {
       await getBackendSrv().post('/api/org/invites', formData);
     } catch (err) {
-      appEvents.emit(AppEvents.alertError, ['Failed to send invite', err.message]);
+      appEvents.emit(AppEvents.alertError, ['发送邀请失败', err.message]);
     }
     updateLocation({ path: 'org/users/' });
   };
@@ -60,24 +60,24 @@ export const UserInviteForm: FC<Props> = ({ updateLocation }) => {
           <>
             <Field
               invalid={!!errors.loginOrEmail}
-              error={!!errors.loginOrEmail ? 'Email or Username is required' : undefined}
-              label="Email or Username"
+              error={!!errors.loginOrEmail ? '电子邮件或用户名为必填项' : undefined}
+              label="电子邮件或用户名"
             >
               <Input name="loginOrEmail" placeholder="email@example.com" ref={register({ required: true })} />
             </Field>
-            <Field invalid={!!errors.name} label="Name">
-              <Input name="name" placeholder="(optional)" ref={register} />
+            <Field invalid={!!errors.name} label="名字">
+              <Input name="name" placeholder="(可选)" ref={register} />
             </Field>
-            <Field invalid={!!errors.role} label="Role">
+            <Field invalid={!!errors.role} label="角色">
               <InputControl as={RadioButtonGroup} control={control} options={roles} name="role" />
             </Field>
-            <Field invalid={!!errors.sendEmail} label="Send invite email">
+            <Field invalid={!!errors.sendEmail} label="发送邀请邮件">
               <Switch name="sendEmail" ref={register} />
             </Field>
             <HorizontalGroup>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">提交</Button>
               <LinkButton href={locationUtil.assureBaseUrl(getConfig().appSubUrl + '/org/users')} variant="secondary">
-                Back
+                返回
               </LinkButton>
             </HorizontalGroup>
           </>

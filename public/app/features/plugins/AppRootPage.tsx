@@ -28,13 +28,13 @@ interface State {
 
 export function getAppPluginPageError(meta: AppPluginMeta) {
   if (!meta) {
-    return 'Unknown Plugin';
+    return '未知插件';
   }
   if (meta.type !== PluginType.app) {
-    return 'Plugin must be an app';
+    return '插件必须是一个应用';
   }
   if (!meta.enabled) {
-    return 'Application Not Enabled';
+    return '应用未启用';
   }
   return null;
 }

@@ -65,45 +65,40 @@ export const SignupForm: FC<Props> = props => {
         return (
           <>
             {verifyEmailEnabled && (
-              <Field label="Email verification code (sent to your email)">
+              <Field label="电子邮件验证码（发送到您的电子邮件）">
                 <Input name="code" ref={register} placeholder="Code" />
               </Field>
             )}
             {!autoAssignOrg && (
-              <Field label="Org. name">
+              <Field label="组织名称">
                 <Input name="orgName" placeholder="Org. name" ref={register} />
               </Field>
             )}
-            <Field label="Your name">
+            <Field label="你的名字">
               <Input name="name" placeholder="(optional)" ref={register} />
             </Field>
             <Field label="Email" invalid={!!errors.email} error={errors.email?.message}>
               <Input
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="电子邮件"
                 ref={register({
-                  required: 'Email is required',
+                  required: '电子邮件为必填项',
                   pattern: {
                     value: /^\S+@\S+$/,
-                    message: 'Email is invalid',
+                    message: '电子邮件无效',
                   },
                 })}
               />
             </Field>
-            <Field label="Password" invalid={!!errors.password} error={errors.password?.message}>
-              <Input
-                name="password"
-                type="password"
-                placeholder="Password"
-                ref={register({ required: 'Password is required' })}
-              />
+            <Field label="密码" invalid={!!errors.password} error={errors.password?.message}>
+              <Input name="password" type="password" placeholder="密码" ref={register({ required: '密码必填项' })} />
             </Field>
 
-            <Button type="submit">Submit</Button>
+            <Button type="submit">提交</Button>
             <span className={buttonSpacing}>
               <LinkButton href={getConfig().appSubUrl + '/login'} variant="secondary">
-                Back
+                返回
               </LinkButton>
             </span>
           </>

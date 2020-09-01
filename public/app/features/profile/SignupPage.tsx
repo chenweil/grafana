@@ -29,10 +29,11 @@ export const SignupPage: FC<Props> = props => {
   return (
     <Page navModel={navModel}>
       <Page.Contents>
-        <h3 className="p-b-1">You're almost there.</h3>
+        <h3 className="p-b-1">您快到了。</h3>
         <div className="p-b-1">
-          We just need a couple of more bits of
-          <br /> information to finish creating your account.
+          我们只需要更多的
+          <br />
+          信息就可以完成创建您的帐户。
         </div>
         <SignupForm
           {...props}
