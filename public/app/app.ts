@@ -181,10 +181,7 @@ export class GrafanaApp {
 
       if (!checkBrowserCompatibility()) {
         setTimeout(() => {
-          appEvents.emit(AppEvents.alertWarning, [
-            'Your browser is not fully supported',
-            'A newer browser version is recommended',
-          ]);
+          appEvents.emit(AppEvents.alertWarning, ['您的浏览器不受完全支持', '建议使用较新的浏览器版本']);
         }, 1000);
       }
     });

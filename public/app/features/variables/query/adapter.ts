@@ -14,7 +14,7 @@ import { containsVariable, isAllVariable } from '../utils';
 export const createQueryVariableAdapter = (): VariableAdapter<QueryVariableModel> => {
   return {
     id: 'query',
-    description: 'Variable values are fetched from a datasource query',
+    description: '从数据源查询中获取变量值',
     name: 'Query',
     initialState: initialQueryVariableModelState,
     reducer: queryVariableReducer,

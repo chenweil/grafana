@@ -31,11 +31,11 @@ function getChooserText(metricsLookupDisabled: boolean, hasSyntax: boolean, metr
   }
 
   if (!hasSyntax) {
-    return 'Loading metrics...';
+    return '加载指标...';
   }
 
   if (metrics && metrics.length === 0) {
-    return '(No metrics found)';
+    return '(找不到指标)';
   }
 
   return 'Metrics';
@@ -341,7 +341,7 @@ class PromQueryField extends React.PureComponent<PromQueryFieldProps, PromQueryF
               onBlur={this.props.onBlur}
               onChange={this.onChangeQuery}
               onRunQuery={this.props.onRunQuery}
-              placeholder="Enter a PromQL query (run with Shift+Enter)"
+              placeholder="输入PromQL查询（使用Shift + Enter执行）"
               portalOrigin="prometheus"
               syntaxLoaded={syntaxLoaded}
             />

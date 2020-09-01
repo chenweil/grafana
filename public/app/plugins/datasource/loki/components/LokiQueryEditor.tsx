@@ -67,15 +67,14 @@ export class LokiQueryEditor extends PureComponent<Props, State> {
           <div className="gf-form">
             <InlineFormLabel
               width={7}
-              tooltip="Controls the name of the time series, using name or pattern. For example
-        {{hostname}} will be replaced with label value for the label hostname. The legend only applies to metric queries."
+              tooltip="使用名称或模式控制时间序列的名称。 例如，{{hostname}}将替换为标签主机名的标签值。"
             >
-              Legend
+              图例
             </InlineFormLabel>
             <input
               type="text"
               className="gf-form-input"
-              placeholder="legend format"
+              placeholder="图例格式"
               value={legendFormat}
               onChange={this.onLegendChange}
               onBlur={this.onRunQuery}

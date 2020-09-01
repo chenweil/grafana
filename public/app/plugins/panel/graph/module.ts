@@ -178,7 +178,7 @@ export class GraphCtrl extends MetricsPanelCtrl {
   }
 
   onInitPanelActions(actions: any[]) {
-    actions.push({ text: 'Toggle legend', click: 'ctrl.toggleLegend()', shortcut: 'p l' });
+    actions.push({ text: '切换图例', click: 'ctrl.toggleLegend()', shortcut: 'p l' });
   }
 
   issueQueries(datasource: any) {

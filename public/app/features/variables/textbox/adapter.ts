@@ -13,7 +13,7 @@ import { toVariableIdentifier } from '../state/types';
 export const createTextBoxVariableAdapter = (): VariableAdapter<TextBoxVariableModel> => {
   return {
     id: 'textbox',
-    description: 'Define a textbox variable, where users can enter any arbitrary string',
+    description: '定义一个文本框变量，用户可以在其中输入任意字符串',
     name: 'Text box',
     initialState: initialTextBoxVariableModelState,
     reducer: textBoxVariableReducer,

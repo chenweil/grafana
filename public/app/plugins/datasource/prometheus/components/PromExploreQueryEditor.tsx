@@ -43,14 +43,12 @@ export const PromExploreQueryEditor: FC<Props> = (props: Props) => {
       data={data}
       ExtraFieldElement={
         <PromExploreExtraField
-          label={'Step'}
+          label={'步'}
           onChangeFunc={onStepChange}
           onKeyDownFunc={onReturnKeyDown}
           value={query.interval || ''}
           hasTooltip={true}
-          tooltipContent={
-            'Time units can be used here, for example: 5s, 1m, 3h, 1d, 1y (Default if no unit is specified: s)'
-          }
+          tooltipContent={'在这里可以使用时间单位，例如：5s，1m，3h，1d，1y（如果未指定单位，则为默认值：s）'}
         />
       }
     />

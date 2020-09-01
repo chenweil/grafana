@@ -12,14 +12,14 @@ class AlertListPanel extends PanelCtrl {
   static scrollable = true;
 
   showOptions = [
-    { text: 'Current state', value: 'current' },
-    { text: 'Recent state changes', value: 'changes' },
+    { text: '当前状态', value: 'current' },
+    { text: '最近状态变更', value: 'changes' },
   ];
 
   sortOrderOptions = [
-    { text: 'Alphabetical (asc)', value: 1 },
-    { text: 'Alphabetical (desc)', value: 2 },
-    { text: 'Importance', value: 3 },
+    { text: '按字母顺序 (升序)', value: 1 },
+    { text: '按字母顺序 (降序)', value: 2 },
+    { text: '重要性', value: 3 },
   ];
 
   stateFilter: any = {};
