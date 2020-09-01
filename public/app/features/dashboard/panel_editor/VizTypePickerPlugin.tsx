@@ -145,7 +145,7 @@ function getPanelStateBadgeDisplayModel(panel: PanelPluginMeta): BadgeProps {
   switch (panel.state) {
     case PluginState.deprecated:
       return {
-        text: 'Deprecated',
+        text: '不推荐使用',
         icon: 'exclamation-triangle',
         color: 'red',
         tooltip: `${panel.name} panel is deprecated`,

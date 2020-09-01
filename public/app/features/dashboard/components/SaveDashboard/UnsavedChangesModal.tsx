@@ -20,7 +20,7 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesModalProps> = ({
   return (
     <Modal
       isOpen={true}
-      title="Unsaved changes"
+      title="未保存的更改"
       onDismiss={onDismiss}
       icon="exclamation-triangle"
       className={css`
@@ -28,7 +28,7 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesModalProps> = ({
       `}
     >
       <VerticalGroup align={'center'} spacing={'md'}>
-        <h4>Do you want to save your changes?</h4>
+        <h4>您要保存更改吗？</h4>
         <HorizontalGroup justify="center">
           <SaveDashboardButton dashboard={dashboard} onSaveSuccess={onSaveSuccess} />
           <Button
@@ -38,10 +38,10 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesModalProps> = ({
               onDismiss();
             }}
           >
-            Discard
+            丢弃
           </Button>
           <Button variant="secondary" onClick={onDismiss}>
-            Cancel
+            取消
           </Button>
         </HorizontalGroup>
       </VerticalGroup>

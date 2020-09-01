@@ -112,7 +112,7 @@ export class TransformationsEditor extends React.PureComponent<Props, State> {
         <ValuePicker
           size="md"
           variant="secondary"
-          label="Add transformation"
+          label="添加转换"
           options={availableTransformers}
           onChange={this.onTransformationAdd}
           isFullWidth={false}
@@ -173,11 +173,9 @@ export class TransformationsEditor extends React.PureComponent<Props, State> {
         <Container grow={1}>
           <FeatureInfoBox title="Transformations" url={getDocsLink(DocsId.Transformations)}>
             <p>
-              Transformations allow you to join, calculate, re-order, hide and rename your query results before being
-              visualized. <br />
-              Many transforms are not suitable if you're using the Graph visualization as it currently only supports
-              time series. <br />
-              It can help to switch to Table visualization to understand what a transformation is doing. <br />
+              转换使您可以在可视化之前加入，计算，重新排序，隐藏和重命名查询结果。 <br />
+              如果您使用的是Graph可视化，则许多转换都不适合，因为它目前仅支持时间序列。 <br />
+              它可以帮助切换到表可视化，以了解转换在做什么。 <br />
             </p>
           </FeatureInfoBox>
         </Container>

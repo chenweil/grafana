@@ -113,7 +113,7 @@ export class FolderPickerCtrl {
 
     return promiseToDigest(this.$scope)(
       createFolder({ title: this.newFolderName }).then((result: { title: string; id: number }) => {
-        appEvents.emit(AppEvents.alertSuccess, ['Folder Created', 'OK']);
+        appEvents.emit(AppEvents.alertSuccess, ['文件夹已创建', 'OK']);
 
         this.closeCreateFolder();
         this.folder = { text: result.title, value: result.id };

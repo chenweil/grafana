@@ -212,40 +212,37 @@ export class ShareSnapshot extends PureComponent<Props, State> {
       <>
         <div>
           <p className="share-modal-info-text">
-            A snapshot is an instant way to share an interactive dashboard publicly. When created, we{' '}
-            <strong>strip sensitive data</strong> like queries (metric, template and annotation) and panel links,
-            leaving only the visible metric data and series names embedded into your dashboard.
+            快照是一种公开共享交互式仪表板的即时方法。 创建后，我们{''}
+            <strong>剥离敏感数据</strong>
+            ，例如查询（指标，模板和注释）和面板链接，仅将可见的指标数据和系列名称嵌入到您的仪表板中。
           </p>
           <p className="share-modal-info-text">
-            Keep in mind, your <strong>snapshot can be viewed by anyone</strong> that has the link and can reach the
-            URL. Share wisely.
+            请注意，拥有链接并可以访问URL的任何人都可以查看您的 <strong>快照</strong>。 明智地分享。
           </p>
         </div>
         <div className="gf-form-group share-modal-options">
           <div className="gf-form" ng-if="step === 1">
-            <label className="gf-form-label width-12">Snapshot name</label>
+            <label className="gf-form-label width-12">快照名</label>
             <Input width={15} value={snapshotName} onChange={this.onSnapshotNameChange} />
           </div>
           <div className="gf-form" ng-if="step === 1">
-            <label className="gf-form-label width-12">Expire</label>
+            <label className="gf-form-label width-12">期限</label>
             <Select width={15} options={expireOptions} value={selectedExpireOption} onChange={this.onExpireChange} />
           </div>
         </div>
 
-        <p className="share-modal-info-text">
-          You may need to configure the timeout value if it takes a long time to collect your dashboard's metrics.
-        </p>
+        <p className="share-modal-info-text">如果收集仪表板的指标需要很长时间，则可能需要配置超时值。</p>
 
         <div className="gf-form-group share-modal-options">
           <div className="gf-form">
-            <span className="gf-form-label width-12">Timeout (seconds)</span>
+            <span className="gf-form-label width-12">超时（秒）</span>
             <Input type="number" width={15} value={timeoutSeconds} onChange={this.onTimeoutChange} />
           </div>
         </div>
 
         <div className="gf-form-button-row">
           <Button className="width-10" variant="primary" disabled={isLoading} onClick={this.createSnapshot()}>
-            Local Snapshot
+            本地快照
           </Button>
           {externalEnabled && (
             <Button className="width-16" variant="secondary" disabled={isLoading} onClick={this.createSnapshot(true)}>
@@ -253,7 +250,7 @@ export class ShareSnapshot extends PureComponent<Props, State> {
             </Button>
           )}
           <Button variant="secondary" onClick={onDismiss}>
-            Cancel
+            取消
           </Button>
         </div>
       </>
@@ -272,15 +269,15 @@ export class ShareSnapshot extends PureComponent<Props, State> {
             </a>
             <br />
             <ClipboardButton variant="secondary" getText={this.getSnapshotUrl} onClipboardCopy={this.onSnapshotUrlCopy}>
-              Copy Link
+              复制链接
             </ClipboardButton>
           </div>
         </div>
 
         <div className="pull-right" ng-if="step === 2" style={{ padding: '5px' }}>
-          Did you make a mistake?{' '}
+          你搞错了吗{' '}
           <LinkButton variant="link" target="_blank" onClick={this.deleteSnapshot}>
-            delete snapshot.
+            删除快照。
           </LinkButton>
         </div>
       </>
@@ -291,8 +288,7 @@ export class ShareSnapshot extends PureComponent<Props, State> {
     return (
       <div className="share-modal-header">
         <p className="share-modal-info-text">
-          The snapshot has now been deleted. If it you have already accessed it once, It might take up to an hour before
-          it is removed from browser caches or CDN caches.
+          快照现已删除。 如果您已经访问过一次，则可能需要一个小时才能将其从浏览器缓存或CDN缓存中删除。
         </p>
       </div>
     );

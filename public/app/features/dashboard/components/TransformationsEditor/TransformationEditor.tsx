@@ -22,7 +22,7 @@ export const TransformationEditor = ({ editor, input, output, debugMode }: Trans
       {debugMode && (
         <div className={styles.debugWrapper}>
           <div className={styles.debug}>
-            <div className={styles.debugTitle}>Transformation input data</div>
+            <div className={styles.debugTitle}>转换输入数据</div>
             <div className={styles.debugJson}>
               <JSONFormatter json={input} />
             </div>
@@ -31,7 +31,7 @@ export const TransformationEditor = ({ editor, input, output, debugMode }: Trans
             <Icon name="arrow-right" />
           </div>
           <div className={styles.debug}>
-            <div className={styles.debugTitle}>Transformation output data</div>
+            <div className={styles.debugTitle}>转换输出数据</div>
             <div className={styles.debugJson}>{output && <JSONFormatter json={output} />}</div>
           </div>
         </div>

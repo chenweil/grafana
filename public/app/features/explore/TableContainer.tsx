@@ -59,7 +59,7 @@ export class TableContainer extends PureComponent<TableContainerProps> {
     }
 
     return (
-      <Collapse label="Table" loading={loading} collapsible isOpen={showingTable} onToggle={this.onClickTableButton}>
+      <Collapse label="表格" loading={loading} collapsible isOpen={showingTable} onToggle={this.onClickTableButton}>
         {hasTableResult ? (
           <Table data={tableResult!} width={tableWidth} height={height} onCellFilterAdded={onCellFilterAdded} />
         ) : (

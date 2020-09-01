@@ -130,7 +130,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
         <div>
           <HorizontalGroup justify="center">
             <Button onClick={onCreateNewRow} variant="secondary" size="sm">
-              Convert to row
+              转换为行
             </Button>
           </HorizontalGroup>
         </div>
@@ -169,11 +169,11 @@ const AddPanelWidgetCreate: React.FC<AddPanelWidgetCreateProps> = ({ onCreate, o
     <div className={styles.wrapper}>
       <HorizontalGroup>
         <Button icon="plus" size="md" onClick={onCreate} aria-label={selectors.pages.AddDashboard.addNewPanel}>
-          Add new panel
+          添加新仪表板
         </Button>
         {copiedPanelPlugins.length === 1 && (
           <Button variant="secondary" size="md" onClick={() => onPasteCopiedPanel(copiedPanelPlugins[0])}>
-            Paste copied panel
+            粘贴复制的面板
           </Button>
         )}
       </HorizontalGroup>

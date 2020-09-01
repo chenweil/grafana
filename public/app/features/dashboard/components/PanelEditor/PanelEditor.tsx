@@ -236,12 +236,8 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
               onChangeTimeZone={updateTimeZoneForSession}
             />
             {!uiState.isPanelOptionsVisible && (
-              <DashNavButton
-                onClick={this.onTogglePanelOptions}
-                tooltip="Open options pane"
-                classSuffix="close-options"
-              >
-                <Icon name="angle-left" /> <span style={{ paddingLeft: '6px' }}>Show options</span>
+              <DashNavButton onClick={this.onTogglePanelOptions} tooltip="打开选项窗格" classSuffix="close-options">
+                <Icon name="angle-left" /> <span style={{ paddingLeft: '6px' }}>显示选项</span>
               </DashNavButton>
             )}
           </HorizontalGroup>
@@ -259,26 +255,21 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
           <div className={styles.toolbarLeft}>
             <HorizontalGroup spacing="none">
               <BackButton onClick={this.onPanelExit} surface="panel" />
-              <span className={styles.editorTitle}>{dashboard.title} / Edit Panel</span>
+              <span className={styles.editorTitle}>{dashboard.title} / 编辑仪表板</span>
             </HorizontalGroup>
           </div>
 
           <HorizontalGroup>
             <HorizontalGroup spacing="sm" align="center">
-              <Button
-                icon="cog"
-                onClick={this.onOpenDashboardSettings}
-                variant="secondary"
-                title="Open dashboard settings"
-              />
-              <Button onClick={this.onDiscard} variant="secondary" title="Undo all changes">
-                Discard
+              <Button icon="cog" onClick={this.onOpenDashboardSettings} variant="secondary" title="打开仪表盘设置" />
+              <Button onClick={this.onDiscard} variant="secondary" title="撤消所有更改">
+                放弃
               </Button>
-              <Button onClick={this.onSaveDashboard} variant="secondary" title="Apply changes and save dashboard">
-                Save
+              <Button onClick={this.onSaveDashboard} variant="secondary" title="应用更改并保存仪表板">
+                保存
               </Button>
-              <Button onClick={this.onPanelExit} title="Apply changes and go back to dashboard">
-                Apply
+              <Button onClick={this.onPanelExit} title="应用更改并返回到仪表板">
+                应用
               </Button>
             </HorizontalGroup>
           </HorizontalGroup>

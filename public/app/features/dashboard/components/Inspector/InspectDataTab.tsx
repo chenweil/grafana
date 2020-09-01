@@ -169,7 +169,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
     }
 
     if (selectedDataFrame === DataTransformerID.seriesToColumns) {
-      activeString = 'series joined by time';
+      activeString = '系列加入时间';
     } else {
       activeString = getFrameDisplayName(data[selectedDataFrame as number]);
     }
@@ -177,7 +177,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
     if (options.withTransforms || options.withFieldConfig) {
       activeString += ' - applied ';
       if (options.withTransforms) {
-        activeString += 'panel transformations ';
+        activeString += '面板转换 ';
       }
 
       if (options.withTransforms && options.withFieldConfig) {
@@ -185,7 +185,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
       }
 
       if (options.withFieldConfig) {
-        activeString += 'field configuration';
+        activeString += '列配置';
       }
     }
 
@@ -224,14 +224,14 @@ export class InspectDataTab extends PureComponent<Props, State> {
 
     return (
       <QueryOperationRow
-        title="Table data options"
+        title="表格数据选项"
         headerElement={<DetailText>{this.getActiveString()}</DetailText>}
         isOpen={false}
       >
         <div className={styles.options}>
           <VerticalGroup spacing="lg">
             <Field
-              label="Show data frame"
+              label="显示数据框"
               className={css`
                 margin-bottom: 0;
               `}
@@ -247,10 +247,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
 
             <HorizontalGroup>
               {showPanelTransformationsOption && (
-                <Field
-                  label="Apply panel transformations"
-                  description="Table data is displayed with transformations defined in the panel Transform tab."
-                >
+                <Field label="应用面板转换" description="将显示表数据，并在面板的“转换”选项卡中定义转换。">
                   <Switch
                     value={!!options.withTransforms}
                     onChange={() => onOptionsChange({ ...options, withTransforms: !options.withTransforms })}
@@ -258,10 +255,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
                 </Field>
               )}
               {showFieldConfigsOption && (
-                <Field
-                  label="Apply field configuration"
-                  description="Table data is displayed with options defined in the Field and Override tabs."
-                >
+                <Field label="应用字段配置" description="将显示表数据以及在“字段”和“替代”选项卡中定义的选项。">
                   <Switch
                     value={!!options.withFieldConfig}
                     onChange={() => onOptionsChange({ ...options, withFieldConfig: !options.withFieldConfig })}
@@ -291,11 +285,11 @@ export class InspectDataTab extends PureComponent<Props, State> {
     const dataFrames = this.getProcessedData();
 
     if (!dataFrames || !dataFrames.length) {
-      return <div>No Data</div>;
+      return <div>无数据</div>;
     }
 
     if (!dataFrames[dataFrameIndex]) {
-      return <div>Could not find the Data Frame</div>;
+      return <div>找不到数据框</div>;
     }
 
     return (
@@ -309,7 +303,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
               margin-bottom: 10px;
             `}
           >
-            Download CSV
+            下载CSV
           </Button>
         </div>
         <Container grow={1}>
@@ -336,7 +330,7 @@ function buildTransformationOptions() {
   const transformations: Array<SelectableValue<DataTransformerID>> = [
     {
       value: DataTransformerID.seriesToColumns,
-      label: 'Series joined by time',
+      label: '系列加入时间',
       transformer: {
         id: DataTransformerID.seriesToColumns,
         options: { byField: 'Time' },

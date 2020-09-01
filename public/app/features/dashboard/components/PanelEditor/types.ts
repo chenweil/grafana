@@ -19,7 +19,7 @@ export enum DisplayMode {
 }
 
 export const displayModes = [
-  { value: DisplayMode.Fill, label: 'Fill', description: 'Use all available space' },
-  { value: DisplayMode.Fit, label: 'Fit', description: 'Fit in the space keeping ratio' },
-  { value: DisplayMode.Exact, label: 'Exact', description: 'Same size as the dashboard' },
+  { value: DisplayMode.Fill, label: '填充', description: '使用所有可用空间' },
+  { value: DisplayMode.Fit, label: '适应', description: '适合空间比例' },
+  { value: DisplayMode.Exact, label: '确定', description: '与仪表板大小相同' },
 ];

@@ -135,7 +135,7 @@ export const dataSourceSettingsReducer = (
     return {
       ...state,
       testingStatus: {
-        message: 'Testing...',
+        message: '测试中...',
         status: 'info',
       },
     };

@@ -72,7 +72,7 @@ export const VisualizationTabUnconnected = React.forwardRef<HTMLInputElement, Pr
             onKeyPress={onKeyPress}
             prefix={<Icon name="filter" className={styles.icon} />}
             suffix={suffix}
-            placeholder="Filter visualizations"
+            placeholder="过滤器可视化"
             ref={ref}
           />
         </Field>

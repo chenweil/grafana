@@ -121,7 +121,7 @@ export const OverrideEditor: React.FC<OverrideEditorProps> = ({
         {!isExpanded && (
           <div className={styles.overrideDetails}>
             <div className={styles.options} title={matcherOptions}>
-              Options <Icon name="angle-right" /> {matcherOptions}
+              选项 <Icon name="angle-right" /> {matcherOptions}
             </div>
             <div className={styles.options} title={overriddenProperites}>
               Properties overridden <Icon name="angle-right" />
@@ -149,7 +149,7 @@ export const OverrideEditor: React.FC<OverrideEditorProps> = ({
           const item = registry.getIfExists(p.id);
 
           if (!item) {
-            return <div>Unknown property: {p.id}</div>;
+            return <div>未知的属性： {p.id}</div>;
           }
           const isCollapsible =
             Array.isArray(p.value) || COLLECTION_STANDARD_PROPERTIES.includes(p.id as FieldConfigProperty);
@@ -172,7 +172,7 @@ export const OverrideEditor: React.FC<OverrideEditorProps> = ({
         {override.matcher.options && (
           <div className={styles.propertyPickerWrapper}>
             <ValuePicker
-              label="Add override property"
+              label="添加替代属性"
               variant="secondary"
               icon="plus"
               options={configPropertiesOptions}

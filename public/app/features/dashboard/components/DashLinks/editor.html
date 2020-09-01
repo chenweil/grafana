@@ -1,8 +1,8 @@
 <div class="page-action-bar">
   <h3 class="dashboard-settings__header">
-    <a ng-click="ctrl.backToList()">Dashboard Links</a>
-    <span ng-show="ctrl.mode === 'new'"><icon name="'angle-right'"></icon> New</span>
-    <span ng-show="ctrl.mode === 'edit'"><icon name="'angle-right'"></icon> Edit</span>
+    <a ng-click="ctrl.backToList()">仪表板链接</a>
+    <span ng-show="ctrl.mode === 'new'"><icon name="'angle-right'"></icon> 新建</span>
+    <span ng-show="ctrl.mode === 'edit'"><icon name="'angle-right'"></icon> 编辑</span>
   </h3>
 
   <div class="page-action-bar__spacer"></div>
@@ -13,7 +13,7 @@
     ng-if="ctrl.dashboard.links.length > 0"
     ng-hide="ctrl.mode === 'edit' || ctrl.mode === 'new'"
   >
-    New
+    新建
   </a>
 </div>
 
@@ -33,8 +33,8 @@
     <table class="filter-table filter-table--hover">
       <thead>
         <tr>
-          <th>Type</th>
-          <th>Info</th>
+          <th>类型</th>
+          <th>信息</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -87,7 +87,7 @@
   <div class="gf-form-group">
     <div class="gf-form-group">
       <div class="gf-form">
-        <span class="gf-form-label width-8">Type</span>
+        <span class="gf-form-label width-8">类型</span>
         <div class="gf-form-select-wrapper width-10">
           <select
             class="gf-form-input"
@@ -98,11 +98,11 @@
       </div>
 
       <div class="gf-form" ng-show="ctrl.link.type === 'dashboards'">
-        <span class="gf-form-label width-8">With tags</span>
+        <span class="gf-form-label width-8">带标签</span>
         <bootstrap-tagsinput
           ng-model="ctrl.link.tags"
           tagclass="label label-tag"
-          placeholder="add tags"
+          placeholder="添加标签"
           style="margin-right: .25rem"
         ></bootstrap-tagsinput>
       </div>
@@ -110,13 +110,13 @@
       <gf-form-switch
         ng-show="ctrl.link.type === 'dashboards'"
         class="gf-form"
-        label="As dropdown"
+        label="作为下拉菜单"
         checked="ctrl.link.asDropdown"
         switch-class="max-width-4"
         label-class="width-8"
       ></gf-form-switch>
       <div class="gf-form" ng-show="ctrl.link.type === 'dashboards' && ctrl.link.asDropdown">
-        <span class="gf-form-label width-8">Title</span>
+        <span class="gf-form-label width-8">标题</span>
         <input type="text" ng-model="ctrl.link.title" class="gf-form-input max-width-10" ng-model-onblur />
       </div>
       <div ng-show="ctrl.link.type === 'link'">
@@ -126,12 +126,12 @@
         </div>
 
         <div class="gf-form">
-          <span class="gf-form-label width-8">Title</span>
+          <span class="gf-form-label width-8">标题</span>
           <input type="text" ng-model="ctrl.link.title" class="gf-form-input width-20" ng-model-onblur />
         </div>
 
         <div class="gf-form">
-          <span class="gf-form-label width-8">Tooltip</span>
+          <span class="gf-form-label width-8">工具提示</span>
           <input
             type="text"
             ng-model="ctrl.link.tooltip"
@@ -142,7 +142,7 @@
         </div>
 
         <div class="gf-form">
-          <span class="gf-form-label width-8">Icon</span>
+          <span class="gf-form-label width-8">图标</span>
           <div class="gf-form-select-wrapper width-20">
             <select
               class="gf-form-input"
@@ -155,25 +155,25 @@
     </div>
 
     <div class="gf-form-group">
-      <h5 class="section-heading">Include</h5>
+      <h5 class="section-heading">包含</h5>
       <div>
         <gf-form-switch
           class="gf-form"
-          label="Time range"
+          label="时间范围"
           checked="ctrl.link.keepTime"
           switch-class="max-width-6"
           label-class="width-9"
         ></gf-form-switch>
         <gf-form-switch
           class="gf-form"
-          label="Variable values"
+          label="可变值"
           checked="ctrl.link.includeVars"
           switch-class="max-width-6"
           label-class="width-9"
         ></gf-form-switch>
         <gf-form-switch
           class="gf-form"
-          label="Open in new tab"
+          label="在新标签页中打开"
           checked="ctrl.link.targetBlank"
           switch-class="max-width-6"
           label-class="width-9"
@@ -182,9 +182,9 @@
     </div>
   </div>
   <button class="btn btn-primary" ng-if="ctrl.mode == 'new'" ng-click="ctrl.addLink()">
-    Add
+    添加
   </button>
   <button class="btn btn-primary" ng-if="ctrl.mode == 'edit'" ng-click="ctrl.saveLink()">
-    Update
+    更新
   </button>
 </div>

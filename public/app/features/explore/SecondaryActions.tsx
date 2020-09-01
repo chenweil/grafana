@@ -26,13 +26,13 @@ export function SecondaryActions(props: Props) {
     <div className="gf-form">
       {!props.addQueryRowButtonHidden && (
         <button
-          aria-label="Add row button"
+          aria-label="添加行按钮"
           className={`gf-form-label gf-form-label--btn ${styles.button}`}
           onClick={props.onClickAddQueryRowButton}
           disabled={props.addQueryRowButtonDisabled}
         >
           <Icon className="icon-margin-right" name="plus" size="sm" />
-          <span className="btn-title">{'\xA0' + 'Add query'}</span>
+          <span className="btn-title">{'\xA0' + '添加查询'}</span>
         </button>
       )}
       <button
@@ -43,7 +43,7 @@ export function SecondaryActions(props: Props) {
         onClick={props.onClickRichHistoryButton}
       >
         <Icon className="icon-margin-right" name="history" size="sm" />
-        <span className="btn-title">{'\xA0' + 'Query history'}</span>
+        <span className="btn-title">{'\xA0' + '查询历史'}</span>
       </button>
       <button
         aria-label="Query inspector button"
@@ -53,7 +53,7 @@ export function SecondaryActions(props: Props) {
         onClick={props.onClickQueryInspectorButton}
       >
         <Icon className="icon-margin-right" name="info-circle" size="sm" />
-        <span className="btn-title">{'\xA0' + 'Query inspector'}</span>
+        <span className="btn-title">{'\xA0' + '查询检查器'}</span>
       </button>
     </div>
   );

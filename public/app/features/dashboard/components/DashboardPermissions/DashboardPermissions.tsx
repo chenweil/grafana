@@ -69,13 +69,13 @@ export class DashboardPermissions extends PureComponent<Props, State> {
       <div>
         <div className="dashboard-settings__header">
           <div className="page-action-bar">
-            <h3 className="d-inline-block">Permissions</h3>
+            <h3 className="d-inline-block">权限</h3>
             <Tooltip placement="auto" content={<PermissionsInfo />}>
               <Icon className="icon--has-hover page-sub-heading-icon" name="question-circle" />
             </Tooltip>
             <div className="page-action-bar__spacer" />
             <button className="btn btn-primary pull-right" onClick={this.onOpenAddPermissions} disabled={isAdding}>
-              Add Permission
+              添加权限
             </button>
           </div>
         </div>

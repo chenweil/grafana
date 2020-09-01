@@ -13,22 +13,17 @@ export interface Props {
 
 const BasicSettings: FC<Props> = ({ dataSourceName, isDefault, onDefaultChange, onNameChange }) => {
   return (
-    <div className="gf-form-group" aria-label="Datasource settings page basic settings">
+    <div className="gf-form-group" aria-label="数据源设置页面的基本设置">
       <div className="gf-form-inline">
         <div className="gf-form max-width-30" style={{ marginRight: '3px' }}>
-          <InlineFormLabel
-            tooltip={
-              'The name is used when you select the data source in panels. The Default data source is ' +
-              'preselected in new panels.'
-            }
-          >
-            Name
+          <InlineFormLabel tooltip={'在面板中选择数据源时使用该名称。 默认数据源是 ' + '在新面板中预先选择。'}>
+            名字
           </InlineFormLabel>
           <Input
             className="gf-form-input max-width-23"
             type="text"
             value={dataSourceName}
-            placeholder="Name"
+            placeholder="名字"
             onChange={event => onNameChange(event.target.value)}
             required
             aria-label={selectors.pages.DataSource.name}

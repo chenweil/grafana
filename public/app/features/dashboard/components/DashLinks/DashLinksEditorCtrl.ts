@@ -21,16 +21,15 @@ export class DashLinksEditorCtrl {
   link: any;
 
   emptyListCta = {
-    title: 'There are no dashboard links added yet',
+    title: '尚未添加仪表板链接',
     buttonIcon: 'link',
-    buttonTitle: 'Add Dashboard Link',
+    buttonTitle: '添加仪表板链接',
     infoBox: {
       __html: `<p>
-      Dashboard Links allow you to place links to other dashboards and web sites directly below the dashboard
-      header.
+      仪表板链接允许您将指向其他仪表板和网站的链接放置在仪表板标题的正下方。
     </p>`,
     },
-    infoBoxTitle: 'What are Dashboard Links?',
+    infoBoxTitle: '什么是仪表板链接？',
   };
 
   /** @ngInject */

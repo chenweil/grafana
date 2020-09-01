@@ -21,12 +21,12 @@ const ButtonRow: FC<Props> = ({ isReadOnly, onDelete, onSubmit, onTest }) => {
           onClick={event => onSubmit(event)}
           aria-label={selectors.pages.DataSource.saveAndTest}
         >
-          Save &amp; Test
+          保存 &amp; 测试
         </button>
       )}
       {isReadOnly && (
         <button type="submit" className="btn btn-success" onClick={onTest}>
-          Test
+          测试
         </button>
       )}
       <button
@@ -36,10 +36,10 @@ const ButtonRow: FC<Props> = ({ isReadOnly, onDelete, onSubmit, onTest }) => {
         onClick={onDelete}
         aria-label={selectors.pages.DataSource.delete}
       >
-        Delete
+        删除
       </button>
       <a className="btn btn-inverse" href={`${config.appSubUrl}/datasources`}>
-        Back
+        返回
       </a>
     </div>
   );

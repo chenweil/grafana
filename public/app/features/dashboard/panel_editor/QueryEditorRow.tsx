@@ -183,7 +183,7 @@ export class QueryEditorRow extends PureComponent<Props, State> {
       );
     }
 
-    return <div>Data source plugin does not export any Query Editor component</div>;
+    return <div>数据源插件不导出任何查询编辑器组件</div>;
   };
 
   onToggleEditMode = (e: React.MouseEvent, { isOpen, openRow }: { isOpen: boolean; openRow: () => void }) => {
@@ -233,27 +233,23 @@ export class QueryEditorRow extends PureComponent<Props, State> {
       <HorizontalGroup>
         {hasTextEditMode && (
           <QueryOperationAction
-            title="Toggle text edit mode"
+            title="切换文字编辑模式"
             icon="pen"
             onClick={e => {
               this.onToggleEditMode(e, props);
             }}
           />
         )}
-        <QueryOperationAction
-          title="Move query down"
-          icon="arrow-down"
-          onClick={() => this.props.onMoveQuery(query, 1)}
-        />
-        <QueryOperationAction title="Move query up" icon="arrow-up" onClick={() => this.props.onMoveQuery(query, -1)} />
+        <QueryOperationAction title="下移查询" icon="arrow-down" onClick={() => this.props.onMoveQuery(query, 1)} />
+        <QueryOperationAction title="上移查询" icon="arrow-up" onClick={() => this.props.onMoveQuery(query, -1)} />
 
-        <QueryOperationAction title="Duplicate query" icon="copy" onClick={this.onCopyQuery} />
+        <QueryOperationAction title="复制查询" icon="copy" onClick={this.onCopyQuery} />
         <QueryOperationAction
-          title="Disable/enable query"
+          title="禁用/启用查询"
           icon={isDisabled ? 'eye-slash' : 'eye'}
           onClick={this.onDisableQuery}
         />
-        <QueryOperationAction title="Remove query" icon="trash-alt" onClick={this.onRemoveQuery} />
+        <QueryOperationAction title="移除查询" icon="trash-alt" onClick={this.onRemoveQuery} />
       </HorizontalGroup>
     );
   };

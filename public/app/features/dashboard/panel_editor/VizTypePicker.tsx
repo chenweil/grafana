@@ -94,7 +94,7 @@ export const VizTypePicker: React.FC<Props> = ({ searchQuery, onTypeChange, curr
           return renderVizPlugin(plugin, index);
         })
       ) : (
-        <EmptySearchResult>Could not find anything matching your query</EmptySearchResult>
+        <EmptySearchResult>找不到与您的查询匹配的内容</EmptySearchResult>
       )}
     </div>
   );

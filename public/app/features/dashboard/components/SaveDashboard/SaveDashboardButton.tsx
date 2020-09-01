@@ -31,7 +31,7 @@ export const SaveDashboardButton: React.FC<SaveDashboardButtonProps> = ({ dashbo
               });
             }}
           >
-            Save dashboard
+            保存仪表板
           </Button>
         );
       }}
@@ -64,7 +64,7 @@ export const SaveDashboardAsButton: React.FC<SaveDashboardButtonProps & { varian
               // Everywhere else we use old button component :(
               variant={variant as ButtonVariant}
             >
-              Save As...
+              另存为...
             </Button>
           </FullWidthButtonContainer>
         );

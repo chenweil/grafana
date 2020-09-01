@@ -282,7 +282,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item explore-icon-align">
                 <ResponsiveButton
                   splitted={splitted}
-                  title="Clear All"
+                  title="清除所有"
                   onClick={this.onClearAll}
                   icon="trash-alt"
                   iconClassName="icon-margin-right"

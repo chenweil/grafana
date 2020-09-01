@@ -17,17 +17,17 @@ enum ShowContent {
 const options: Array<SelectableValue<ShowContent>> = [
   {
     label: 'Panel JSON',
-    description: 'The model saved in the dashboard JSON that configures how everything works.',
+    description: '保存在仪表板JSON中的模型，用于配置一切工作方式。',
     value: ShowContent.PanelJSON,
   },
   {
     label: 'Panel data',
-    description: 'The raw model passed to the panel visualization',
+    description: '原始模型传递给面板可视化',
     value: ShowContent.PanelData,
   },
   {
     label: 'DataFrame structure',
-    description: 'Response info without any values',
+    description: '没有任何值的响应信息',
     value: ShowContent.DataStructure,
   },
 ];
@@ -72,7 +72,7 @@ export class InspectJSONTab extends PureComponent<Props, State> {
     if (show === ShowContent.DataStructure) {
       const series = this.props.data?.series;
       if (!series) {
-        return { note: 'Missing Response Data' };
+        return { note: '缺少响应日期a' };
       }
       return this.props.data!.series.map(frame => {
         const { table, fields, ...rest } = frame as any; // remove 'table' from arrow response
@@ -101,16 +101,16 @@ export class InspectJSONTab extends PureComponent<Props, State> {
 
     try {
       if (!dashboard.meta.canEdit) {
-        appEvents.emit(AppEvents.alertError, ['Unable to apply']);
+        appEvents.emit(AppEvents.alertError, ['无法申请']);
       } else {
         const updates = JSON.parse(this.state.text);
         panel.restoreModel(updates);
         panel.refresh();
-        appEvents.emit(AppEvents.alertSuccess, ['Panel model updated']);
+        appEvents.emit(AppEvents.alertSuccess, ['面板型号更新']);
       }
     } catch (err) {
-      console.error('Error applying updates', err);
-      appEvents.emit(AppEvents.alertError, ['Invalid JSON text']);
+      console.error('应用更新时出错', err);
+      appEvents.emit(AppEvents.alertError, ['无效的JSON文字']);
     }
 
     onClose();
@@ -132,7 +132,7 @@ export class InspectJSONTab extends PureComponent<Props, State> {
           </Field>
           {isPanelJSON && canEdit && (
             <Button className={styles.toolbarItem} onClick={this.onApplyPanelModel}>
-              Apply
+              应用
             </Button>
           )}
         </div>

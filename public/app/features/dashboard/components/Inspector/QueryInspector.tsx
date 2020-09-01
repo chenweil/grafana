@@ -269,10 +269,10 @@ export class QueryInspector extends PureComponent<Props, State> {
     return (
       <>
         <div aria-label={selectors.components.PanelInspector.Query.content}>
-          <h3 className="section-heading">Query inspector</h3>
+          <h3 className="section-heading">查询检查器</h3>
           <p className="small muted">
-            Query inspector allows you to view raw request and response. To collect this data Grafana needs to issue a
-            new query. Hit refresh button below to trigger a new query.
+            查询检查器使您可以查看原始请求和响应。 为了收集此数据，Grafana需要发出一个新查询。
+            点击下面的刷新按钮以触发新查询。
           </p>
         </div>
         {this.renderExecutedQueries(executedQueries)}
@@ -282,17 +282,17 @@ export class QueryInspector extends PureComponent<Props, State> {
             onClick={this.onIssueNewQuery}
             aria-label={selectors.components.PanelInspector.Query.refreshButton}
           >
-            Refresh
+            刷新
           </Button>
 
           {haveData && allNodesExpanded && (
             <Button icon="minus" variant="secondary" className={styles.toolbarItem} onClick={this.onToggleExpand}>
-              Collapse all
+              展开所有
             </Button>
           )}
           {haveData && !allNodesExpanded && (
             <Button icon="plus" variant="secondary" className={styles.toolbarItem} onClick={this.onToggleExpand}>
-              Expand all
+              合并所有
             </Button>
           )}
 
@@ -304,7 +304,7 @@ export class QueryInspector extends PureComponent<Props, State> {
               className={styles.toolbarItem}
             >
               <Button icon="copy" variant="secondary">
-                Copy to clipboard
+                复制到剪切板
               </Button>
             </CopyToClipboard>
           )}
@@ -315,7 +315,7 @@ export class QueryInspector extends PureComponent<Props, State> {
           {!isLoading && haveData && (
             <JSONFormatter json={response} open={openNodes} onDidRender={this.setFormattedJson} />
           )}
-          {!isLoading && !haveData && <p className="muted">No request & response collected yet. Hit refresh button</p>}
+          {!isLoading && !haveData && <p className="muted">尚未收集任何请求和响应。 点击刷新按钮</p>}
         </div>
       </>
     );
