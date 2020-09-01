@@ -22,7 +22,7 @@ export default class DisabledPermissionListItem extends Component<Props, any> {
           <span className="filter-table__weak-italic"> (Role)</span>
         </td>
         <td />
-        <td className="query-keyword">Can</td>
+        <td className="query-keyword">能</td>
         <td>
           <div className="gf-form">
             <Select

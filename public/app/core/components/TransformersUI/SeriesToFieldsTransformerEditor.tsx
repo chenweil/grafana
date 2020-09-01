@@ -32,7 +32,7 @@ export const SeriesToFieldsTransformerEditor: React.FC<TransformerUIProps<Series
   return (
     <div className="gf-form-inline">
       <div className="gf-form gf-form--grow">
-        <div className="gf-form-label width-8">Field name</div>
+        <div className="gf-form-label width-8">字段名</div>
         <Select
           options={fieldNameOptions}
           value={options.byField}
@@ -49,7 +49,7 @@ export const seriesToFieldsTransformerRegistryItem: TransformerRegistyItem<Serie
   id: DataTransformerID.seriesToColumns,
   editor: SeriesToFieldsTransformerEditor,
   transformation: standardTransformers.seriesToColumnsTransformer,
-  name: 'Outer join',
+  name: '外连接',
   description:
-    'Joins many time series/tables by a field. This can be used to outer join multiple time series on the _time_ field to show many time series in one table.',
+    '通过一个字段连接许多时间序列/表格。 这可以用于外部连接_time_字段上的多个时间序列，以在一个表中显示多个时间序列。',
 };

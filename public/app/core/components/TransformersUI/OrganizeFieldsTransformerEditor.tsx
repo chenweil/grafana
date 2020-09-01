@@ -73,7 +73,7 @@ const OrganizeFieldsTransformerEditor: React.FC<OrganizeFieldsTransformerEditorP
 
   // Show warning that we only apply the first frame
   if (input.length > 1) {
-    return <div>Organize fields only works with a single frame. Consider applying a join transformation first.</div>;
+    return <div>组织字段仅适用于单个框架。 考虑先应用联接转换。</div>;
   }
 
   return (
@@ -227,7 +227,6 @@ export const organizeFieldsTransformRegistryItem: TransformerRegistyItem<Organiz
   id: DataTransformerID.organize,
   editor: OrganizeFieldsTransformerEditor,
   transformation: standardTransformers.organizeFieldsTransformer,
-  name: 'Organize fields',
-  description:
-    "Allows the user to re-order, hide, or rename fields / columns. Useful when data source doesn't allow overrides for visualizing data.",
+  name: '组织领域',
+  description: '允许用户重新排序，隐藏或重命名字段/列。 当数据源不允许替换以可视化数据时很有用。',
 };

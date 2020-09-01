@@ -26,22 +26,19 @@ export class AnnotationsEditorCtrl {
   };
 
   emptyListCta = {
-    title: 'There are no custom annotation queries added yet',
+    title: '尚未添加自定义注释查询',
     buttonIcon: 'comment-alt',
-    buttonTitle: 'Add Annotation Query',
+    buttonTitle: '添加注释查询',
     infoBox: {
-      __html: `<p>Annotations provide a way to integrate event data into your graphs. They are visualized as vertical lines
-    and icons on all graph panels. When you hover over an annotation icon you can get event text &amp; tags for
-    the event. You can add annotation events directly from grafana by holding CTRL or CMD + click on graph (or
-    drag region). These will be stored in Grafana's annotation database.
+      __html: `<p>注释提供了一种将事件数据集成到图形中的方法。 它们在所有图形面板上均显示为垂直线和图标。 将鼠标悬停在注释图标上时，可以获得事件的事件文本标签。 您可以通过按住CTRL或CMD +单击图形（或拖动区域）直接从grafana添加注释事件。 这些将存储在Grafana的注释数据库中。
   </p>
-  Checkout the
+  请查看
   <a class='external-link' target='_blank' href='http://docs.grafana.org/reference/annotations/'
-    >Annotations documentation</a
+    >注释文档</a
   >
-  for more information.`,
+  以获取更多信息。`,
     },
-    infoBoxTitle: 'What are annotations?',
+    infoBoxTitle: '什么是注释？',
   };
 
   showOptions: any = [
@@ -107,7 +104,7 @@ export class AnnotationsEditorCtrl {
   add() {
     const sameName: any = _.find(this.annotations, { name: this.currentAnnotation.name });
     if (sameName) {
-      appEvents.emit(AppEvents.alertWarning, ['Validation', 'Annotations with the same name already exists']);
+      appEvents.emit(AppEvents.alertWarning, ['Validation', '具有相同名称的注释已存在']);
       return;
     }
     this.annotations.push(this.currentAnnotation);

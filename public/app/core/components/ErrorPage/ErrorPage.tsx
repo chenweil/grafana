@@ -50,22 +50,22 @@ export class ErrorPage extends PureComponent<Props> {
                   <Icon name="minus-circle" className="error-minus" />
                   <div className="error-column error-space-between error-full-width">
                     <div className="error-row error-space-between">
-                      <p>Chances you are on the page you are looking for.</p>
+                      <p>您可能会在所需的页面上。</p>
                       <p className="left-margin">0%</p>
                     </div>
                     <div>
-                      <h3>Sorry for the inconvenience</h3>
+                      <h3>抱歉给你带来不便</h3>
                       <p>
-                        Please go back to your{' '}
+                        请回到您的{' '}
                         <a href={config.appSubUrl} className="error-link">
-                          home dashboard
+                          家仪表板
                         </a>{' '}
-                        and try again.
+                        然后再试一次。
                       </p>
                       <p>
-                        If the error persists, seek help on the{' '}
+                        如果错误仍然存在，请寻求有关{' '}
                         <a href="https://community.grafana.com" target="_blank" className="error-link">
-                          community site
+                          社区网站
                         </a>
                         .
                       </p>

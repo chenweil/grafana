@@ -14,7 +14,6 @@ export const seriesToRowsTransformerRegistryItem: TransformerRegistyItem<SeriesT
   id: DataTransformerID.seriesToRows,
   editor: SeriesToRowsTransformerEditor,
   transformation: standardTransformers.seriesToRowsTransformer,
-  name: 'Series to rows',
-  description: `Merge many series and return a single series with time, metric and value as columns. 
-                Useful for showing multiple time series visualized in a table.`,
+  name: '系列到行',
+  description: `合并多个系列，并以时间，度量和值作为列返回单个系列。用于显示表格中可视化的多个时间序列。`,
 };

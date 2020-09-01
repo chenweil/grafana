@@ -94,11 +94,11 @@ export class LdapPage extends PureComponent<Props, State> {
 
             {config.licenseInfo.hasLicense && ldapSyncInfo && <LdapSyncInfo ldapSyncInfo={ldapSyncInfo} />}
 
-            <h3 className="page-heading">Test user mapping</h3>
+            <h3 className="page-heading">测试用户映射</h3>
             <div className="gf-form-group">
               <form onSubmit={this.search} className="gf-form-inline">
                 <FormField
-                  label="Username"
+                  label="用户名"
                   labelWidth={8}
                   inputWidth={30}
                   type="text"
@@ -107,7 +107,7 @@ export class LdapPage extends PureComponent<Props, State> {
                   defaultValue={username}
                 />
                 <button type="submit" className="btn btn-primary">
-                  Run
+                  执行
                 </button>
               </form>
             </div>

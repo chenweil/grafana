@@ -62,8 +62,8 @@ export class AlertNotificationEditCtrl {
           }
 
           if (!this.$routeParams.id) {
-            this.navModel.breadcrumbs.push({ text: 'New channel' });
-            this.navModel.node = { text: 'New channel' };
+            this.navModel.breadcrumbs.push({ text: '新频道' });
+            this.navModel.node = { text: '新频道' };
             return _.defaults(this.model, this.defaults);
           }
 
@@ -95,7 +95,7 @@ export class AlertNotificationEditCtrl {
           .put(`/api/alert-notifications/${this.model.id}`, this.model)
           .then((res: any) => {
             this.model = res;
-            appEvents.emit(AppEvents.alertSuccess, ['Notification updated']);
+            appEvents.emit(AppEvents.alertSuccess, ['通知已更新']);
           })
           .catch((err: any) => {
             if (err.data && err.data.error) {
@@ -108,7 +108,7 @@ export class AlertNotificationEditCtrl {
         getBackendSrv()
           .post(`/api/alert-notifications`, this.model)
           .then((res: any) => {
-            appEvents.emit(AppEvents.alertSuccess, ['Notification created']);
+            appEvents.emit(AppEvents.alertSuccess, ['通知已创建']);
             this.$location.path('alerting/notifications');
           })
           .catch((err: any) => {
@@ -123,11 +123,11 @@ export class AlertNotificationEditCtrl {
   deleteNotification() {
     appEvents.emit(CoreEvents.showConfirmModal, {
       title: 'Delete',
-      text: 'Do you want to delete this notification channel?',
-      text2: `Deleting this notification channel will not delete from alerts any references to it`,
+      text: '您要删除此通知频道吗？',
+      text2: `删除此通知通道不会从警报中删除对其的任何引用`,
       icon: 'trash-alt',
       confirmText: 'Delete',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         this.deleteNotificationConfirmed();
       },

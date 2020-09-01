@@ -44,7 +44,7 @@ class AlertRuleItem extends PureComponent<Props> {
 
         <div className="alert-rule-item__actions">
           <HorizontalGroup spacing="sm">
-            <Tooltip placement="bottom" content="Pausing an alert rule prevents it from executing">
+            <Tooltip placement="bottom" content="暂停警报规则将阻止其执行">
               <Button
                 variant="secondary"
                 size="sm"

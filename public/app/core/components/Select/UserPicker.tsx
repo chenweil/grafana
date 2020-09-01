@@ -71,8 +71,8 @@ export class UserPicker extends Component<Props, State> {
           defaultOptions={true}
           loadOptions={this.debouncedSearch}
           onChange={onSelected}
-          placeholder="Select user"
-          noOptionsMessage={() => 'No users found'}
+          placeholder="选择用户"
+          noOptionsMessage={() => '未找到用户'}
         />
       </div>
     );

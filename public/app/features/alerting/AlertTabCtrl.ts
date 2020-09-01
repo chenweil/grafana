@@ -256,10 +256,10 @@ export class AlertTabCtrl {
       const frequencySecs = kbn.intervalToSeconds(this.alert.frequency);
       if (frequencySecs < this.alertingMinIntervalSecs) {
         this.frequencyWarning =
-          'A minimum evaluation interval of ' +
+          '最小评估间隔为 ' +
           this.alertingMinInterval +
-          ' have been configured in Grafana and will be used for this alert rule. ' +
-          'Please contact the administrator to configure a lower interval.';
+          ' 已在Grafana中配置，并将用于此警报规则。' +
+          '请与管理员联系以配置较低的时间间隔。';
       }
     } catch (err) {
       this.frequencyWarning = err;
@@ -305,7 +305,7 @@ export class AlertTabCtrl {
           condition.query.params[0] = firstTarget.refId;
           foundTarget = firstTarget;
         } else {
-          this.error = 'Could not find any metric queries';
+          this.error = '找不到任何指标查询';
           return;
         }
       }
@@ -315,9 +315,9 @@ export class AlertTabCtrl {
         this.datasourceSrv.get(datasourceName).then(
           (foundTarget => (ds: DataSourceApi) => {
             if (!ds.meta.alerting) {
-              return Promise.reject('The datasource does not support alerting queries');
+              return Promise.reject('数据源不支持警报查询');
             } else if (ds.targetContainsTemplate && ds.targetContainsTemplate(foundTarget)) {
-              return Promise.reject('Template variables are not supported in alert queries');
+              return Promise.reject('警报查询中不支持模板变量');
             }
             return Promise.resolve();
           })(foundTarget)
@@ -409,11 +409,11 @@ export class AlertTabCtrl {
 
   delete() {
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete Alert',
-      text: 'Are you sure you want to delete this alert rule?',
-      text2: 'You need to save dashboard for the delete to take effect',
+      title: '删除警报',
+      text: '您确定要删除此警报规则吗？',
+      text2: '您需要保存信息中心才能使删除生效',
       icon: 'trash-alt',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         delete this.panel.alert;
         this.alert = null;
@@ -459,10 +459,10 @@ export class AlertTabCtrl {
 
   clearHistory() {
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete Alert History',
-      text: 'Are you sure you want to remove all history & annotations for this alert?',
+      title: '删除警报历史记录',
+      text: '您确定要删除此警报的所有历史记录和注释吗？',
       icon: 'trash-alt',
-      yesText: 'Yes',
+      yesText: '是',
       onConfirm: () => {
         promiseToDigest(this.$scope)(
           getBackendSrv()

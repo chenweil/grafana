@@ -40,11 +40,11 @@ export const LabelsAsFieldsTransformerEditor: React.FC<TransformerUIProps<Labels
   return (
     <div className="gf-form-inline">
       <div className="gf-form">
-        <div className="gf-form-label width-8">Value field name</div>
+        <div className="gf-form-label width-8">值字段名</div>
         <Select
           isClearable={true}
           allowCustomValue={false}
-          placeholder="(Optional) Select label"
+          placeholder="（可选）选择标签"
           options={labelNames}
           className="min-width-18 gf-form-spacing"
           value={options?.valueLabel}
@@ -60,7 +60,7 @@ export const labelsToFieldsTransformerRegistryItem: TransformerRegistyItem<Label
   id: DataTransformerID.labelsToFields,
   editor: LabelsAsFieldsTransformerEditor,
   transformation: standardTransformers.labelsToFieldsTransformer,
-  name: 'Labels to fields',
-  description: `Groups series by time and return labels or tags as fields.
-                Useful for showing time series with labels in a table where each label key becomes a seperate column`,
+  name: '字段标签',
+  description: `按时间分组序列，并将标签或标签作为字段返回。
+  对于在表格中显示带有标签的时间序列很有用，其中每个标签键都变成一个单独的列`,
 };

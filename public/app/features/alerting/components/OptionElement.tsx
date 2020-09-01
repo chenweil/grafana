@@ -47,7 +47,7 @@ export const OptionElement: FC<Props> = ({ control, option, register }) => {
       );
 
     default:
-      console.error('Element not supported', option.element);
+      console.error('不支持元素', option.element);
       return null;
   }
 };

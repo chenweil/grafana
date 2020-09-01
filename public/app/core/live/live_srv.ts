@@ -30,7 +30,7 @@ export class LiveSrv {
       this.conn = new WebSocket(this.getWebSocketUrl());
 
       this.conn.onclose = (evt: any) => {
-        reject({ message: 'Connection closed' });
+        reject({ message: '连接已关闭' });
 
         this.initPromise = null;
         setTimeout(this.reconnect.bind(this), 2000);
@@ -42,7 +42,7 @@ export class LiveSrv {
 
       this.conn.onerror = (evt: any) => {
         this.initPromise = null;
-        reject({ message: 'Connection error' });
+        reject({ message: '连接错误' });
       };
 
       this.conn.onopen = (evt: any) => {
@@ -58,7 +58,7 @@ export class LiveSrv {
     message = JSON.parse(message);
 
     if (!message.stream) {
-      console.error('Error: stream message without stream!', message);
+      console.error('错误:没有流的流消息！', message);
       return;
     }
 

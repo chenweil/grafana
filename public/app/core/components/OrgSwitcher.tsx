@@ -45,12 +45,12 @@ export class OrgSwitcher extends React.PureComponent<Props, State> {
     const currentOrgId = contextSrv.user.orgId;
 
     return (
-      <Modal title="Switch Organization" icon="arrow-random" onDismiss={onDismiss} isOpen={true}>
+      <Modal title="切换组织" icon="arrow-random" onDismiss={onDismiss} isOpen={true}>
         <table className="filter-table form-inline">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Role</th>
+              <th>组织名</th>
+              <th>角色</th>
               <th />
             </tr>
           </thead>
@@ -61,10 +61,10 @@ export class OrgSwitcher extends React.PureComponent<Props, State> {
                 <td>{org.role}</td>
                 <td className="text-right">
                   {org.orgId === currentOrgId ? (
-                    <Button size="sm">Current</Button>
+                    <Button size="sm">当前</Button>
                   ) : (
                     <Button variant="secondary" size="sm" onClick={() => this.setCurrentOrg(org)}>
-                      Switch to
+                      切换到
                     </Button>
                   )}
                 </td>

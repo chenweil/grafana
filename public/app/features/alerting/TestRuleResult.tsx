@@ -59,7 +59,7 @@ export class TestRuleResult extends PureComponent<Props, State> {
   };
 
   onClipboardSuccess = () => {
-    appEvents.emit(AppEvents.alertSuccess, ['Content copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['内容已复制到剪贴板']);
   };
 
   onToggleExpand = () => {
@@ -98,7 +98,7 @@ export class TestRuleResult extends PureComponent<Props, State> {
     const { testRuleResponse, isLoading } = this.state;
 
     if (isLoading === true) {
-      return <LoadingPlaceholder text="Evaluating rule" />;
+      return <LoadingPlaceholder text="评估规则" />;
     }
 
     const openNodes = this.getNrOfOpenNodes();
@@ -114,7 +114,7 @@ export class TestRuleResult extends PureComponent<Props, State> {
             text={this.getTextForClipboard}
             onSuccess={this.onClipboardSuccess}
           >
-            <Icon name="copy" /> Copy to Clipboard
+            <Icon name="copy" /> 复制到剪贴板
           </CopyToClipboard>
         </div>
 

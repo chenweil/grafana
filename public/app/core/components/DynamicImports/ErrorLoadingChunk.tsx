@@ -15,17 +15,17 @@ interface Props {
 
 export const ErrorLoadingChunk: FunctionComponent<Props> = ({ error }) => (
   <div className={getStyles()}>
-    <h2>Unable to find application file</h2>
+    <h2>找不到应用程序文件</h2>
     <br />
-    <h2 className="page-heading">Grafana has likely been updated. Please try reloading the page.</h2>
+    <h2 className="page-heading">Grafana可能已更新。请尝试重新加载页面。</h2>
     <br />
     <div className="gf-form-group">
       <Button size="md" variant="secondary" icon="repeat" onClick={() => window.location.reload()}>
-        Reload
+        重载
       </Button>
     </div>
     <details style={{ whiteSpace: 'pre-wrap' }}>
-      {error && error.message ? error.message : 'Unexpected error occurred'}
+      {error && error.message ? error.message : '发生意外错误'}
       <br />
       {error && error.stack ? error.stack : null}
     </details>

@@ -26,7 +26,7 @@ export default class OrgActionBar extends PureComponent<Props> {
             inputClassName="gf-form-input width-20"
             value={searchQuery}
             onChange={setSearchQuery}
-            placeholder={'Search by name or type'}
+            placeholder={'按名称或类型搜索'}
           />
         </div>
         <div className="page-action-bar__spacer" />

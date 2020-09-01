@@ -14,7 +14,7 @@ export const AdminOrgsTable: FC<Props> = ({ orgs, onDelete }) => {
       <thead>
         <tr>
           <th>Id</th>
-          <th>Name</th>
+          <th>名字</th>
           <th style={{ width: '1%' }}></th>
         </tr>
       </thead>
@@ -37,14 +37,14 @@ export const AdminOrgsTable: FC<Props> = ({ orgs, onDelete }) => {
         <ConfirmModal
           isOpen
           icon="trash-alt"
-          title="Delete"
+          title="删除"
           body={
             <div>
-              Are you sure you want to delete '{deleteOrg.name}'?
-              <br /> <small>All dashboards for this organization will be removed!</small>
+              你确定你要删除 '{deleteOrg.name}'?
+              <br /> <small>该组织的所有仪表板将被删除！</small>
             </div>
           }
-          confirmText="Delete"
+          confirmText="删除"
           onDismiss={() => setDeleteOrg(undefined)}
           onConfirm={() => {
             onDelete(deleteOrg.id);

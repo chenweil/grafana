@@ -29,7 +29,7 @@ export const SortPicker: FC<Props> = ({ onChange, value, placeholder }) => {
       onChange={onChange}
       value={options?.filter(opt => opt.value === value)}
       options={options}
-      placeholder={placeholder ?? `Sort (Default ${DEFAULT_SORT.label})`}
+      placeholder={placeholder ?? `排序 (默认 ${DEFAULT_SORT.label})`}
       prefix={<Icon name="sort-amount-down" />}
     />
   ) : null;

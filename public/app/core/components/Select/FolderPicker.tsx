@@ -92,13 +92,13 @@ export class FolderPicker extends PureComponent<Props, State> {
   createNewFolder = async (folderName: string) => {
     // @ts-ignore
     const newFolder = await createFolder({ title: folderName });
-    let folder = { value: -1, label: 'Not created' };
+    let folder = { value: -1, label: '未创建' };
     if (newFolder.id > -1) {
-      appEvents.emit(AppEvents.alertSuccess, ['Folder Created', 'OK']);
+      appEvents.emit(AppEvents.alertSuccess, ['文件夹已建立', 'OK']);
       folder = { value: newFolder.id, label: newFolder.title };
       await this.onFolderChange(folder);
     } else {
-      appEvents.emit(AppEvents.alertError, ['Folder could not be created']);
+      appEvents.emit(AppEvents.alertError, ['无法建立文件夹']);
     }
 
     return folder;
@@ -154,7 +154,7 @@ export class FolderPicker extends PureComponent<Props, State> {
       <div aria-label={selectors.components.FolderPicker.container}>
         {useNewForms && (
           <AsyncSelect
-            loadingMessage="Loading folders..."
+            loadingMessage="加载文件夹..."
             defaultOptions
             defaultValue={folder}
             value={folder}
@@ -170,7 +170,7 @@ export class FolderPicker extends PureComponent<Props, State> {
             <div className="gf-form">
               <label className="gf-form-label width-7">Folder</label>
               <AsyncSelect
-                loadingMessage="Loading folders..."
+                loadingMessage="加载文件夹..."
                 defaultOptions
                 defaultValue={folder}
                 value={folder}

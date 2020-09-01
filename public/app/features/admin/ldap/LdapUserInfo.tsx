@@ -27,7 +27,7 @@ export const LdapUserInfo: FC<Props> = ({ ldapUser, showAttributeMapping }) => {
             <table className="filter-table form-inline">
               <tbody>
                 <tr>
-                  <td>No teams found via LDAP</td>
+                  <td>找不到通过LDAP的团队</td>
                 </tr>
               </tbody>
             </table>

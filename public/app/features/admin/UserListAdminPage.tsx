@@ -45,7 +45,7 @@ const UserListAdminPageUnConnected: React.FC<Props> = props => {
               <Input
                 width={40}
                 type="text"
-                placeholder="Search user by login, email or name"
+                placeholder="通过登录名，电子邮件或姓名搜索用户"
                 tabIndex={1}
                 autoFocus={true}
                 value={props.query}
@@ -54,7 +54,7 @@ const UserListAdminPageUnConnected: React.FC<Props> = props => {
                 prefix={<Icon name="search" />}
               />
               <LinkButton href="admin/users/create" variant="primary">
-                New user
+                新用户
               </LinkButton>
             </HorizontalGroup>
           </div>
@@ -64,12 +64,12 @@ const UserListAdminPageUnConnected: React.FC<Props> = props => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>Login</th>
-                  <th>Email</th>
-                  <th>Name</th>
+                  <th>登陆</th>
+                  <th>电子邮件</th>
+                  <th>名字</th>
                   <th>
                     Seen&nbsp;
-                    <Tooltip placement="top" content="Time since user was seen using Grafana">
+                    <Tooltip placement="top" content="自从看到用户使用Grafana以来的时间">
                       <Icon name="question-circle" />
                     </Tooltip>
                   </th>

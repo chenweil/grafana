@@ -68,7 +68,7 @@ export class AnnotationsSrv {
         }
 
         console.error('AnnotationSrv.query error', err);
-        appEvents.emit(AppEvents.alertError, ['Annotation Query Failed', err.message || err]);
+        appEvents.emit(AppEvents.alertError, ['注释查询失败', err.message || err]);
         return [];
       });
   }

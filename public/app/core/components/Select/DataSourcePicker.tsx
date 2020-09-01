@@ -23,7 +23,7 @@ export class DataSourcePicker extends PureComponent<Props> {
   static defaultProps: Partial<Props> = {
     autoFocus: false,
     openMenuOnFocus: false,
-    placeholder: 'Select datasource',
+    placeholder: '选择数据源',
   };
 
   searchInput: HTMLElement;

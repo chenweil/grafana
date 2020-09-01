@@ -40,7 +40,7 @@ export class EventEditorCtrl {
       saveModel.timeEnd = this.event.timeEnd!.valueOf();
 
       if (saveModel.timeEnd < saveModel.time) {
-        console.log('invalid time');
+        console.log('无效时间');
         return;
       }
     }

@@ -100,7 +100,7 @@ class StateHistory extends PureComponent<Props, State> {
               );
             })
           ) : (
-            <i>No state changes recorded</i>
+            <i>没有记录状态变化</i>
           )}
         </ol>
       </div>

@@ -100,13 +100,13 @@ export class AlertRuleList extends PureComponent<Props, any> {
               <FilterInput
                 labelClassName="gf-form--has-input-icon gf-form--grow"
                 inputClassName="gf-form-input"
-                placeholder="Search alerts"
+                placeholder="搜索提醒"
                 value={search}
                 onChange={this.onSearchQueryChange}
               />
             </div>
             <div className="gf-form">
-              <label className="gf-form-label">States</label>
+              <label className="gf-form-label">状态</label>
 
               <div className="width-13">
                 <Select
@@ -118,7 +118,7 @@ export class AlertRuleList extends PureComponent<Props, any> {
             </div>
             <div className="page-action-bar__spacer" />
             <Button variant="secondary" onClick={this.onOpenHowTo}>
-              How to add an alert
+              如何添加警报
             </Button>
           </div>
           <section>

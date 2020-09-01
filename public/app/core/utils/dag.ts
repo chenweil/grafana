@@ -16,11 +16,11 @@ export class Edge {
 
   link(inputNode: Node, outputNode: Node) {
     if (!inputNode) {
-      throw Error('inputNode is required');
+      throw Error('inputNode是必需的');
     }
 
     if (!outputNode) {
-      throw Error('outputNode is required');
+      throw Error('outputNode是必需的');
     }
 
     this.unlink();
@@ -159,7 +159,7 @@ export class Graph {
       if (typeof i === 'string') {
         const n = this.getNode(i);
         if (!n) {
-          throw Error(`cannot link input node named ${i} since it doesn't exist in graph`);
+          throw Error(`无法链接名为 ${i} 的输入节点，因为它在图形中不存在`);
         }
         inputNodes.push(n);
       } else {
@@ -172,7 +172,7 @@ export class Graph {
       if (typeof i === 'string') {
         const n = this.getNode(i);
         if (!n) {
-          throw Error(`cannot link output node named ${i} since it doesn't exist in graph`);
+          throw Error(`无法链接名为 ${i} 的输出节点，因为它在图形中不存在`);
         }
         outputNodes.push(n);
       } else {
@@ -209,6 +209,6 @@ export const printGraph = (g: Graph) => {
     if (!inputEdges) {
       inputEdges = '<none>';
     }
-    console.log(`${n.name}:\n - links to:   ${outputEdges}\n - links from: ${inputEdges}`);
+    console.log(`${n.name}:\n - 链接到:   ${outputEdges}\n - 链接来自: ${inputEdges}`);
   });
 };

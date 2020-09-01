@@ -45,7 +45,7 @@ export class LivePanel extends PureComponent<Props, State> {
       this.setState({ connected: true, count: 0, lastTime: 0, lastBody: '' });
       return;
     }
-    console.log('Not yet connected... try again...');
+    console.log('尚未连接...请重试...');
     setTimeout(this.startSubscription, 200);
   };
 

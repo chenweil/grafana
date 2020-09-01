@@ -46,8 +46,8 @@ export const NewNotificationChannelForm: FC<Props> = ({
   return (
     <>
       <div className={styles.basicSettings}>
-        <Field label="Name" invalid={!!errors.name} error={errors.name && errors.name.message}>
-          <Input name="name" ref={register({ required: 'Name is required' })} />
+        <Field label="名字" invalid={!!errors.name} error={errors.name && errors.name.message}>
+          <Input name="name" ref={register({ required: '名字是必填项' })} />
         </Field>
         <Field label="Type">
           <InputControl
@@ -58,39 +58,30 @@ export const NewNotificationChannelForm: FC<Props> = ({
             rules={{ required: true }}
           />
         </Field>
-        <Field label="Default" description="Use this notification for all alerts">
+        <Field label="默认" description="将此通知用于所有警报">
           <Switch name="isDefault" ref={register} />
         </Field>
-        <Field label="Include image" description="Captures an image and include it in the notification">
+        <Field label="包含图片" description="捕获图像并将其包含在通知中">
           <Switch name="settings.uploadImage" ref={register} />
         </Field>
         {currentFormValues.uploadImage && !imageRendererAvailable && (
-          <InfoBox title="No image renderer available/installed">
-            Grafana cannot find an image renderer to capture an image for the notification. Please make sure the Grafana
-            Image Renderer plugin is installed. Please contact your Grafana administrator to install the plugin.
+          <InfoBox title="没有可用的图像渲染器/未安装">
+            Grafana找不到用于渲染通知图像的图像渲染器。 请确保已安装Grafana Image Renderer插件。
+            请与您的Grafana管理员联系以安装插件。
           </InfoBox>
         )}
-        <Field
-          label="Disable Resolve Message"
-          description="Disable the resolve message [OK] that is sent when alerting state returns to false"
-        >
+        <Field label="禁用解决消息" description="禁用警报状态返回为false时发送的解决消息[OK]">
           <Switch name="disableResolveMessage" ref={register} />
         </Field>
-        <Field label="Send reminders" description="Send additional notifications for triggered alerts">
+        <Field label="发送提醒" description="发送其他通知以触发警报">
           <Switch name="sendReminder" ref={register} />
         </Field>
         {currentFormValues.sendReminder && (
           <>
-            <Field
-              label="Send reminder every"
-              description="Specify how often reminders should be sent, e.g. every 30s, 1m, 10m, 30m or 1h etc."
-            >
+            <Field label="每天发送提醒" description="指定应该多久发送一次提醒，例如 每30s，1m，10m，30m或1h等">
               <Input name="frequency" ref={register} />
             </Field>
-            <InfoBox>
-              Alert reminders are sent after rules are evaluated. Therefore a reminder can never be sent more frequently
-              than a configured alert rule evaluation interval.
-            </InfoBox>
+            <InfoBox>评估规则后发送警报提醒。 因此，永远不会比配置的警报规则评估间隔更频繁地发送提醒。</InfoBox>
           </>
         )}
       </div>
@@ -104,12 +95,12 @@ export const NewNotificationChannelForm: FC<Props> = ({
         />
       )}
       <HorizontalGroup>
-        <Button type="submit">Save</Button>
+        <Button type="submit">保存</Button>
         <Button type="button" variant="secondary" onClick={() => onTestChannel(getValues({ nest: true }))}>
-          Test
+          测试
         </Button>
         <Button type="button" variant="secondary">
-          Back
+          返回
         </Button>
       </HorizontalGroup>
     </>

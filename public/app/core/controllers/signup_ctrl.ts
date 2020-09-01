@@ -15,7 +15,7 @@ export class SignUpCtrl {
 
     // validate email is semi ok
     if (params.email && !params.email.match(/^\S+@\S+$/)) {
-      console.error('invalid email');
+      console.error('无效的电子邮件');
       return;
     }
 
@@ -30,9 +30,9 @@ export class SignUpCtrl {
     $scope.navModel = {
       main: {
         icon: 'grafana',
-        text: 'Sign Up',
-        subTitle: 'Register your Grafana account',
-        breadcrumbs: [{ title: 'Login', url: 'login' }],
+        text: '注册',
+        subTitle: '注册您的Grafana帐户',
+        breadcrumbs: [{ title: '登陆', url: 'login' }],
       },
     };
 
