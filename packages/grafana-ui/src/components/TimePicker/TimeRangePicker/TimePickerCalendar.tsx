@@ -237,7 +237,7 @@ const Header = memo<Props>(({ onClose }) => {
 
   return (
     <div className={styles.container}>
-      <TimePickerTitle>Select a time range</TimePickerTitle>
+      <TimePickerTitle>选择时间范围</TimePickerTitle>
       <Icon name="times" onClick={onClose} />
     </div>
   );
@@ -276,10 +276,10 @@ const Footer = memo<Props>(({ onClose, onApply }) => {
   return (
     <div className={styles.container}>
       <Button className={styles.apply} onClick={onApply}>
-        Apply time range
+        应用时间范围
       </Button>
       <Button variant="secondary" onClick={onClose}>
-        Cancel
+        取消
       </Button>
     </div>
   );

@@ -79,7 +79,7 @@ export const fieldTypeMatcherItem: FieldMatcherUIRegistryItem<string> = {
   id: FieldMatcherID.byType,
   component: FieldTypeMatcherEditor,
   matcher: fieldMatchers.get(FieldMatcherID.byType),
-  name: 'Filter by type',
-  description: 'Set properties for fields matching a type',
+  name: '按类型过滤',
+  description: '设置与类型匹配的字段的属性',
   optionsToLabel: options => options,
 };

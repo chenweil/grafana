@@ -20,36 +20,36 @@ func init() {
 		Factory:     NewEmailNotifier,
 		Heading:     "Email settings",
 		OptionsTemplate: `
-			<h3 class="page-heading">Email settings</h3>
+			<h3 class="page-heading">邮件设置</h3>
 			<div class="gf-form">
 				<gf-form-switch
 					class="gf-form"
-					label="Single email"
+					label="单封电子邮件"
 					label-class="width-8"
 					checked="ctrl.model.settings.singleEmail"
-					tooltip="Send a single email to all recipients">
+					tooltip="向所有收件人发送一封电子邮件">
 				</gf-form-switch>
 			</div>
 			<div class="gf-form">
 				<label class="gf-form-label width-8">
-					Addresses
+					地址
 				</label>
 				<textarea rows="7" class="gf-form-input width-27" required ng-model="ctrl.model.settings.addresses"></textarea>
 			</div>
 			<div class="gf-form offset-width-8">
-				<span>You can enter multiple email addresses using a ";" separator</span>
+				<span>您可以使用 ; 分隔符输入多个电子邮件地址</span>
 			</div>
     `,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Single email",
-				Description:  "Send a single email to all recipients",
+				Label:        "单封电子邮件",
+				Description:  "向所有收件人发送一封电子邮件",
 				Element:      alerting.ElementTypeSwitch,
 				PropertyName: "singleEmail",
 			},
 			{
-				Label:        "Addresses",
-				Description:  "You can enter multiple email addresses using a \";\" separator",
+				Label:        "地址",
+				Description:  "您可以使用 \";\" 分隔符输入多个电子邮件地址",
 				Element:      alerting.ElementTypeTextArea,
 				PropertyName: "addresses",
 				Required:     true,
@@ -74,7 +74,7 @@ func NewEmailNotifier(model *models.AlertNotification) (alerting.Notifier, error
 	singleEmail := model.Settings.Get("singleEmail").MustBool(false)
 
 	if addressesString == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find addresses in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到地址"}
 	}
 
 	// split addresses with a few different ways

@@ -26,8 +26,8 @@ export const fieldNameMatcherItem: FieldMatcherUIRegistryItem<string> = {
   id: FieldMatcherID.byName,
   component: FieldNameMatcherEditor,
   matcher: fieldMatchers.get(FieldMatcherID.byName),
-  name: 'Filter by field',
-  description: 'Set properties for fields matching the name',
+  name: '依字段筛选',
+  description: '设置与名称匹配的字段的属性',
   optionsToLabel: options => options,
 };
 
