@@ -24,7 +24,7 @@ export const VariableValuesPreview: React.FunctionComponent<VariableValuesPrevie
 
   return (
     <div className="gf-form-group">
-      <h5>Preview of values</h5>
+      <h5>值预览</h5>
       <div className="gf-form-inline">
         {previewOptions.map((o, index) => (
           <div className="gf-form" key={`${o.value}-${index}`}>
@@ -43,7 +43,7 @@ export const VariableValuesPreview: React.FunctionComponent<VariableValuesPrevie
               onClick={showMoreOptions}
               aria-label="Variable editor Preview of Values Show More link"
             >
-              Show more
+              显示更多
             </a>
           </div>
         )}

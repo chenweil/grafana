@@ -29,13 +29,13 @@ export const MoveToFolderModal: FC<Props> = ({ results, onMoveItems, isOpen, onD
       moveDashboards(selectedDashboards.map(d => d.uid) as string[], folder).then((result: any) => {
         if (result.successCount > 0) {
           const ending = result.successCount === 1 ? '' : 's';
-          const header = `Dashboard${ending} Moved`;
-          const msg = `${result.successCount} dashboard${ending} moved to ${folderTitle}`;
+          const header = `Dashboard ${ending} Moved`;
+          const msg = `${result.successCount} 仪表板 ${ending} 移动到 ${folderTitle}`;
           appEvents.emit(AppEvents.alertSuccess, [header, msg]);
         }
 
         if (result.totalCount === result.alreadyInFolderCount) {
-          appEvents.emit(AppEvents.alertError, ['Error', `Dashboard already belongs to folder ${folderTitle}`]);
+          appEvents.emit(AppEvents.alertError, ['Error', `仪表板已经属于该文件夹 ${folderTitle}`]);
         } else {
           onMoveItems(selectedDashboards, folder);
         }
@@ -46,28 +46,19 @@ export const MoveToFolderModal: FC<Props> = ({ results, onMoveItems, isOpen, onD
   };
 
   return isOpen ? (
-    <Modal
-      className={styles.modal}
-      title="Choose Dashboard Folder"
-      icon="folder-plus"
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-    >
+    <Modal className={styles.modal} title="选择仪表板文件夹" icon="folder-plus" isOpen={isOpen} onDismiss={onDismiss}>
       <>
         <div className={styles.content}>
-          <p>
-            Move the {selectedDashboards.length} selected dashboard{selectedDashboards.length === 1 ? '' : 's'} to the
-            following folder:
-          </p>
+          <p>将{selectedDashboards.length}个选定的仪表板移动到以下文件夹：</p>
           <FolderPicker onChange={f => setFolder(f as FolderInfo)} useNewForms />
         </div>
 
         <HorizontalGroup justify="center">
           <Button variant="primary" onClick={moveTo}>
-            Move
+            移动
           </Button>
           <Button variant="secondary" onClick={onDismiss}>
-            Cancel
+            取消
           </Button>
         </HorizontalGroup>
       </>

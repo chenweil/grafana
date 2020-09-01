@@ -49,13 +49,13 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
   return isOpen ? (
     <ConfirmModal
       isOpen={isOpen}
-      title="Delete"
+      title="删除"
       body={
         <>
           {text} {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
         </>
       }
-      confirmText="Delete"
+      confirmText="删除"
       onConfirm={deleteItems}
       onDismiss={onDismiss}
     />

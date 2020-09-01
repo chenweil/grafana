@@ -85,7 +85,7 @@ export const changeVariableDatasource = (datasource: string): ThunkResult<void> 
     const { editor } = getState().templating;
     const variable = getVariable(editor.id, getState());
 
-    const loadingText = 'Adhoc filters are applied automatically to all queries that target this datasource';
+    const loadingText = '临时过滤器将自动应用于以该数据源为目标的所有查询';
 
     dispatch(
       changeVariableEditorExtended({
@@ -101,7 +101,7 @@ export const changeVariableDatasource = (datasource: string): ThunkResult<void> 
       dispatch(
         changeVariableEditorExtended({
           propName: 'infoText',
-          propValue: 'This datasource does not support adhoc filters yet.',
+          propValue: '此数据源尚不支持即席过滤器。',
         })
       );
     }

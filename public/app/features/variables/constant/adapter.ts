@@ -12,7 +12,7 @@ import { toVariableIdentifier } from '../state/types';
 export const createConstantVariableAdapter = (): VariableAdapter<ConstantVariableModel> => {
   return {
     id: 'constant',
-    description: 'Define a hidden constant variable, useful for metric prefixes in dashboards you want to share',
+    description: '定义一个隐藏的常量变量，对于要共享的仪表板中的度量前缀有用',
     name: 'Constant',
     initialState: initialConstantVariableModelState,
     reducer: constantVariableReducer,

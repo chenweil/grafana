@@ -122,10 +122,10 @@ export class TeamGroupSync extends PureComponent<Props, State> {
           <EmptyListCTA
             onClick={this.onToggleAdding}
             buttonIcon="users-alt"
-            title="There are no external groups to sync with"
-            buttonTitle="Add Group"
+            title="没有要与之同步的外部组"
+            buttonTitle="添加组"
             proTip={headerTooltip}
-            proTipLinkTitle="Learn more"
+            proTipLinkTitle="了解更多"
             proTipLink="http://docs.grafana.org/auth/enhanced_ldap/"
             proTipTarget="_blank"
           />
@@ -136,7 +136,7 @@ export class TeamGroupSync extends PureComponent<Props, State> {
             <table className="filter-table filter-table--hover form-inline">
               <thead>
                 <tr>
-                  <th>External Group ID</th>
+                  <th>外部组ID</th>
                   <th style={{ width: '1%' }} />
                 </tr>
               </thead>

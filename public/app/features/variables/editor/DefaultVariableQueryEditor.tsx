@@ -36,7 +36,7 @@ export default class DefaultVariableQueryEditor extends PureComponent<VariableQu
           value={this.state.value}
           onChange={this.onChange}
           onBlur={this.onBlur}
-          placeholder="metric name or tags query"
+          placeholder="指标名称或标签查询"
           required
           aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsQueryInput}
         />

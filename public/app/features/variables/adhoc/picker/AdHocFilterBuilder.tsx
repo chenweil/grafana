@@ -53,7 +53,7 @@ export const AdHocFilterBuilder: FC<Props> = ({ datasource, appendBefore, onComp
       <AdHocFilterRenderer
         datasource={datasource}
         filter={{ key, value: '', operator, condition: '' }}
-        placeHolder="select value"
+        placeHolder="选择值"
         onKeyChange={onKeyChanged}
         onOperatorChange={onOperatorChanged}
         onValueChange={onValueChanged}

@@ -13,7 +13,7 @@ import { isAllVariable } from '../utils';
 export const createCustomVariableAdapter = (): VariableAdapter<CustomVariableModel> => {
   return {
     id: 'custom',
-    description: 'Define variable values manually',
+    description: '手动定义变量值',
     name: 'Custom',
     initialState: initialCustomVariableModelState,
     reducer: customVariableReducer,

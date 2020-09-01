@@ -95,11 +95,11 @@ export class DataSourceVariableEditorUnConnected extends PureComponent<Props> {
                   empty for all.
                   <br />
                   <br />
-                  Example: <code>/^prod/</code>
+                  例如: <code>/^prod/</code>
                 </div>
               }
             >
-              Instance name filter
+              实例名称过滤器
             </InlineFormLabel>
             <input
               type="text"

@@ -52,10 +52,10 @@ export class IntervalVariableEditor extends PureComponent<Props> {
     return (
       <>
         <div className="gf-form-group">
-          <h5 className="section-heading">Interval Options</h5>
+          <h5 className="section-heading">间隔选项</h5>
 
           <div className="gf-form">
-            <span className="gf-form-label width-9">Values</span>
+            <span className="gf-form-label width-9">值</span>
             <input
               type="text"
               className="gf-form-input"
@@ -69,21 +69,18 @@ export class IntervalVariableEditor extends PureComponent<Props> {
 
           <div className="gf-form-inline">
             <Switch
-              label="Auto Option"
+              label="自动选项"
               labelClass="width-9"
               checked={this.props.variable.auto}
               onChange={this.onAutoChange}
-              tooltip={'Enables multiple values to be selected at the same time'}
+              tooltip={'允许同时选择多个值'}
             />
 
             {this.props.variable.auto && (
               <>
                 <div className="gf-form">
-                  <InlineFormLabel
-                    width={9}
-                    tooltip={'How many times should the current time range be divided to calculate the value'}
-                  >
-                    Step count
+                  <InlineFormLabel width={9} tooltip={'当前时间范围应划分多少次才能计算值'}>
+                    步数
                   </InlineFormLabel>
                   <div className="gf-form-select-wrapper max-width-10">
                     <select
@@ -100,8 +97,8 @@ export class IntervalVariableEditor extends PureComponent<Props> {
                   </div>
                 </div>
                 <div className="gf-form">
-                  <InlineFormLabel width={9} tooltip={'The calculated value will not go below this threshold'}>
-                    Min interval
+                  <InlineFormLabel width={9} tooltip={'计算值不会低于此阈值'}>
+                    最小间隔
                   </InlineFormLabel>
                   <input
                     type="text"

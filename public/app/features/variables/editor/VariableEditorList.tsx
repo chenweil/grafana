@@ -48,22 +48,15 @@ export class VariableEditorList extends PureComponent<Props> {
           {this.props.variables.length === 0 && (
             <div>
               <EmptyListCTA
-                title="There are no variables yet"
+                title="还没有变量"
                 buttonIcon="calculator-alt"
-                buttonTitle="Add variable"
+                buttonTitle="添加变量"
                 infoBox={{
                   __html: ` <p>
-                    Variables enable more interactive and dynamic dashboards. Instead of hard-coding things like server
-                    or sensor names in your metric queries you can use variables in their place. Variables are shown as
-                    dropdown select boxes at the top of the dashboard. These dropdowns make it easy to change the data
-                    being displayed in your dashboard. Check out the
-                    <a class="external-link" href="http://docs.grafana.org/reference/templating/" target="_blank">
-                      Templating documentation
-                    </a>
-                    for more information.
+                  变量可启用更多交互式和动态仪表板。 您可以在变量中使用变量，而不必在指标查询中对服务器或传感器名称之类的东西进行硬编码。 变量在仪表板顶部显示为下拉选择框。 这些下拉菜单使更改仪表盘中显示的数据变得容易。 有关详细信息，请查看<a class="external-link" href="http://docs.grafana.org/reference/templating/" target="_blank">模板文档</a>。
                   </p>`,
                 }}
-                infoBoxTitle="What do variables do?"
+                infoBoxTitle="变量做什么?"
                 onClick={this.props.onAddClick}
               />
             </div>
@@ -77,8 +70,8 @@ export class VariableEditorList extends PureComponent<Props> {
               >
                 <thead>
                   <tr>
-                    <th>Variable</th>
-                    <th>Definition</th>
+                    <th>变量</th>
+                    <th>定义</th>
                     <th colSpan={5} />
                   </tr>
                 </thead>
@@ -114,7 +107,7 @@ export class VariableEditorList extends PureComponent<Props> {
                             <IconButton
                               onClick={event => this.onChangeVariableOrder(event, variable, MoveType.up)}
                               name="arrow-up"
-                              title="Move variable up"
+                              title="向上移动变量"
                               aria-label={selectors.pages.Dashboard.Settings.Variables.List.tableRowArrowUpButtons(
                                 variable.name
                               )}
@@ -126,7 +119,7 @@ export class VariableEditorList extends PureComponent<Props> {
                             <IconButton
                               onClick={event => this.onChangeVariableOrder(event, variable, MoveType.down)}
                               name="arrow-down"
-                              title="Move variable down"
+                              title="下移变量"
                               aria-label={selectors.pages.Dashboard.Settings.Variables.List.tableRowArrowDownButtons(
                                 variable.name
                               )}
@@ -137,7 +130,7 @@ export class VariableEditorList extends PureComponent<Props> {
                           <IconButton
                             onClick={event => this.onDuplicateVariable(event, toVariableIdentifier(variable))}
                             name="copy"
-                            title="Duplicate variable"
+                            title="复制变量"
                             aria-label={selectors.pages.Dashboard.Settings.Variables.List.tableRowDuplicateButtons(
                               variable.name
                             )}
@@ -147,7 +140,7 @@ export class VariableEditorList extends PureComponent<Props> {
                           <IconButton
                             onClick={event => this.onRemoveVariable(event, toVariableIdentifier(variable))}
                             name="trash-alt"
-                            title="Remove variable"
+                            title="移除变量"
                             aria-label={selectors.pages.Dashboard.Settings.Variables.List.tableRowRemoveButtons(
                               variable.name
                             )}

@@ -12,7 +12,7 @@ export const PickerRenderer: FunctionComponent<Props> = props => {
   const labelOrName = useMemo(() => props.variable.label || props.variable.name, [props.variable]);
 
   if (!props.variable) {
-    return <div>Couldn't load variable</div>;
+    return <div>无法加载变量</div>;
   }
 
   return (

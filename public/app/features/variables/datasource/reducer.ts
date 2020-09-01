@@ -59,7 +59,7 @@ export const dataSourceVariableSlice = createSlice({
       }
 
       if (options.length === 0) {
-        options.push({ text: 'No data sources found', value: '', selected: false });
+        options.push({ text: '找不到数据源', value: '', selected: false });
       }
 
       if (instanceState.includeAll) {
