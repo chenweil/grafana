@@ -25,14 +25,12 @@ func init() {
 			"The Threema Gateway ID can be set up at https://gateway.threema.ch/.",
 		Factory: NewThreemaNotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">Threema Gateway settings</h3>
+		<h3 class="page-heading">Threema Gateway 设置</h3>
 		<p>
-			Notifications can be configured for any Threema Gateway ID of type
-			"Basic". End-to-End IDs are not currently supported.
+			可以为任何类型为“基本”的Threema网关ID配置通知。当前不支持端到端ID。
 		</p>
 		<p>
-			The Threema Gateway ID can be set up at
-			<a href="https://gateway.threema.ch/" target="_blank" rel="noopener noreferrer">https://gateway.threema.ch/</a>.
+			可以在<a href="https://gateway.threema.ch/" target="_blank" rel="noopener noreferrer"> https://gateway.threema.ch/上设置Threema网关ID。 </a>。
 		</p>
 		<div class="gf-form max-width-30">
 			<span class="gf-form-label width-8">Gateway ID</span>
@@ -42,22 +40,22 @@ func init() {
 				placeholder="*3MAGWID">
 			</input>
 			<info-popover mode="right-absolute">
-  				Your 8 character Threema Gateway ID (starting with a *)
+				您的8个字符的Threema Gateway ID（以*开头）
 			</info-popover>
 		</div>
 		<div class="gf-form max-width-30">
-			<span class="gf-form-label width-8">Recipient ID</span>
+			<span class="gf-form-label width-8">接受者ID</span>
 			<input type="text" required maxlength="8" pattern="[0-9A-Z]{8}"
 				class="gf-form-input max-width-30"
 				ng-model="ctrl.model.settings.recipient_id"
 				placeholder="YOUR3MID">
 			</input>
 			<info-popover mode="right-absolute">
-				The 8 character Threema ID that should receive the alerts
+				应接收警报的8个字符的Threema ID
 			</info-popover>
 		</div>
 		<div class="gf-form max-width-30">
-			<label class="gf-form-label width-8">API Secret</label>
+			<label class="gf-form-label width-8">API</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.api_secret">
 				<input type="text"
 					required
@@ -69,7 +67,7 @@ func init() {
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.api_secret">
 			  <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.api_secret = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.api_secret = false">重置</a>
 			</div>
 		</div>
 		`,

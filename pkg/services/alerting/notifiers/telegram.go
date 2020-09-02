@@ -25,38 +25,38 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "telegram",
 		Name:        "Telegram",
-		Description: "Sends notifications to Telegram",
-		Heading:     "Telegram API settings",
+		Description: "发送通知到Telegram",
+		Heading:     "Telegram API设置",
 		Factory:     NewTelegramNotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">Telegram API settings</h3>
+		<h3 class="page-heading">Telegram API设置</h3>
 		<div class="gf-form max-width-30">
-			<label class="gf-form-label width-10">BOT API Token</label>
+			<label class="gf-form-label width-10">BOT API令牌</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.bottoken">
 				<input type="text"
 					required
 					class="gf-form-input max-width-30"
 					ng-init="ctrl.model.secureSettings.bottoken = ctrl.model.settings.bottoken || null; ctrl.model.settings.bottoken = null;"
 					ng-model="ctrl.model.secureSettings.bottoken"
-					placeholder="Telegram BOT API Token"
+					placeholder="Telegram BOT API令牌"
 					data-placement="right">
 				</input>
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.bottoken">
 			  <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.bottoken = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.bottoken = false">重置</a>
 			</div>
 		</div>
 		<div class="gf-form max-width-30">
-			<label class="gf-form-label width-10">Chat ID</label>
+			<label class="gf-form-label width-10">聊天ID</label>
 			<input type="text"
 				required
 				class="gf-form-input max-width-30"
 				ng-model="ctrl.model.settings.chatid"
-				placeholder="Telegram Chat ID"
+				placeholder="Telegram 聊天ID"
 				data-placement="right">
 			</input>
-			<info-popover mode="right-absolute">Integer Telegram Chat Identifier</info-popover>
+			<info-popover mode="right-absolute">电报聊天标识符</info-popover>
 		</div>
     `,
 		Options: []alerting.NotifierOption{

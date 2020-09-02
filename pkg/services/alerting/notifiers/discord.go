@@ -24,21 +24,21 @@ func init() {
 		Factory:     newDiscordNotifier,
 		Heading:     "Discord settings",
 		OptionsTemplate: `
-      <h3 class="page-heading">Discord settings</h3>
+      <h3 class="page-heading">Discord设置</h3>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-10">Message Content</span>
+        <span class="gf-form-label width-10">消息内容</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.content"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Mention a group using @ or a user using <@ID> when notifying in a channel
+			在频道中进行通知时，使用@提及组或使用<@ID>提及用户
         </info-popover>
       </div>
       <div class="gf-form  max-width-30">
-        <span class="gf-form-label width-10">Webhook URL</span>
-        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="Discord webhook URL"></input>
+        <span class="gf-form-label width-10">Webhook地址</span>
+        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="Webhook地址"></input>
       </div>
     `,
 		Options: []alerting.NotifierOption{

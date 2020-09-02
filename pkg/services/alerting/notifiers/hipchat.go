@@ -21,17 +21,17 @@ func init() {
 		Heading:     "HipChat settings",
 		Factory:     NewHipChatNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">HipChat settings</h3>
+      <h3 class="page-heading">HipChat设置</h3>
 			      <div class="gf-form max-width-30">
-			        <span class="gf-form-label width-8">Hip Chat Url</span>
+			        <span class="gf-form-label width-8">Hip Chat地址</span>
 			        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="HipChat URL (ex https://grafana.hipchat.com)"></input>
 			      </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">API Key</span>
-        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.apikey" placeholder="HipChat API Key"></input>
+        <span class="gf-form-label width-8">API密钥</span>
+        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.apikey" placeholder="HipChat API密钥"></input>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Room ID</span>
+        <span class="gf-form-label width-8">房间号</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.roomid"

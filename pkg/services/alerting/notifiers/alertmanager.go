@@ -21,20 +21,20 @@ func init() {
 		Heading:     "Alertmanager settings",
 		Factory:     NewAlertmanagerNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">Alertmanager settings</h3>
+      <h3 class="page-heading">Alertmanager设置</h3>
 		<div class="gf-form max-width-30">
-            <span class="gf-form-label width-10">Url(s)</span>
+            <span class="gf-form-label width-10">地址</span>
             <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="http://localhost:9093"></input>
             <info-popover mode="right-absolute">
-              As specified in Alertmanager documentation, do not specify a load balancer here. Enter all your Alertmanager URLs comma-separated.
+		    	如Alertmanager文档中所指定，请不要在此处指定负载均衡器。 输入所有逗号分隔的Alertmanager URL。
             </info-popover>
 		</div>
 		<div class="gf-form max-width-30">
-        	<span class="gf-form-label width-10">Basic Auth User</span>
+        	<span class="gf-form-label width-10">基本身份验证用户</span>
             <input type="text" class="gf-form-input max-width-30" ng-model="ctrl.model.settings.basicAuthUser" placeholder=""></input>
 		</div>
         <div class="gf-form max-width-30">
-            <span class="gf-form-label width-10">Basic Auth Password</span>
+            <span class="gf-form-label width-10">基本验证密码</span>
             <div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.basicAuthPassword">
                 <input type="text"
                     class="gf-form-input max-width-30"
@@ -45,7 +45,7 @@ func init() {
             </div>
             <div class="gf-form" ng-if="ctrl.model.secureFields.basicAuthPassword">
                 <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-                <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.basicAuthPassword = false">reset</a>
+                <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.basicAuthPassword = false">重置</a>
             </div>
         </div>
       </div>

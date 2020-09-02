@@ -16,24 +16,24 @@ func init() {
 		Heading:     "Webhook settings",
 		Factory:     NewWebHookNotifier,
 		OptionsTemplate: `
-			<h3 class="page-heading">Webhook settings</h3>
+			<h3 class="page-heading">Webhook设置</h3>
 			<div class="gf-form max-width-30">
-				<span class="gf-form-label width-8">Url</span>
+				<span class="gf-form-label width-8">地址</span>
 				<input type="text" required class="gf-form-input max-width-26" ng-model="ctrl.model.settings.url"></input>
 			</div>
 			<div class="gf-form max-width-30">
-				<span class="gf-form-label width-8">Http Method</span>
+				<span class="gf-form-label width-8">Http方法</span>
 				<div class="gf-form-select-wrapper max-width-30">
 					<select class="gf-form-input" ng-model="ctrl.model.settings.httpMethod" ng-options="t for t in ['POST', 'PUT']">
 					</select>
 				</div>
 			</div>
 			<div class="gf-form max-width-30">
-				<span class="gf-form-label width-8">Username</span>
+				<span class="gf-form-label width-8">用户名</span>
 				<input type="text" class="gf-form-input max-width-30" ng-model="ctrl.model.settings.username"></input>
 			</div>
 			<div class="gf-form max-width-30">
-				<div class="gf-form gf-form--v-stretch"><label class="gf-form-label width-8">Password</label></div>
+				<div class="gf-form gf-form--v-stretch"><label class="gf-form-label width-8">密码</label></div>
 				<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.password">
 					<input type="text"
 						class="gf-form-input max-width-30"
@@ -44,7 +44,7 @@ func init() {
 				</div>
 				<div class="gf-form" ng-if="ctrl.model.secureFields.password">
 					<input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-					<a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.password = false">reset</a>
+					<a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.password = false">重置</a>
 				</div>
 			</div>
     `,

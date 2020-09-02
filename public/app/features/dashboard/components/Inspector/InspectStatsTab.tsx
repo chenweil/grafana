@@ -42,8 +42,8 @@ export const InspectStatsTab: React.FC<InspectStatsTabProps> = ({ data, timeZone
 
   return (
     <div aria-label={selectors.components.PanelInspector.Stats.content}>
-      <InspectStatsTable timeZone={timeZone} name={'Stats'} stats={stats} />
-      <InspectStatsTable timeZone={timeZone} name={'Data source stats'} stats={dataStats} />
+      <InspectStatsTable timeZone={timeZone} name={'统计'} stats={stats} />
+      <InspectStatsTable timeZone={timeZone} name={'数据源统计'} stats={dataStats} />
     </div>
   );
 };

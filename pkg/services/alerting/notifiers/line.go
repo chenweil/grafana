@@ -15,12 +15,12 @@ func init() {
 		Type:        "LINE",
 		Name:        "LINE",
 		Description: "Send notifications to LINE notify",
-		Heading:     "LINE notify settings",
+		Heading:     "LINE notify设置",
 		Factory:     NewLINENotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">LINE notify settings</h3>
+		<h3 class="page-heading">LINE通知设置</h3>
 		<div class="gf-form">
-			<label class="gf-form-label max-width-14">Token</label>
+			<label class="gf-form-label max-width-14">令牌</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.token">
 				<input type="text"
 					required
@@ -32,7 +32,7 @@ func init() {
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.token">
 			  <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.token = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.token = false">重置</a>
 			</div>
 		</div>
 `,

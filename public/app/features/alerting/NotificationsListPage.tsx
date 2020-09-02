@@ -31,7 +31,7 @@ const NotificationsListPage: FC = () => {
       text: '您要删除此通知通道吗？',
       text2: `删除此通知通道不会从警报中删除对其的任何引用`,
       icon: 'trash-alt',
-      confirmText: 'Delete',
+      confirmText: '删除',
       yesText: '删除',
       onConfirm: async () => {
         deleteNotificationConfirmed(id);

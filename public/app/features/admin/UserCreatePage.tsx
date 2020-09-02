@@ -61,7 +61,7 @@ const UserCreatePage: React.FC<UserCreatePageProps> = ({ navModel, updateLocatio
                     })}
                   />
                 </Field>
-                <Button type="submit">Create user</Button>
+                <Button type="submit">创建用户</Button>
               </>
             );
           }}

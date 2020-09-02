@@ -42,7 +42,7 @@ func AdminGetStats(c *models.ReqContext) Response {
 	statsQuery := models.GetAdminStatsQuery{}
 
 	if err := bus.Dispatch(&statsQuery); err != nil {
-		return Error(500, "Failed to get admin stats from database", err)
+		return Error(500, "无法从数据库获取管理统计信息", err)
 	}
 
 	return JSON(200, statsQuery.Result)

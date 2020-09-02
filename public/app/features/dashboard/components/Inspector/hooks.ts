@@ -42,22 +42,22 @@ export const useInspectTabs = (
   return useMemo(() => {
     const tabs = [];
     if (supportsDataQuery(plugin)) {
-      tabs.push({ label: 'Data', value: InspectTab.Data });
-      tabs.push({ label: 'Stats', value: InspectTab.Stats });
+      tabs.push({ label: '数据', value: InspectTab.Data });
+      tabs.push({ label: '状态', value: InspectTab.Stats });
     }
 
     if (metaDs) {
-      tabs.push({ label: 'Meta Data', value: InspectTab.Meta });
+      tabs.push({ label: '元数据', value: InspectTab.Meta });
     }
 
     tabs.push({ label: 'JSON', value: InspectTab.JSON });
 
     if (error && error.message) {
-      tabs.push({ label: 'Error', value: InspectTab.Error });
+      tabs.push({ label: '错误', value: InspectTab.Error });
     }
 
     if (dashboard.meta.canEdit && supportsDataQuery(plugin)) {
-      tabs.push({ label: 'Query', value: InspectTab.Query });
+      tabs.push({ label: '查询', value: InspectTab.Query });
     }
     return tabs;
   }, [plugin, metaDs, dashboard, error]);

@@ -26,7 +26,7 @@ export class UserOrganizations extends PureComponent<Props> {
       <>
         {orgs.length > 0 && (
           <>
-            <h3 className="page-sub-heading">Organizations</h3>
+            <h3 className="page-sub-heading">组织机构</h3>
             <div className="gf-form-group">
               <table className="filter-table form-inline">
                 <thead>

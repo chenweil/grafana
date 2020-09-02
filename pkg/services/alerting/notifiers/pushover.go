@@ -123,9 +123,9 @@ func init() {
 		Heading:     "Pushover settings",
 		Factory:     NewPushoverNotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">Pushover settings</h3>
+		<h3 class="page-heading">Pushover 设置</h3>
 		<div class="gf-form">
-			<label class="gf-form-label width-10">API Token</label>
+			<label class="gf-form-label width-10">API令牌</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.apiToken">
 				<input type="text"
 					required
@@ -137,32 +137,32 @@ func init() {
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.apiToken">
 			  <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.apiToken = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.apiToken = false">重置</a>
 			</div>
 		</div>
 		<div class="gf-form">
-			<label class="gf-form-label max-width-10">User Key(s)</label>
+			<label class="gf-form-label max-width-10">用户密钥</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.userKey">
 				<input type="text"
 					required
 					class="gf-form-input"
 					ng-init="ctrl.model.secureSettings.userKey = ctrl.model.settings.userKey || null; ctrl.model.settings.userKey = null;"
 					ng-model="ctrl.model.secureSettings.userKey"
-					placeholder="comma-separated list"
+					placeholder="以逗号分隔的列表"
 					data-placement="right">
 				</input>
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.userKey">
 			  <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.userKey = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.userKey = false">重置</a>
 			</div>
 		</div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">Device(s) (optional)</span>
-        <input type="text" class="gf-form-input" placeholder="comma-separated list; leave empty to send to all devices" ng-model="ctrl.model.settings.device"></input>
+        <span class="gf-form-label width-10">设备（可选）</span>
+        <input type="text" class="gf-form-input" placeholder="以逗号分隔的列表 ; 留空以发送到所有设备" ng-model="ctrl.model.settings.device"></input>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">Priority</span>
+        <span class="gf-form-label width-10">优先级</span>
         <select class="gf-form-input max-width-14" ng-model="ctrl.model.settings.priority" ng-options="v as k for (k, v) in {
           Emergency: '2',
           High:      '1',
@@ -172,7 +172,7 @@ func init() {
         }" ng-init="ctrl.model.settings.priority=ctrl.model.settings.priority||'0'"></select>
       </div>
       <div class="gf-form" ng-show="ctrl.model.settings.priority == '2'">
-        <span class="gf-form-label width-10">Retry</span>
+        <span class="gf-form-label width-10">优先</span>
         <input type="text" class="gf-form-input max-width-14" ng-required="ctrl.model.settings.priority == '2'" placeholder="minimum 30 seconds" ng-model="ctrl.model.settings.retry" ng-init="ctrl.model.settings.retry=ctrl.model.settings.retry||'60'></input>
       </div>
       <div class="gf-form" ng-show="ctrl.model.settings.priority == '2'">
@@ -180,13 +180,13 @@ func init() {
          <input type="text" class="gf-form-input max-width-14" ng-required="ctrl.model.settings.priority == '2'" placeholder="maximum 86400 seconds" ng-model="ctrl.model.settings.expire" ng-init="ctrl.model.settings.expire=ctrl.model.settings.expire||'3600'"></input>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">Alerting sound</span>
+        <span class="gf-form-label width-10">警报声</span>
         <select class="gf-form-input max-width-14" ng-model="ctrl.model.settings.sound" ng-options="s for s in [
           ` + sounds + `
         ]" ng-init="ctrl.model.settings.sound=ctrl.model.settings.sound||'default'"></select>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">OK sound</span>
+        <span class="gf-form-label width-10">正常声音</span>
         <select class="gf-form-input max-width-14" ng-model="ctrl.model.settings.okSound" ng-options="s for s in [
          ` + sounds + `
         ]" ng-init="ctrl.model.settings.okSound=ctrl.model.settings.okSound||'default'"></select>

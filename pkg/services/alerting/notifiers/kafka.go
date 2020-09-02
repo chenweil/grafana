@@ -20,13 +20,13 @@ func init() {
 		Heading:     "Kafka settings",
 		Factory:     NewKafkaNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">Kafka settings</h3>
+      <h3 class="page-heading">Kafka配置</h3>
       <div class="gf-form">
-        <span class="gf-form-label width-14">Kafka REST Proxy</span>
+        <span class="gf-form-label width-14">Kafka REST代理</span>
         <input type="text" required class="gf-form-input max-width-22" ng-model="ctrl.model.settings.kafkaRestProxy" placeholder="http://localhost:8082"></input>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-14">Topic</span>
+        <span class="gf-form-label width-14">话题</span>
         <input type="text" required class="gf-form-input max-width-22" ng-model="ctrl.model.settings.kafkaTopic" placeholder="topic1"></input>
       </div>
     `,

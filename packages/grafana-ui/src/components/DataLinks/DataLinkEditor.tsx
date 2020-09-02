@@ -52,7 +52,7 @@ export const DataLinkEditor: React.FC<DataLinkEditorProps> = React.memo(
           <DataLinkInput value={value.url} onChange={onUrlChange} suggestions={suggestions} />
         </Field>
 
-        <Field label="在新标签页中打开b">
+        <Field label="在新标签页中打开">
           <Switch value={value.targetBlank || false} onChange={onOpenInNewTabChanged} />
         </Field>
 

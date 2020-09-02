@@ -110,7 +110,7 @@ function ExploreQueryInspector(props: Props) {
   const styles = getPanelInspectorStyles();
 
   const statsTab: TabConfig = {
-    label: 'Stats',
+    label: '状态',
     value: 'stats',
     icon: 'chart-line',
     content: <InspectStatsTab data={queryResponse!} timeZone={queryResponse?.request?.timezone as TimeZone} />,

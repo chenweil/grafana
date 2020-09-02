@@ -17,7 +17,7 @@ func GetPendingOrgInvites(c *models.ReqContext) Response {
 	query := models.GetTempUsersQuery{OrgId: c.OrgId, Status: models.TmpUserInvitePending}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to get invites from db", err)
+		return Error(500, "无法从数据库获取邀请", err)
 	}
 
 	for _, invite := range query.Result {
@@ -29,21 +29,21 @@ func GetPendingOrgInvites(c *models.ReqContext) Response {
 
 func AddOrgInvite(c *models.ReqContext, inviteDto dtos.AddInviteForm) Response {
 	if !inviteDto.Role.IsValid() {
-		return Error(400, "Invalid role specified", nil)
+		return Error(400, "指定的角色无效", nil)
 	}
 
 	// first try get existing user
 	userQuery := models.GetUserByLoginQuery{LoginOrEmail: inviteDto.LoginOrEmail}
 	if err := bus.Dispatch(&userQuery); err != nil {
 		if err != models.ErrUserNotFound {
-			return Error(500, "Failed to query db for existing user check", err)
+			return Error(500, "无法查询数据库以进行现有用户检查", err)
 		}
 	} else {
 		return inviteExistingUserToOrg(c, userQuery.Result, &inviteDto)
 	}
 
 	if setting.DisableLoginForm {
-		return Error(400, "Cannot invite when login is disabled.", nil)
+		return Error(400, "禁用登录后无法邀请。", nil)
 	}
 
 	cmd := models.CreateTempUserCommand{}
@@ -55,13 +55,13 @@ func AddOrgInvite(c *models.ReqContext, inviteDto dtos.AddInviteForm) Response {
 	var err error
 	cmd.Code, err = util.GetRandomString(30)
 	if err != nil {
-		return Error(500, "Could not generate random string", err)
+		return Error(500, "无法产生随机字串", err)
 	}
 	cmd.Role = inviteDto.Role
 	cmd.RemoteAddr = c.Req.RemoteAddr
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to save invite to database", err)
+		return Error(500, "无法将邀请保存到数据库", err)
 	}
 
 	// send invite email
@@ -83,18 +83,18 @@ func AddOrgInvite(c *models.ReqContext, inviteDto dtos.AddInviteForm) Response {
 				return Error(412, err.Error(), err)
 			}
 
-			return Error(500, "Failed to send email invite", err)
+			return Error(500, "无法发送电子邮件邀请", err)
 		}
 
 		emailSentCmd := models.UpdateTempUserWithEmailSentCommand{Code: cmd.Result.Code}
 		if err := bus.Dispatch(&emailSentCmd); err != nil {
-			return Error(500, "Failed to update invite with email sent info", err)
+			return Error(500, "无法使用电子邮件发送的信息更新邀请", err)
 		}
 
-		return Success(fmt.Sprintf("Sent invite to %s", inviteDto.LoginOrEmail))
+		return Success(fmt.Sprintf("发送至 %s", inviteDto.LoginOrEmail))
 	}
 
-	return Success(fmt.Sprintf("Created invite for %s", inviteDto.LoginOrEmail))
+	return Success(fmt.Sprintf("已创建邀请 for %s", inviteDto.LoginOrEmail))
 }
 
 func inviteExistingUserToOrg(c *models.ReqContext, user *models.User, inviteDto *dtos.AddInviteForm) Response {
@@ -102,9 +102,9 @@ func inviteExistingUserToOrg(c *models.ReqContext, user *models.User, inviteDto 
 	createOrgUserCmd := models.AddOrgUserCommand{OrgId: c.OrgId, UserId: user.Id, Role: inviteDto.Role}
 	if err := bus.Dispatch(&createOrgUserCmd); err != nil {
 		if err == models.ErrOrgUserAlreadyAdded {
-			return Error(412, fmt.Sprintf("User %s is already added to organization", inviteDto.LoginOrEmail), err)
+			return Error(412, fmt.Sprintf("用户 %s 已添加到组织", inviteDto.LoginOrEmail), err)
 		}
-		return Error(500, "Error while trying to create org user", err)
+		return Error(500, "尝试创建组织用户时出错", err)
 	}
 
 	if inviteDto.SendEmail && util.IsEmail(user.Email) {
@@ -119,11 +119,11 @@ func inviteExistingUserToOrg(c *models.ReqContext, user *models.User, inviteDto 
 		}
 
 		if err := bus.Dispatch(&emailCmd); err != nil {
-			return Error(500, "Failed to send email invited_to_org", err)
+			return Error(500, "无法发送电子邮件 invited_to_org", err)
 		}
 	}
 
-	return Success(fmt.Sprintf("Existing Grafana user %s added to org %s", user.NameOrFallback(), c.OrgName))
+	return Success(fmt.Sprintf("现有Grafana用户 %s 已添加到 %s", user.NameOrFallback(), c.OrgName))
 }
 
 func RevokeInvite(c *models.ReqContext) Response {
@@ -131,7 +131,7 @@ func RevokeInvite(c *models.ReqContext) Response {
 		return rsp
 	}
 
-	return Success("Invite revoked")
+	return Success("邀请已撤销")
 }
 
 // GetInviteInfoByCode gets a pending user invite corresponding to a certain code.
@@ -141,14 +141,14 @@ func GetInviteInfoByCode(c *models.ReqContext) Response {
 	query := models.GetTempUserByCodeQuery{Code: c.Params(":code")}
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrTempUserNotFound {
-			return Error(404, "Invite not found", nil)
+			return Error(404, "找不到邀请", nil)
 		}
-		return Error(500, "Failed to get invite", err)
+		return Error(500, "无法获得邀请", err)
 	}
 
 	invite := query.Result
 	if invite.Status != models.TmpUserInvitePending {
-		return Error(404, "Invite not found", nil)
+		return Error(404, "找不到邀请", nil)
 	}
 
 	return JSON(200, dtos.InviteInfo{
@@ -164,14 +164,14 @@ func (hs *HTTPServer) CompleteInvite(c *models.ReqContext, completeInvite dtos.C
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrTempUserNotFound {
-			return Error(404, "Invite not found", nil)
+			return Error(404, "找不到邀请", nil)
 		}
 		return Error(500, "Failed to get invite", err)
 	}
 
 	invite := query.Result
 	if invite.Status != models.TmpUserInvitePending {
-		return Error(412, fmt.Sprintf("Invite cannot be used in status %s", invite.Status), nil)
+		return Error(412, fmt.Sprintf("邀请不能在状态中使用 %s", invite.Status), nil)
 	}
 
 	cmd := models.CreateUserCommand{
@@ -184,10 +184,10 @@ func (hs *HTTPServer) CompleteInvite(c *models.ReqContext, completeInvite dtos.C
 
 	if err := bus.Dispatch(&cmd); err != nil {
 		if errors.Is(err, models.ErrUserAlreadyExists) {
-			return Error(412, fmt.Sprintf("User with email '%s' or username '%s' already exists", completeInvite.Email, completeInvite.Username), err)
+			return Error(412, fmt.Sprintf("电子邮件 '%s' 或用户名 '%s' 已存在", completeInvite.Email, completeInvite.Username), err)
 		}
 
-		return Error(500, "failed to create user", err)
+		return Error(500, "创建用户失败", err)
 	}
 
 	user := &cmd.Result
@@ -196,7 +196,7 @@ func (hs *HTTPServer) CompleteInvite(c *models.ReqContext, completeInvite dtos.C
 		Name:  user.NameOrFallback(),
 		Email: user.Email,
 	}); err != nil {
-		return Error(500, "failed to publish event", err)
+		return Error(500, "未能发布活动", err)
 	}
 
 	if ok, rsp := applyUserInvite(user, invite, true); !ok {
@@ -205,20 +205,20 @@ func (hs *HTTPServer) CompleteInvite(c *models.ReqContext, completeInvite dtos.C
 
 	err := hs.loginUserWithUser(user, c)
 	if err != nil {
-		return Error(500, "failed to accept invite", err)
+		return Error(500, "未能接受邀请", err)
 	}
 
 	metrics.MApiUserSignUpCompleted.Inc()
 	metrics.MApiUserSignUpInvite.Inc()
 
-	return Success("User created and logged in")
+	return Success("用户创建并登录")
 }
 
 func updateTempUserStatus(code string, status models.TempUserStatus) (bool, Response) {
 	// update temp user status
 	updateTmpUserCmd := models.UpdateTempUserStatusCommand{Code: code, Status: status}
 	if err := bus.Dispatch(&updateTmpUserCmd); err != nil {
-		return false, Error(500, "Failed to update invite status", err)
+		return false, Error(500, "无法更新邀请状态", err)
 	}
 
 	return true, nil
@@ -229,7 +229,7 @@ func applyUserInvite(user *models.User, invite *models.TempUserDTO, setActive bo
 	addOrgUserCmd := models.AddOrgUserCommand{OrgId: invite.OrgId, UserId: user.Id, Role: invite.Role}
 	if err := bus.Dispatch(&addOrgUserCmd); err != nil {
 		if err != models.ErrOrgUserAlreadyAdded {
-			return false, Error(500, "Error while trying to create org user", err)
+			return false, Error(500, "尝试创建组织用户时出错", err)
 		}
 	}
 
@@ -241,7 +241,7 @@ func applyUserInvite(user *models.User, invite *models.TempUserDTO, setActive bo
 	if setActive {
 		// set org to active
 		if err := bus.Dispatch(&models.SetUsingOrgCommand{OrgId: invite.OrgId, UserId: user.Id}); err != nil {
-			return false, Error(500, "Failed to set org as active", err)
+			return false, Error(500, "无法将组织设为有效", err)
 		}
 	}
 

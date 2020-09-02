@@ -26,13 +26,13 @@ func init() {
 		Heading:     "VictorOps settings",
 		Factory:     NewVictoropsNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">VictorOps settings</h3>
+      <h3 class="page-heading">VictorOps设置</h3>
       <div class="gf-form">
-        <span class="gf-form-label width-6">Url</span>
-        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="VictorOps url"></input>
+        <span class="gf-form-label width-6">地址</span>
+        <input type="text" required class="gf-form-input max-width-30" ng-model="ctrl.model.settings.url" placeholder="VictorOps地址"></input>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">No Data Alert Type</span>
+        <span class="gf-form-label width-10">没有数据警报类型</span>
         <div class="gf-form-select-wrapper width-14">
           <select class="gf-form-input" ng-model="ctrl.model.settings.noDataAlertType" ng-options="t for t in ['CRITICAL', 'WARNING']" ng-init="ctrl.model.settings.noDataAlertType=ctrl.model.settings.noDataAlertType || '` + AlertStateWarning + `'">
           </select>
@@ -41,10 +41,10 @@ func init() {
       <div class="gf-form">
         <gf-form-switch
            class="gf-form"
-           label="Auto resolve incidents"
+           label="自动解决事件"
            label-class="width-14"
            checked="ctrl.model.settings.autoResolve"
-           tooltip="Resolve incidents in VictorOps once the alert goes back to ok.">
+           tooltip="警报恢复正常后，解决VictorOps中的事件。">
         </gf-form-switch>
       </div>
     `,

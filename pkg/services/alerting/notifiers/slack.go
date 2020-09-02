@@ -28,9 +28,9 @@ func init() {
 		Heading:     "Slack settings",
 		Factory:     NewSlackNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">Slack settings</h3>
+      <h3 class="page-heading">Slack设置</h3>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Url</span>
+        <span class="gf-form-label width-8">地址</span>
         <div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.url">
 					<input type="text"
 						required
@@ -42,7 +42,7 @@ func init() {
         </div>
         <div class="gf-form" ng-if="ctrl.model.secureFields.url">
           <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-          <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.url = false">reset</a>
+          <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.url = false">重置</a>
         </div>
       </div>
       <div class="gf-form max-width-30">
@@ -53,80 +53,80 @@ func init() {
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Override default channel or user, use #channel-name, @username (has to be all lowercase, no whitespace), or user/channel Slack ID
+		覆盖默认频道或用户，请使用＃channel-name，@ username（必须全部为小写字母，不能使用空格）或用户/频道的Slack ID
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Username</span>
+        <span class="gf-form-label width-8">用户名</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.username"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Set the username for the bot's message
+		设置机器人消息的用户名
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Icon emoji</span>
+        <span class="gf-form-label width-8">图标表情符号</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.icon_emoji"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Provide an emoji to use as the icon for the bot's message. Overrides the icon URL
+		提供一个表情符号，用作机器人消息的图标。 覆盖图标URL
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Icon URL</span>
+        <span class="gf-form-label width-8">图标地址L</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.icon_url"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Provide a URL to an image to use as the icon for the bot's message
+		提供图像的URL，用作机器人消息的图标
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Mention Users</span>
+        <span class="gf-form-label width-8">提及用户</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.mentionUsers"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Mention one or more users (comma separated) when notifying in a channel, by ID (you can copy this from the user's Slack profile)
+		在频道中通过ID通知一个或多个用户（以逗号分隔）（您可以从用户的Slack个人资料中复制该内容）
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Mention Groups</span>
+        <span class="gf-form-label width-8">提及组</span>
         <input type="text"
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.mentionGroups"
           data-placement="right">
         </input>
         <info-popover mode="right-absolute">
-          Mention one or more groups (comma separated) when notifying in a channel (you can copy this from the group's Slack profile URL)
+		在频道中进行通知时提及一个或多个组（以逗号分隔）（您可以从组的Slack个人资料网址中复制该组）
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <span class="gf-form-label width-8">Mention Channel</span>
+        <span class="gf-form-label width-8">提及频道</span>
         <select
           class="gf-form-input max-width-30"
           ng-model="ctrl.model.settings.mentionChannel"
           data-placement="right">
-		  <option value="">Disabled</option>
-		  <option value="here">Every active channel member</option>
-		  <option value="channel">Every channel member</option>
+		  <option value="">禁用</option>
+		  <option value="here">每个活跃频道成员</option>
+		  <option value="channel">每个频道成员</option>
         </select>
         <info-popover mode="right-absolute">
-          Mention whole channel or just active members when notifying
+		通知时提及整个频道或活跃会员
         </info-popover>
       </div>
       <div class="gf-form max-width-30">
-        <div class="gf-form gf-form--v-stretch"><label class="gf-form-label width-8">Token</label></div>
+        <div class="gf-form gf-form--v-stretch"><label class="gf-form-label width-8">令牌</label></div>
         <div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.token">
           <input type="text"
 						class="gf-form-input max-width-30"
@@ -135,12 +135,12 @@ func init() {
             data-placement="right">
           </input>
           <info-popover mode="right-absolute">
-            Provide a bot token to use the Slack file.upload API (starts with "xoxb"). Specify Recipient for this to work
+		  提供一个机器人令牌以使用Slack file.upload API（以"xoxb"开头）。 指定收件人才能使用
           </info-popover>
         </div>
         <div class="gf-form" ng-if="ctrl.model.secureFields.token">
           <input type="text" class="gf-form-input max-width-18" disabled="disabled" value="configured" />
-          <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.token = false">reset</a>
+          <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.token = false">重置</a>
         </div>
       </div>
     `,

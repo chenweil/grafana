@@ -8,12 +8,12 @@ import (
 
 func GetOrgQuotas(c *models.ReqContext) Response {
 	if !setting.Quota.Enabled {
-		return Error(404, "Quotas not enabled", nil)
+		return Error(404, "配额未启用", nil)
 	}
 	query := models.GetOrgQuotasQuery{OrgId: c.ParamsInt64(":orgId")}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to get org quotas", err)
+		return Error(500, "无法获得组织配额", err)
 	}
 
 	return JSON(200, query.Result)
@@ -21,29 +21,29 @@ func GetOrgQuotas(c *models.ReqContext) Response {
 
 func UpdateOrgQuota(c *models.ReqContext, cmd models.UpdateOrgQuotaCmd) Response {
 	if !setting.Quota.Enabled {
-		return Error(404, "Quotas not enabled", nil)
+		return Error(404, "配额未启用", nil)
 	}
 	cmd.OrgId = c.ParamsInt64(":orgId")
 	cmd.Target = c.Params(":target")
 
 	if _, ok := setting.Quota.Org.ToMap()[cmd.Target]; !ok {
-		return Error(404, "Invalid quota target", nil)
+		return Error(404, "无效的配额目标", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to update org quotas", err)
+		return Error(500, "无法更新组织配额", err)
 	}
-	return Success("Organization quota updated")
+	return Success("组织配额已更新")
 }
 
 func GetUserQuotas(c *models.ReqContext) Response {
 	if !setting.Quota.Enabled {
-		return Error(404, "Quotas not enabled", nil)
+		return Error(404, "配额未启用", nil)
 	}
 	query := models.GetUserQuotasQuery{UserId: c.ParamsInt64(":id")}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to get org quotas", err)
+		return Error(500, "无法获得组织配额", err)
 	}
 
 	return JSON(200, query.Result)
@@ -51,17 +51,17 @@ func GetUserQuotas(c *models.ReqContext) Response {
 
 func UpdateUserQuota(c *models.ReqContext, cmd models.UpdateUserQuotaCmd) Response {
 	if !setting.Quota.Enabled {
-		return Error(404, "Quotas not enabled", nil)
+		return Error(404, "配额未启用", nil)
 	}
 	cmd.UserId = c.ParamsInt64(":id")
 	cmd.Target = c.Params(":target")
 
 	if _, ok := setting.Quota.User.ToMap()[cmd.Target]; !ok {
-		return Error(404, "Invalid quota target", nil)
+		return Error(404, "无效的配额目标", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to update org quotas", err)
+		return Error(500, "无法更新组织配额", err)
 	}
-	return Success("Organization quota updated")
+	return Success("组织配额已更新")
 }

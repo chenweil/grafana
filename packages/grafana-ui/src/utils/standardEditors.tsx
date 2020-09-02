@@ -40,7 +40,7 @@ import { StatsPickerEditor } from '../components/OptionsUI/stats';
  * Returns collection of common field config properties definitions
  */
 export const getStandardFieldConfigs = () => {
-  const category = ['Standard options'];
+  const category = ['标准选项'];
   const displayName: FieldConfigPropertyItem<any, string, StringFieldConfigSettings> = {
     id: 'displayName',
     path: 'displayName',
@@ -196,7 +196,7 @@ export const getStandardFieldConfigs = () => {
       placeholder: '-',
     },
     shouldApply: () => true,
-    category: ['Data links'],
+    category: ['数据链接'],
     getItemsCount: value => (value ? value.length : 0),
   };
 
@@ -301,7 +301,7 @@ export const getStandardOptionEditors = () => {
 
   const statsPicker: StandardEditorsRegistryItem<string[]> = {
     id: 'stats-picker',
-    name: 'Stats Picker',
+    name: '统计选择器',
     editor: StatsPickerEditor as any,
     description: '',
   };

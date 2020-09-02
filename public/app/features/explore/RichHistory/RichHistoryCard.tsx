@@ -173,31 +173,31 @@ export function RichHistoryCard(props: Props) {
   const onCopyQuery = () => {
     const queriesToCopy = query.queries.map(q => createQueryText(q, queryDsInstance)).join('\n');
     copyStringToClipboard(queriesToCopy);
-    appEvents.emit(AppEvents.alertSuccess, ['Query copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['查询已复制到剪贴板']);
   };
 
   const onCreateLink = () => {
     const url = createUrlFromRichHistory(query);
     copyStringToClipboard(url);
-    appEvents.emit(AppEvents.alertSuccess, ['Link copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['链接已复制到剪贴板']);
   };
 
   const onDeleteQuery = () => {
     // For starred queries, we want confirmation. For non-starred, we don't.
     if (query.starred) {
       appEvents.emit(CoreEvents.showConfirmModal, {
-        title: 'Delete',
-        text: 'Are you sure you want to permanently delete your starred query?',
-        yesText: 'Delete',
+        title: '删除',
+        text: '您确定要永久删除已加星标的查询吗？',
+        yesText: '删除',
         icon: 'trash-alt',
         onConfirm: () => {
           updateRichHistory(query.ts, 'delete');
-          appEvents.emit(AppEvents.alertSuccess, ['Query deleted']);
+          appEvents.emit(AppEvents.alertSuccess, ['查询已删除']);
         },
       });
     } else {
       updateRichHistory(query.ts, 'delete');
-      appEvents.emit(AppEvents.alertSuccess, ['Query deleted']);
+      appEvents.emit(AppEvents.alertSuccess, ['查询已删除']);
     }
   };
 

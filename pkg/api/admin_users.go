@@ -23,12 +23,12 @@ func AdminCreateUser(c *models.ReqContext, form dtos.AdminCreateUserForm) Respon
 	if len(cmd.Login) == 0 {
 		cmd.Login = cmd.Email
 		if len(cmd.Login) == 0 {
-			return Error(400, "Validation error, need specify either username or email", nil)
+			return Error(400, "验证错误，需要指定用户名或电子邮件", nil)
 		}
 	}
 
 	if len(cmd.Password) < 4 {
-		return Error(400, "Password is missing or too short", nil)
+		return Error(400, "密码丢失或太短", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
@@ -37,10 +37,10 @@ func AdminCreateUser(c *models.ReqContext, form dtos.AdminCreateUserForm) Respon
 		}
 
 		if errors.Is(err, models.ErrUserAlreadyExists) {
-			return Error(412, fmt.Sprintf("User with email '%s' or username '%s' already exists", form.Email, form.Login), err)
+			return Error(412, fmt.Sprintf("用户邮箱 '%s' 或用户名 '%s' 已存在", form.Email, form.Login), err)
 		}
 
-		return Error(500, "failed to create user", err)
+		return Error(500, "创建用户失败", err)
 	}
 
 	metrics.MApiAdminUserCreate.Inc()
@@ -48,7 +48,7 @@ func AdminCreateUser(c *models.ReqContext, form dtos.AdminCreateUserForm) Respon
 	user := cmd.Result
 
 	result := models.UserIdDTO{
-		Message: "User created",
+		Message: "用户创建",
 		Id:      user.Id,
 	}
 
@@ -59,18 +59,18 @@ func AdminUpdateUserPassword(c *models.ReqContext, form dtos.AdminUpdateUserPass
 	userID := c.ParamsInt64(":id")
 
 	if len(form.Password) < 4 {
-		return Error(400, "New password too short", nil)
+		return Error(400, "新密码太短", nil)
 	}
 
 	userQuery := models.GetUserByIdQuery{Id: userID}
 
 	if err := bus.Dispatch(&userQuery); err != nil {
-		return Error(500, "Could not read user from database", err)
+		return Error(500, "无法从数据库读取用户", err)
 	}
 
 	passwordHashed, err := util.EncodePassword(form.Password, userQuery.Result.Salt)
 	if err != nil {
-		return Error(500, "Could not encode password", err)
+		return Error(500, "无法编码密码", err)
 	}
 
 	cmd := models.ChangeUserPasswordCommand{
@@ -79,10 +79,10 @@ func AdminUpdateUserPassword(c *models.ReqContext, form dtos.AdminUpdateUserPass
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to update user password", err)
+		return Error(500, "无法更新用户密码", err)
 	}
 
-	return Success("User password updated")
+	return Success("用户密码已更新")
 }
 
 // PUT /api/admin/users/:id/permissions
@@ -99,10 +99,10 @@ func AdminUpdateUserPermissions(c *models.ReqContext, form dtos.AdminUpdateUserP
 			return Error(400, models.ErrLastGrafanaAdmin.Error(), nil)
 		}
 
-		return Error(500, "Failed to update user permissions", err)
+		return Error(500, "无法更新用户权限", err)
 	}
 
-	return Success("User permissions updated")
+	return Success("用户权限已更新")
 }
 
 func AdminDeleteUser(c *models.ReqContext) Response {
@@ -114,10 +114,10 @@ func AdminDeleteUser(c *models.ReqContext) Response {
 		if err == models.ErrUserNotFound {
 			return Error(404, models.ErrUserNotFound.Error(), nil)
 		}
-		return Error(500, "Failed to delete user", err)
+		return Error(500, "删除用户失败", err)
 	}
 
-	return Success("User deleted")
+	return Success("用户已删除")
 }
 
 // POST /api/admin/users/:id/disable
@@ -127,7 +127,7 @@ func (server *HTTPServer) AdminDisableUser(c *models.ReqContext) Response {
 	// External users shouldn't be disabled from API
 	authInfoQuery := &models.GetAuthInfoQuery{UserId: userID}
 	if err := bus.Dispatch(authInfoQuery); err != models.ErrUserNotFound {
-		return Error(500, "Could not disable external user", nil)
+		return Error(500, "无法禁用外部用户", nil)
 	}
 
 	disableCmd := models.DisableUserCommand{UserId: userID, IsDisabled: true}
@@ -135,15 +135,15 @@ func (server *HTTPServer) AdminDisableUser(c *models.ReqContext) Response {
 		if err == models.ErrUserNotFound {
 			return Error(404, models.ErrUserNotFound.Error(), nil)
 		}
-		return Error(500, "Failed to disable user", err)
+		return Error(500, "无法禁用用户", err)
 	}
 
 	err := server.AuthTokenService.RevokeAllUserTokens(c.Req.Context(), userID)
 	if err != nil {
-		return Error(500, "Failed to disable user", err)
+		return Error(500, "无法禁用用户", err)
 	}
 
-	return Success("User disabled")
+	return Success("用户已禁用")
 }
 
 // POST /api/admin/users/:id/enable
@@ -153,7 +153,7 @@ func AdminEnableUser(c *models.ReqContext) Response {
 	// External users shouldn't be disabled from API
 	authInfoQuery := &models.GetAuthInfoQuery{UserId: userID}
 	if err := bus.Dispatch(authInfoQuery); err != models.ErrUserNotFound {
-		return Error(500, "Could not enable external user", nil)
+		return Error(500, "无法启用外部用户", nil)
 	}
 
 	disableCmd := models.DisableUserCommand{UserId: userID, IsDisabled: false}
@@ -161,10 +161,10 @@ func AdminEnableUser(c *models.ReqContext) Response {
 		if err == models.ErrUserNotFound {
 			return Error(404, models.ErrUserNotFound.Error(), nil)
 		}
-		return Error(500, "Failed to enable user", err)
+		return Error(500, "无法启用用户", err)
 	}
 
-	return Success("User enabled")
+	return Success("已启用用户")
 }
 
 // POST /api/admin/users/:id/logout
@@ -172,7 +172,7 @@ func (server *HTTPServer) AdminLogoutUser(c *models.ReqContext) Response {
 	userID := c.ParamsInt64(":id")
 
 	if c.UserId == userID {
-		return Error(400, "You cannot logout yourself", nil)
+		return Error(400, "您无法登出自己", nil)
 	}
 
 	return server.logoutUserFromAllDevicesInternal(c.Req.Context(), userID)

@@ -38,7 +38,7 @@ export function MetricsQueryFieldsEditor({
 
   useEffect(() => {
     const variableOptionGroup = {
-      label: 'Template Variables',
+      label: '模板变量',
       options: datasource.variables.map(toOption),
     };
 
@@ -61,7 +61,7 @@ export function MetricsQueryFieldsEditor({
 
   const appendTemplateVariables = (values: SelectableValue[]) => [
     ...values,
-    { label: 'Template Variables', options: datasource.variables.map(toOption) },
+    { label: '模板变量', options: datasource.variables.map(toOption) },
   ];
 
   const toOption = (value: any) => ({ label: value, value });
@@ -88,10 +88,10 @@ export function MetricsQueryFieldsEditor({
   const { regions, namespaces, variableOptionGroup } = state;
   return (
     <>
-      <QueryInlineField label="Region">
+      <QueryInlineField label="区域">
         <Segment
           value={query.region}
-          placeholder="Select region"
+          placeholder="选择区域"
           options={regions}
           allowCustomValue
           onChange={({ value: region }) => onQueryChange({ ...query, region: region! })}
@@ -100,27 +100,27 @@ export function MetricsQueryFieldsEditor({
 
       {query.expression?.length === 0 && (
         <>
-          <QueryInlineField label="Namespace">
+          <QueryInlineField label="命名空间">
             <Segment
               value={query.namespace}
-              placeholder="Select namespace"
+              placeholder="选择命名空间"
               allowCustomValue
               options={namespaces}
               onChange={({ value: namespace }) => onQueryChange({ ...query, namespace: namespace! })}
             />
           </QueryInlineField>
 
-          <QueryInlineField label="Metric Name">
+          <QueryInlineField label="指标名称">
             <SegmentAsync
               value={metricsQuery.metricName}
-              placeholder="Select metric name"
+              placeholder="选择指标名称"
               allowCustomValue
               loadOptions={loadMetricNames}
               onChange={({ value: metricName }) => onQueryChange({ ...metricsQuery, metricName })}
             />
           </QueryInlineField>
 
-          <QueryInlineField label="Stats">
+          <QueryInlineField label="统计">
             <Stats
               stats={datasource.standardStatistics.map(toOption)}
               values={metricsQuery.statistics}
@@ -129,7 +129,7 @@ export function MetricsQueryFieldsEditor({
             />
           </QueryInlineField>
 
-          <QueryInlineField label="Dimensions">
+          <QueryInlineField label="尺寸">
             <Dimensions
               dimensions={metricsQuery.dimensions}
               onChange={dimensions => onQueryChange({ ...metricsQuery, dimensions })}

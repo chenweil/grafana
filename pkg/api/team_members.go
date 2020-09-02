@@ -13,7 +13,7 @@ func (hs *HTTPServer) GetTeamMembers(c *models.ReqContext) Response {
 	query := models.GetTeamMembersQuery{OrgId: c.OrgId, TeamId: c.ParamsInt64(":teamId")}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to get Team Members", err)
+		return Error(500, "无法获得团队成员", err)
 	}
 
 	for _, member := range query.Result {
@@ -35,23 +35,23 @@ func (hs *HTTPServer) AddTeamMember(c *models.ReqContext, cmd models.AddTeamMemb
 	cmd.TeamId = c.ParamsInt64(":teamId")
 
 	if err := teamguardian.CanAdmin(hs.Bus, cmd.OrgId, cmd.TeamId, c.SignedInUser); err != nil {
-		return Error(403, "Not allowed to add team member", err)
+		return Error(403, "不允许添加团队成员", err)
 	}
 
 	if err := hs.Bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrTeamNotFound {
-			return Error(404, "Team not found", nil)
+			return Error(404, "找不到团队", nil)
 		}
 
 		if err == models.ErrTeamMemberAlreadyAdded {
-			return Error(400, "User is already added to this team", nil)
+			return Error(400, "用户已添加到该团队", nil)
 		}
 
-		return Error(500, "Failed to add Member to Team", err)
+		return Error(500, "无法将成员添加到团队", err)
 	}
 
 	return JSON(200, &util.DynMap{
-		"message": "Member added to Team",
+		"message": "成员已添加到团队",
 	})
 }
 
@@ -61,7 +61,7 @@ func (hs *HTTPServer) UpdateTeamMember(c *models.ReqContext, cmd models.UpdateTe
 	orgId := c.OrgId
 
 	if err := teamguardian.CanAdmin(hs.Bus, orgId, teamId, c.SignedInUser); err != nil {
-		return Error(403, "Not allowed to update team member", err)
+		return Error(403, "不允许更新团队成员", err)
 	}
 
 	if c.OrgRole != models.ROLE_ADMIN {
@@ -74,11 +74,11 @@ func (hs *HTTPServer) UpdateTeamMember(c *models.ReqContext, cmd models.UpdateTe
 
 	if err := hs.Bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrTeamMemberNotFound {
-			return Error(404, "Team member not found.", nil)
+			return Error(404, "找不到团队成员。", nil)
 		}
-		return Error(500, "Failed to update team member.", err)
+		return Error(500, "无法更新团队成员。", err)
 	}
-	return Success("Team member updated")
+	return Success("团队成员已更新")
 }
 
 // DELETE /api/teams/:teamId/members/:userId
@@ -88,7 +88,7 @@ func (hs *HTTPServer) RemoveTeamMember(c *models.ReqContext) Response {
 	userId := c.ParamsInt64(":userId")
 
 	if err := teamguardian.CanAdmin(hs.Bus, orgId, teamId, c.SignedInUser); err != nil {
-		return Error(403, "Not allowed to remove team member", err)
+		return Error(403, "不允许删除团队成员", err)
 	}
 
 	protectLastAdmin := false
@@ -98,14 +98,14 @@ func (hs *HTTPServer) RemoveTeamMember(c *models.ReqContext) Response {
 
 	if err := hs.Bus.Dispatch(&models.RemoveTeamMemberCommand{OrgId: orgId, TeamId: teamId, UserId: userId, ProtectLastAdmin: protectLastAdmin}); err != nil {
 		if err == models.ErrTeamNotFound {
-			return Error(404, "Team not found", nil)
+			return Error(404, "找不到团队", nil)
 		}
 
 		if err == models.ErrTeamMemberNotFound {
-			return Error(404, "Team member not found", nil)
+			return Error(404, "找不到团队成员", nil)
 		}
 
-		return Error(500, "Failed to remove Member from Team", err)
+		return Error(500, "无法从团队中删除成员", err)
 	}
-	return Success("Team Member removed")
+	return Success("团队成员已删除")
 }

@@ -19,25 +19,25 @@ func init() {
 		Heading:     "Sensu settings",
 		Factory:     NewSensuNotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">Sensu settings</h3>
+		<h3 class="page-heading">Sensu设置</h3>
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Url</span>
+			<span class="gf-form-label width-10">地址</span>
 			<input type="text" required class="gf-form-input max-width-26" ng-model="ctrl.model.settings.url" placeholder="http://sensu-api.local:4567/results"></input>
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Source</span>
-			<input type="text" class="gf-form-input max-width-14" ng-model="ctrl.model.settings.source" bs-tooltip="'If empty rule id will be used'" data-placement="right"></input>
+			<span class="gf-form-label width-10">资源</span>
+			<input type="text" class="gf-form-input max-width-14" ng-model="ctrl.model.settings.source" bs-tooltip="'如果将使用空规则ID" data-placement="right"></input>
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Handler</span>
-			<input type="text" class="gf-form-input max-width-14" ng-model="ctrl.model.settings.handler" placeholder="default"></input>
+			<span class="gf-form-label width-10">处理器</span>
+			<input type="text" class="gf-form-input max-width-14" ng-model="ctrl.model.settings.handler" placeholder="默认"></input>
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Username</span>
+			<span class="gf-form-label width-10">用户名</span>
 			<input type="text" class="gf-form-input max-width-14" ng-model="ctrl.model.settings.username"></input>
 		</div>
 		<div class="gf-form">
-			<label class="gf-form-label width-10">Password</label>
+			<label class="gf-form-label width-10">密码</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.password">
 				<input type="text"
 					required
@@ -49,7 +49,7 @@ func init() {
 			</div>
 			<div class="gf-form" ng-if="ctrl.model.secureFields.password">
 			  <input type="text" class="gf-form-input max-width-14" disabled="disabled" value="configured" />
-			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.password = false">reset</a>
+			  <a class="btn btn-secondary gf-form-btn" href="#" ng-click="ctrl.model.secureFields.password = false">重置</a>
 			</div>
 		</div>
     `,

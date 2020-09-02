@@ -13,7 +13,7 @@ func GetAPIKeys(c *models.ReqContext) Response {
 	query := models.GetApiKeysQuery{OrgId: c.OrgId, IncludeExpired: c.QueryBool("includeExpired")}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to list api keys", err)
+		return Error(500, "无法列出api密钥", err)
 	}
 
 	result := make([]*models.ApiKeyDTO, len(query.Result))
@@ -41,30 +41,30 @@ func DeleteAPIKey(c *models.ReqContext) Response {
 
 	err := bus.Dispatch(cmd)
 	if err != nil {
-		return Error(500, "Failed to delete API key", err)
+		return Error(500, "删除API密钥失败", err)
 	}
 
-	return Success("API key deleted")
+	return Success("API密钥已删除")
 }
 
 func (hs *HTTPServer) AddAPIKey(c *models.ReqContext, cmd models.AddApiKeyCommand) Response {
 	if !cmd.Role.IsValid() {
-		return Error(400, "Invalid role specified", nil)
+		return Error(400, "指定的角色无效", nil)
 	}
 
 	if hs.Cfg.ApiKeyMaxSecondsToLive != -1 {
 		if cmd.SecondsToLive == 0 {
-			return Error(400, "Number of seconds before expiration should be set", nil)
+			return Error(400, "设置到期前的秒数", nil)
 		}
 		if cmd.SecondsToLive > hs.Cfg.ApiKeyMaxSecondsToLive {
-			return Error(400, "Number of seconds before expiration is greater than the global limit", nil)
+			return Error(400, "到期前的秒数大于全局限制", nil)
 		}
 	}
 	cmd.OrgId = c.OrgId
 
 	newKeyInfo, err := apikeygen.New(cmd.OrgId, cmd.Name)
 	if err != nil {
-		return Error(500, "Generating API key failed", err)
+		return Error(500, "生成API密钥失败", err)
 	}
 
 	cmd.Key = newKeyInfo.HashedKey
@@ -76,7 +76,7 @@ func (hs *HTTPServer) AddAPIKey(c *models.ReqContext, cmd models.AddApiKeyComman
 		if err == models.ErrDuplicateApiKey {
 			return Error(409, err.Error(), nil)
 		}
-		return Error(500, "Failed to add API Key", err)
+		return Error(500, "添加API密钥失败", err)
 	}
 
 	result := &dtos.NewApiKeyResult{

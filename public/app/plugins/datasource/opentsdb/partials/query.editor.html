@@ -2,7 +2,7 @@
 	<div class="gf-form-inline">
 		<div class="gf-form max-width-25">
 			<label class="gf-form-label query-keyword width-8">
-				Metric
+				指标
 				<label class="gf-form-label" bs-tooltip="ctrl.errors.metric" style="color: rgb(229, 189, 28)" ng-show="ctrl.errors.metric">
 					<icon name="'exclamation-triangle'"></icon>
 				</label>
@@ -14,7 +14,7 @@
 		</div>
 		<div class="gf-form">
 			<label class="gf-form-label query-keyword">
-				Aggregator
+				聚合器
 				<a bs-tooltip="ctrl.errors.aggregator" style="color: rgb(229, 189, 28)" ng-show="ctrl.errors.aggregator">
 					<icon name="'exclamation-triangle'"></icon>
 				</a>
@@ -28,9 +28,9 @@
 		</div>
 			<div class="gf-form max-width-20">
 				<label class="gf-form-label query-keyword width-6">
-					Alias:
+					别名:
 					<info-popover mode="right-normal">
-						Use patterns like $tag_tagname to replace part of the alias for a tag value
+						使用 $tag_tagname 之类的模式来替换标签值的部分别名
 					</info-popover>
 				</label>
 				<input  type="text" class="gf-form-input"
@@ -48,19 +48,19 @@
 
 	<div class="gf-form-inline">
 		<div class="gf-form max-width-25">
-			<label class="gf-form-label query-keyword width-8">Down sample</label>
+			<label class="gf-form-label query-keyword width-8">下采样</label>
 			<input type="text" class="gf-form-input gf-form-input--has-help-icon"
 						 ng-model="ctrl.target.downsampleInterval"
 						 ng-model-onblur
 			       ng-change="ctrl.targetBlur()"
 			       placeholder="interval"></input>
 			<info-popover mode="right-absolute">
-				blank for auto, or for example <code>1m</code>
+				自动为空白，例如 <code>1m</code>
 			</info-popover>
 		</div>
 
 		<div class="gf-form">
-			<label class="gf-form-label query-keyword">Aggregator</label>
+			<label class="gf-form-label query-keyword">聚合器</label>
 			<div class="gf-form-select-wrapper">
 				<select ng-model="ctrl.target.downsampleAggregator" class="gf-form-input"
 								ng-options="agg for agg in ctrl.aggregators"
@@ -70,7 +70,7 @@
 		</div>
 
 		<div class="gf-form" ng-if="ctrl.tsdbVersion >= 2">
-			<label class="gf-form-label query-keyword width-6">Fill</label>
+			<label class="gf-form-label query-keyword width-6">填充</label>
 			<div class="gf-form-select-wrapper">
 				<select ng-model="ctrl.target.downsampleFillPolicy" class="gf-form-input"
 								ng-options="agg for agg in ctrl.fillPolicies"
@@ -95,9 +95,9 @@
 		<div class="gf-form">
 
 			<label class="gf-form-label query-keyword width-8">
-				Filters
+				筛选器
 				<info-popover mode="right-normal">
-					Filters does not work with tags, either of the two will work but not both.
+					过滤器不适用于标签，这两个标签都可以使用，但不能同时使用。
 				</info-popover>
 			</label>
 
@@ -126,7 +126,7 @@
 			</div>
 
 			<div class="gf-form">
-				<label class="gf-form-label query-keyword">Type</label>
+				<label class="gf-form-label query-keyword">类型</label>
 				<div class="gf-form-select-wrapper">
 					<select ng-model="ctrl.target.currentFilterType" class="gf-form-input" ng-options="filType for filType in ctrl.filterTypes">
 					</select>
@@ -139,7 +139,7 @@
 			</div>
 
       <gf-form-switch class="gf-form"
-                    label="Group by"
+                    label="分组"
                     label-class="query-keyword"
                     checked="ctrl.target.currentFilterGroupBy"
                     on-change="ctrl.targetBlur()">
@@ -152,7 +152,7 @@
 					</a>
 				</label>
 				<label class="gf-form-label">
-					<a ng-click="ctrl.addFilter()" ng-hide="ctrl.errors.filters">add filter</a>
+					<a ng-click="ctrl.addFilter()" ng-hide="ctrl.errors.filters">添加过滤</a>
 					<a ng-click="ctrl.closeAddFilterMode()">
 						<icon name="'times'"></icon>
 					</a>
@@ -169,9 +169,9 @@
 	<div class="gf-form-inline">
 		<div class="gf-form">
 			<label class="gf-form-label query-keyword width-8">
-				Tags
+				标签
 				<info-popover mode="right-normal" ng-if="ctrl.tsdbVersion >= 2">
-					Please use filters, tags are deprecated in opentsdb 2.2
+					请使用过滤器，opentsdb 2.2中不推荐使用标签
 				</info-popover>
 			</label>
 		</div>
@@ -212,7 +212,7 @@
 				</a>
 			</label>
 			<label class="gf-form-label" >
-				<a ng-click="ctrl.addTag()" ng-hide="ctrl.errors.tags">add tag</a>
+				<a ng-click="ctrl.addTag()" ng-hide="ctrl.errors.tags">添加标签</a>
 				<a ng-click="ctrl.closeAddTagMode()"><icon name="'times'" size="'sm'"></icon></a>
 			</label>
 		</div>
@@ -232,19 +232,19 @@
 
 
 		<div class="gf-form" ng-hide="!ctrl.target.isCounter || !ctrl.target.shouldComputeRate">
-			<label class="gf-form-label query-keyword">Counter Max</label>
+			<label class="gf-form-label query-keyword">最大计数器</label>
 			<input type="text" class="gf-form-input"
 					 	 ng-disabled="!ctrl.target.shouldComputeRate"
 						 ng-model="ctrl.target.counterMax" spellcheck='false'
-						 placeholder="max value" ng-model-onblur
+						 placeholder="最大计数器" ng-model-onblur
 						 ng-blur="ctrl.targetBlur()">
 			</input>
 
-			<label class="gf-form-label query-keyword">Reset Value</label>
+			<label class="gf-form-label query-keyword">重置值</label>
 			<input type="text" class="tight-form-input input-small"
 					   ng-disabled="!ctrl.target.shouldComputeRate"
 						 ng-model="ctrl.target.counterResetValue" spellcheck='false'
-						 placeholder="reset value" ng-model-onblur
+						 placeholder="重置值" ng-model-onblur
 						 ng-blur="ctrl.targetBlur()">
 			</input>
 		</div>

@@ -46,7 +46,7 @@ const EmptyListCTA: React.FunctionComponent<Props> = ({
         {proTip ? (
           <span key="proTipFooter">
             <Icon name="rocket" />
-            <> ProTip: {proTip} </>
+            <> 专家提示: {proTip} </>
             <a href={proTipLink} target={proTipTarget} className="text-link">
               {proTipLinkTitle}
             </a>

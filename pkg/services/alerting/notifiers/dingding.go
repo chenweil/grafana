@@ -13,13 +13,13 @@ import (
 
 const defaultDingdingMsgType = "link"
 const dingdingOptionsTemplate = `
-      <h3 class="page-heading">DingDing settings</h3>
+      <h3 class="page-heading">钉钉设置</h3>
       <div class="gf-form">
-        <span class="gf-form-label width-10">Url</span>
+        <span class="gf-form-label width-10">地址</span>
         <input type="text" required class="gf-form-input max-width-70" ng-model="ctrl.model.settings.url" placeholder="https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxx"></input>
       </div>
       <div class="gf-form">
-        <span class="gf-form-label width-10">MessageType</span>
+        <span class="gf-form-label width-10">消息类型</span>
         <select class="gf-form-input max-width-14" ng-model="ctrl.model.settings.msgType" ng-options="s for s in ['link','actionCard']" ng-init="ctrl.model.settings.msgType=ctrl.model.settings.msgType || '` + defaultDingdingMsgType + `'"></select>
       </div>
 `

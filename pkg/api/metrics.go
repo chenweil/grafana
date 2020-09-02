@@ -20,7 +20,7 @@ import (
 // POST /api/ds/query   DataSource query w/ expressions
 func (hs *HTTPServer) QueryMetricsV2(c *models.ReqContext, reqDto dtos.MetricRequest) Response {
 	if len(reqDto.Queries) == 0 {
-		return Error(400, "No queries found in query", nil)
+		return Error(400, "在查询中找不到查询", nil)
 	}
 
 	request := &tsdb.TsdbQuery{
@@ -41,7 +41,7 @@ func (hs *HTTPServer) QueryMetricsV2(c *models.ReqContext, reqDto dtos.MetricReq
 		datasourceID, err := query.Get("datasourceId").Int64()
 		if err != nil {
 			hs.log.Debug("Can't process query since it's missing data source ID")
-			return Error(400, "Query missing data source ID", nil)
+			return Error(400, "查询缺少的数据源ID", nil)
 		}
 
 		if i == 0 && !expr {
@@ -49,12 +49,12 @@ func (hs *HTTPServer) QueryMetricsV2(c *models.ReqContext, reqDto dtos.MetricReq
 			if err != nil {
 				hs.log.Debug("Encountered error getting data source", "err", err)
 				if errors.Is(err, models.ErrDataSourceAccessDenied) {
-					return Error(403, "Access denied to data source", err)
+					return Error(403, "拒绝访问数据源", err)
 				}
 				if errors.Is(err, models.ErrDataSourceNotFound) {
-					return Error(400, "Invalid data source ID", err)
+					return Error(400, "无效的数据源ID", err)
 				}
-				return Error(500, "Unable to load data source metadata", err)
+				return Error(500, "无法加载数据源元数据", err)
 			}
 		}
 
@@ -73,16 +73,16 @@ func (hs *HTTPServer) QueryMetricsV2(c *models.ReqContext, reqDto dtos.MetricReq
 	if !expr {
 		resp, err = tsdb.HandleRequest(c.Req.Context(), ds, request)
 		if err != nil {
-			return Error(500, "Metric request error", err)
+			return Error(500, "指标请求错误", err)
 		}
 	} else {
 		if !hs.Cfg.IsExpressionsEnabled() {
-			return Error(404, "Expressions feature toggle is not enabled", nil)
+			return Error(404, "表达式功能切换未启用", nil)
 		}
 
 		resp, err = plugins.Transform.Transform(c.Req.Context(), request)
 		if err != nil {
-			return Error(500, "Transform request error", err)
+			return Error(500, "转换请求错误", err)
 		}
 	}
 
@@ -104,20 +104,20 @@ func (hs *HTTPServer) QueryMetrics(c *models.ReqContext, reqDto dtos.MetricReque
 	timeRange := tsdb.NewTimeRange(reqDto.From, reqDto.To)
 
 	if len(reqDto.Queries) == 0 {
-		return Error(400, "No queries found in query", nil)
+		return Error(400, "在查询中找不到查询", nil)
 	}
 
 	datasourceId, err := reqDto.Queries[0].Get("datasourceId").Int64()
 	if err != nil {
-		return Error(400, "Query missing datasourceId", nil)
+		return Error(400, "查询缺少的数据源Id", nil)
 	}
 
 	ds, err := hs.DatasourceCache.GetDatasource(datasourceId, c.SignedInUser, c.SkipCache)
 	if err != nil {
 		if err == models.ErrDataSourceAccessDenied {
-			return Error(403, "Access denied to datasource", err)
+			return Error(403, "拒绝访问数据源", err)
 		}
-		return Error(500, "Unable to load datasource meta data", err)
+		return Error(500, "无法加载数据源元数据", err)
 	}
 
 	request := &tsdb.TsdbQuery{
@@ -138,7 +138,7 @@ func (hs *HTTPServer) QueryMetrics(c *models.ReqContext, reqDto dtos.MetricReque
 
 	resp, err := tsdb.HandleRequest(c.Req.Context(), ds, request)
 	if err != nil {
-		return Error(500, "Metric request error", err)
+		return Error(500, "指标请求错误", err)
 	}
 
 	statusCode := 200
@@ -186,7 +186,7 @@ func GenerateError(c *models.ReqContext) Response {
 // GET /api/tsdb/testdata/gensql
 func GenerateSQLTestData(c *models.ReqContext) Response {
 	if err := bus.Dispatch(&models.InsertSqlTestDataCommand{}); err != nil {
-		return Error(500, "Failed to insert test data", err)
+		return Error(500, "插入测试数据失败", err)
 	}
 
 	return JSON(200, &util.DynMap{"message": "OK"})
@@ -213,7 +213,7 @@ func GetTestDataRandomWalk(c *models.ReqContext) Response {
 
 	resp, err := tsdb.HandleRequest(context.Background(), dsInfo, request)
 	if err != nil {
-		return Error(500, "Metric request error", err)
+		return Error(500, "指标请求错误", err)
 	}
 
 	return JSON(200, &resp)

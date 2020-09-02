@@ -35,7 +35,7 @@ export function RunButton(props: Props) {
   const runButton = (
     <ResponsiveButton
       splitted={splitted}
-      title={loading && !isLive ? 'Cancel' : 'Run Query'}
+      title={loading && !isLive ? '取消' : '执行查询'}
       onClick={() => onRun(loading)}
       buttonClassName={classNames({
         'navbar-button--primary': isLive || !loading,

@@ -15,20 +15,20 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "opsgenie",
 		Name:        "OpsGenie",
-		Description: "Sends notifications to OpsGenie",
-		Heading:     "OpsGenie settings",
+		Description: "发送通知到OpsGenie",
+		Heading:     "OpsGenie设置",
 		Factory:     NewOpsGenieNotifier,
 		OptionsTemplate: `
-		<h3 class="page-heading">OpsGenie settings</h3>
+		<h3 class="page-heading">OpsGenie 设置</h3>
 		<div class="gf-form">
-			<label class="gf-form-label max-width-14">API Key</label>
+			<label class="gf-form-label max-width-14">API密钥</label>
 			<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.apiKey">
 				<input type="text"
 					required
 					class="gf-form-input max-width-22"
 					ng-init="ctrl.model.secureSettings.apiKey = ctrl.model.settings.apiKey || null; ctrl.model.settings.apiKey = null;"
 					ng-model="ctrl.model.secureSettings.apiKey"
-					placeholder="OpsGenie API Key"
+					placeholder="OpsGenie API密钥"
 					data-placement="right">
 				</input>
 			</div>
@@ -38,25 +38,25 @@ func init() {
 			</div>
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-14">Alert API Url</span>
+			<span class="gf-form-label width-14">警报API Url</span>
 			<input type="text" required class="gf-form-input max-width-22" ng-model="ctrl.model.settings.apiUrl" placeholder="https://api.opsgenie.com/v2/alerts"></input>
 		</div>
 		<div class="gf-form">
 			<gf-form-switch
 				class="gf-form"
-				label="Auto close incidents"
+				label="自动关闭事件"
 				label-class="width-14"
 				checked="ctrl.model.settings.autoClose"
-				tooltip="Automatically close alerts in OpsGenie once the alert goes back to ok.">
+				tooltip="警报恢复正常后，自动关闭OpsGenie中的警报。">
 			</gf-form-switch>
 		</div>
 		<div class="gf-form">
 			<gf-form-switch
 				class="gf-form"
-				label="Override priority"
+				label="优先级优先"
 				label-class="width-14"
 				checked="ctrl.model.settings.overridePriority"
-				tooltip="Allow the alert priority to be set using the og_priority tag">
+				tooltip="允许使用og_priority标签设置警报优先级">
 			</gf-form-switch>
   		</div>
 `,

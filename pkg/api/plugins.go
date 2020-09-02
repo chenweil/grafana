@@ -75,7 +75,7 @@ func (hs *HTTPServer) GetPluginList(c *models.ReqContext) Response {
 	pluginSettingsMap, err := plugins.GetPluginSettings(c.OrgId)
 
 	if err != nil {
-		return Error(500, "Failed to get list of plugins", err)
+		return Error(500, "无法获取插件列表", err)
 	}
 
 	result := make(dtos.PluginList, 0)
@@ -145,7 +145,7 @@ func GetPluginSettingByID(c *models.ReqContext) Response {
 
 	def, exists := plugins.Plugins[pluginID]
 	if !exists {
-		return Error(404, "Plugin not found, no installed plugin with that id", nil)
+		return Error(404, "找不到插件，没有安装具有该ID的插件", nil)
 	}
 
 	dto := &dtos.PluginSetting{
@@ -167,7 +167,7 @@ func GetPluginSettingByID(c *models.ReqContext) Response {
 	query := models.GetPluginSettingByIdQuery{PluginId: pluginID, OrgId: c.OrgId}
 	if err := bus.Dispatch(&query); err != nil {
 		if err != models.ErrPluginSettingNotFound {
-			return Error(500, "Failed to get login settings", nil)
+			return Error(500, "无法获取登录设置", nil)
 		}
 	} else {
 		dto.Enabled = query.Result.Enabled
@@ -185,14 +185,14 @@ func UpdatePluginSetting(c *models.ReqContext, cmd models.UpdatePluginSettingCmd
 	cmd.PluginId = pluginID
 
 	if _, ok := plugins.Apps[cmd.PluginId]; !ok {
-		return Error(404, "Plugin not installed.", nil)
+		return Error(404, "未安装插件。", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to update plugin setting", err)
+		return Error(500, "无法更新插件设置", err)
 	}
 
-	return Success("Plugin settings updated")
+	return Success("插件设置已更新")
 }
 
 func GetPluginDashboards(c *models.ReqContext) Response {
@@ -204,7 +204,7 @@ func GetPluginDashboards(c *models.ReqContext) Response {
 			return Error(404, notfound.Error(), nil)
 		}
 
-		return Error(500, "Failed to get plugin dashboards", err)
+		return Error(500, "无法获取插件仪表板", err)
 	}
 
 	return JSON(200, list)
@@ -220,14 +220,14 @@ func GetPluginMarkdown(c *models.ReqContext) Response {
 			return Error(404, notfound.Error(), nil)
 		}
 
-		return Error(500, "Could not get markdown file", err)
+		return Error(500, "无法获取降价文件", err)
 	}
 
 	// fallback try readme
 	if len(content) == 0 {
 		content, err = plugins.GetPluginMarkdown(pluginID, "readme")
 		if err != nil {
-			return Error(501, "Could not get markdown file", err)
+			return Error(501, "无法获取降价文件", err)
 		}
 	}
 
@@ -238,7 +238,7 @@ func GetPluginMarkdown(c *models.ReqContext) Response {
 
 func ImportDashboard(c *models.ReqContext, apiCmd dtos.ImportDashboardCommand) Response {
 	if apiCmd.PluginId == "" && apiCmd.Dashboard == nil {
-		return Error(422, "Dashboard must be set", nil)
+		return Error(422, "必须设置仪表板", nil)
 	}
 
 	cmd := plugins.ImportDashboardCommand{
@@ -266,7 +266,7 @@ func (hs *HTTPServer) CollectPluginMetrics(c *models.ReqContext) Response {
 	pluginID := c.Params("pluginId")
 	plugin, exists := plugins.Plugins[pluginID]
 	if !exists {
-		return Error(404, "Plugin not found", nil)
+		return Error(404, "找不到插件", nil)
 	}
 
 	resp, err := hs.BackendPluginManager.CollectMetrics(c.Req.Context(), plugin.Id)
@@ -292,10 +292,10 @@ func (hs *HTTPServer) CheckHealth(c *models.ReqContext) Response {
 	pCtx, err := hs.getPluginContext(pluginID, c.SignedInUser)
 	if err != nil {
 		if err == ErrPluginNotFound {
-			return Error(404, "Plugin not found", nil)
+			return Error(404, "找不到插件", nil)
 		}
 
-		return Error(500, "Failed to get plugin settings", err)
+		return Error(500, "无法获取插件设置", err)
 	}
 
 	resp, err := hs.BackendPluginManager.CheckHealth(c.Req.Context(), pCtx)
@@ -313,7 +313,7 @@ func (hs *HTTPServer) CheckHealth(c *models.ReqContext) Response {
 		var jsonDetails map[string]interface{}
 		err = json.Unmarshal(resp.JSONDetails, &jsonDetails)
 		if err != nil {
-			return Error(500, "Failed to unmarshal detailed response from backend plugin", err)
+			return Error(500, "无法解组来自后端插件的详细响应", err)
 		}
 
 		payload["details"] = jsonDetails
@@ -335,11 +335,11 @@ func (hs *HTTPServer) CallResource(c *models.ReqContext) {
 	pCtx, err := hs.getPluginContext(pluginID, c.SignedInUser)
 	if err != nil {
 		if err == ErrPluginNotFound {
-			c.JsonApiErr(404, "Plugin not found", nil)
+			c.JsonApiErr(404, "找不到插件", nil)
 			return
 		}
 
-		c.JsonApiErr(500, "Failed to get plugin settings", err)
+		c.JsonApiErr(500, "无法获取插件设置", err)
 		return
 	}
 	hs.BackendPluginManager.CallResource(pCtx, c, c.Params("*"))
@@ -366,20 +366,20 @@ func (hs *HTTPServer) getCachedPluginSettings(pluginID string, user *models.Sign
 
 func translatePluginRequestErrorToAPIError(err error) Response {
 	if errors.Is(err, backendplugin.ErrPluginNotRegistered) {
-		return Error(404, "Plugin not found", err)
+		return Error(404, "找不到插件", err)
 	}
 
 	if errors.Is(err, backendplugin.ErrMethodNotImplemented) {
-		return Error(404, "Not found", err)
+		return Error(404, "未找到", err)
 	}
 
 	if errors.Is(err, backendplugin.ErrHealthCheckFailed) {
-		return Error(500, "Plugin health check failed", err)
+		return Error(500, "插件运行状况检查失败", err)
 	}
 
 	if errors.Is(err, backendplugin.ErrPluginUnavailable) {
-		return Error(503, "Plugin unavailable", err)
+		return Error(503, "插件不可用", err)
 	}
 
-	return Error(500, "Plugin request failed", err)
+	return Error(500, "插件请求失败", err)
 }

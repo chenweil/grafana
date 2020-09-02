@@ -247,7 +247,7 @@ export class ApiKeysPage extends PureComponent<Props, any> {
             <FilterInput
               labelClassName="gf-form--has-input-icon gf-form--grow"
               inputClassName="gf-form-input"
-              placeholder="Search keys"
+              placeholder="搜索密钥"
               value={searchQuery}
               onChange={this.onSearchQueryChange}
             />

@@ -17,11 +17,11 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "pagerduty",
 		Name:        "PagerDuty",
-		Description: "Sends notifications to PagerDuty",
-		Heading:     "PagerDuty settings",
+		Description: "发送通知到PagerDuty",
+		Heading:     "PagerDuty设置",
 		Factory:     NewPagerdutyNotifier,
 		OptionsTemplate: `
-      <h3 class="page-heading">PagerDuty settings</h3>
+      <h3 class="page-heading">PagerDuty设置</h3>
       <div class="gf-form">
         <span class="gf-form-label width-14">Integration Key</span>
 		<div class="gf-form gf-form--grow" ng-if="!ctrl.model.secureFields.integrationKey">

@@ -190,7 +190,7 @@ export class QueryInspector extends PureComponent<Props, State> {
   };
 
   onClipboardSuccess = () => {
-    appEvents.emit(AppEvents.alertSuccess, ['Content copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['内容已复制到剪贴板']);
   };
 
   onToggleExpand = () => {
@@ -245,7 +245,7 @@ export class QueryInspector extends PureComponent<Props, State> {
               <div>
                 <span className={styles.refId}>{info.refId}:</span>
                 {info.frames > 1 && <span>{info.frames} frames, </span>}
-                <span>{info.rows} rows</span>
+                <span>{info.rows} 行</span>
               </div>
               <pre>{info.query}</pre>
             </div>
@@ -311,7 +311,7 @@ export class QueryInspector extends PureComponent<Props, State> {
           <div className="flex-grow-1" />
         </div>
         <div className={styles.contentQueryInspector}>
-          {isLoading && <LoadingPlaceholder text="Loading query inspector..." />}
+          {isLoading && <LoadingPlaceholder text="加载查询检查器..." />}
           {!isLoading && haveData && (
             <JSONFormatter json={response} open={openNodes} onDidRender={this.setFormattedJson} />
           )}
