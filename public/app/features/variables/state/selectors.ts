@@ -11,7 +11,7 @@ export const getVariable = <T extends VariableModel = VariableModel>(
 ): T => {
   if (!state.templating.variables[id]) {
     if (throwWhenMissing) {
-      throw new Error(`Couldn't find variable with id:${id}`);
+      throw new Error(`找不到ID为 ${id} 的变量`);
     }
     return (undefined as unknown) as T;
   }

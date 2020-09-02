@@ -9,9 +9,9 @@ import { StoreState } from 'app/types';
 const navModel = {
   main: {
     icon: 'grafana',
-    text: 'Sign Up',
-    subTitle: 'Register your Grafana account',
-    breadcrumbs: [{ title: 'Login', url: 'login' }],
+    text: '注册',
+    subTitle: '注册您的Grafana帐户',
+    breadcrumbs: [{ title: '登陆', url: 'login' }],
   },
   node: {
     text: '',

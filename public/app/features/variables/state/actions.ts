@@ -261,7 +261,7 @@ export const setOptionFromUrl = (
     // get variable from state
     const variableFromState = getVariable<VariableWithOptions>(variable.id, getState());
     if (!variableFromState) {
-      throw new Error(`Couldn't find variable with name: ${variable.name}`);
+      throw new Error(`找不到名称为 ${variable.name} 的变量`);
     }
     // Simple case. Value in url matches existing options text or value.
     let option = variableFromState.options.find(op => {
@@ -492,7 +492,7 @@ export const onTimeRangeUpdated = (
     dashboard?.startRefresh();
   } catch (error) {
     console.error(error);
-    dependencies.appEvents.emit(AppEvents.alertError, ['Template variable service failed', error.message]);
+    dependencies.appEvents.emit(AppEvents.alertError, ['模板变量服务失败', error.message]);
   }
 };
 
@@ -565,7 +565,7 @@ export const initVariablesTransaction = (dashboardUid: string, dashboard: Dashbo
     // Mark update as complete
     dispatch(variablesCompleteTransaction({ uid: dashboardUid }));
   } catch (err) {
-    dispatch(notifyApp(createErrorNotification('Templating init failed', err)));
+    dispatch(notifyApp(createErrorNotification('模板初始化失败', err)));
     console.error(err);
   }
 };

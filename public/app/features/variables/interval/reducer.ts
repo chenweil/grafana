@@ -38,7 +38,7 @@ export const intervalVariableSlice = createSlice({
         // add auto option if missing
         if (options.length && options[0].text !== 'auto') {
           options.unshift({
-            text: 'auto',
+            text: '自动',
             value: '$__auto_interval_' + instanceState.name,
             selected: false,
           });

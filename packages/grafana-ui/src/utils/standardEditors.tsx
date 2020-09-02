@@ -44,8 +44,8 @@ export const getStandardFieldConfigs = () => {
   const displayName: FieldConfigPropertyItem<any, string, StringFieldConfigSettings> = {
     id: 'displayName',
     path: 'displayName',
-    name: 'Display name',
-    description: 'Change the field or series name',
+    name: '显示名称',
+    description: '更改字段或系列名称',
     editor: standardEditorsRegistry.get('text').editor as any,
     override: standardEditorsRegistry.get('text').editor as any,
     process: stringOverrideProcessor,
@@ -60,7 +60,7 @@ export const getStandardFieldConfigs = () => {
   const unit: FieldConfigPropertyItem<any, string, StringFieldConfigSettings> = {
     id: 'unit',
     path: 'unit',
-    name: 'Unit',
+    name: '单位',
     description: '',
 
     editor: standardEditorsRegistry.get('unit').editor as any,
@@ -78,15 +78,15 @@ export const getStandardFieldConfigs = () => {
   const min: FieldConfigPropertyItem<any, number, NumberFieldConfigSettings> = {
     id: 'min',
     path: 'min',
-    name: 'Min',
-    description: 'Leave empty to calculate based on all values',
+    name: '最小',
+    description: '留空以根据所有值进行计算',
 
     editor: standardEditorsRegistry.get('number').editor as any,
     override: standardEditorsRegistry.get('number').editor as any,
     process: numberOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
     },
     shouldApply: field => field.type === FieldType.number,
     category,
@@ -95,15 +95,15 @@ export const getStandardFieldConfigs = () => {
   const max: FieldConfigPropertyItem<any, number, NumberFieldConfigSettings> = {
     id: 'max',
     path: 'max',
-    name: 'Max',
-    description: 'Leave empty to calculate based on all values',
+    name: '最大',
+    description: '留空以根据所有值进行计算',
 
     editor: standardEditorsRegistry.get('number').editor as any,
     override: standardEditorsRegistry.get('number').editor as any,
     process: numberOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
     },
 
     shouldApply: field => field.type === FieldType.number,
@@ -113,14 +113,14 @@ export const getStandardFieldConfigs = () => {
   const decimals: FieldConfigPropertyItem<any, number, NumberFieldConfigSettings> = {
     id: 'decimals',
     path: 'decimals',
-    name: 'Decimals',
+    name: '小数点',
 
     editor: standardEditorsRegistry.get('number').editor as any,
     override: standardEditorsRegistry.get('number').editor as any,
     process: numberOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
       min: 0,
       max: 15,
       integer: true,
@@ -133,7 +133,7 @@ export const getStandardFieldConfigs = () => {
   const thresholds: FieldConfigPropertyItem<any, ThresholdsConfig, ThresholdsFieldConfigSettings> = {
     id: 'thresholds',
     path: 'thresholds',
-    name: 'Thresholds',
+    name: '阈',
 
     editor: standardEditorsRegistry.get('thresholds').editor as any,
     override: standardEditorsRegistry.get('thresholds').editor as any,
@@ -154,8 +154,8 @@ export const getStandardFieldConfigs = () => {
   const mappings: FieldConfigPropertyItem<any, ValueMapping[], ValueMappingFieldConfigSettings> = {
     id: 'mappings',
     path: 'mappings',
-    name: 'Value mappings',
-    description: 'Modify the display text based on input value',
+    name: '值映射',
+    description: '根据输入值修改显示文本',
 
     editor: standardEditorsRegistry.get('mappings').editor as any,
     override: standardEditorsRegistry.get('mappings').editor as any,
@@ -170,8 +170,8 @@ export const getStandardFieldConfigs = () => {
   const noValue: FieldConfigPropertyItem<any, string, StringFieldConfigSettings> = {
     id: 'noValue',
     path: 'noValue',
-    name: 'No Value',
-    description: 'What to show when there is no value',
+    name: '没有值',
+    description: '没有值时显示什么',
 
     editor: standardEditorsRegistry.get('text').editor as any,
     override: standardEditorsRegistry.get('text').editor as any,
@@ -188,7 +188,7 @@ export const getStandardFieldConfigs = () => {
   const links: FieldConfigPropertyItem<any, DataLink[], StringFieldConfigSettings> = {
     id: 'links',
     path: 'links',
-    name: 'Data links',
+    name: '数据链接',
     editor: standardEditorsRegistry.get('links').editor as any,
     override: standardEditorsRegistry.get('links').editor as any,
     process: dataLinksOverrideProcessor,
@@ -224,78 +224,78 @@ export const getStandardFieldConfigs = () => {
 export const getStandardOptionEditors = () => {
   const number: StandardEditorsRegistryItem<number> = {
     id: 'number',
-    name: 'Number',
-    description: 'Allows numeric values input',
+    name: '数字',
+    description: '允许输入数值',
     editor: NumberValueEditor as any,
   };
 
   const text: StandardEditorsRegistryItem<string> = {
     id: 'text',
-    name: 'Text',
-    description: 'Allows string values input',
+    name: '文本',
+    description: '允许输入字符串值',
     editor: StringValueEditor as any,
   };
 
   const strings: StandardEditorsRegistryItem<string[]> = {
     id: 'strings',
-    name: 'String array',
-    description: 'An array of strings',
+    name: '字符串数组',
+    description: '字符串数组',
     editor: StringArrayEditor as any,
   };
 
   const boolean: StandardEditorsRegistryItem<boolean> = {
     id: 'boolean',
-    name: 'Boolean',
-    description: 'Allows boolean values input',
+    name: '布尔',
+    description: '允许输入布尔值',
     editor: props => <Switch {...props} onChange={e => props.onChange(e.currentTarget.checked)} />,
   };
 
   const select: StandardEditorsRegistryItem<any> = {
     id: 'select',
-    name: 'Select',
-    description: 'Allows option selection',
+    name: '选择',
+    description: '允许选择选项',
     editor: SelectValueEditor as any,
   };
 
   const radio: StandardEditorsRegistryItem<any> = {
     id: 'radio',
-    name: 'Radio',
-    description: 'Allows option selection',
+    name: '单选',
+    description: '允许选择选项',
     editor: props => <RadioButtonGroup {...props} options={props.item.settings?.options} />,
   };
 
   const unit: StandardEditorsRegistryItem<string> = {
     id: 'unit',
-    name: 'Unit',
-    description: 'Allows unit input',
+    name: '单位',
+    description: '允许单位输入',
     editor: UnitValueEditor as any,
   };
 
   const thresholds: StandardEditorsRegistryItem<ThresholdsConfig> = {
     id: 'thresholds',
-    name: 'Thresholds',
-    description: 'Allows defining thresholds',
+    name: '阈值',
+    description: '允许定义阈值',
     editor: ThresholdsValueEditor as any,
   };
 
   const mappings: StandardEditorsRegistryItem<ValueMapping[]> = {
     id: 'mappings',
-    name: 'Mappings',
-    description: 'Allows defining value mappings',
+    name: '对应',
+    description: '允许定义值映射',
     editor: ValueMappingsValueEditor as any,
   };
 
   const color: StandardEditorsRegistryItem<string> = {
     id: 'color',
-    name: 'Color',
-    description: 'Allows color selection',
+    name: '颜色',
+    description: '允许颜色选择',
     editor: ColorValueEditor as any,
   };
 
   const links: StandardEditorsRegistryItem<DataLink[]> = {
     id: 'links',
-    name: 'Links',
-    description: 'Allows defining data links',
+    name: '链接',
+    description: '允许定义数据链接',
     editor: DataLinksValueEditor as any,
   };
 
@@ -308,8 +308,8 @@ export const getStandardOptionEditors = () => {
 
   const timeZone: StandardEditorsRegistryItem<TimeZone> = {
     id: 'timezone',
-    name: 'Time Zone',
-    description: 'Time zone selection',
+    name: '时区',
+    description: '时区选择',
     editor: TimeZonePicker as any,
   };
 

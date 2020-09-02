@@ -13,7 +13,7 @@ export const createConstantVariableAdapter = (): VariableAdapter<ConstantVariabl
   return {
     id: 'constant',
     description: '定义一个隐藏的常量变量，对于要共享的仪表板中的度量前缀有用',
-    name: 'Constant',
+    name: '常量',
     initialState: initialConstantVariableModelState,
     reducer: constantVariableReducer,
     picker: OptionsPicker,

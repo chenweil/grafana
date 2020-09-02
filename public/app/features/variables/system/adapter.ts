@@ -10,7 +10,7 @@ export const createSystemVariableAdapter = (): VariableAdapter<SystemVariable<an
   return {
     id: 'system',
     description: '',
-    name: 'system',
+    name: '系统',
     initialState: {
       id: NEW_VARIABLE_ID,
       global: false,

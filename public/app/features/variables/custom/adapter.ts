@@ -14,7 +14,7 @@ export const createCustomVariableAdapter = (): VariableAdapter<CustomVariableMod
   return {
     id: 'custom',
     description: '手动定义变量值',
-    name: 'Custom',
+    name: '自定义',
     initialState: initialCustomVariableModelState,
     reducer: customVariableReducer,
     picker: OptionsPicker,

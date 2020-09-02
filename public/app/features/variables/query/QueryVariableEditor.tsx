@@ -156,13 +156,13 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
                   onChange={this.onRefreshChange}
                   aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsRefreshSelect}
                 >
-                  <option label="Never" value={VariableRefresh.never}>
+                  <option label="从不" value={VariableRefresh.never}>
                     从不
                   </option>
-                  <option label="On Dashboard Load" value={VariableRefresh.onDashboardLoad}>
+                  <option label="在仪表板上加载" value={VariableRefresh.onDashboardLoad}>
                     在仪表板上加载
                   </option>
-                  <option label="On Time Range Change" value={VariableRefresh.onTimeRangeChanged}>
+                  <option label="时间段的变化" value={VariableRefresh.onTimeRangeChanged}>
                     时间段的变化
                   </option>
                 </select>
@@ -204,31 +204,25 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
                 onChange={this.onSortChange}
                 aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsSortSelect}
               >
-                <option label="Disabled" value={VariableSort.disabled}>
+                <option label="禁用" value={VariableSort.disabled}>
                   禁用
                 </option>
-                <option label="Alphabetical (asc)" value={VariableSort.alphabeticalAsc}>
+                <option label="按字母顺序(升序)" value={VariableSort.alphabeticalAsc}>
                   按字母顺序(升序)
                 </option>
-                <option label="Alphabetical (desc)" value={VariableSort.alphabeticalDesc}>
+                <option label="按字母顺序(降序)" value={VariableSort.alphabeticalDesc}>
                   按字母顺序(降序)
                 </option>
-                <option label="Numerical (asc)" value={VariableSort.numericalAsc}>
+                <option label="按数字(升序)" value={VariableSort.numericalAsc}>
                   按数字(升序)
                 </option>
-                <option label="Numerical (desc)" value={VariableSort.numericalDesc}>
+                <option label="按数字(降序)" value={VariableSort.numericalDesc}>
                   按数字(降序)
                 </option>
-                <option
-                  label="Alphabetical (case-insensitive, asc)"
-                  value={VariableSort.alphabeticalCaseInsensitiveAsc}
-                >
+                <option label="按字母顺序(不区分大小写，升序)" value={VariableSort.alphabeticalCaseInsensitiveAsc}>
                   按字母顺序(不区分大小写，升序)
                 </option>
-                <option
-                  label="Alphabetical (case-insensitive, desc)"
-                  value={VariableSort.alphabeticalCaseInsensitiveDesc}
-                >
+                <option label="按字母顺序(不区分大小写，降序)" value={VariableSort.alphabeticalCaseInsensitiveDesc}>
                   按字母顺序(不区分大小写，降序)
                 </option>
               </select>

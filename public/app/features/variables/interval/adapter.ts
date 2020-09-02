@@ -12,8 +12,8 @@ import { updateAutoValue, updateIntervalVariableOptions } from './actions';
 export const createIntervalVariableAdapter = (): VariableAdapter<IntervalVariableModel> => {
   return {
     id: 'interval',
-    description: 'Define a timespan interval (ex 1m, 1h, 1d)',
-    name: 'Interval',
+    description: '定义时间间隔（例如1m，1h，1d）',
+    name: '间隔',
     initialState: initialIntervalVariableModelState,
     reducer: intervalVariableReducer,
     picker: OptionsPicker,

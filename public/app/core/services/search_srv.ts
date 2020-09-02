@@ -49,7 +49,7 @@ export class SearchSrv {
     return backendSrv.search({ starred: true, limit: 30 }).then(result => {
       if (result.length > 0) {
         (sections as any)['starred'] = {
-          title: 'Starred',
+          title: '星标',
           icon: 'star',
           score: -2,
           expanded: store.getBool(`${SECTION_STORAGE_KEY}.starred`, true),

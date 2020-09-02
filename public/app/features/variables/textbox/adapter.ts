@@ -14,7 +14,7 @@ export const createTextBoxVariableAdapter = (): VariableAdapter<TextBoxVariableM
   return {
     id: 'textbox',
     description: '定义一个文本框变量，用户可以在其中输入任意字符串',
-    name: 'Text box',
+    name: '文本框',
     initialState: initialTextBoxVariableModelState,
     reducer: textBoxVariableReducer,
     picker: TextBoxVariablePicker,

@@ -107,7 +107,7 @@ export class VariableEditorList extends PureComponent<Props> {
                             <IconButton
                               onClick={event => this.onChangeVariableOrder(event, variable, MoveType.up)}
                               name="arrow-up"
-                              title="向上移动变量"
+                              title="上移变量"
                               aria-label={selectors.pages.Dashboard.Settings.Variables.List.tableRowArrowUpButtons(
                                 variable.name
                               )}

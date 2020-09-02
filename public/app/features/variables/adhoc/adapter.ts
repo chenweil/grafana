@@ -15,7 +15,7 @@ export const createAdHocVariableAdapter = (): VariableAdapter<AdHocVariableModel
   return {
     id: 'adhoc',
     description: '快速添加键/值过滤器',
-    name: 'Ad hoc filters',
+    name: '临时过滤器',
     initialState: initialAdHocVariableModelState,
     reducer: adHocVariableReducer,
     picker: AdHocPicker,

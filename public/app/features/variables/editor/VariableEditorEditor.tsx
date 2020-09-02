@@ -173,7 +173,7 @@ export class VariableEditorEditorUnConnected extends PureComponent<Props> {
                 />
               </div>
               <div className="gf-form max-width-19">
-                <span className="gf-form-label width-6">Hide</span>
+                <span className="gf-form-label width-6">隐藏</span>
                 <div className="gf-form-select-wrapper max-width-15">
                   <select
                     className="gf-form-input"
