@@ -111,7 +111,7 @@ export const OverrideFieldConfigEditor: React.FC<Props> = props => {
     <div aria-label={selectors.components.OverridesConfigEditor.content}>
       {config.overrides.length === 0 && (
         <FeatureInfoBox
-          title="Overrides"
+          title="覆盖"
           url={getDocsLink(DocsId.FieldConfigOverrides)}
           className={css`
             margin: ${theme.spacing.md};

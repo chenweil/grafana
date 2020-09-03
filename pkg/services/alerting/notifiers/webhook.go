@@ -12,7 +12,7 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "webhook",
 		Name:        "webhook",
-		Description: "Sends HTTP POST request to a URL",
+		Description: "将HTTP POST请求发送到URL",
 		Heading:     "Webhook settings",
 		Factory:     NewWebHookNotifier,
 		OptionsTemplate: `
@@ -57,7 +57,7 @@ func init() {
 				Required:     true,
 			},
 			{
-				Label:   "Http Method",
+				Label:   "Http方法",
 				Element: alerting.ElementTypeSelect,
 				SelectOptions: []alerting.SelectOption{
 					{
@@ -92,7 +92,7 @@ func init() {
 func NewWebHookNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	password := model.DecryptedValue("password", model.Settings.Get("password").MustString())
@@ -165,7 +165,7 @@ func (wn *WebhookNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		wn.log.Error("Failed to send webhook", "error", err, "webhook", wn.Name)
+		wn.log.Error("无法发送Webhook", "error", err, "webhook", wn.Name)
 		return err
 	}
 

@@ -91,14 +91,14 @@ class DashboardImportUnConnected extends PureComponent<Props> {
                     required: '必须提供Grafana仪表板网址或ID',
                     validate: validateGcomDashboard,
                   })}
-                  addonAfter={<Button type="submit">Load</Button>}
+                  addonAfter={<Button type="submit">加载</Button>}
                 />
               </Field>
             )}
           </Form>
         </div>
         <div className={styles.option}>
-          <Legend>Import via panel json</Legend>
+          <Legend>通过面板JSON导入</Legend>
           <Form onSubmit={this.getDashboardFromJson} defaultValues={{ dashboardJson: '' }}>
             {({ register, errors }) => (
               <>

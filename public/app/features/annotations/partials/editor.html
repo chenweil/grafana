@@ -38,7 +38,7 @@
             <em class="muted">{{ annotation.name }} (Built-in)</em>
           </td>
           <td class="pointer" ng-click="ctrl.edit(annotation)">
-            {{ annotation.datasource || 'Default' }}
+            {{ annotation.datasource || '默认' }}
           </td>
           <td style="width: 1%">
             <icon ng-click="ctrl.move($index,-1)" ng-hide="$first" name="'arrow-up'"></icon>
@@ -78,7 +78,7 @@
       <div class="gf-form-inline">
         <div class="gf-form">
           <span class="gf-form-label width-7">名字</span>
-          <input type="text" class="gf-form-input width-20" ng-model="ctrl.currentAnnotation.name" placeholder="name" />
+          <input type="text" class="gf-form-input width-20" ng-model="ctrl.currentAnnotation.name" placeholder="名字" />
         </div>
         <div class="gf-form">
           <span class="gf-form-label width-7">数据源</span>

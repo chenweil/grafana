@@ -238,7 +238,7 @@ export class Logs extends PureComponent<Props, State> {
 
     if (dedupStrategy !== LogsDedupStrategy.none) {
       meta.push({
-        label: 'Dedup count',
+        label: '重复计数',
         value: dedupCount,
         kind: LogsMetaKind.Number,
       });
@@ -246,13 +246,13 @@ export class Logs extends PureComponent<Props, State> {
 
     if (logRows.some(r => r.entry.length > MAX_CHARACTERS)) {
       meta.push({
-        label: 'Info',
-        value: 'Logs with more than 100,000 characters could not be parsed and highlighted',
+        label: '信息',
+        value: '超过100,000个字符的日志无法解析和突出显示',
         kind: LogsMetaKind.String,
       });
     }
 
-    const scanText = scanRange ? `Scanning ${rangeUtil.describeTimeRange(scanRange)}` : 'Scanning...';
+    const scanText = scanRange ? `扫描 ${rangeUtil.describeTimeRange(scanRange)}` : '扫描中...';
     const series = logsSeries ? logsSeries : [];
 
     return (
@@ -277,10 +277,10 @@ export class Logs extends PureComponent<Props, State> {
         <div className="logs-panel-options">
           <div className="logs-panel-controls">
             <div className="logs-panel-controls-main">
-              <Switch label="Time" checked={showTime} onChange={this.onChangeTime} transparent />
-              <Switch label="Unique labels" checked={showLabels} onChange={this.onChangeLabels} transparent />
-              <Switch label="Wrap lines" checked={wrapLogMessage} onChange={this.onChangewrapLogMessage} transparent />
-              <ToggleButtonGroup label="Dedup" transparent={true}>
+              <Switch label="时间" checked={showTime} onChange={this.onChangeTime} transparent />
+              <Switch label="特殊标签" checked={showLabels} onChange={this.onChangeLabels} transparent />
+              <Switch label="换行" checked={wrapLogMessage} onChange={this.onChangewrapLogMessage} transparent />
+              <ToggleButtonGroup label="去重" transparent={true}>
                 {Object.keys(LogsDedupStrategy).map((dedupType: string, i) => (
                   <ToggleButton
                     key={i}
@@ -297,7 +297,7 @@ export class Logs extends PureComponent<Props, State> {
             </div>
             <button
               disabled={isFlipping}
-              title={logsSortOrder === LogsSortOrder.Ascending ? 'Change to newest first' : 'Change to oldest first'}
+              title={logsSortOrder === LogsSortOrder.Ascending ? '改为最新' : '改为最早'}
               aria-label="Flip results order"
               className={cx(
                 'gf-form-label gf-form-label--btn',
@@ -307,7 +307,7 @@ export class Logs extends PureComponent<Props, State> {
               )}
               onClick={this.onChangeLogsSortOrder}
             >
-              <span className="btn-title">{isFlipping ? 'Flipping...' : 'Flip results order'}</span>
+              <span className="btn-title">{isFlipping ? '调换...' : '调换结果顺序'}</span>
             </button>
           </div>
         </div>
@@ -327,14 +327,14 @@ export class Logs extends PureComponent<Props, State> {
           <MetaInfoText
             metaItems={[
               {
-                label: 'Showing only parsed fields',
+                label: '仅显示已解析的字段',
                 value: renderMetaItem(showParsedFields, LogsMetaKind.LabelsMap),
               },
               {
                 label: '',
                 value: (
                   <Button variant="secondary" size="sm" onClick={this.clearParsedFields}>
-                    Show all parsed fields
+                    显示所有解析的字段
                   </Button>
                 ),
               },
@@ -365,9 +365,9 @@ export class Logs extends PureComponent<Props, State> {
 
         {!loading && !hasData && !scanning && (
           <div className="logs-panel-nodata">
-            No logs found.
+            找不到日志。
             <Button size="xs" variant="link" onClick={this.onClickScan}>
-              Scan for older logs
+              扫描较旧的日志
             </Button>
           </div>
         )}
@@ -376,7 +376,7 @@ export class Logs extends PureComponent<Props, State> {
           <div className="logs-panel-nodata">
             <span>{scanText}</span>
             <Button size="xs" variant="link" onClick={this.onClickStopScan}>
-              Stop scan
+              停止扫描
             </Button>
           </div>
         )}

@@ -113,9 +113,9 @@ class UnThemedLogDetailsRow extends PureComponent<Props, State> {
     const style = getLogRowStyles(theme);
     const toggleFieldButton =
       !isLabel && showParsedFields && showParsedFields.includes(parsedKey) ? (
-        <IconButton name="eye" className={styles.showingField} title="Hide this field" onClick={this.hideField} />
+        <IconButton name="eye" className={styles.showingField} title="隐藏此字段" onClick={this.hideField} />
       ) : (
-        <IconButton name="eye" title="Show this field instead of the message" onClick={this.showField} />
+        <IconButton name="eye" title="显示此字段而不是消息" onClick={this.showField} />
       );
 
     return (
@@ -128,10 +128,10 @@ class UnThemedLogDetailsRow extends PureComponent<Props, State> {
         {isLabel && (
           <>
             <td className={style.logsDetailsIcon}>
-              <IconButton name="search-plus" title="Filter for value" onClick={this.filterLabel} />
+              <IconButton name="search-plus" title="筛选此值" onClick={this.filterLabel} />
             </td>
             <td className={style.logsDetailsIcon}>
-              <IconButton name="search-minus" title="Filter out value" onClick={this.filterOutLabel} />
+              <IconButton name="search-minus" title="筛选不等于此值" onClick={this.filterOutLabel} />
             </td>
           </>
         )}

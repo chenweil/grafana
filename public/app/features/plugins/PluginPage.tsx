@@ -33,7 +33,7 @@ import { ContextSrv } from '../../core/services/context_srv';
 
 export function getLoadingNav(): NavModel {
   const node = {
-    text: 'Loading...',
+    text: '加载中...',
     icon: 'icon-gf icon-gf-panel',
   };
   return {

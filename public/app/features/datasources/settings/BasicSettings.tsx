@@ -30,7 +30,7 @@ const BasicSettings: FC<Props> = ({ dataSourceName, isDefault, onDefaultChange, 
           />
         </div>
         <Switch
-          label="Default"
+          label="默认"
           checked={isDefault}
           onChange={event => {
             // @ts-ignore

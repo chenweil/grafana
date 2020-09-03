@@ -1,10 +1,5 @@
-
 <query-editor-row ng-if="ctrl.datasource.is2x" query-ctrl="ctrl" can-collapse="true" has-text-edit-mode="true">
-  <flux-query-editor 
-    target="ctrl.target" 
-    change="ctrl.onChange" 
-    refresh="ctrl.onRunQuery"
-  ></flux-query-editor>
+  <flux-query-editor target="ctrl.target" change="ctrl.onChange" refresh="ctrl.onRunQuery"></flux-query-editor>
 </query-editor-row>
 
 <query-editor-row ng-if="!ctrl.datasource.is2x" query-ctrl="ctrl" can-collapse="true" has-text-edit-mode="true">
@@ -15,14 +10,14 @@
         class="gf-form-input"
         ng-model="ctrl.target.query"
         spellcheck="false"
-        placeholder="InfluxDB Query"
+        placeholder="InfluxDB查询"
         ng-model-onblur
         ng-change="ctrl.refresh()"
       ></textarea>
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword">FORMAT AS</label>
+        <label class="gf-form-label query-keyword">格式化为</label>
         <div class="gf-form-select-wrapper">
           <select
             class="gf-form-input gf-size-auto"
@@ -33,13 +28,13 @@
         </div>
       </div>
       <div class="gf-form max-width-25" ng-hide="ctrl.target.resultFormat === 'table'">
-        <label class="gf-form-label query-keyword">ALIAS BY</label>
+        <label class="gf-form-label query-keyword">别名</label>
         <input
           type="text"
           class="gf-form-input"
           ng-model="ctrl.target.alias"
           spellcheck="false"
-          placeholder="Naming pattern"
+          placeholder="命名模式"
           ng-blur="ctrl.refresh()"
         />
       </div>
@@ -52,7 +47,7 @@
   <div ng-if="!ctrl.target.rawQuery">
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">FROM</label>
+        <label class="gf-form-label query-keyword width-7">从</label>
 
         <metric-segment
           segment="ctrl.policySegment"
@@ -67,7 +62,7 @@
       </div>
 
       <div class="gf-form">
-        <label class="gf-form-label query-keyword">WHERE</label>
+        <label class="gf-form-label query-keyword">条件</label>
       </div>
 
       <div class="gf-form" ng-repeat="segment in ctrl.tagSegments">
@@ -85,7 +80,7 @@
 
     <div class="gf-form-inline" ng-repeat="selectParts in ctrl.queryModel.selectModels">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7"> <span ng-show="$index === 0">SELECT</span>&nbsp; </label>
+        <label class="gf-form-label query-keyword width-7"> <span ng-show="$index === 0">选择</span>&nbsp; </label>
       </div>
 
       <div class="gf-form" ng-repeat="part in selectParts">
@@ -115,7 +110,7 @@
     <div class="gf-form-inline">
       <div class="gf-form">
         <label class="gf-form-label query-keyword width-7">
-          <span>GROUP BY</span>
+          <span>分组</span>
         </label>
 
         <query-part-editor
@@ -142,9 +137,9 @@
 
     <div class="gf-form-inline" ng-if="ctrl.target.orderByTime === 'DESC'">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">ORDER BY</label>
+        <label class="gf-form-label query-keyword width-7">排序</label>
         <label class="gf-form-label pointer" ng-click="ctrl.removeOrderByTime()"
-          >time <span class="query-keyword">DESC</span> <icon name="'times'" style="margin-bottom: 0;"></icon
+          >时间 <span class="query-keyword">倒叙</span> <icon name="'times'" style="margin-bottom: 0;"></icon
         ></label>
       </div>
       <div class="gf-form gf-form--grow">
@@ -154,13 +149,13 @@
 
     <div class="gf-form-inline" ng-if="ctrl.target.limit">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">LIMIT</label>
+        <label class="gf-form-label query-keyword width-7">限制</label>
         <input
           type="text"
           class="gf-form-input width-9"
           ng-model="ctrl.target.limit"
           spellcheck="false"
-          placeholder="No Limit"
+          placeholder="无限制"
           ng-blur="ctrl.refresh()"
         />
       </div>
@@ -171,13 +166,13 @@
 
     <div class="gf-form-inline" ng-if="ctrl.target.slimit">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">SLIMIT</label>
+        <label class="gf-form-label query-keyword width-7">限制</label>
         <input
           type="text"
           class="gf-form-input width-9"
           ng-model="ctrl.target.slimit"
           spellcheck="false"
-          placeholder="No Limit"
+          placeholder="无限制"
           ng-blur="ctrl.refresh()"
         />
       </div>
@@ -188,13 +183,13 @@
 
     <div class="gf-form-inline" ng-if="ctrl.target.tz">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">tz</label>
+        <label class="gf-form-label query-keyword width-7">时区</label>
         <input
           type="text"
           class="gf-form-input width-9"
           ng-model="ctrl.target.tz"
           spellcheck="false"
-          placeholder="No Timezone"
+          placeholder="无时区"
           ng-blur="ctrl.refresh()"
         />
       </div>
@@ -205,7 +200,7 @@
 
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">FORMAT AS</label>
+        <label class="gf-form-label query-keyword width-7">格式化为</label>
         <div class="gf-form-select-wrapper">
           <select
             class="gf-form-input gf-size-auto"
@@ -222,13 +217,13 @@
 
     <div class="gf-form-inline" ng-hide="ctrl.target.resultFormat === 'table'">
       <div class="gf-form max-width-30">
-        <label class="gf-form-label query-keyword width-7">ALIAS BY</label>
+        <label class="gf-form-label query-keyword width-7">别名</label>
         <input
           type="text"
           class="gf-form-input"
           ng-model="ctrl.target.alias"
           spellcheck="false"
-          placeholder="Naming pattern"
+          placeholder="命名模式"
           ng-blur="ctrl.refresh()"
         />
       </div>

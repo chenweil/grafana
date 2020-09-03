@@ -8,7 +8,7 @@ export function buildNavModel(dataSource: DataSourceSettings, plugin: GenericDat
   const navModel: NavModelItem = {
     img: pluginMeta.info.logos.large,
     id: 'datasource-' + dataSource.id,
-    subTitle: `Type: ${pluginMeta.name}`,
+    subTitle: `类型: ${pluginMeta.name}`,
     url: '',
     text: dataSource.name,
     breadcrumbs: [{ title: '数据源', url: 'datasources' }],

@@ -183,7 +183,7 @@ export function RichHistoryQueriesTab(props: Props) {
     <div className={styles.container}>
       <div className={styles.containerSlider}>
         <div className={styles.slider}>
-          <div className="label-slider">Filter history</div>
+          <div className="label-slider">筛选记录</div>
           <div className="label-slider">{mapNumbertoTimeInSlider(timeFilter[0])}</div>
           <div className="slider">
             <Slider
@@ -209,7 +209,7 @@ export function RichHistoryQueriesTab(props: Props) {
                 isMulti={true}
                 options={listOfDatasources}
                 value={datasourceFilters}
-                placeholder="Filter queries for data sources(s)"
+                placeholder="筛选查询数据源"
                 onChange={onSelectDatasourceFilters}
               />
             </div>
@@ -218,7 +218,7 @@ export function RichHistoryQueriesTab(props: Props) {
             <FilterInput
               labelClassName="gf-form--has-input-icon gf-form--grow"
               inputClassName="gf-form-input"
-              placeholder="Search queries"
+              placeholder="搜索查询"
               value={searchInput}
               onChange={(value: string) => {
                 setSearchInput(value);
@@ -230,7 +230,7 @@ export function RichHistoryQueriesTab(props: Props) {
             <Select
               value={sortOrderOptions.filter(order => order.value === sortOrder)}
               options={sortOrderOptions}
-              placeholder="Sort queries by"
+              placeholder="排序查询依据"
               onChange={e => onChangeSortOrder(e.value as SortOrder)}
             />
           </div>
@@ -239,7 +239,7 @@ export function RichHistoryQueriesTab(props: Props) {
           return (
             <div key={heading}>
               <div className={styles.heading}>
-                {heading} <span className={styles.queries}>{mappedQueriesToHeadings[heading].length} queries</span>
+                {heading} <span className={styles.queries}>{mappedQueriesToHeadings[heading].length} 查询</span>
               </div>
               {mappedQueriesToHeadings[heading].map((q: RichHistoryQuery) => {
                 const idx = listOfDatasources.findIndex(d => d.label === q.datasourceName);
@@ -256,7 +256,7 @@ export function RichHistoryQueriesTab(props: Props) {
             </div>
           );
         })}
-        <div className={styles.footer}>The history is local to your browser and is not shared with others.</div>
+        <div className={styles.footer}>历史记录在您的浏览器中是本地的，不会与其他人共享。</div>
       </div>
     </div>
   );

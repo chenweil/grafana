@@ -38,7 +38,7 @@ export function makeMockLokiDatasource(labelsAndValues: Labels, series?: SeriesF
         } else if (seriesMatch && series && params) {
           return series[params.match] || [];
         } else {
-          throw new Error(`Unexpected url error, ${url}`);
+          throw new Error(`意外的网址错误, ${url}`);
         }
       }
     },

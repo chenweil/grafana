@@ -117,7 +117,7 @@ function ExploreQueryInspector(props: Props) {
   };
 
   const inspectorTab: TabConfig = {
-    label: 'Query Inspector',
+    label: '查询检查器',
     value: 'query_inspector',
     icon: 'info-circle',
     content: (
@@ -131,7 +131,7 @@ function ExploreQueryInspector(props: Props) {
                 className={styles.toolbarItem}
                 onClick={onToggleExpand}
               >
-                {allNodesExpanded ? 'Collapse' : 'Expand'} 所有
+                {allNodesExpanded ? '关闭' : '展开'} 所有
               </Button>
 
               <CopyToClipboard

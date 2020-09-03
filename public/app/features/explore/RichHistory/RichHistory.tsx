@@ -22,10 +22,10 @@ export enum Tabs {
 }
 
 export const sortOrderOptions = [
-  { label: 'Newest first', value: SortOrder.Descending },
-  { label: 'Oldest first', value: SortOrder.Ascending },
-  { label: 'Data source A-Z', value: SortOrder.DatasourceAZ },
-  { label: 'Data source Z-A', value: SortOrder.DatasourceZA },
+  { label: '最新', value: SortOrder.Descending },
+  { label: '最早', value: SortOrder.Ascending },
+  { label: '数据源 A-Z', value: SortOrder.DatasourceAZ },
+  { label: '数据源 Z-A', value: SortOrder.DatasourceZA },
 ];
 
 export interface RichHistoryProps extends Themeable {
@@ -125,7 +125,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps, RichHistorySta
     const { richHistory, height, exploreId, deleteRichHistory, onClose, firstTab } = this.props;
 
     const QueriesTab: TabConfig = {
-      label: 'Query history',
+      label: '查询历史',
       value: Tabs.RichHistory,
       content: (
         <RichHistoryQueriesTab
@@ -144,7 +144,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps, RichHistorySta
     };
 
     const StarredTab: TabConfig = {
-      label: 'Starred',
+      label: '加星标的',
       value: Tabs.Starred,
       content: (
         <RichHistoryStarredTab
@@ -161,7 +161,7 @@ class UnThemedRichHistory extends PureComponent<RichHistoryProps, RichHistorySta
     };
 
     const SettingsTab: TabConfig = {
-      label: 'Settings',
+      label: '设置',
       value: Tabs.Settings,
       content: (
         <RichHistorySettings

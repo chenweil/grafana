@@ -104,9 +104,9 @@ export class TagsInput extends PureComponent<Props, State> {
             `
           )}
         >
-          <Input placeholder="Add Name" onChange={this.onNameChange} value={newTag} onKeyUp={this.onKeyboardAdd} />
+          <Input placeholder="添加名称" onChange={this.onNameChange} value={newTag} onKeyUp={this.onKeyboardAdd} />
           <Button className={getStyles().addButtonStyle} onClick={this.onAdd} variant="secondary" size="md">
-            Add
+            添加
           </Button>
         </div>
         <div className={getStyles().tagsCloudStyle}>

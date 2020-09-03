@@ -21,12 +21,12 @@ const versions = [
   {
     label: 'InfluxQL',
     value: InfluxVersion.InfluxQL,
-    description: 'The InfluxDB SQL-like query language.  Supported in InfluxDB 1.x',
+    description: 'InfluxDB类似SQL的查询语言。 在InfluxDB 1.x中受支持',
   },
   {
     label: 'Flux',
     value: InfluxVersion.Flux,
-    description: 'Advanced data scripting and query language.  Supported in InfluxDB 2.x and 1.8+ (beta)',
+    description: '先进的数据脚本和查询语言。 在InfluxDB 2.x和1.8+（测试版）中受支持',
   },
 ] as Array<SelectableValue<InfluxVersion>>;
 
@@ -84,9 +84,9 @@ export class ConfigEditor extends PureComponent<Props> {
       <div>
         <div className="gf-form-group">
           <div className="width-30 grafana-info-box">
-            <h5>Support for flux in Grafana is currently in beta</h5>
+            <h5>目前在Beta中支持Grafana中的磁通</h5>
             <p>
-              Please report any issues to: <br />
+              请将任何问题报告给： <br />
               <a href="https://github.com/grafana/grafana/issues/new/choose">
                 https://github.com/grafana/grafana/issues
               </a>
@@ -95,14 +95,11 @@ export class ConfigEditor extends PureComponent<Props> {
         </div>
         <br />
 
-        <h3 className="page-heading">Connection</h3>
+        <h3 className="page-heading">连接</h3>
         <div className="gf-form-inline">
           <div className="gf-form">
-            <InlineFormLabel
-              className="width-10"
-              tooltip="This URL needs to be accessible from the grafana backend/server."
-            >
-              URL
+            <InlineFormLabel className="width-10" tooltip="需要从grafana后端/服务器访问此URL。">
+              地址
             </InlineFormLabel>
             <div className="width-20">
               <Input
@@ -116,7 +113,7 @@ export class ConfigEditor extends PureComponent<Props> {
         </div>
         <div className="gf-form-inline">
           <div className="gf-form">
-            <InlineFormLabel className="width-10">Organization</InlineFormLabel>
+            <InlineFormLabel className="width-10">组织</InlineFormLabel>
             <div className="width-10">
               <Input
                 className="width-20"
@@ -131,7 +128,7 @@ export class ConfigEditor extends PureComponent<Props> {
             <SecretFormField
               isConfigured={(secureJsonFields && secureJsonFields.token) as boolean}
               value={secureJsonData.token || ''}
-              label="Token"
+              label="令牌"
               labelWidth={10}
               inputWidth={20}
               onReset={this.onResetToken}
@@ -141,11 +138,11 @@ export class ConfigEditor extends PureComponent<Props> {
         </div>
         <div className="gf-form-inline">
           <div className="gf-form">
-            <InlineFormLabel className="width-10">Default Bucket</InlineFormLabel>
+            <InlineFormLabel className="width-10">默认桶</InlineFormLabel>
             <div className="width-10">
               <Input
                 className="width-20"
-                placeholder="default bucket"
+                placeholder="默认桶"
                 value={options.jsonData.defaultBucket || ''}
                 onChange={onUpdateDatasourceJsonDataOption(this.props, 'defaultBucket')}
               />
@@ -157,10 +154,9 @@ export class ConfigEditor extends PureComponent<Props> {
           <div className="gf-form">
             <InlineFormLabel
               className="width-10"
-              tooltip="A lower limit for the auto group by time interval. Recommended to be set to write frequency,
-				for example 1m if your data is written every minute."
+              tooltip="自动分组时间间隔的下限。 建议设置为写入频率，例如，如果每分钟写入一次数据，则为1m。"
             >
-              Min time interval
+              最小时间间隔
             </InlineFormLabel>
             <div className="width-10">
               <Input
@@ -190,11 +186,11 @@ export class ConfigEditor extends PureComponent<Props> {
           onChange={onOptionsChange}
         />
 
-        <h3 className="page-heading">InfluxDB Details</h3>
+        <h3 className="page-heading">InfluxDB详情</h3>
         <div className="gf-form-group">
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-10">Database</InlineFormLabel>
+              <InlineFormLabel className="width-10">数据库</InlineFormLabel>
               <div className="width-20">
                 <Input
                   className="width-20"
@@ -206,7 +202,7 @@ export class ConfigEditor extends PureComponent<Props> {
           </div>
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-10">User</InlineFormLabel>
+              <InlineFormLabel className="width-10">用户</InlineFormLabel>
               <div className="width-10">
                 <Input
                   className="width-20"
@@ -221,7 +217,7 @@ export class ConfigEditor extends PureComponent<Props> {
               <SecretFormField
                 isConfigured={(secureJsonFields && secureJsonFields.password) as boolean}
                 value={secureJsonData.password || ''}
-                label="Password"
+                label="密码"
                 labelWidth={10}
                 inputWidth={20}
                 onReset={this.onResetPassword}
@@ -233,11 +229,9 @@ export class ConfigEditor extends PureComponent<Props> {
             <div className="gf-form">
               <InlineFormLabel
                 className="width-10"
-                tooltip="You can use either GET or POST HTTP method to query your InfluxDB database. The POST
-          method allows you to perform heavy requests (with a lots of WHERE clause) while the GET method
-          will restrict you and return an error if the query is too large."
+                tooltip="您可以使用GET或POST HTTP方法来查询您的InfluxDB数据库。 POST方法允许您执行繁重的请求（带有大量WHERE子句），而GET方法将限制您，如果查询太大，则会返回错误。"
               >
-                HTTP Method
+                HTTP方法
               </InlineFormLabel>
               <Select
                 className="width-10"
@@ -252,14 +246,13 @@ export class ConfigEditor extends PureComponent<Props> {
 
         <div className="gf-form-group">
           <div className="grafana-info-box">
-            <h5>Database Access</h5>
+            <h5>数据库访问</h5>
             <p>
-              Setting the database for this datasource does not deny access to other databases. The InfluxDB query
-              syntax allows switching the database in the query. For example:
-              <code>SHOW MEASUREMENTS ON _internal</code> or <code>SELECT * FROM "_internal".."database" LIMIT 10</code>
+              为此数据源设置数据库不会拒绝对其他数据库的访问。 InfluxDB查询语法允许在查询中切换数据库。 例如：
+              <code> _internal </code>上的显示度量或<code> SELECT * FROM“ _internal” ..“ database” LIMIT 10 </code>
               <br />
               <br />
-              To support data isolation and security, make sure appropriate permissions are configured in InfluxDB.
+              为了支持数据隔离和安全性，请确保在InfluxDB中配置了适当的权限。
             </p>
           </div>
         </div>
@@ -268,10 +261,9 @@ export class ConfigEditor extends PureComponent<Props> {
             <div className="gf-form">
               <InlineFormLabel
                 className="width-10"
-                tooltip="A lower limit for the auto group by time interval. Recommended to be set to write frequency,
-				for example 1m if your data is written every minute."
+                tooltip="自动分组时间间隔的下限。 建议设置为写入频率，例如，如果每分钟写入一次，则为1m。"
               >
-                Min time interval
+                最小时间间隔
               </InlineFormLabel>
               <div className="width-10">
                 <Input
@@ -293,7 +285,7 @@ export class ConfigEditor extends PureComponent<Props> {
 
     return (
       <>
-        <h3 className="page-heading">Query Language</h3>
+        <h3 className="page-heading">查询语法</h3>
         <div className="gf-form-group">
           <div className="gf-form-inline">
             <div className="gf-form">

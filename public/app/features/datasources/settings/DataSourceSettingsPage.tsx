@@ -178,7 +178,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
         {this.isReadOnly() && this.renderIsReadOnlyMessage()}
         {dataSourceMeta.state && (
           <div className="gf-form">
-            <label className="gf-form-label width-10">Plugin state</label>
+            <label className="gf-form-label width-10">插件状态</label>
             <label className="gf-form-label gf-form-label--transparent">
               <PluginStateinfo state={dataSourceMeta.state} />
             </label>

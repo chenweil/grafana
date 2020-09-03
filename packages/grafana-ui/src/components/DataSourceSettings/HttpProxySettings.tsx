@@ -7,25 +7,25 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({ dataSourceC
     <>
       <div className="gf-form-inline">
         <Switch
-          label="TLS Client Auth"
+          label="TLS客户端验证"
           labelClass="width-13"
           checked={dataSourceConfig.jsonData.tlsAuth || false}
           onChange={event => onChange({ ...dataSourceConfig.jsonData, tlsAuth: event!.currentTarget.checked })}
         />
 
         <Switch
-          label="With CA Cert"
+          label="使用CA证书"
           labelClass="width-13"
           checked={dataSourceConfig.jsonData.tlsAuthWithCACert || false}
           onChange={event =>
             onChange({ ...dataSourceConfig.jsonData, tlsAuthWithCACert: event!.currentTarget.checked })
           }
-          tooltip="Needed for verifying self-signed TLS Certs"
+          tooltip="验证自签名TLS证书所需"
         />
       </div>
       <div className="gf-form-inline">
         <Switch
-          label="Skip TLS Verify"
+          label="跳过TLS验证"
           labelClass="width-13"
           checked={dataSourceConfig.jsonData.tlsSkipVerify || false}
           onChange={event => onChange({ ...dataSourceConfig.jsonData, tlsSkipVerify: event!.currentTarget.checked })}
@@ -33,11 +33,11 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({ dataSourceC
       </div>
       <div className="gf-form-inline">
         <Switch
-          label="Forward OAuth Identity"
+          label="转发OAuth身份"
           labelClass="width-13"
           checked={dataSourceConfig.jsonData.oauthPassThru || false}
           onChange={event => onChange({ ...dataSourceConfig.jsonData, oauthPassThru: event!.currentTarget.checked })}
-          tooltip="Forward the user's upstream OAuth identity to the data source (Their access token gets passed along)."
+          tooltip="将用户的上游OAuth身份转发到数据源（他们的访问令牌会一起传递）。"
         />
       </div>
     </>
