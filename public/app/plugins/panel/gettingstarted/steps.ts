@@ -91,7 +91,7 @@ export const getSteps = (): SetupStep[] => [
       {
         type: 'docs',
         heading: '插件',
-        title: '查找并安装插件s',
+        title: '查找并安装插件',
         learnHref: 'https://grafana.com/docs/grafana/latest/plugins/installation',
         href: 'plugins',
         icon: 'plug',
