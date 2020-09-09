@@ -29,7 +29,7 @@ interface InputState {
   invalid: boolean;
 }
 
-const errorMessage = 'Please enter a past date or "now"';
+const errorMessage = '请输入过去的日期或 "now"';
 
 export const TimeRangeForm: React.FC<Props> = props => {
   const { value, isFullscreen = false, timeZone, roundup } = props;

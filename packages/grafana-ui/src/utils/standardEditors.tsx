@@ -133,7 +133,7 @@ export const getStandardFieldConfigs = () => {
   const thresholds: FieldConfigPropertyItem<any, ThresholdsConfig, ThresholdsFieldConfigSettings> = {
     id: 'thresholds',
     path: 'thresholds',
-    name: '阈',
+    name: '阈值',
 
     editor: standardEditorsRegistry.get('thresholds').editor as any,
     override: standardEditorsRegistry.get('thresholds').editor as any,
@@ -147,7 +147,7 @@ export const getStandardFieldConfigs = () => {
       ],
     },
     shouldApply: field => field.type === FieldType.number,
-    category: ['Thresholds'],
+    category: ['阈值'],
     getItemsCount: value => (value ? value.steps.length : 0),
   };
 
@@ -163,7 +163,7 @@ export const getStandardFieldConfigs = () => {
     settings: {},
     defaultValue: [],
     shouldApply: () => true,
-    category: ['Value mappings'],
+    category: ['值映射'],
     getItemsCount: (value?) => (value ? value.length : 0),
   };
 

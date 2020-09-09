@@ -20,11 +20,11 @@ import { FullWidthButtonContainer } from '../Button/FullWidthButtonContainer';
 import { Label } from '../Forms/Label';
 
 const modes: Array<SelectableValue<ThresholdsMode>> = [
-  { value: ThresholdsMode.Absolute, label: 'Absolute', description: 'Pick thresholds based on the absolute values' },
+  { value: ThresholdsMode.Absolute, label: '绝对', description: '根据绝对值选择阈值' },
   {
     value: ThresholdsMode.Percentage,
-    label: 'Percentage',
-    description: 'Pick threshold based on the percent between min/max',
+    label: '百分比',
+    description: '选择阈值基于最小/最大之间的百分比',
   },
 ];
 
@@ -143,7 +143,7 @@ export class ThresholdsEditor extends PureComponent<Props, State> {
       return (
         <Input
           type="text"
-          value={'Base'}
+          value={'基础'}
           disabled
           prefix={
             threshold.color && (
@@ -201,7 +201,7 @@ export class ThresholdsEditor extends PureComponent<Props, State> {
             <div className={styles.wrapper}>
               <FullWidthButtonContainer className={styles.addButton}>
                 <Button size="sm" icon="plus" onClick={() => this.onAddThreshold()} variant="secondary">
-                  Add threshold
+                  添加阈值
                 </Button>
               </FullWidthButtonContainer>
               <div className={styles.thresholds}>
@@ -218,7 +218,7 @@ export class ThresholdsEditor extends PureComponent<Props, State> {
               </div>
 
               <div>
-                <Label description="Percentage means thresholds relative to min & max">Thresholds mode</Label>
+                <Label description="百分比是指相对于最小和最大的阈值">阈值模式</Label>
                 <FullWidthButtonContainer>
                   <RadioButtonGroup size="sm" options={modes} onChange={this.onModeChanged} value={thresholds.mode} />
                 </FullWidthButtonContainer>

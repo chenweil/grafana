@@ -5,8 +5,8 @@ import { renderComponentWithTheme } from '../../utils/storybook/withTheme';
 
 const getKnobs = () => {
   return {
-    value: text('value', '$5022'),
-    title: text('title', 'Total Earnings'),
+    value: text('值', '$5022'),
+    title: text('标题', 'Total Earnings'),
     colorMode: select('Color mode', [BigValueColorMode.Value, BigValueColorMode.Background], BigValueColorMode.Value),
     graphMode: select('Graph mode', [BigValueGraphMode.Area, BigValueGraphMode.None], BigValueGraphMode.Area),
     width: number('Width', 400, { range: true, max: 800, min: 200 }),
@@ -21,7 +21,7 @@ const getKnobs = () => {
 };
 
 export default {
-  title: 'Visualizations/BigValue',
+  title: '可视化/大数据',
   component: BigValue,
   decorators: [withCenteredStory],
 };

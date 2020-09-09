@@ -48,7 +48,7 @@ export const DataLinkEditor: React.FC<DataLinkEditorProps> = React.memo(
           <Input value={value.title} onChange={onTitleChange} placeholder="显示详细资料" />
         </Field>
 
-        <Field label="URL">
+        <Field label="地址">
           <DataLinkInput value={value.url} onChange={onUrlChange} suggestions={suggestions} />
         </Field>
 
