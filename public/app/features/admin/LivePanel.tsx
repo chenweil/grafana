@@ -74,7 +74,7 @@ export class LivePanel extends PureComponent<Props, State> {
         <h5>Count: {count}</h5>
         {lastTime > 0 && (
           <>
-            <h5>Last: {lastTime}</h5>
+            <h5>最后: {lastTime}</h5>
             {lastBody && (
               <div>
                 <pre>{lastBody}</pre>

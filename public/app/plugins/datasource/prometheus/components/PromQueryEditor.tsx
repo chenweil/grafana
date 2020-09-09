@@ -15,9 +15,9 @@ import PromLink from './PromLink';
 export type Props = QueryEditorProps<PrometheusDatasource, PromQuery, PromOptions>;
 
 const FORMAT_OPTIONS: Array<SelectableValue<string>> = [
-  { label: 'Time series', value: 'time_series' },
-  { label: 'Table', value: 'table' },
-  { label: 'Heatmap', value: 'heatmap' },
+  { label: '时间序列', value: 'time_series' },
+  { label: '表格', value: 'table' },
+  { label: '热图', value: 'heatmap' },
 ];
 
 const INTERVAL_FACTOR_OPTIONS: Array<SelectableValue<number>> = _.map([1, 2, 3, 4, 5, 10], (value: number) => ({

@@ -29,11 +29,11 @@ export function addHistoryMetadata(item: CompletionItem, history: any[]): Comple
   const historyForItem = history.filter(h => h.ts > cutoffTs && h.query === item.label);
   const count = historyForItem.length;
   const recent = historyForItem[0];
-  let hint = `Queried ${count} times in the last 24h.`;
+  let hint = `最近24小时被查询 ${count} 次。`;
 
   if (recent) {
     const lastQueried = dateTime(recent.ts).fromNow();
-    hint = `${hint} Last queried ${lastQueried}.`;
+    hint = `${hint} 最后查询的 ${lastQueried}.`;
   }
 
   return {
@@ -209,7 +209,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
       suggestions.push({
         prefixMatch: true,
         skipSort: true,
-        label: 'History',
+        label: '历史',
         items: historyItems,
       });
     }
@@ -223,13 +223,13 @@ export default class PromQlLanguageProvider extends LanguageProvider {
 
     suggestions.push({
       prefixMatch: true,
-      label: 'Functions',
+      label: '功能',
       items: FUNCTIONS.map(setFunctionKind),
     });
 
     if (metrics && metrics.length) {
       suggestions.push({
-        label: 'Metrics',
+        label: '指标',
         items: metrics.map(m => addMetricsMetadata(m, metricsMetadata)),
       });
     }
@@ -242,7 +242,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
       context: 'context-range',
       suggestions: [
         {
-          label: 'Range vector',
+          label: '范围向量',
           items: [...RATE_RANGES],
         },
       ],
@@ -301,7 +301,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
 
     const labelValues = await this.getLabelValues(selector);
     if (labelValues) {
-      suggestions.push({ label: 'Labels', items: Object.keys(labelValues).map(wrapLabel) });
+      suggestions.push({ label: '标签', items: Object.keys(labelValues).map(wrapLabel) });
     }
     return result;
   };
@@ -353,7 +353,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
     }
 
     if (!labelValues) {
-      console.warn(`Server did not return any values for selector = ${selector}`);
+      console.warn(`服务器没有给选择器 ${selector} 返回任何值`);
       return { suggestions };
     }
 
@@ -364,7 +364,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
       if (labelKey && labelValues[labelKey]) {
         context = 'context-label-values';
         suggestions.push({
-          label: `Label values for "${labelKey}"`,
+          label: `"${labelKey}"的标签值`,
           items: labelValues[labelKey].map(wrapLabel),
         });
       }
@@ -377,7 +377,7 @@ export default class PromQlLanguageProvider extends LanguageProvider {
         if (possibleKeys.length) {
           context = 'context-labels';
           const newItems = possibleKeys.map(key => ({ label: key }));
-          const newSuggestion: CompletionItemGroup = { label: `Labels`, items: newItems };
+          const newSuggestion: CompletionItemGroup = { label: `标签`, items: newItems };
           suggestions.push(newSuggestion);
         }
       }

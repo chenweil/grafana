@@ -13,9 +13,9 @@ export const plugin = new PanelPlugin<Options, CustomFieldConfig>(TablePanel)
       builder
         .addNumberInput({
           path: 'width',
-          name: 'Column width',
+          name: '列宽',
           settings: {
-            placeholder: 'auto',
+            placeholder: '自动',
             min: 20,
             max: 300,
           },
@@ -23,30 +23,30 @@ export const plugin = new PanelPlugin<Options, CustomFieldConfig>(TablePanel)
         })
         .addRadio({
           path: 'align',
-          name: 'Column alignment',
+          name: '列对齐',
           settings: {
             options: [
-              { label: 'auto', value: null },
-              { label: 'left', value: 'left' },
-              { label: 'center', value: 'center' },
-              { label: 'right', value: 'right' },
+              { label: '自动', value: null },
+              { label: '左', value: 'left' },
+              { label: '中', value: 'center' },
+              { label: '右', value: 'right' },
             ],
           },
           defaultValue: null,
         })
         .addSelect({
           path: 'displayMode',
-          name: 'Cell display mode',
-          description: 'Color text, background, show as gauge, etc',
+          name: '单元格显示模式',
+          description: '彩色文本，背景，显示为量规等',
           settings: {
             options: [
-              { value: TableCellDisplayMode.Auto, label: 'Auto' },
-              { value: TableCellDisplayMode.ColorText, label: 'Color text' },
-              { value: TableCellDisplayMode.ColorBackground, label: 'Color background' },
-              { value: TableCellDisplayMode.GradientGauge, label: 'Gradient gauge' },
-              { value: TableCellDisplayMode.LcdGauge, label: 'LCD gauge' },
-              { value: TableCellDisplayMode.BasicGauge, label: 'Basic gauge' },
-              { value: TableCellDisplayMode.JSONView, label: 'JSON View' },
+              { value: TableCellDisplayMode.Auto, label: '自动' },
+              { value: TableCellDisplayMode.ColorText, label: '彩色文本' },
+              { value: TableCellDisplayMode.ColorBackground, label: '彩色背景' },
+              { value: TableCellDisplayMode.GradientGauge, label: '坡度计' },
+              { value: TableCellDisplayMode.LcdGauge, label: '液晶量规' },
+              { value: TableCellDisplayMode.BasicGauge, label: '基本量规' },
+              { value: TableCellDisplayMode.JSONView, label: 'JSON视图' },
             ],
           },
         });
@@ -55,8 +55,8 @@ export const plugin = new PanelPlugin<Options, CustomFieldConfig>(TablePanel)
   .setPanelOptions(builder => {
     builder.addBooleanSwitch({
       path: 'showHeader',
-      name: 'Show header',
-      description: "To display table's header or not to display",
+      name: '显示表头',
+      description: '显示表头还是不显示',
       defaultValue: true,
     });
   });

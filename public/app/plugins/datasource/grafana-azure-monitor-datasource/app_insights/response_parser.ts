@@ -187,7 +187,7 @@ export default class ResponseParser {
     const metric = this.results.data.metrics[metricName];
 
     if (!metric) {
-      throw Error('No data found for metric: ' + metricName);
+      throw Error('找不到指标数据: ' + metricName);
     }
 
     return {

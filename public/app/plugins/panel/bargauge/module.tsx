@@ -12,7 +12,7 @@ export const plugin = new PanelPlugin<BarGaugeOptions>(BarGaugePanel)
     builder
       .addRadio({
         path: 'displayMode',
-        name: 'Display mode',
+        name: '显示模式',
         settings: {
           options: displayModes,
         },
@@ -20,8 +20,8 @@ export const plugin = new PanelPlugin<BarGaugeOptions>(BarGaugePanel)
       })
       .addBooleanSwitch({
         path: 'showUnfilled',
-        name: 'Show unfilled area',
-        description: 'When enabled renders the unfilled region as gray',
+        name: '显示未填充区域',
+        description: '启用后，将未填充区域呈现为灰色',
         defaultValue: true,
         showIf: (options: BarGaugeOptions) => options.displayMode !== 'lcd',
       });

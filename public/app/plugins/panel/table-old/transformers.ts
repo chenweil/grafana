@@ -35,12 +35,12 @@ export const tableDataFormatFilterer = (data: any): any[] => {
 };
 
 transformers['timeseries_to_rows'] = {
-  description: 'Time series to rows',
+  description: '时间序列到行',
   getColumns: () => {
     return [];
   },
   transform: (data, panel, model) => {
-    model.columns = [{ text: 'Time', type: 'date' }, { text: 'Metric' }, { text: 'Value' }];
+    model.columns = [{ text: '时间', type: 'date' }, { text: '指标' }, { text: '值' }];
     const filteredData = timeSeriesFormatFilterer(data);
 
     for (let i = 0; i < filteredData.length; i++) {
@@ -54,12 +54,12 @@ transformers['timeseries_to_rows'] = {
 };
 
 transformers['timeseries_to_columns'] = {
-  description: 'Time series to columns',
+  description: '时间序列到列',
   getColumns: () => {
     return [];
   },
   transform: (data, panel, model) => {
-    model.columns.push({ text: 'Time', type: 'date' });
+    model.columns.push({ text: '时间', type: 'date' });
 
     // group by time
     const points: any = {};
@@ -97,15 +97,15 @@ transformers['timeseries_to_columns'] = {
 };
 
 transformers['timeseries_aggregations'] = {
-  description: 'Time series aggregations',
+  description: '时间序列汇聚',
   getColumns: () => {
     return [
-      { text: 'Avg', value: 'avg' },
-      { text: 'Min', value: 'min' },
-      { text: 'Max', value: 'max' },
-      { text: 'Total', value: 'total' },
-      { text: 'Current', value: 'current' },
-      { text: 'Count', value: 'count' },
+      { text: '平均', value: 'avg' },
+      { text: '最小', value: 'min' },
+      { text: '最大', value: 'max' },
+      { text: '总计', value: 'total' },
+      { text: '当前', value: 'current' },
+      { text: '计数', value: 'count' },
     ];
   },
   transform: (data, panel, model) => {
@@ -137,15 +137,15 @@ transformers['timeseries_aggregations'] = {
 };
 
 transformers['annotations'] = {
-  description: 'Annotations',
+  description: '注解',
   getColumns: () => {
     return [];
   },
   transform: (data, panel, model) => {
-    model.columns.push({ text: 'Time', type: 'date' });
-    model.columns.push({ text: 'Title' });
-    model.columns.push({ text: 'Text' });
-    model.columns.push({ text: 'Tags' });
+    model.columns.push({ text: '时间', type: 'date' });
+    model.columns.push({ text: '标题' });
+    model.columns.push({ text: '文本' });
+    model.columns.push({ text: '标签' });
 
     if (!data || !data.annotations || data.annotations.length === 0) {
       return;
@@ -159,7 +159,7 @@ transformers['annotations'] = {
 };
 
 transformers['table'] = {
-  description: 'Table',
+  description: '表格',
   getColumns: data => {
     if (!data || data.length === 0) {
       return [];
@@ -197,9 +197,7 @@ transformers['table'] = {
     const noTableIndex = _.findIndex(filteredData, d => 'columns' in d && 'rows' in d);
     if (noTableIndex < 0) {
       throw {
-        message: `Result of query #${String.fromCharCode(
-          65 + noTableIndex
-        )} is not in table format, try using another transform.`,
+        message: `查询结果 #${String.fromCharCode(65 + noTableIndex)} 不是表格格式, 尝试使用其他转换。`,
       };
     }
 
@@ -208,7 +206,7 @@ transformers['table'] = {
 };
 
 transformers['json'] = {
-  description: 'JSON Data',
+  description: 'JSON数据',
   getColumns: data => {
     if (!data || data.length === 0) {
       return [];
@@ -285,7 +283,7 @@ function transformDataToTable(data: any, panel: any) {
 
   const transformer = transformers[panel.transform];
   if (!transformer) {
-    throw { message: 'Transformer ' + panel.transform + ' not found' };
+    throw { message: '转换器 ' + panel.transform + ' 未找到' };
   }
 
   transformer.transform(data, panel, model);

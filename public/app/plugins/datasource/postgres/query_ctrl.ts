@@ -57,8 +57,8 @@ export class PostgresQueryCtrl extends QueryCtrl {
     this.updateProjection();
 
     this.formats = [
-      { text: 'Time series', value: 'time_series' },
-      { text: 'Table', value: 'table' },
+      { text: '时间序列', value: 'time_series' },
+      { text: '表格', value: 'table' },
     ];
 
     if (!this.target.rawSql) {
@@ -147,23 +147,23 @@ export class PostgresQueryCtrl extends QueryCtrl {
   buildSelectMenu() {
     this.selectMenu = [];
     const aggregates = {
-      text: 'Aggregate Functions',
+      text: '聚合功能',
       value: 'aggregate',
       submenu: [
-        { text: 'Average', value: 'avg' },
-        { text: 'Count', value: 'count' },
-        { text: 'Maximum', value: 'max' },
-        { text: 'Minimum', value: 'min' },
-        { text: 'Sum', value: 'sum' },
-        { text: 'Standard deviation', value: 'stddev' },
-        { text: 'Variance', value: 'variance' },
+        { text: '平均', value: 'avg' },
+        { text: '计数', value: 'count' },
+        { text: '最大', value: 'max' },
+        { text: '最小', value: 'min' },
+        { text: '总和', value: 'sum' },
+        { text: '标准偏差', value: 'stddev' },
+        { text: '方差', value: 'variance' },
       ],
     };
 
     // first and last aggregate are timescaledb specific
     if (this.datasource.jsonData.timescaledb === true) {
-      aggregates.submenu.push({ text: 'First', value: 'first' });
-      aggregates.submenu.push({ text: 'Last', value: 'last' });
+      aggregates.submenu.push({ text: '第一', value: 'first' });
+      aggregates.submenu.push({ text: '最后', value: 'last' });
     }
 
     this.selectMenu.push(aggregates);
@@ -171,40 +171,40 @@ export class PostgresQueryCtrl extends QueryCtrl {
     // ordered set aggregates require postgres 9.4+
     if (this.datasource.jsonData.postgresVersion >= 904) {
       const aggregates2 = {
-        text: 'Ordered-Set Aggregate Functions',
+        text: '有序集合聚合函数',
         value: 'percentile',
         submenu: [
-          { text: 'Percentile (continuous)', value: 'percentile_cont' },
-          { text: 'Percentile (discrete)', value: 'percentile_disc' },
+          { text: '百分位数（连续）', value: 'percentile_cont' },
+          { text: '百分位数（离散）', value: 'percentile_disc' },
         ],
       };
       this.selectMenu.push(aggregates2);
     }
 
     const windows = {
-      text: 'Window Functions',
+      text: '视窗功能',
       value: 'window',
       submenu: [
-        { text: 'Delta', value: 'delta' },
-        { text: 'Increase', value: 'increase' },
-        { text: 'Rate', value: 'rate' },
-        { text: 'Sum', value: 'sum' },
-        { text: 'Moving Average', value: 'avg', type: 'moving_window' },
+        { text: '对冲值', value: 'delta' },
+        { text: '增长', value: 'increase' },
+        { text: '比率', value: 'rate' },
+        { text: '总和', value: 'sum' },
+        { text: '移动平均线', value: 'avg', type: 'moving_window' },
       ],
     };
     this.selectMenu.push(windows);
 
-    this.selectMenu.push({ text: 'Alias', value: 'alias' });
-    this.selectMenu.push({ text: 'Column', value: 'column' });
+    this.selectMenu.push({ text: '别名', value: 'alias' });
+    this.selectMenu.push({ text: '列', value: 'column' });
   }
 
   toggleEditorMode() {
     if (this.target.rawQuery) {
       appEvents.emit(CoreEvents.showConfirmModal, {
-        title: 'Warning',
-        text2: 'Switching to query builder may overwrite your raw SQL.',
+        title: '警告',
+        text2: '切换到查询生成器可能会覆盖您的原始SQL。',
         icon: 'exclamation-triangle',
-        yesText: 'Switch',
+        yesText: '切换',
         onConfirm: () => {
           this.target.rawQuery = !this.target.rawQuery;
         },
@@ -481,7 +481,7 @@ export class PostgresQueryCtrl extends QueryCtrl {
         break;
       }
       case 'get-part-actions': {
-        return Promise.resolve([{ text: 'Remove', value: 'remove-part' }]);
+        return Promise.resolve([{ text: '移除', value: 'remove-part' }]);
       }
     }
   }
@@ -505,7 +505,7 @@ export class PostgresQueryCtrl extends QueryCtrl {
         break;
       }
       case 'get-part-actions': {
-        return Promise.resolve([{ text: 'Remove', value: 'remove-part' }]);
+        return Promise.resolve([{ text: '移除', value: 'remove-part' }]);
       }
     }
   }
@@ -606,7 +606,7 @@ export class PostgresQueryCtrl extends QueryCtrl {
         break;
       }
       case 'get-part-actions': {
-        return Promise.resolve([{ text: 'Remove', value: 'remove-part' }]);
+        return Promise.resolve([{ text: '移除', value: 'remove-part' }]);
       }
     }
   }
@@ -672,7 +672,7 @@ export class PostgresQueryCtrl extends QueryCtrl {
   }
 
   handleQueryError(err: any): any[] {
-    this.error = err.message || 'Failed to issue metric query';
+    this.error = err.message || '未能发布指标查询';
     return [];
   }
 }

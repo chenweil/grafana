@@ -59,17 +59,17 @@ class SingleStatCtrl extends MetricsPanelCtrl {
   panel: any;
   events: any;
   valueNameOptions: any[] = [
-    { value: 'min', text: 'Min' },
-    { value: 'max', text: 'Max' },
-    { value: 'avg', text: 'Average' },
-    { value: 'current', text: 'Current' },
-    { value: 'total', text: 'Total' },
-    { value: 'name', text: 'Name' },
-    { value: 'first', text: 'First' },
-    { value: 'delta', text: 'Delta' },
-    { value: 'diff', text: 'Difference' },
-    { value: 'range', text: 'Range' },
-    { value: 'last_time', text: 'Time of last point' },
+    { value: 'min', text: '最小' },
+    { value: 'max', text: '最大' },
+    { value: 'avg', text: '平均' },
+    { value: 'current', text: '当前' },
+    { value: 'total', text: '总计' },
+    { value: 'name', text: '名字' },
+    { value: 'first', text: '第一' },
+    { value: 'delta', text: '对冲值' },
+    { value: 'diff', text: '区别' },
+    { value: 'range', text: '反问' },
+    { value: 'last_time', text: '最后时间点' },
   ];
 
   // Set and populate defaults
@@ -86,8 +86,8 @@ class SingleStatCtrl extends MetricsPanelCtrl {
     nullText: null,
     valueMaps: [{ value: 'null', op: '=', text: 'N/A' }],
     mappingTypes: [
-      { name: 'value to text', value: 1 },
-      { name: 'range to text', value: 2 },
+      { name: '值映射文本', value: 1 },
+      { name: '范围映射文本', value: 2 },
     ],
     rangeMaps: [{ from: 'null', to: 'null', text: 'N/A' }],
     mappingType: 1,
@@ -162,7 +162,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       this.data = {
         value: 0,
         display: {
-          text: 'Only queries that return single series/table is supported',
+          text: '仅支持返回单个系列/表的查询',
           numeric: NaN,
         },
       };
@@ -184,7 +184,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
         field: {
           config: {
             mappings: convertOldAngularValueMapping(this.panel),
-            noValue: 'No Data',
+            noValue: '无数据',
           },
         },
         theme: config.theme,
@@ -670,7 +670,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
           return;
         }
 
-        drilldownTooltip.text('click to go to: ' + linkInfo.title);
+        drilldownTooltip.text('点击跳转到: ' + linkInfo.title);
         drilldownTooltip.place_tt(e.pageX, e.pageY - 50);
       });
     }

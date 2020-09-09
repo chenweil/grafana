@@ -11,15 +11,15 @@ export const plugin = new PanelPlugin<StatPanelOptions>(StatPanel)
 
     builder.addSelect({
       path: 'textMode',
-      name: 'Text mode',
-      description: 'Control if name and value is displayed or just name',
+      name: '文字模式',
+      description: '控制是否显示名称和值或仅显示名称',
       settings: {
         options: [
-          { value: BigValueTextMode.Auto, label: 'Auto' },
-          { value: BigValueTextMode.Value, label: 'Value' },
-          { value: BigValueTextMode.ValueAndName, label: 'Value and name' },
-          { value: BigValueTextMode.Name, label: 'Name' },
-          { value: BigValueTextMode.None, label: 'None' },
+          { value: BigValueTextMode.Auto, label: '自动' },
+          { value: BigValueTextMode.Value, label: '值' },
+          { value: BigValueTextMode.ValueAndName, label: '值和名称' },
+          { value: BigValueTextMode.Name, label: '名字' },
+          { value: BigValueTextMode.None, label: '无' },
         ],
       },
       defaultValue: 'auto',
@@ -28,37 +28,37 @@ export const plugin = new PanelPlugin<StatPanelOptions>(StatPanel)
     builder
       .addRadio({
         path: 'colorMode',
-        name: 'Color mode',
-        description: 'Color either the value or the background',
+        name: '色彩模式',
+        description: '为值或背景上色',
         defaultValue: 'value',
         settings: {
           options: [
-            { value: 'value', label: 'Value' },
-            { value: 'background', label: 'Background' },
+            { value: 'value', label: '值' },
+            { value: 'background', label: '背景' },
           ],
         },
       })
       .addRadio({
         path: 'graphMode',
-        name: 'Graph mode',
-        description: 'Stat panel graph / sparkline mode',
+        name: '图形模式',
+        description: '统计面板图 / 迷你图模式',
         defaultValue: 'area',
         settings: {
           options: [
-            { value: 'none', label: 'None' },
-            { value: 'area', label: 'Area' },
+            { value: 'none', label: '无' },
+            { value: 'area', label: '区域' },
           ],
         },
       })
       .addRadio({
         path: 'justifyMode',
-        name: 'Alignment mode',
-        description: 'Value & title posititioning',
+        name: '对齐方式',
+        description: '值 & 标题定位',
         defaultValue: 'auto',
         settings: {
           options: [
-            { value: 'auto', label: 'Auto' },
-            { value: 'center', label: 'Center' },
+            { value: 'auto', label: '自动' },
+            { value: 'center', label: '中心' },
           ],
         },
       });

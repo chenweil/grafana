@@ -264,7 +264,7 @@ export function describeOrderBy(orderBy: any, target: any) {
   if (metric) {
     return describeMetric(metric);
   } else {
-    return 'metric not found';
+    return '未发现指标';
   }
 }
 

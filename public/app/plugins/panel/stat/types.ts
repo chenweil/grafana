@@ -29,7 +29,7 @@ export function addStandardDataReduceOptions(
 ) {
   builder.addRadio({
     path: 'reduceOptions.values',
-    name: 'Show',
+    name: '显示',
     description: '计算每列或每列一个值或显示每一行',
     settings: {
       options: [
@@ -42,7 +42,7 @@ export function addStandardDataReduceOptions(
 
   builder.addNumberInput({
     path: 'reduceOptions.limit',
-    name: 'Limit',
+    name: '限制',
     description: '显示的最大行数',
     settings: {
       placeholder: '5000',
@@ -56,7 +56,7 @@ export function addStandardDataReduceOptions(
   builder.addCustomEditor({
     id: 'reduceOptions.calcs',
     path: 'reduceOptions.calcs',
-    name: 'Calculation',
+    name: '计算方式',
     description: '选择减速器功能/计算',
     editor: standardEditorsRegistry.get('stats-picker').editor as any,
     defaultValue: [ReducerID.mean],
@@ -67,7 +67,7 @@ export function addStandardDataReduceOptions(
   if (includeFieldMatcher) {
     builder.addSelect({
       path: 'reduceOptions.fields',
-      name: 'Fields',
+      name: '字段',
       description: '选择面板中应包含的字段',
       settings: {
         allowCustomValue: true,
@@ -96,7 +96,7 @@ export function addStandardDataReduceOptions(
   if (includeOrientation) {
     builder.addRadio({
       path: 'orientation',
-      name: 'Orientation',
+      name: '方向',
       description: '多个系列或多个字段的堆叠方向',
       settings: {
         options: [

@@ -52,8 +52,8 @@ export class ColumnOptionsCtrl {
       { text: 'YYYY-MM-DD', value: 'YYYY-MM-DD' },
     ];
     this.mappingTypes = [
-      { text: 'Value to text', value: 1 },
-      { text: 'Range to text', value: 2 },
+      { text: '值映射文本', value: 1 },
+      { text: '范围映射文本', value: 2 },
     ];
     this.alignTypes = ColumnOptionsCtrl.alignTypesEnum;
 

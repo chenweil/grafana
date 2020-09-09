@@ -652,7 +652,7 @@ class GraphElement {
       mode: 'time',
       min: min,
       max: max,
-      label: 'Datetime',
+      label: '日期',
       ticks: ticks,
       timeformat: graphTimeFormat(ticks, min, max),
       tickFormatter: graphTickFormatter,
@@ -670,7 +670,7 @@ class GraphElement {
       mode: null,
       min: 0,
       max: ticks.length + 1,
-      label: 'Datetime',
+      label: '日期',
       ticks: ticks,
     };
   }
@@ -725,7 +725,7 @@ class GraphElement {
       mode: null,
       min: min,
       max: max,
-      label: 'Histogram',
+      label: '桶',
       ticks: ticks,
     };
 
@@ -749,7 +749,7 @@ class GraphElement {
       mode: null,
       min: 0,
       max: ticks.length + 1,
-      label: 'Datetime',
+      label: '日期',
       ticks: ticks,
     };
   }
@@ -907,7 +907,7 @@ class GraphElement {
       const formatter = getValueFormat(format);
 
       if (!formatter) {
-        throw new Error(`Unit '${format}' is not supported`);
+        throw new Error(`不支持单位 '${format}' `);
       }
       return formattedValueToString(formatter(val, axis.tickDecimals, axis.scaledDecimals));
     };

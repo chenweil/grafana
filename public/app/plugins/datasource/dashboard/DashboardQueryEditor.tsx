@@ -169,11 +169,7 @@ export class DashboardQueryEditor extends PureComponent<Props, State> {
     }
 
     if (panels.length < 1) {
-      return (
-        <div className={css({ padding: '10px' })}>
-          This dashboard does not have other panels. Add queries to other panels and try again
-        </div>
-      );
+      return <div className={css({ padding: '10px' })}>该仪表板没有其他面板。 向其他面板添加查询，然后重试</div>;
     }
 
     // Same as current URL, but different panelId
@@ -182,7 +178,7 @@ export class DashboardQueryEditor extends PureComponent<Props, State> {
     return (
       <div>
         <div className="gf-form">
-          <div className="gf-form-label">Use results from panel</div>
+          <div className="gf-form-label">使用面板结果</div>
           <Select
             placeholder="Choose Panel"
             isSearchable={true}

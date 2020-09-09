@@ -168,7 +168,7 @@ export class FolderPicker extends PureComponent<Props, State> {
         {!useNewForms && (
           <div className="gf-form-inline">
             <div className="gf-form">
-              <label className="gf-form-label width-7">Folder</label>
+              <label className="gf-form-label width-7">文件夹</label>
               <AsyncSelect
                 loadingMessage="加载文件夹..."
                 defaultOptions

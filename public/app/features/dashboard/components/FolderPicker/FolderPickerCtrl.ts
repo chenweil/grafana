@@ -66,7 +66,7 @@ export class FolderPickerCtrl {
         }
 
         if (this.isEditor && this.enableCreateNew && query === '') {
-          result.unshift({ title: '-- New Folder --', id: -1 });
+          result.unshift({ title: '-- 新文件夹 --', id: -1 });
         }
 
         if (this.enableReset && query === '' && this.initialTitle !== '') {

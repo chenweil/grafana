@@ -131,7 +131,7 @@ class AlertListPanel extends PanelCtrl {
             return al;
           });
 
-          this.noAlertsMessage = this.alertHistory.length === 0 ? 'No alerts in current time range' : '';
+          this.noAlertsMessage = this.alertHistory.length === 0 ? '当前时间范围内无警报' : '';
 
           return this.alertHistory;
         })
@@ -179,7 +179,7 @@ class AlertListPanel extends PanelCtrl {
           if (this.currentAlerts.length > this.panel.limit) {
             this.currentAlerts = this.currentAlerts.slice(0, this.panel.limit);
           }
-          this.noAlertsMessage = this.currentAlerts.length === 0 ? 'No alerts' : '';
+          this.noAlertsMessage = this.currentAlerts.length === 0 ? '无警报' : '';
 
           return this.currentAlerts;
         })

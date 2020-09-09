@@ -1,38 +1,38 @@
 <div class="gf-form-group">
 	<div class="gf-form">
-		<span class="gf-form-label width-10">Search expression</span>
+		<span class="gf-form-label width-10">搜索表达式</span>
 		<input type="text" class="gf-form-input" ng-model='ctrl.annotation.expr' placeholder="ALERTS"></input>
 	</div>
 	<div class="gf-form">
-		<span class="gf-form-label width-10">step</span>
+		<span class="gf-form-label width-10">步</span>
 		<input type="text" class="gf-form-input max-width-6" ng-model='ctrl.annotation.step' placeholder="{{::ctrl.stepDefaultValuePlaceholder}}"></input>
 	</div>
 </div>
 
 <div class="gf-form-group">
-	<h5 class="section-heading">Field formats</h5>
+	<h5 class="section-heading">字段格式</h5>
 	<div class="gf-form-inline">
 		<div class="gf-form">
-			<span class="gf-form-label width-5">Title</span>
+			<span class="gf-form-label width-5">标题</span>
 			<input type="text" class="gf-form-input max-width-9" ng-model='ctrl.annotation.titleFormat' placeholder="alertname"></input>
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-5">Tags</span>
+			<span class="gf-form-label width-5">标签</span>
 			<input type="text" class="gf-form-input max-width-9" ng-model='ctrl.annotation.tagKeys' placeholder="label1,label2"></input>
 		</div>
 		<div class="gf-form-inline">
 			<div class="gf-form">
-				<span class="gf-form-label width-5">Text</span>
+				<span class="gf-form-label width-5">文本</span>
 				<input type="text" class="gf-form-input max-width-9" ng-model='ctrl.annotation.textFormat' placeholder="instance"></input>
 			</div>
 		</div>
 	</div>
 
-	<h5 class="section-heading">Other options</h5>
+	<h5 class="section-heading">其他选项</h5>
 	<div class="gf-form-inline">
 		<div class="gf-form">
-			<gf-form-switch class="gf-form" label="Series value as timestamp" label-class="width-14" checked="ctrl.annotation.useValueForTime"
-			 tooltip="The unit of timestamp is milliseconds. If the unit of the series value is seconds, multiply its range vector by 1000.">
+			<gf-form-switch class="gf-form" label="序列值作为时间戳" label-class="width-14" checked="ctrl.annotation.useValueForTime"
+			 tooltip="时间戳的单位是毫秒。 如果系列值的单位是秒，则将其范围向量乘以1000。">
 			</gf-form-switch>
 		</div>
 	</div>

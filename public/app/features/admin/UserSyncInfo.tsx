@@ -56,7 +56,7 @@ export class UserSyncInfo extends PureComponent<Props, State> {
             <table className="filter-table form-inline">
               <tbody>
                 <tr>
-                  <td>Last synchronisation</td>
+                  <td>最后同步</td>
                   <td>{prevSyncTime}</td>
                   {prevSyncSuccessful && <td className="pull-right">成功</td>}
                 </tr>

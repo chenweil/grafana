@@ -6,30 +6,30 @@ export const plugin = new PanelPlugin<Options>(LogsPanel).setPanelOptions(builde
   builder
     .addBooleanSwitch({
       path: 'showTime',
-      name: 'Time',
+      name: '时间',
       description: '',
       defaultValue: false,
     })
     .addBooleanSwitch({
       path: 'showLabels',
-      name: 'Unique labels',
+      name: '唯一标签',
       description: '',
       defaultValue: false,
     })
     .addBooleanSwitch({
       path: 'wrapLogMessage',
-      name: 'Wrap lines',
+      name: '换行',
       description: '',
       defaultValue: false,
     })
     .addRadio({
       path: 'sortOrder',
-      name: 'Order',
+      name: '顺序',
       description: '',
       settings: {
         options: [
-          { value: LogsSortOrder.Descending, label: 'Descending' },
-          { value: LogsSortOrder.Ascending, label: 'Ascending' },
+          { value: LogsSortOrder.Descending, label: '降序' },
+          { value: LogsSortOrder.Ascending, label: '升序' },
         ],
       },
       defaultValue: LogsSortOrder.Descending,

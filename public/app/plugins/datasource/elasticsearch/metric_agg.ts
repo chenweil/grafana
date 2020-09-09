@@ -58,7 +58,7 @@ export class ElasticMetricAggCtrl {
           _.each(pipelineOptions, opt => {
             $scope.agg.settings[opt.text] = $scope.agg.settings[opt.text] || opt.default;
           });
-          $scope.settingsLinkText = 'Options';
+          $scope.settingsLinkText = '选项';
         }
       } else if (!$scope.agg.field) {
         $scope.agg.field = 'select field';
@@ -122,7 +122,7 @@ export class ElasticMetricAggCtrl {
         }
 
         if ($scope.settingsLinkText === '') {
-          $scope.settingsLinkText = 'Options';
+          $scope.settingsLinkText = '选项';
         }
       }
     };

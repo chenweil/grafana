@@ -100,14 +100,14 @@ export const PanelOptionsTab: FC<Props> = ({
 
   elements.push(
     <OptionsGroup
-      renderTitle={isExpanded => <>Links {!isExpanded && panelLinksCount > 0 && <Counter value={panelLinksCount} />}</>}
+      renderTitle={isExpanded => <>链接 {!isExpanded && panelLinksCount > 0 && <Counter value={panelLinksCount} />}</>}
       id="panel links"
       key="panel links"
       defaultToClosed
     >
       <DataLinksInlineEditor
         links={panel.links}
-        onChange={links => onPanelConfigChange('links', links)}
+        onChange={links => onPanelConfigChange('链接', links)}
         suggestions={linkVariablesSuggestions}
         data={[]}
       />

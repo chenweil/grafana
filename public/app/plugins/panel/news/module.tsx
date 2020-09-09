@@ -8,16 +8,16 @@ export const plugin = new PanelPlugin<NewsOptions>(NewsPanel).setPanelOptions(bu
   builder
     .addTextInput({
       path: 'feedUrl',
-      name: 'URL',
-      description: 'Only RSS feed formats are supported (not Atom).',
+      name: '地址',
+      description: '仅支持RSS feed格式（不支持Atom）。',
       settings: {
         placeholder: DEFAULT_FEED_URL,
       },
     })
     .addBooleanSwitch({
       path: 'useProxy',
-      name: 'Use Proxy',
-      description: 'If the feed is unable to connect, consider a CORS proxy',
+      name: '使用代理',
+      description: '如果Feed无法连接，请考虑使用CORS代理',
       showIf: (currentConfig: NewsOptions) => {
         return isString(currentConfig.feedUrl) && !currentConfig.feedUrl.startsWith(PROXY_PREFIX);
       },

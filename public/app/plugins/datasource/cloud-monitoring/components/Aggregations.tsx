@@ -30,22 +30,22 @@ export const Aggregations: FC<Props> = props => {
           value={selected}
           options={[
             {
-              label: 'Template Variables',
+              label: '模版变量',
               options: props.templateVariableOptions,
             },
             {
-              label: 'Aggregations',
+              label: '聚合',
               expanded: true,
               options: aggOptions,
             },
           ]}
-          placeholder="Select Reducer"
+          placeholder="选择减速器"
         ></Segment>
         <div className="gf-form gf-form--grow">
           <label className="gf-form-label gf-form-label--grow">
             <a onClick={() => setDisplayAdvancedOptions(!displayAdvancedOptions)}>
               <>
-                <Icon name={displayAdvancedOptions ? 'angle-down' : 'angle-right'} /> Advanced Options
+                <Icon name={displayAdvancedOptions ? 'angle-down' : 'angle-right'} /> 高级选项
               </>
             </a>
           </label>

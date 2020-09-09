@@ -204,19 +204,19 @@ export const mapNumbertoTimeInSlider = (num: number) => {
   let str;
   switch (num) {
     case 0:
-      str = 'today';
+      str = '今天';
       break;
     case 1:
-      str = 'yesterday';
+      str = '昨天';
       break;
     case 7:
-      str = 'a week ago';
+      str = '一周前';
       break;
     case 14:
-      str = 'two weeks ago';
+      str = '两周钱';
       break;
     default:
-      str = `${num} days ago`;
+      str = `${num} 天前`;
   }
 
   return str;
