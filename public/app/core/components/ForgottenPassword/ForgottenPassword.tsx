@@ -30,7 +30,7 @@ export const ForgottenPassword: FC = () => {
   if (emailSent) {
     return (
       <div>
-        <p>带有重置链接的电子邮件已发送到该电子邮件地址。您应该尽快收到。</p>
+        <p>带有重置链接的电子邮件已发送到该邮箱地址。您应该尽快收到。</p>
         <Container margin="md" />
         <LinkButton variant="primary" href="/login">
           回到登陆
@@ -49,7 +49,7 @@ export const ForgottenPassword: FC = () => {
             invalid={!!errors.userOrEmail}
             error={errors?.userOrEmail?.message}
           >
-            <Input placeholder="Email or username" name="userOrEmail" ref={register({ required: true })} />
+            <Input placeholder="邮箱或用户名" name="userOrEmail" ref={register({ required: true })} />
           </Field>
           <HorizontalGroup>
             <Button>发送重置电子邮件</Button>

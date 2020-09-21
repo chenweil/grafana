@@ -1,9 +1,9 @@
-# Table Panel -  Native Plugin
+# 表格面板-本机插件
 
-The Table Panel is **included** with Grafana.
+表格面板随 Grafana **包括**在内。
 
-The table panel is very flexible, supporting both multiple modes for time series as well as for table, annotation and raw JSON data. It also provides date formatting and value formatting and coloring options.
+表格面板非常灵活，支持时间序列以及表格，注释和原始 JSON 数据的多种模式。 它还提供日期格式和值格式以及着色选项。
 
-Check out the [Table Panel Showcase in the Grafana Playground](http://play.grafana.org/dashboard/db/table-panel-showcase) or read more about it here:
+查看 [Table Panel Showcase in the Grafana Playground](http://play.grafana.org/dashboard/db/table-panel-showcase) 或在此处了解更多信息:
 
 [https://grafana.com/docs/grafana/latest/features/panels/table_panel/](https://grafana.com/docs/grafana/latest/features/panels/table_panel/)

@@ -1,5 +1,5 @@
-# Text Panel -  Native Plugin
+# 文本面板-本机插件
 
-The Text Panel is **included** with Grafana.
+文本面板随 Grafana **包括**在内。
 
-The Text Panel is a very simple panel that displays text. The source text is written in the Markdown syntax meaning you can format the text. Read [GitHub's Mastering Markdown](https://guides.github.com/features/mastering-markdown/) to learn more.
+文本面板是显示文本的非常简单的面板。 源文本采用 Markdown 语法编写，这意味着您可以设置文本格式。 阅读 [GitHub's Mastering Markdown](https://guides.github.com/features/mastering-markdown/) 了解更多。

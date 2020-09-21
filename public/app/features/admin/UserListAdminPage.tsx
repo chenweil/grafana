@@ -68,7 +68,7 @@ const UserListAdminPageUnConnected: React.FC<Props> = props => {
                   <th>电子邮件</th>
                   <th>名字</th>
                   <th>
-                    Seen&nbsp;
+                    使用时间&nbsp;
                     <Tooltip placement="top" content="自从看到用户使用Grafana以来的时间">
                       <Icon name="question-circle" />
                     </Tooltip>

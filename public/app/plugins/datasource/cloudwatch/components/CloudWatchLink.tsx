@@ -58,7 +58,7 @@ export default class CloudWatchLink extends Component<Props, State> {
     const { href } = this.state;
     return (
       <a href={href} target="_blank" rel="noopener">
-        <i className="fa fa-share-square-o" /> CloudWatch Logs Insights
+        <i className="fa fa-share-square-o" /> CloudWatch 日志见解
       </a>
     );
   }

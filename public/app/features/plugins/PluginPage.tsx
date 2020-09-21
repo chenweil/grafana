@@ -347,7 +347,7 @@ function getPluginTabsNav(
 
   if (true) {
     pages.push({
-      text: 'Readme',
+      text: '自述文件',
       icon: 'fa fa-fw fa-file-text-o',
       url: `${appSubUrl}${path}?page=${PAGE_ID_README}`,
       id: PAGE_ID_README,
@@ -362,7 +362,7 @@ function getPluginTabsNav(
       // Legacy App Config
       if (plugin.angularConfigCtrl) {
         pages.push({
-          text: 'Config',
+          text: '配置',
           icon: 'gicon gicon-cog',
           url: `${appSubUrl}${path}?page=${PAGE_ID_CONFIG_CTRL}`,
           id: PAGE_ID_CONFIG_CTRL,
@@ -388,7 +388,7 @@ function getPluginTabsNav(
       // Check for the dashboard pages
       if (find(meta.includes, { type: PluginIncludeType.dashboard })) {
         pages.push({
-          text: 'Dashboards',
+          text: '仪表板',
           icon: 'gicon gicon-dashboard',
           url: `${appSubUrl}${path}?page=${PAGE_ID_DASHBOARDS}`,
           id: PAGE_ID_DASHBOARDS,

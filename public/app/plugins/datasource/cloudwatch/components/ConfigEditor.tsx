@@ -118,11 +118,11 @@ export class ConfigEditor extends PureComponent<Props, State> {
 
     return (
       <>
-        <h3 className="page-heading">CloudWatch Details</h3>
+        <h3 className="page-heading">CloudWatch细节</h3>
         <div className="gf-form-group">
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-14">Auth Provider</InlineFormLabel>
+              <InlineFormLabel className="width-14">身份验证提供者</InlineFormLabel>
               <Select
                 className="width-30"
                 value={authProviderOptions.find(authProvider => authProvider.value === options.jsonData.authType)}
@@ -143,9 +143,9 @@ export class ConfigEditor extends PureComponent<Props, State> {
               <div className="gf-form">
                 <InlineFormLabel
                   className="width-14"
-                  tooltip="Credentials profile name, as specified in ~/.aws/credentials, leave blank for default."
+                  tooltip="在〜/.aws/ credentials中指定的凭据配置文件名称，默认保留为空白。"
                 >
-                  Credentials Profile Name
+                  凭证配置文件名称
                 </InlineFormLabel>
                 <div className="width-30">
                   <Input
@@ -163,8 +163,8 @@ export class ConfigEditor extends PureComponent<Props, State> {
               {options.secureJsonFields?.accessKey ? (
                 <div className="gf-form-inline">
                   <div className="gf-form">
-                    <InlineFormLabel className="width-14">Access Key ID</InlineFormLabel>
-                    <Input className="width-25" placeholder="Configured" disabled={true} />
+                    <InlineFormLabel className="width-14">访问密钥ID</InlineFormLabel>
+                    <Input className="width-25" placeholder="已配置" disabled={true} />
                   </div>
                   <div className="gf-form">
                     <div className="max-width-30 gf-form-inline">
@@ -173,7 +173,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
                         type="button"
                         onClick={onUpdateDatasourceResetOption(this.props, 'accessKey')}
                       >
-                        Reset
+                        重置
                       </Button>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
               ) : (
                 <div className="gf-form-inline">
                   <div className="gf-form">
-                    <InlineFormLabel className="width-14">Access Key ID</InlineFormLabel>
+                    <InlineFormLabel className="width-14">访问密钥ID</InlineFormLabel>
                     <div className="width-30">
                       <Input
                         className="width-30"
@@ -195,7 +195,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
               {options.secureJsonFields?.secretKey ? (
                 <div className="gf-form-inline">
                   <div className="gf-form">
-                    <InlineFormLabel className="width-14">Secret Access Key</InlineFormLabel>
+                    <InlineFormLabel className="width-14">秘密访问密钥</InlineFormLabel>
                     <Input className="width-25" placeholder="Configured" disabled={true} />
                   </div>
                   <div className="gf-form">
@@ -205,7 +205,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
                         type="button"
                         onClick={onUpdateDatasourceResetOption(this.props, 'secretKey')}
                       >
-                        Reset
+                        重置
                       </Button>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
               ) : (
                 <div className="gf-form-inline">
                   <div className="gf-form">
-                    <InlineFormLabel className="width-14">Secret Access Key</InlineFormLabel>
+                    <InlineFormLabel className="width-14">秘密访问密钥</InlineFormLabel>
                     <div className="width-30">
                       <Input
                         className="width-30"
@@ -229,8 +229,8 @@ export class ConfigEditor extends PureComponent<Props, State> {
           {options.jsonData.authType === 'arn' && (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel className="width-14" tooltip="ARN of Assume Role">
-                  Assume Role ARN
+                <InlineFormLabel className="width-14" tooltip="承担角色的ARN">
+                  承担角色ARN
                 </InlineFormLabel>
                 <div className="width-30">
                   <Input
@@ -244,14 +244,14 @@ export class ConfigEditor extends PureComponent<Props, State> {
               <div className="gf-form">
                 <InlineFormLabel
                   className="width-14"
-                  tooltip="If you are assuming a role in another account, that has been created with an external ID, specify the external ID here."
+                  tooltip="如果您在另一个使用外部ID创建的帐户中担任角色，请在此处指定外部ID。"
                 >
-                  External ID
+                  外部ID
                 </InlineFormLabel>
                 <div className="width-30">
                   <Input
                     className="width-30"
-                    placeholder="External ID"
+                    placeholder="外部ID"
                     value={options.jsonData.externalId || ''}
                     onChange={onUpdateDatasourceJsonDataOption(this.props, 'externalId')}
                   />
@@ -263,9 +263,9 @@ export class ConfigEditor extends PureComponent<Props, State> {
             <div className="gf-form">
               <InlineFormLabel
                 className="width-14"
-                tooltip="Specify the region, such as for US West (Oregon) use ` us-west-2 ` as the region."
+                tooltip="指定区域，例如对于美国西部（俄勒冈州），请使用“ us-west-2”作为区域。"
               >
-                Default Region
+                默认区域
               </InlineFormLabel>
               <Select
                 className="width-30"
@@ -278,12 +278,12 @@ export class ConfigEditor extends PureComponent<Props, State> {
           </div>
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-14" tooltip="Namespaces of Custom Metrics.">
-                Custom Metrics
+              <InlineFormLabel className="width-14" tooltip="自定义指标的命名空间。">
+                自定义指标
               </InlineFormLabel>
               <Input
                 className="width-30"
-                placeholder="Namespace1,Namespace2"
+                placeholder="命名空间1,命名空间2"
                 value={options.jsonData.customMetricsNamespaces || ''}
                 onChange={onUpdateDatasourceJsonDataOption(this.props, 'customMetricsNamespaces')}
               />

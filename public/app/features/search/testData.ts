@@ -51,7 +51,7 @@ export const searchResults = [
 // Search results with more info
 export const sections = [
   {
-    title: 'Starred',
+    title: '星标',
     score: -2,
     expanded: true,
     items: [
@@ -64,7 +64,7 @@ export const sections = [
     ],
   },
   {
-    title: 'Recent',
+    title: '最近查看',
     icon: 'clock-o',
     score: -1,
     removable: true,

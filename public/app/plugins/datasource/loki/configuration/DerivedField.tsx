@@ -61,7 +61,7 @@ export const DerivedField = (props: Props) => {
           labelWidth={5}
           // A bit of a hack to prevent using default value for the width from FormField
           inputWidth={null}
-          label="Name"
+          label="名字"
           type="text"
           value={value.name}
           onChange={handleChange('name')}
@@ -69,17 +69,15 @@ export const DerivedField = (props: Props) => {
         <FormField
           className={styles.regexField}
           inputWidth={null}
-          label="Regex"
+          label="正则"
           type="text"
           value={value.matcherRegex}
           onChange={handleChange('matcherRegex')}
-          tooltip={
-            'Use to parse and capture some part of the log message. You can use the captured groups in the template.'
-          }
+          tooltip={'用于解析和捕获日志消息的某些部分。 您可以在模板中使用捕获的组。'}
         />
         <Button
           variant="destructive"
-          title="Remove field"
+          title="移除字段"
           icon="times"
           onClick={event => {
             event.preventDefault();
@@ -114,7 +112,7 @@ export const DerivedField = (props: Props) => {
 
       <div className={styles.row}>
         <Switch
-          label="Internal link"
+          label="内部连结"
           checked={showInternalLink}
           onChange={() => {
             if (showInternalLink) {

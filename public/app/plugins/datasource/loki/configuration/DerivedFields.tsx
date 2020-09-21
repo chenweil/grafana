@@ -30,11 +30,9 @@ export const DerivedFields = (props: Props) => {
 
   return (
     <>
-      <h3 className="page-heading">Derived fields</h3>
+      <h3 className="page-heading">派生字段</h3>
 
-      <div className={styles.infoText}>
-        Derived fields can be used to extract new fields from the log message and create link from it's value.
-      </div>
+      <div className={styles.infoText}>派生字段可用于从日志消息中提取新字段，并根据其值创建链接。</div>
 
       <div className="gf-form-group">
         {value &&
@@ -57,8 +55,8 @@ export const DerivedFields = (props: Props) => {
                 suggestions={[
                   {
                     value: DataLinkBuiltInVars.valueRaw,
-                    label: 'Raw value',
-                    documentation: 'Exact string captured by the regular expression',
+                    label: '原始值',
+                    documentation: '正则表达式捕获的确切字符串',
                     origin: VariableOrigin.Value,
                   },
                 ]}
@@ -78,12 +76,12 @@ export const DerivedFields = (props: Props) => {
               onChange(newDerivedFields);
             }}
           >
-            Add
+            添加
           </Button>
 
           {value && value.length > 0 && (
             <Button variant="secondary" onClick={() => setShowDebug(!showDebug)}>
-              {showDebug ? 'Hide example log message' : 'Show example log message'}
+              {showDebug ? '隐藏示例日志消息' : '显示示例日志消息'}
             </Button>
           )}
         </div>

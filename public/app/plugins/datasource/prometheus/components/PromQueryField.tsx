@@ -55,7 +55,7 @@ export function groupMetricsByPrefix(metrics: string[], metadata?: PromMetricsMe
   const ruleRegex = /:\w+:/;
   const ruleNames = metrics.filter(metric => ruleRegex.test(metric));
   const rulesOption = {
-    label: 'Recording rules',
+    label: '记录规则',
     value: RECORDING_RULES_GROUP,
     children: ruleNames
       .slice()
@@ -270,10 +270,7 @@ class PromQueryField extends React.PureComponent<PromQueryFieldProps, PromQueryF
     const histogramOptions = histogramMetrics.map((hm: any) => ({ label: hm, value: hm }));
     const metricsOptions =
       histogramMetrics.length > 0
-        ? [
-            { label: 'Histograms', value: HISTOGRAM_GROUP, children: histogramOptions, isLeaf: false },
-            ...metricsByPrefix,
-          ]
+        ? [{ label: '直方图', value: HISTOGRAM_GROUP, children: histogramOptions, isLeaf: false }, ...metricsByPrefix]
         : metricsByPrefix;
 
     // Hint for big disabled lookups
@@ -281,7 +278,7 @@ class PromQueryField extends React.PureComponent<PromQueryFieldProps, PromQueryF
 
     if (!datasource.lookupsDisabled && languageProvider.lookupsDisabled) {
       hint = {
-        label: `Dynamic label lookup is disabled for datasources with more than ${lookupMetricsThreshold} metrics.`,
+        label: `超过${lookupMetricsThreshold}个指标的数据源将禁用动态标签查找。`,
         type: 'INFO',
       };
     }

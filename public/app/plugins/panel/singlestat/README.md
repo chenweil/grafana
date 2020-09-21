@@ -1,9 +1,9 @@
-# Singlestat Panel -  Native Plugin
+# Singlestat Panel - Native Plugin
 
-The Singlestat Panel is **included** with Grafana.
+Singlestat 面板随 Grafana **包括**在内。
 
-The Singlestat Panel allows you to show the one main summary stat of a SINGLE series. It reduces the series into a single number (by looking at the max, min, average, or sum of values in the series). Singlestat also provides thresholds to color the stat or the Panel background. It can also translate the single number into a text value, and show a sparkline summary of the series.
+Singlestat 面板允许您显示 SINGLE 系列的一个主要摘要状态。 它将序列简化为一个数字（通过查看序列中的最大值，最小值，平均值或总和）。 Singlestat 还提供用于为统计信息或面板背景着色的阈值。 它还可以将单个数字转换为文本值，并显示该系列的迷你图摘要。
 
-Read more about it here:
+在这里阅读更多关于它的信息：
 
 [https://grafana.com/docs/grafana/latest/features/panels/singlestat/](https://grafana.com/docs/grafana/latest/features/panels/singlestat/)

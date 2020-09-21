@@ -17,7 +17,7 @@ export class SearchSrv {
     return this.queryForRecentDashboards().then((result: any[]) => {
       if (result.length > 0) {
         sections['recent'] = {
-          title: 'Recent',
+          title: '最近查看',
           icon: 'clock-nine',
           score: -1,
           expanded: store.getBool(`${SECTION_STORAGE_KEY}.recent`, true),

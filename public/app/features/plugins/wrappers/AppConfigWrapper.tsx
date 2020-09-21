@@ -71,17 +71,17 @@ export class AppConfigCtrlWrapper extends PureComponent<Props, State> {
           <div className="gf-form">
             {!model.enabled && (
               <Button variant="primary" onClick={this.enable} className={withRightMargin}>
-                Enable
+                启用
               </Button>
             )}
             {model.enabled && (
               <Button variant="primary" onClick={this.update} className={withRightMargin}>
-                Update
+                更新
               </Button>
             )}
             {model.enabled && (
               <Button variant="destructive" onClick={this.disable} className={withRightMargin}>
-                Disable
+                禁用
               </Button>
             )}
           </div>

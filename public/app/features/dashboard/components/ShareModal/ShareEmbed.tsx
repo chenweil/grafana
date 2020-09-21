@@ -84,13 +84,13 @@ export class ShareEmbed extends PureComponent<Props, State> {
             <div className="gf-form-group">
               <Switch
                 labelClass="width-12"
-                label="Current time range"
+                label="当前时间范围"
                 checked={useCurrentTimeRange}
                 onChange={this.onUseCurrentTimeRangeChange}
               />
               <Switch
                 labelClass="width-12"
-                label="Template variables"
+                label="模版变量"
                 checked={includeTemplateVars}
                 onChange={this.onIncludeTemplateVarsChange}
               />

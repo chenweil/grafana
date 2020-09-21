@@ -10,7 +10,7 @@
   "alerting": true,
 
   "info": {
-    "description": "Open source time series database",
+    "description": "开源时间序列数据库",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"

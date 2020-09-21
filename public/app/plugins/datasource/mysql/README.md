@@ -1,14 +1,14 @@
-# MySQL Data Source -  Native Plugin
+# MMySQL 数据源-本机插件
 
-Grafana ships with a built-in MySQL data source plugin that allow you to query any visualize data from a MySQL compatible database.
+Grafana 附带了一个内置的 MySQL 数据源插件，该插件可让您从 MySQL 兼容数据库中查询任何可视化数据。
 
-## Adding the data source
+## 添加数据源
 
-1. Open the side menu by clicking the Grafana icon in the top header.
-2. In the side menu under the Dashboards link you should find a link named Data Sources.
-3. Click the + Add data source button in the top header.
-4. Select MySQL from the Type dropdown.
+1. 单击顶部标题中的 Grafana 图标，以打开侧面菜单。
+2. 在仪表板链接下的侧面菜单中，您应该找到一个名为数据源的链接。
+3. 点击顶部标题中的+添加数据源按钮。
+4. 从类型下拉列表中选择 MySQL。
 
-Read more about it here:
+在这里阅读更多关于它的信息：
 
 [http://docs.grafana.org/features/datasources/mysql/](http://docs.grafana.org/features/datasources/mysql/)

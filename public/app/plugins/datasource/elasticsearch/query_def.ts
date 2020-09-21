@@ -3,107 +3,107 @@ import _ from 'lodash';
 export const metricAggTypes = [
   { text: 'Count', value: 'count', requiresField: false },
   {
-    text: 'Average',
+    text: '平均',
     value: 'avg',
     requiresField: true,
     supportsInlineScript: true,
     supportsMissing: true,
   },
   {
-    text: 'Sum',
+    text: '总和',
     value: 'sum',
     requiresField: true,
     supportsInlineScript: true,
     supportsMissing: true,
   },
   {
-    text: 'Max',
+    text: '最大',
     value: 'max',
     requiresField: true,
     supportsInlineScript: true,
     supportsMissing: true,
   },
   {
-    text: 'Min',
+    text: '最小',
     value: 'min',
     requiresField: true,
     supportsInlineScript: true,
     supportsMissing: true,
   },
   {
-    text: 'Extended Stats',
+    text: '扩展统计',
     value: 'extended_stats',
     requiresField: true,
     supportsMissing: true,
     supportsInlineScript: true,
   },
   {
-    text: 'Percentiles',
+    text: '百分位数',
     value: 'percentiles',
     requiresField: true,
     supportsMissing: true,
     supportsInlineScript: true,
   },
   {
-    text: 'Unique Count',
+    text: '唯一计数',
     value: 'cardinality',
     requiresField: true,
     supportsMissing: true,
   },
   {
-    text: 'Moving Average',
+    text: '移动平均线',
     value: 'moving_avg',
     requiresField: false,
     isPipelineAgg: true,
     minVersion: 2,
   },
   {
-    text: 'Derivative',
+    text: '派生物',
     value: 'derivative',
     requiresField: false,
     isPipelineAgg: true,
     minVersion: 2,
   },
   {
-    text: 'Cumulative Sum',
+    text: '累计总和',
     value: 'cumulative_sum',
     requiresField: false,
     isPipelineAgg: true,
     minVersion: 2,
   },
   {
-    text: 'Bucket Script',
+    text: '桶脚本',
     value: 'bucket_script',
     requiresField: false,
     isPipelineAgg: true,
     supportsMultipleBucketPaths: true,
     minVersion: 2,
   },
-  { text: 'Raw Document (legacy)', value: 'raw_document', requiresField: false },
-  { text: 'Raw Data', value: 'raw_data', requiresField: false },
-  { text: 'Logs', value: 'logs', requiresField: false },
+  { text: '原始文件（旧版）', value: 'raw_document', requiresField: false },
+  { text: '原始数据', value: 'raw_data', requiresField: false },
+  { text: '日志', value: 'logs', requiresField: false },
 ];
 
 export const bucketAggTypes = [
-  { text: 'Terms', value: 'terms', requiresField: true },
-  { text: 'Filters', value: 'filters' },
-  { text: 'Geo Hash Grid', value: 'geohash_grid', requiresField: true },
-  { text: 'Date Histogram', value: 'date_histogram', requiresField: true },
-  { text: 'Histogram', value: 'histogram', requiresField: true },
+  { text: '项', value: 'terms', requiresField: true },
+  { text: '过滤器', value: 'filters' },
+  { text: '地理哈希网格', value: 'geohash_grid', requiresField: true },
+  { text: '日期直方图', value: 'date_histogram', requiresField: true },
+  { text: '直方图', value: 'histogram', requiresField: true },
 ];
 
 export const orderByOptions = [
-  { text: 'Doc Count', value: '_count' },
-  { text: 'Term value', value: '_term' },
+  { text: '文件计数', value: '_count' },
+  { text: '期限值', value: '_term' },
 ];
 
 export const orderOptions = [
-  { text: 'Top', value: 'desc' },
-  { text: 'Bottom', value: 'asc' },
+  { text: '最高', value: 'desc' },
+  { text: '最低', value: 'asc' },
 ];
 
 export const sizeOptions = [
-  { text: 'No limit', value: '0' },
+  { text: '无限制', value: '0' },
   { text: '1', value: '1' },
   { text: '2', value: '2' },
   { text: '3', value: '3' },
@@ -114,18 +114,18 @@ export const sizeOptions = [
 ];
 
 export const extendedStats = [
-  { text: 'Avg', value: 'avg' },
-  { text: 'Min', value: 'min' },
-  { text: 'Max', value: 'max' },
-  { text: 'Sum', value: 'sum' },
-  { text: 'Count', value: 'count' },
-  { text: 'Std Dev', value: 'std_deviation' },
-  { text: 'Std Dev Upper', value: 'std_deviation_bounds_upper' },
-  { text: 'Std Dev Lower', value: 'std_deviation_bounds_lower' },
+  { text: '平均', value: 'avg' },
+  { text: '最小', value: 'min' },
+  { text: '最大', value: 'max' },
+  { text: '总和', value: 'sum' },
+  { text: '计数', value: 'count' },
+  { text: '标准偏差', value: 'std_deviation' },
+  { text: '标准偏差上限', value: 'std_deviation_bounds_upper' },
+  { text: '标准偏差下限', value: 'std_deviation_bounds_lower' },
 ];
 
 export const intervalOptions = [
-  { text: 'auto', value: 'auto' },
+  { text: '自动', value: 'auto' },
   { text: '10s', value: '10s' },
   { text: '1m', value: '1m' },
   { text: '5m', value: '5m' },
@@ -136,22 +136,22 @@ export const intervalOptions = [
 ];
 
 export const movingAvgModelOptions = [
-  { text: 'Simple', value: 'simple' },
-  { text: 'Linear', value: 'linear' },
-  { text: 'Exponentially Weighted', value: 'ewma' },
-  { text: 'Holt Linear', value: 'holt' },
-  { text: 'Holt Winters', value: 'holt_winters' },
+  { text: '简单', value: 'simple' },
+  { text: '线性', value: 'linear' },
+  { text: '指数加权', value: 'ewma' },
+  { text: '霍尔特线性', value: 'holt' },
+  { text: '霍尔特温特斯', value: 'holt_winters' },
 ];
 
 export const pipelineOptions: any = {
   moving_avg: [
-    { text: 'window', default: 5 },
-    { text: 'model', default: 'simple' },
-    { text: 'predict', default: undefined },
-    { text: 'minimize', default: false },
+    { text: '窗口', default: 5 },
+    { text: '模式', default: 'simple' },
+    { text: '预测', default: undefined },
+    { text: '最小化', default: false },
   ],
-  derivative: [{ text: 'unit', default: undefined }],
-  cumulative_sum: [{ text: 'format', default: undefined }],
+  derivative: [{ text: '单位', default: undefined }],
+  cumulative_sum: [{ text: '格式化', default: undefined }],
   bucket_script: [],
 };
 
