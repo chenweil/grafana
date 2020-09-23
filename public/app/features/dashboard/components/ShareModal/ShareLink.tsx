@@ -97,13 +97,13 @@ export class ShareLink extends PureComponent<Props, State> {
             <div className="gf-form-group">
               <Switch
                 labelClass="width-12"
-                label="Current time range"
+                label="当前时间范围"
                 checked={useCurrentTimeRange}
                 onChange={this.onUseCurrentTimeRangeChange}
               />
               <Switch
                 labelClass="width-12"
-                label="Template variables"
+                label="模板变量"
                 checked={includeTemplateVars}
                 onChange={this.onIncludeTemplateVarsChange}
               />

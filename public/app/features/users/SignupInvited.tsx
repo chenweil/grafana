@@ -65,10 +65,10 @@ const SingupInvitedPageUnconnected: FC<DispatchProps & ConnectedProps> = ({ code
         <h3 className="page-sub-heading">Hello {greeting || 'there'}.</h3>
 
         <div className="modal-tagline p-b-2">
-          <em>{invitedBy || 'Someone'}</em> has invited you to join Grafana and the organization{' '}
+          <em>{invitedBy || 'Someone'}</em> 邀请你加入Grafana和组织{' '}
           <span className="highlight-word">{contextSrv.user.orgName}</span>
           <br />
-          Please complete the following and choose a password to accept your invitation and continue:
+          请完成以下操作并选择密码以接受邀请并继续：
         </div>
         <Form defaultValues={initFormModel} onSubmit={onSubmit}>
           {({ register, errors }) => (

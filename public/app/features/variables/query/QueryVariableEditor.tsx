@@ -180,7 +180,7 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
           )}
 
           <div className="gf-form">
-            <InlineFormLabel width={10} tooltip={'可选，如果要提取系列名称或度量标准节点段的一部分。'}>
+            <InlineFormLabel width={10} tooltip={'可选，如果要提取序列名称或度量标准节点段的一部分。'}>
               正则
             </InlineFormLabel>
             <input

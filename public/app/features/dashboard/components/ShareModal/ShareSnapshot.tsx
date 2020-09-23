@@ -214,7 +214,7 @@ export class ShareSnapshot extends PureComponent<Props, State> {
           <p className="share-modal-info-text">
             快照是一种公开共享交互式仪表板的即时方法。 创建后，我们{''}
             <strong>剥离敏感数据</strong>
-            ，例如查询（指标，模板和注释）和面板链接，仅将可见的指标数据和系列名称嵌入到您的仪表板中。
+            ，例如查询（指标，模板和注释）和面板链接，仅将可见的指标数据和序列名称嵌入到您的仪表板中。
           </p>
           <p className="share-modal-info-text">
             请注意，拥有链接并可以访问URL的任何人都可以查看您的 <strong>快照</strong>。 明智地分享。

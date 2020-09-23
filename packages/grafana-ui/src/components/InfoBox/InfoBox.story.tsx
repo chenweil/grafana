@@ -36,18 +36,16 @@ export const basic = () => {
   return (
     <div style={{ width: containerWidth }}>
       <InfoBox
-        title="User Permission"
+        title="用户权限"
         url={'http://docs.grafana.org/features/datasources/mysql/'}
         onDismiss={() => {
           alert('onDismiss clicked');
         }}
       >
         <p>
-          The database user should only be granted SELECT permissions on the specified database &amp; tables you want to
-          query. Grafana does not validate that queries are safe so queries can contain any SQL statement. For example,
-          statements like <code>USE otherdb;</code> and <code>DROP TABLE user;</code> would be executed. To protect
-          against this we <strong>Highly</strong> recommend you create a specific MySQL user with restricted
-          permissions.
+          数据库用户应该只被授予对指定数据库的选择权限;要查询的表。Grafana不验证查询是安全的，所以查询可以包含任何SQL语句。例如，将执行{' '}
+          <code>USE其他</code>和 <code>DROP TABLE用户;</code>等语句。自对此，我们<strong>，</strong>
+          创建具有受限的特定MySQL用户权限。
         </p>
       </InfoBox>
     </div>
@@ -60,18 +58,17 @@ export const featureInfoBox = () => {
   return (
     <div style={{ width: containerWidth }}>
       <FeatureInfoBox
-        title="Transformations"
+        title="转换"
         url={'http://www.grafana.com'}
         featureState={FeatureState.beta}
         onDismiss={() => {
           alert('onDismiss clicked');
         }}
       >
-        Transformations allow you to join, calculate, re-order, hide and rename your query results before being
-        visualized. <br />
-        Many transforms are not suitable if you're using the Graph visualisation as it currently only supports time
-        series. <br />
-        It can help to switch to Table visualisation to understand what a transformation is doing.
+        转换允许您在可视化之前联接、计算、重新排序、隐藏和重命名查询结果。 <br />
+        如果您正在使用图形可视化，许多转换是不适合的，因为它目前只支持时间序列。
+        <br />
+        它可以帮助切换到表格可视化来理解转换正在做什么。
       </FeatureInfoBox>
     </div>
   );

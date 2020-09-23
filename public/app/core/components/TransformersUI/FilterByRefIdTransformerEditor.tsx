@@ -106,7 +106,7 @@ export class FilterByRefIdTransformerEditor extends React.PureComponent<
     return (
       <div className="gf-form-inline">
         <div className="gf-form gf-form--grow">
-          <div className="gf-form-label width-8">系列ID</div>
+          <div className="gf-form-label width-8">序列ID</div>
           <HorizontalGroup spacing="xs" align="flex-start" wrap>
             {options.map((o, i) => {
               const label = `${o.refId}${o.count > 1 ? ' (' + o.count + ')' : ''}`;

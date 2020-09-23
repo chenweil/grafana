@@ -8,18 +8,18 @@ import { ShareEmbed } from './ShareEmbed';
 import { ShareModalTabModel } from './types';
 
 const shareCommonTabs: ShareModalTabModel[] = [
-  { label: 'Link', value: 'link', component: ShareLink },
-  { label: 'Snapshot', value: 'snapshot', component: ShareSnapshot },
+  { label: '链接', value: 'link', component: ShareLink },
+  { label: '快照', value: 'snapshot', component: ShareSnapshot },
 ];
 
 // prettier-ignore
 const shareDashboardTabs: ShareModalTabModel[] = [
-  { label: 'Export', value: 'export', component: ShareExport },
+  { label: '导出', value: 'export', component: ShareExport },
 ];
 
 // prettier-ignore
 const sharePanelTabs: ShareModalTabModel[] = [
-  { label: 'Embed', value: 'embed', component: ShareEmbed },
+  { label: '嵌入', value: 'embed', component: ShareEmbed },
 ];
 
 const customDashboardTabs: ShareModalTabModel[] = [];
@@ -95,7 +95,7 @@ export class ShareModal extends React.Component<Props, State> {
   renderTitle() {
     const { panel } = this.props;
     const { activeTab } = this.state;
-    const title = panel ? 'Share Panel' : 'Share';
+    const title = panel ? '分享面板' : '分享';
     const tabs = this.getTabs();
 
     return (

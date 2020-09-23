@@ -71,12 +71,12 @@ export class FolderSettingsPage extends PureComponent<Props, State> {
     return (
       <Page navModel={navModel}>
         <Page.Contents isLoading={this.state.isLoading}>
-          <h3 className="page-sub-heading">Folder Settings</h3>
+          <h3 className="page-sub-heading">文件夹设置</h3>
 
           <div className="section gf-form-group">
             <form name="folderSettingsForm" onSubmit={this.onSave}>
               <div className="gf-form">
-                <label className="gf-form-label width-7">Name</label>
+                <label className="gf-form-label width-7">名字</label>
                 <Input
                   type="text"
                   className="gf-form-input width-30"

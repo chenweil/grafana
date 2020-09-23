@@ -168,7 +168,7 @@ export class GraphCtrl extends MetricsPanelCtrl {
 
   onInitEditMode() {
     this.addEditorTab('显示', 'public/app/plugins/panel/graph/tab_display.html');
-    this.addEditorTab('系列覆盖', 'public/app/plugins/panel/graph/tab_series_overrides.html');
+    this.addEditorTab('序列覆盖', 'public/app/plugins/panel/graph/tab_series_overrides.html');
     this.addEditorTab('轴', axesEditorComponent);
     this.addEditorTab('图例', 'public/app/plugins/panel/graph/tab_legend.html');
     this.addEditorTab('阈值', 'public/app/plugins/panel/graph/tab_thresholds.html');

@@ -129,9 +129,7 @@ const renderUser = (user: UserDTO) => {
           <TagBadge label={user.authLabels[0]} removeIcon={false} count={0} />
         )}
       </td>
-      <td className="text-right">
-        {user.isDisabled && <span className="label label-tag label-tag--gray">Disabled</span>}
-      </td>
+      <td className="text-right">{user.isDisabled && <span className="label label-tag label-tag--gray">禁用</span>}</td>
     </tr>
   );
 };

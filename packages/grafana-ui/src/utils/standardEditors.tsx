@@ -45,7 +45,7 @@ export const getStandardFieldConfigs = () => {
     id: 'displayName',
     path: 'displayName',
     name: '显示名称',
-    description: '更改字段或系列名称',
+    description: '更改字段或序例名称',
     editor: standardEditorsRegistry.get('text').editor as any,
     override: standardEditorsRegistry.get('text').editor as any,
     process: stringOverrideProcessor,

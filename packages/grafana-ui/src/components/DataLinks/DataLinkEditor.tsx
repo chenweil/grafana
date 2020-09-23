@@ -58,7 +58,7 @@ export const DataLinkEditor: React.FC<DataLinkEditorProps> = React.memo(
 
         {isLast && (
           <div className={styles.infoText}>
-            通过数据链接，您可以引用数据变量，例如系列名称，标签和值。 键入CMD + Space，CTRL + Space或$打开变量建议。
+            通过数据链接，您可以引用数据变量，例如序列名称，标签和值。 键入CMD + Space，CTRL + Space或$打开变量建议。
           </div>
         )}
       </div>

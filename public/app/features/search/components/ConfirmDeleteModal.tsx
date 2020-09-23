@@ -23,18 +23,18 @@ export const ConfirmDeleteModal: FC<Props> = ({ results, onDeleteItems, isOpen, 
   const folderCount = folders.length;
   const dashCount = dashboards.length;
 
-  let text = 'Do you want to delete the ';
+  let text = '您是否要删除';
   let subtitle;
   const dashEnding = dashCount === 1 ? '' : 's';
   const folderEnding = folderCount === 1 ? '' : 's';
 
   if (folderCount > 0 && dashCount > 0) {
-    text += `selected folder${folderEnding} and dashboard${dashEnding}?\n`;
-    subtitle = `All dashboards of the selected folder${folderEnding} will also be deleted`;
+    text += `所选的文件夹${folderEnding} 和仪表板${dashEnding}?\n`;
+    subtitle = `所选的文件夹${folderEnding}的所有仪表板也将被删除`;
   } else if (folderCount > 0) {
-    text += `selected folder${folderEnding} and all its dashboards?`;
+    text += `所选的文件夹${folderEnding}及其所有仪表板?`;
   } else {
-    text += `selected dashboard${dashEnding}?`;
+    text += `所选的仪表板${dashEnding}?`;
   }
 
   const deleteItems = () => {

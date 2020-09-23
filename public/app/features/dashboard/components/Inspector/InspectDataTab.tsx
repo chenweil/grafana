@@ -277,7 +277,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
     if (isLoading) {
       return (
         <div>
-          Loading <Icon name="fa fa-spinner" className="fa-spin" size="lg" />
+          加载中 <Icon name="fa fa-spinner" className="fa-spin" size="lg" />
         </div>
       );
     }

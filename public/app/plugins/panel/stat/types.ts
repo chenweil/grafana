@@ -97,7 +97,7 @@ export function addStandardDataReduceOptions(
     builder.addRadio({
       path: 'orientation',
       name: '方向',
-      description: '多个系列或多个字段的堆叠方向',
+      description: '多个序列或多个字段的堆叠方向',
       settings: {
         options: [
           { value: 'auto', label: '自动' },

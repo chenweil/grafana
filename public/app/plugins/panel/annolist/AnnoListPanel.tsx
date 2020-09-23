@@ -141,7 +141,7 @@ export class AnnoListPanel extends PureComponent<Props, State> {
           });
           return;
         }
-        appEvents.emit(AppEvents.alertWarning, ['Unknown Dashboard: ' + anno.dashboardId]);
+        appEvents.emit(AppEvents.alertWarning, ['未知的仪表板: ' + anno.dashboardId]);
       });
   };
 
@@ -232,7 +232,7 @@ export class AnnoListPanel extends PureComponent<Props, State> {
                 <Tooltip
                   content={
                     <span>
-                      Created by:
+                      创建于:
                       <br /> {anno.email}
                     </span>
                   }
@@ -260,7 +260,7 @@ export class AnnoListPanel extends PureComponent<Props, State> {
     const { height } = this.props;
     const { loaded, annotations, queryUser, queryTags } = this.state;
     if (!loaded) {
-      return <div>loading...</div>;
+      return <div>加载中...</div>;
     }
 
     // Previously we showed inidication that it covered all time
@@ -276,7 +276,7 @@ export class AnnoListPanel extends PureComponent<Props, State> {
       <div style={{ height, overflow: 'scroll' }}>
         {hasFilter && (
           <div>
-            <b>Filter: &nbsp; </b>
+            <b>过滤: &nbsp; </b>
             {queryUser && (
               <span onClick={this.onClearUser} className="pointer">
                 {queryUser.email}
@@ -286,7 +286,7 @@ export class AnnoListPanel extends PureComponent<Props, State> {
           </div>
         )}
 
-        {annotations.length < 1 && <div className="panel-alert-list__no-alerts">No Annotations Found</div>}
+        {annotations.length < 1 && <div className="panel-alert-list__no-alerts">没有发现注释</div>}
 
         <AbstractList
           items={annotations}

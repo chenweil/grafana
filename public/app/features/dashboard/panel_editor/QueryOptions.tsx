@@ -181,7 +181,7 @@ export class QueryOptions extends PureComponent<Props, State> {
             width={9}
             tooltip={
               <>
-                每个系列的最大数据点。 由某些数据源直接使用，并用于自动间隔的计算。 对于流数据，此值将用于滚动缓冲区。
+                每个序列的最大数据点。 由某些数据源直接使用，并用于自动间隔的计算。 对于流数据，此值将用于滚动缓冲区。
               </>
             }
           >

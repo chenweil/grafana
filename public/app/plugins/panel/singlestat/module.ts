@@ -162,7 +162,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       this.data = {
         value: 0,
         display: {
-          text: '仅支持返回单个系列/表的查询',
+          text: '仅支持返回单个序列/表的查询',
           numeric: NaN,
         },
       };
