@@ -36,15 +36,15 @@ export class ErrorPage extends PureComponent<Props> {
                   <div className="error-column image-box">
                     <img src="public/img/graph404.svg" width="100%" alt="graph" />
                     <div className="error-row error-space-between">
-                      <p className="graph-text">Then</p>
-                      <p className="graph-text">Now</p>
+                      <p className="graph-text">当时</p>
+                      <p className="graph-text">现在</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="error-column info-box">
                 <div className="error-row current-box">
-                  <p className="current-text">current</p>
+                  <p className="current-text">当前</p>
                 </div>
                 <div className="error-row" style={{ flex: 1 }}>
                   <Icon name="minus-circle" className="error-minus" />
@@ -58,7 +58,7 @@ export class ErrorPage extends PureComponent<Props> {
                       <p>
                         请回到您的{' '}
                         <a href={config.appSubUrl} className="error-link">
-                          家仪表板
+                          主仪表板
                         </a>{' '}
                         然后再试一次。
                       </p>
