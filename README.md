@@ -8,6 +8,8 @@ The open-source platform for monitoring and observability.
 
 坚持多久不知道
 
+Docker: [https://hub.docker.com/repository/docker/chenwl2016/grafana-chs](https://hub.docker.com/repository/docker/chenwl2016/grafana-chs)
+
 [![License](https://img.shields.io/github/license/grafana/grafana)](LICENSE)
 [![Circle CI](https://img.shields.io/circleci/build/gh/grafana/grafana)](https://circleci.com/gh/grafana/grafana)
 [![Go Report Card](https://goreportcard.com/badge/github.com/grafana/grafana)](https://goreportcard.com/report/github.com/grafana/grafana)

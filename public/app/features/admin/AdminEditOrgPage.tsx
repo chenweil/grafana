@@ -64,7 +64,7 @@ export const AdminEditOrgPage: FC = () => {
               {({ register, errors }) => (
                 <>
                   <Field label="名称" invalid={!!errors.orgName} error="名称为必填项">
-                    <Input name="组织名称" ref={register({ required: true })} />
+                    <Input name="orgName" ref={register({ required: true })} />
                   </Field>
                   <Button>更新</Button>
                 </>
@@ -77,7 +77,7 @@ export const AdminEditOrgPage: FC = () => {
               margin-top: 20px;
             `}
           >
-            <Legend>Organization Users</Legend>
+            <Legend>组织用户</Legend>
             {!!users.length && (
               <UsersTable
                 users={users}
