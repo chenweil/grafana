@@ -31,7 +31,7 @@ export const otherOptions: TimeOption[] = [
   { from: 'now/w', to: 'now/w', display: '本周', section: 3 },
   { from: 'now/w', to: 'now', display: '本周到目前位置', section: 3 },
   { from: 'now/M', to: 'now/M', display: '本月', section: 3 },
-  { from: 'now/M', to: 'now', display: 'T本月到现在', section: 3 },
+  { from: 'now/M', to: 'now', display: '本月到现在', section: 3 },
   { from: 'now/y', to: 'now/y', display: '今年', section: 3 },
   { from: 'now/y', to: 'now', display: '今年到现在', section: 3 },
 ];

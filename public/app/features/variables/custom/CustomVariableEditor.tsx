@@ -52,7 +52,7 @@ class CustomVariableEditorUnconnected extends PureComponent<Props> {
               onBlur={this.onBlur}
               placeholder="1, 10, 20, myvalue, escaped\,value"
               required
-              aria-label="Variable editor Form Custom Query field"
+              aria-label="变量编辑器的表单自定义查询字段"
             />
           </div>
         </div>

@@ -41,7 +41,7 @@ export const VariableValuesPreview: React.FunctionComponent<VariableValuesPrevie
             <a
               className="gf-form-label btn-secondary"
               onClick={showMoreOptions}
-              aria-label="Variable editor Preview of Values Show More link"
+              aria-label="变量编辑器值预览显示更多链接"
             >
               显示更多
             </a>

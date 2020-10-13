@@ -1,7 +1,7 @@
 <h3 class="dashboard-settings__header">
-  <a ng-click="ctrl.switchMode('list')">Versions</a>
+  <a ng-click="ctrl.switchMode('list')">版本</a>
   <span ng-show="ctrl.mode === 'compare'">
-    <icon name="'angle-right'"></icon> Comparing {{ctrl.baseInfo.version}}
+    <icon name="'angle-right'"></icon> 相比 {{ctrl.baseInfo.version}}
     <icon name="'arrows-h'"></icon>
     {{ctrl.newInfo.version}}
     <cite class="muted" ng-if="ctrl.isNewLatest">(Latest)</cite>
@@ -11,7 +11,7 @@
 <div ng-if="ctrl.mode === 'list'">
   <div ng-if="ctrl.loading">
     <icon name="'fa fa-spinner'" class="fa-spin"></icon>
-    <em>Fetching history list&hellip;</em>
+    <em>提取历史记录列表&hellip;</em>
   </div>
 
   <div ng-if="!ctrl.loading">
@@ -31,7 +31,7 @@
           <tr ng-repeat="revision in ctrl.revisions">
             <td
               class="filter-table__switch-cell"
-              bs-tooltip="!revision.checked && ctrl.canCompare ? 'You can only compare 2 versions at a time' : ''"
+              bs-tooltip="!revision.checked && ctrl.canCompare ? '您一次只能比较2个版本' : ''"
               data-placement="right"
             >
               <gf-form-checkbox

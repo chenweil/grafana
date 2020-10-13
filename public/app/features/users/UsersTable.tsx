@@ -61,7 +61,7 @@ const UsersTable: FC<Props> = props => {
                 <ConfirmModal
                   body={`您确定要删除用户 ${user.login}?`}
                   confirmText="删除"
-                  title="Delete"
+                  title="删除"
                   onDismiss={() => setShowRemoveModal(false)}
                   isOpen={user.login === showRemoveModal}
                   onConfirm={() => {

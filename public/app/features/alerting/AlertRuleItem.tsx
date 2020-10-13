@@ -52,7 +52,7 @@ class AlertRuleItem extends PureComponent<Props> {
                 onClick={onTogglePause}
               />
             </Tooltip>
-            <Tooltip placement="right" content="Edit alert rule">
+            <Tooltip placement="right" content="编辑警报规则">
               <LinkButton size="sm" variant="secondary" href={ruleUrl} icon="cog" />
             </Tooltip>
           </HorizontalGroup>

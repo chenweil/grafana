@@ -23,7 +23,7 @@ export const addDataSource = (config?: Partial<AddDataSourceConfig>): any => {
     basicAuthPassword: '',
     basicAuthUser: '',
     checkHealth: false,
-    expectedAlertMessage: 'Data source is working',
+    expectedAlertMessage: '数据源正在工作',
     form: () => {},
     name: `e2e-${uuidv4()}`,
     skipTlsVerify: false,
@@ -43,7 +43,7 @@ export const addDataSource = (config?: Partial<AddDataSourceConfig>): any => {
     type,
   } = fullConfig;
 
-  e2e().logToConsole('Adding data source with name:', name);
+  e2e().logToConsole('添加具有名称的数据源:', name);
   e2e.pages.AddDataSource.visit();
   e2e.pages.AddDataSource.dataSourcePlugins(type)
     .scrollIntoView()
@@ -103,7 +103,7 @@ export const addDataSource = (config?: Partial<AddDataSourceConfig>): any => {
 
       if (checkHealth) {
         const healthUrl = fromBaseUrl(`/api/datasources/${id}/health`);
-        e2e().logToConsole(`Fetching ${healthUrl}`);
+        e2e().logToConsole(`获取中 ${healthUrl}`);
         e2e()
           .request(healthUrl)
           .its('body')

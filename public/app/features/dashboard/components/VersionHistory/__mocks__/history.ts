@@ -68,7 +68,7 @@ export function restore(version: any, restoredFrom?: any): any {
         annotations: {
           list: [],
         },
-        description: 'A random dashboard for implementing the history list',
+        description: '用于实现历史记录列表的随机仪表盘',
         editable: true,
         gnetId: null,
         graphTooltip: 0,
@@ -111,7 +111,7 @@ export function restore(version: any, restoredFrom?: any): any {
                 thresholds: [],
                 timeFrom: null,
                 timeShift: null,
-                title: 'Panel Title',
+                title: '面板标题',
                 tooltip: {
                   shared: true,
                   sort: 0,
@@ -148,7 +148,7 @@ export function restore(version: any, restoredFrom?: any): any {
             repeatIteration: null,
             repeatRowId: null,
             showTitle: false,
-            title: 'Dashboard Row',
+            title: '仪表板行',
             titleSize: 'h6',
           },
         ],
@@ -167,11 +167,11 @@ export function restore(version: any, restoredFrom?: any): any {
           time_options: ['5m', '15m', '1h', '6h', '12h', '24h', '2d', '7d', '30d'],
         },
         timezone: 'utc',
-        title: 'History Dashboard',
+        title: '历史仪表板',
         version: version,
       },
     },
-    message: 'Dashboard restored to version ' + version,
+    message: '仪表板恢复到版本 ' + version,
     version: version,
   };
 }

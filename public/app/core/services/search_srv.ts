@@ -140,7 +140,7 @@ export class SearchSrv {
         } else {
           section = {
             id: 0,
-            title: 'General',
+            title: '通用',
             items: [],
             icon: 'folder-open',
             score: _.keys(sections).length,

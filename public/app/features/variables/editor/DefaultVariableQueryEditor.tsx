@@ -29,7 +29,7 @@ export default class DefaultVariableQueryEditor extends PureComponent<VariableQu
   render() {
     return (
       <div className="gf-form">
-        <span className="gf-form-label width-10">Query</span>
+        <span className="gf-form-label width-10">查询</span>
         <textarea
           rows={this.getLineCount()}
           className="gf-form-input"

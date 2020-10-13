@@ -97,7 +97,7 @@ const mapInternal = (zone: string, timestamp: number): TimeZoneInfo | undefined 
   switch (zone) {
     case InternalTimeZones.utc: {
       return {
-        name: 'Coordinated Universal Time',
+        name: '世界标准时间',
         zone,
         countries: [],
         abbreviation: 'UTC, GMT',
@@ -115,7 +115,7 @@ const mapInternal = (zone: string, timestamp: number): TimeZoneInfo | undefined 
         abbreviation: '',
         offsetInMins: 0,
         ...info,
-        name: 'Default',
+        name: '默认',
         zone,
       };
     }

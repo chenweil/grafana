@@ -21,7 +21,7 @@ const getDashboards = (query = '') => {
     return result.map((item: DashboardSearchHit) => ({
       id: item.id,
       value: item.id,
-      label: `${item.folderTitle ? item.folderTitle : 'General'}/${item.title}`,
+      label: `${item.folderTitle ? item.folderTitle : '通用'}/${item.title}`,
     }));
   });
 };

@@ -68,7 +68,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
 
     const newPanel: any = {
       type: 'graph',
-      title: 'Panel Title',
+      title: '面板标题',
       gridPos: { x: gridPos.x, y: gridPos.y, w: gridPos.w, h: gridPos.h },
     };
 
@@ -90,7 +90,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
 
     const newPanel: any = {
       type: panelPluginInfo.id,
-      title: 'Panel Title',
+      title: '面板标题',
       gridPos: {
         x: gridPos.x,
         y: gridPos.y,
@@ -113,7 +113,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
   const onCreateNewRow = () => {
     const newRow: any = {
       type: 'row',
-      title: 'Row title',
+      title: '行标题',
       gridPos: { x: 0, y: 0 },
     };
 

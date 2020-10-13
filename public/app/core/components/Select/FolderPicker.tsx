@@ -42,7 +42,7 @@ export class FolderPicker extends PureComponent<Props, State> {
   }
 
   static defaultProps = {
-    rootName: 'General',
+    rootName: '通用',
     enableReset: false,
     initialTitle: '',
     enableCreateNew: false,

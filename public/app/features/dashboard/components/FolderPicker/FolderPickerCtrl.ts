@@ -21,7 +21,7 @@ export class FolderPickerCtrl {
   exitFolderCreation: any;
   enableCreateNew: boolean;
   enableReset: boolean;
-  rootName = 'General';
+  rootName = '通用';
   folder: any;
   createNewFolder: boolean;
   newFolderName: string;

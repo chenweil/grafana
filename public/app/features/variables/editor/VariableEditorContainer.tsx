@@ -80,7 +80,7 @@ class VariableEditorContainerUnconnected extends PureComponent<Props> {
                   name="angle-right"
                   aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.modeLabelNew}
                 />
-                New
+                新建
               </span>
             )}
             {this.props.idInEditor && this.props.idInEditor !== NEW_VARIABLE_ID && (
@@ -89,7 +89,7 @@ class VariableEditorContainerUnconnected extends PureComponent<Props> {
                   name="angle-right"
                   aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.modeLabelEdit}
                 />
-                Edit
+                编辑
               </span>
             )}
           </h3>
@@ -102,7 +102,7 @@ class VariableEditorContainerUnconnected extends PureComponent<Props> {
               onClick={this.onNewVariable}
               aria-label={selectors.pages.Dashboard.Settings.Variables.List.newButton}
             >
-              New
+              新建
             </a>
           )}
         </div>

@@ -26,7 +26,7 @@ type Props = OwnProps & ConnectedProps & DispatchProps;
 
 const defaultValues: NotificationChannelDTO = {
   name: '',
-  type: { value: 'email', label: 'Email' },
+  type: { value: 'email', label: '电子邮件' },
   sendReminder: false,
   disableResolveMessage: false,
   frequency: '15m',
@@ -90,7 +90,7 @@ class NewAlertNotificationPage extends PureComponent<Props> {
     return (
       <Page navModel={navModel}>
         <Page.Contents>
-          <h2>New Notification Channel</h2>
+          <h2>新建通知频道</h2>
           <Form onSubmit={this.onSubmit} validateOn="onChange" defaultValues={defaultValues}>
             {({ register, errors, control, getValues, watch }) => {
               const selectedChannel = notificationChannels.find(c => c.value === getValues().type.value);

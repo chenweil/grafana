@@ -94,7 +94,7 @@ func (hs *HTTPServer) GetDashboard(c *models.ReqContext) Response {
 		IsFolder:    dash.IsFolder,
 		FolderId:    dash.FolderId,
 		Url:         dash.GetUrl(),
-		FolderTitle: "General",
+		FolderTitle: "通用",
 	}
 
 	// lookup folder title

@@ -24,12 +24,12 @@ export const MoveToFolderModal: FC<Props> = ({ results, onMoveItems, isOpen, onD
 
   const moveTo = () => {
     if (folder && selectedDashboards.length) {
-      const folderTitle = folder.title ?? 'General';
+      const folderTitle = folder.title ?? '通用';
 
       moveDashboards(selectedDashboards.map(d => d.uid) as string[], folder).then((result: any) => {
         if (result.successCount > 0) {
           const ending = result.successCount === 1 ? '' : 's';
-          const header = `Dashboard ${ending} Moved`;
+          const header = `仪表板 ${ending} 移动`;
           const msg = `${result.successCount} 仪表板 ${ending} 移动到 ${folderTitle}`;
           appEvents.emit(AppEvents.alertSuccess, [header, msg]);
         }
