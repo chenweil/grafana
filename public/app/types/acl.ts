@@ -81,7 +81,7 @@ export interface AclTargetInfo {
 }
 
 export const dataSourceAclLevels = [
-  { value: DataSourcePermissionLevel.Query, label: 'Query', description: '可以查询数据源。' },
+  { value: DataSourcePermissionLevel.Query, label: '查询', description: '可以查询数据源。' },
 ];
 
 export const dashboardAclTargets: AclTargetInfo[] = [
@@ -92,11 +92,11 @@ export const dashboardAclTargets: AclTargetInfo[] = [
 ];
 
 export const dashboardPermissionLevels: DashboardPermissionInfo[] = [
-  { value: PermissionLevel.View, label: 'View', description: '可以查看仪表板。' },
-  { value: PermissionLevel.Edit, label: 'Edit', description: '可以添加，编辑和删除仪表板。' },
+  { value: PermissionLevel.View, label: '查看', description: '可以查看仪表板。' },
+  { value: PermissionLevel.Edit, label: '编辑', description: '可以添加，编辑和删除仪表板。' },
   {
     value: PermissionLevel.Admin,
-    label: 'Admin',
+    label: '管理员',
     description: '可以添加/删除权限，并且可以添加，编辑和删除仪表板。',
   },
 ];
@@ -113,10 +113,10 @@ export interface TeamPermissionInfo {
 }
 
 export const teamsPermissionLevels: TeamPermissionInfo[] = [
-  { value: TeamPermissionLevel.Member, label: 'Member', description: '是团队成员' },
+  { value: TeamPermissionLevel.Member, label: '成员', description: '是团队成员' },
   {
     value: TeamPermissionLevel.Admin,
-    label: 'Admin',
+    label: '管理员',
     description: '可以添加/删除权限，成员和删除团队。',
   },
 ];

@@ -18,7 +18,7 @@ const idValidationEvents: ValidationEvents = {
   [EventsWithValidation.onBlur]: [
     {
       rule: value => new RegExp(/^$|^[a-z][a-zA-Z0-9_]*$/).test(value),
-      errorMessage: 'Invalid format. Only alphanumeric characters and underscores are allowed',
+      errorMessage: '无效的格式。只允许字母数字字符和下划线',
     },
   ],
 };
@@ -78,10 +78,7 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
         {query.statistics.length <= 1 && (
           <div className="gf-form-inline">
             <div className="gf-form">
-              <QueryField
-                label="Id"
-                tooltip="Id can include numbers, letters, and underscore, and must start with a lowercase letter."
-              >
+              <QueryField label="Id" tooltip="Id 可以包括数字、字母和下划线，必须以小写字母开头。">
                 <Input
                   className="gf-form-input width-8"
                   onBlur={onRunQuery}
@@ -96,8 +93,8 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
             <div className="gf-form gf-form--grow">
               <QueryField
                 className="gf-form--grow"
-                label="Expression"
-                tooltip="Optionally you can add an expression here. Please note that if a math expression that is referencing other queries is being used, it will not be possible to create an alert rule based on this query"
+                label="表达式"
+                tooltip="您可以选择在这里添加一个表达式。请注意，如果正在使用引用其他查询的数学表达式，将不可能基于此查询创建警报规则"
               >
                 <Input
                   className="gf-form-input"
@@ -113,11 +110,11 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
         )}
         <div className="gf-form-inline">
           <div className="gf-form">
-            <QueryField label="Period" tooltip="Minimum interval between points in seconds">
+            <QueryField label="Period" tooltip="以秒为单位的最小间隔时间">
               <Input
                 className="gf-form-input width-8"
                 value={query.period || ''}
-                placeholder="auto"
+                placeholder="自动"
                 onBlur={onRunQuery}
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   this.onChange({ ...metricsQuery, period: event.target.value })
@@ -127,8 +124,8 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
           </div>
           <div className="gf-form">
             <QueryField
-              label="Alias"
-              tooltip="Alias replacement variables: {{metric}}, {{stat}}, {{namespace}}, {{region}}, {{period}}, {{label}}, {{YOUR_DIMENSION_NAME}}"
+              label="别名"
+              tooltip="别名替换变量: {{metric}}, {{stat}}, {{namespace}}, {{region}}, {{period}}, {{label}}, {{YOUR_DIMENSION_NAME}}"
             >
               <Alias
                 value={metricsQuery.alias}
@@ -136,9 +133,9 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
               />
             </QueryField>
             <Switch
-              label="Match Exact"
+              label="匹配精确"
               labelClass="query-keyword"
-              tooltip="Only show metrics that exactly match all defined dimension names."
+              tooltip="仅显示精确匹配所有定义维度名称的指标。"
               checked={metricsQuery.matchExact}
               onChange={() =>
                 this.onChange({
@@ -167,9 +164,9 @@ export class MetricsQueryEditor extends PureComponent<Props, State> {
             <table className="filter-table form-inline">
               <thead>
                 <tr>
-                  <th>Metric Data Query ID</th>
-                  <th>Metric Data Query Expression</th>
-                  <th>Period</th>
+                  <th>度量数据查询ID</th>
+                  <th>度量数据查询表达式</th>
+                  <th>周期</th>
                   <th />
                 </tr>
               </thead>

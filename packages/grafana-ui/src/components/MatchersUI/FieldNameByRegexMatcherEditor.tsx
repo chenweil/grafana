@@ -13,7 +13,7 @@ export const FieldNameByRegexMatcherEditor = memo<MatcherUIProps<string>>(props 
     [props.onChange]
   );
 
-  return <Input placeholder="Enter regular expression" defaultValue={options} onBlur={onBlur} />;
+  return <Input placeholder="输入正则表达式" defaultValue={options} onBlur={onBlur} />;
 });
 
 export const fieldNameByRegexMatcherItem: FieldMatcherUIRegistryItem<string> = {

@@ -147,7 +147,7 @@ function getGrafanaCloudPhantomPlugin(): DataSourcePluginMeta {
       links: [
         {
           url: 'https://grafana.com/products/cloud/',
-          name: 'Learn more',
+          name: '了解更多',
         },
       ],
       screenshots: [],
@@ -178,7 +178,7 @@ function getPhantomPlugin(options: GetPhantomPluginOptions): DataSourcePluginMet
       links: [
         {
           url: 'https://grafana.com/grafana/plugins/' + options.id,
-          name: 'Install now',
+          name: '现在安装',
         },
       ],
       screenshots: [],

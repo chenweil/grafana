@@ -44,7 +44,7 @@ export const ForgottenPassword: FC = () => {
         <>
           <Legend>重设密码</Legend>
           <Field
-            label="User"
+            label="用户"
             description="输入您的信息以获取发送给您的重置链接"
             invalid={!!errors.userOrEmail}
             error={errors?.userOrEmail?.message}

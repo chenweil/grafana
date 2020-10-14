@@ -12,7 +12,7 @@
   "tracing": true,
 
   "info": {
-    "description": "Open source, end-to-end distributed tracing",
+    "description": "开源，端到端分布式跟踪",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"
@@ -23,7 +23,7 @@
     },
     "links": [
       {
-        "name": "Learn more",
+        "name": "了解更多",
         "url": "https://www.jaegertracing.io"
       },
       {

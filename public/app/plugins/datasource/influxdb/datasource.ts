@@ -180,7 +180,7 @@ export default class InfluxDatasource extends DataSourceWithBackend<InfluxQuery,
   annotationQuery(options: any) {
     if (!options.annotation.query) {
       return Promise.reject({
-        message: 'Query missing in annotation definition',
+        message: '注释定义中缺少查询',
       });
     }
 
@@ -190,7 +190,7 @@ export default class InfluxDatasource extends DataSourceWithBackend<InfluxQuery,
 
     return this._seriesQuery(query, options).then((data: any) => {
       if (!data || !data.results || !data.results[0]) {
-        throw { message: 'No results in response from InfluxDB' };
+        throw { message: 'InfluxDB没有响应结果' };
       }
       return new InfluxSeries({
         series: data.results[0].series,
@@ -330,14 +330,14 @@ export default class InfluxDatasource extends DataSourceWithBackend<InfluxQuery,
         .then((res: DataQueryResponse) => {
           if (!res || !res.data || res.state !== LoadingState.Done) {
             console.error('InfluxDB Error', res);
-            return { status: 'error', message: 'Error reading InfluxDB' };
+            return { status: 'error', message: '读取InfluxDB时出错' };
           }
           const first = res.data[0];
           if (first && first.length) {
-            return { status: 'success', message: `${first.length} buckets found` };
+            return { status: 'success', message: `找到 ${first.length} 存储桶` };
           }
           console.error('InfluxDB Error', res);
-          return { status: 'error', message: 'Error reading buckets' };
+          return { status: 'error', message: '读取存储桶时出错' };
         })
         .catch((err: any) => {
           console.error('InfluxDB Error', err);
@@ -354,7 +354,7 @@ export default class InfluxDatasource extends DataSourceWithBackend<InfluxQuery,
         if (error) {
           return { status: 'error', message: error };
         }
-        return { status: 'success', message: 'Data source is working' };
+        return { status: 'success', message: '数据源正在工作' };
       })
       .catch((err: any) => {
         return { status: 'error', message: err.message };

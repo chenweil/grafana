@@ -15,7 +15,7 @@
   },
 
   "info": {
-    "description": "Like Prometheus but for logs. OSS logging solution from Grafana Labs",
+    "description": "像Prometheus一样，但是用于日志。Grafana Labs的OSS日志记录解决方案",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"
@@ -26,7 +26,7 @@
     },
     "links": [
       {
-        "name": "Learn more",
+        "name": "了解更多",
         "url": "https://grafana.com/loki"
       },
       {

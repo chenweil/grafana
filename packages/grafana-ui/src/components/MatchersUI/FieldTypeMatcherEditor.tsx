@@ -20,12 +20,12 @@ export const FieldTypeMatcherEditor = memo<MatcherUIProps<string>>(props => {
 });
 
 const allTypes: Array<SelectableValue<FieldType>> = [
-  { value: FieldType.number, label: 'Numeric' },
-  { value: FieldType.string, label: 'String' },
-  { value: FieldType.time, label: 'Time' },
-  { value: FieldType.boolean, label: 'Boolean' },
-  { value: FieldType.trace, label: 'Traces' },
-  { value: FieldType.other, label: 'Other' },
+  { value: FieldType.number, label: '数字' },
+  { value: FieldType.string, label: '字符串' },
+  { value: FieldType.time, label: '时间' },
+  { value: FieldType.boolean, label: '布尔' },
+  { value: FieldType.trace, label: '追踪' },
+  { value: FieldType.other, label: '其他' },
 ];
 
 const useFieldCounts = (data: DataFrame[]): Map<FieldType, number> => {
@@ -68,7 +68,7 @@ const useSelectOptions = (counts: Map<string, number>, opt?: string): Array<Sele
     if (opt && !found) {
       options.push({
         value: opt,
-        label: `${opt} (No matches)`,
+        label: `${opt} (没有匹配)`,
       });
     }
     return options;

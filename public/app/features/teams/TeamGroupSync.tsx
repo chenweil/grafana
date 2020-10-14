@@ -80,14 +80,14 @@ export class TeamGroupSync extends PureComponent<Props, State> {
     return (
       <div>
         <div className="page-action-bar">
-          <h3 className="page-sub-heading">External group sync</h3>
+          <h3 className="page-sub-heading">外部组同步</h3>
           <Tooltip placement="auto" content={headerTooltip}>
             <Icon className="icon--has-hover page-sub-heading-icon" name="question-circle" />
           </Tooltip>
           <div className="page-action-bar__spacer" />
           {groups.length > 0 && (
             <button className="btn btn-primary pull-right" onClick={this.onToggleAdding}>
-              <Icon name="plus" /> Add group
+              <Icon name="plus" /> 添加组
             </button>
           )}
         </div>
@@ -97,7 +97,7 @@ export class TeamGroupSync extends PureComponent<Props, State> {
             <button className="cta-form__close btn btn-transparent" onClick={this.onToggleAdding}>
               <Icon name="times" />
             </button>
-            <h5>Add External Group</h5>
+            <h5>添加外部组</h5>
             <form className="gf-form-inline" onSubmit={this.onAddGroup}>
               <div className="gf-form">
                 <Input
@@ -111,7 +111,7 @@ export class TeamGroupSync extends PureComponent<Props, State> {
 
               <div className="gf-form">
                 <button className="btn btn-primary gf-form-btn" type="submit" disabled={!this.isNewGroupValid()}>
-                  Add group
+                  添加组
                 </button>
               </div>
             </form>

@@ -268,7 +268,7 @@ class DashNav extends PureComponent<Props> {
     if (showSettings) {
       buttons.push(
         <DashNavButton
-          tooltip="资讯主页设定"
+          tooltip="主页设定"
           classSuffix="settings"
           icon="cog"
           onClick={this.onOpenSettings}

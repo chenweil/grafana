@@ -13,7 +13,7 @@
   },
 
   "info": {
-    "description": "Data source for Google's monitoring service (formerly named Stackdriver)",
+    "description": "Google监控服务的数据源（以前称为Stackdriver）",
     "version": "1.0.0",
     "logos": {
       "small": "img/cloud_monitoring_logo.svg",

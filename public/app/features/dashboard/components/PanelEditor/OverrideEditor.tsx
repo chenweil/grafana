@@ -53,7 +53,7 @@ export const OverrideEditor: React.FC<OverrideEditorProps> = ({
   const styles = getStyles(theme);
 
   const matcherLabel = (
-    <Label category={['Matcher']} description={matcherUi.description}>
+    <Label category={['匹配器']} description={matcherUi.description}>
       {matcherUi.name}
     </Label>
   );

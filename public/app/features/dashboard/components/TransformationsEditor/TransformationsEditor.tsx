@@ -171,7 +171,7 @@ export class TransformationsEditor extends React.PureComponent<Props, State> {
     return (
       <VerticalGroup spacing={'lg'}>
         <Container grow={1}>
-          <FeatureInfoBox title="Transformations" url={getDocsLink(DocsId.Transformations)}>
+          <FeatureInfoBox title="转换" url={getDocsLink(DocsId.Transformations)}>
             <p>
               转换使您可以在可视化之前加入，计算，重新排序，隐藏和重命名查询结果。 <br />
               如果您使用的是Graph可视化，则许多转换都不适合，因为它目前仅支持时间序列。 <br />

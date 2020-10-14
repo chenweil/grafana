@@ -16,17 +16,17 @@ enum ShowContent {
 
 const options: Array<SelectableValue<ShowContent>> = [
   {
-    label: 'Panel JSON',
+    label: '面板JSON',
     description: '保存在仪表板JSON中的模型，用于配置一切工作方式。',
     value: ShowContent.PanelJSON,
   },
   {
-    label: 'Panel data',
+    label: '面板数据',
     description: '原始模型传递给面板可视化',
     value: ShowContent.PanelData,
   },
   {
-    label: 'DataFrame structure',
+    label: '数据帧结构',
     description: '没有任何值的响应信息',
     value: ShowContent.DataStructure,
   },
@@ -72,7 +72,7 @@ export class InspectJSONTab extends PureComponent<Props, State> {
     if (show === ShowContent.DataStructure) {
       const series = this.props.data?.series;
       if (!series) {
-        return { note: '缺少响应日期a' };
+        return { note: '缺少响应日期' };
       }
       return this.props.data!.series.map(frame => {
         const { table, fields, ...rest } = frame as any; // remove 'table' from arrow response
@@ -93,7 +93,7 @@ export class InspectJSONTab extends PureComponent<Props, State> {
       return this.props.panel.getSaveModel();
     }
 
-    return { note: `Unknown Object: ${show}` };
+    return { note: `未知对象: ${show}` };
   }
 
   onApplyPanelModel = () => {
