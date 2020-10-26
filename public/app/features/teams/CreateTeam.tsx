@@ -57,12 +57,12 @@ export class CreateTeam extends PureComponent<Props, State> {
       <Page navModel={navModel}>
         <Page.Contents>
           <>
-            <h3 className="page-sub-heading">New Team</h3>
+            <h3 className="page-sub-heading">新建团队</h3>
 
             <form className="gf-form-group" onSubmit={this.create}>
               <FormField
                 className="gf-form"
-                label="Name"
+                label="名字"
                 value={name}
                 onChange={this.onNameChange}
                 inputWidth={30}
@@ -72,17 +72,17 @@ export class CreateTeam extends PureComponent<Props, State> {
               <FormField
                 type="email"
                 className="gf-form"
-                label="Email"
+                label="邮箱"
                 value={email}
                 onChange={this.onEmailChange}
                 inputWidth={30}
                 labelWidth={10}
                 placeholder="email@test.com"
-                tooltip="This is optional and is primarily used for allowing custom team avatars."
+                tooltip="这是可选的，主要用于允许自定义团队头像。"
               />
               <div className="gf-form-button-row">
                 <Button type="submit" variant="primary">
-                  Create
+                  创建
                 </Button>
               </div>
             </form>

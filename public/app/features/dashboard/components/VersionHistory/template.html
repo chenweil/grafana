@@ -1,7 +1,7 @@
 <h3 class="dashboard-settings__header">
-  <a ng-click="ctrl.switchMode('list')">Versions</a>
+  <a ng-click="ctrl.switchMode('list')">版本</a>
   <span ng-show="ctrl.mode === 'compare'">
-    <icon name="'angle-right'"></icon> Comparing {{ctrl.baseInfo.version}}
+    <icon name="'angle-right'"></icon> 相比 {{ctrl.baseInfo.version}}
     <icon name="'arrows-h'"></icon>
     {{ctrl.newInfo.version}}
     <cite class="muted" ng-if="ctrl.isNewLatest">(Latest)</cite>
@@ -11,7 +11,7 @@
 <div ng-if="ctrl.mode === 'list'">
   <div ng-if="ctrl.loading">
     <icon name="'fa fa-spinner'" class="fa-spin"></icon>
-    <em>Fetching history list&hellip;</em>
+    <em>提取历史记录列表&hellip;</em>
   </div>
 
   <div ng-if="!ctrl.loading">
@@ -20,10 +20,10 @@
         <thead>
           <tr>
             <th class="width-4"></th>
-            <th class="width-4">Version</th>
-            <th class="width-14">Date</th>
-            <th class="width-10">Updated By</th>
-            <th>Notes</th>
+            <th class="width-4">版本</th>
+            <th class="width-14">日期</th>
+            <th class="width-10">更新于</th>
+            <th>记录</th>
             <th></th>
           </tr>
         </thead>
@@ -31,7 +31,7 @@
           <tr ng-repeat="revision in ctrl.revisions">
             <td
               class="filter-table__switch-cell"
-              bs-tooltip="!revision.checked && ctrl.canCompare ? 'You can only compare 2 versions at a time' : ''"
+              bs-tooltip="!revision.checked && ctrl.canCompare ? '您一次只能比较2个版本' : ''"
               data-placement="right"
             >
               <gf-form-checkbox
@@ -52,10 +52,10 @@
                 ng-show="revision.version !== ctrl.dashboard.version"
                 ng-click="ctrl.restore(revision.version)"
               >
-                <icon name="'history'" size="'xs'" style="margin-bottom: 2px"></icon>&nbsp;&nbsp;Restore
+                <icon name="'history'" size="'xs'" style="margin-bottom: 2px"></icon>&nbsp;&nbsp;恢复
               </a>
               <a class="label label-tag" ng-show="revision.version === ctrl.dashboard.version">
-                Latest
+                最新
               </a>
             </td>
           </tr>
@@ -64,7 +64,7 @@
 
       <div ng-if="ctrl.appending">
         <icon name="'fa fa-spinner'" class="fa-spin"></icon>
-        <em>Fetching more entries&hellip;</em>
+        <em>获取更多条目&hellip;</em>
       </div>
 
       <div class="gf-form-group">
@@ -76,7 +76,7 @@
             ng-click="ctrl.addToLog()"
             ng-disabled="ctrl.isLastPage()"
           >
-            Show more versions
+            显示更多版本
           </button>
           <button
             type="button"
@@ -87,7 +87,7 @@
             bs-tooltip="ctrl.canCompare ? '' : 'Select 2 versions to start comparing'"
             data-placement="bottom"
           >
-            <icon name="'code-branch'"></icon>&nbsp;&nbsp;Compare versions
+            <icon name="'code-branch'"></icon>&nbsp;&nbsp;比较版本
           </button>
         </div>
       </div>
@@ -98,7 +98,7 @@
 <div ng-if="ctrl.mode === 'compare'">
   <div ng-if="ctrl.loading">
     <icon name="'fa fa-spinner'" class="fa-spin"></icon>
-    <em>Fetching changes&hellip;</em>
+    <em>取得变更&hellip;</em>
   </div>
 
   <div ng-if="!ctrl.loading">
@@ -108,17 +108,17 @@
       ng-click="ctrl.restore(ctrl.baseInfo.version)"
       ng-if="ctrl.isNewLatest"
     >
-      <icon name="'history'"></icon>&nbsp;&nbsp;Restore to version {{ctrl.baseInfo.version}}
+      <icon name="'history'"></icon>&nbsp;&nbsp;恢复至版本 {{ctrl.baseInfo.version}}
     </button>
     <section>
       <p class="small muted">
-        <strong>Version {{ctrl.newInfo.version}}</strong> updated by
+        <strong>Version {{ctrl.newInfo.version}}</strong> 更新于
         <span>{{ctrl.newInfo.createdBy}} </span>
         <span>{{ctrl.newInfo.ageString}}</span>
         <span> - {{ctrl.newInfo.message}}</span>
       </p>
       <p class="small muted">
-        <strong>Version {{ctrl.baseInfo.version}}</strong> updated by
+        <strong>Version {{ctrl.baseInfo.version}}</strong> 更新于
         <span>{{ctrl.baseInfo.createdBy}} </span>
         <span>{{ctrl.baseInfo.ageString}}</span>
         <span> - {{ctrl.baseInfo.message}}</span>
@@ -130,7 +130,7 @@
     </div>
 
     <div class="gf-form-button-row">
-      <button class="btn btn-secondary" ng-click="ctrl.getDiff('json')">View JSON Diff</button>
+      <button class="btn btn-secondary" ng-click="ctrl.getDiff('json')">查看JSON差异</button>
     </div>
 
     <div class="delta-html" ng-show="ctrl.diff === 'json'" compile="ctrl.delta.json"></div>

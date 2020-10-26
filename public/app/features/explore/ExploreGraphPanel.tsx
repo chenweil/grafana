@@ -162,22 +162,16 @@ class UnThemedExploreGraphPanel extends PureComponent<Props, State> {
         {series && series.length > MAX_NUMBER_OF_TIME_SERIES && !showAllTimeSeries && (
           <div className={cx([style.timeSeriesDisclaimer])}>
             <Icon className={style.disclaimerIcon} name="exclamation-triangle" />
-            {`Showing only ${MAX_NUMBER_OF_TIME_SERIES} time series. `}
+            {`仅显示 ${MAX_NUMBER_OF_TIME_SERIES} 个时间序列。 `}
             <span
               className={cx([style.showAllTimeSeries])}
               onClick={this.onShowAllTimeSeries}
-            >{`Show all ${series.length}`}</span>
+            >{`全部显示 ${series.length}`}</span>
           </div>
         )}
 
         {showPanel && (
-          <Collapse
-            label="Graph"
-            collapsible
-            isOpen={showingGraph}
-            loading={loading}
-            onToggle={this.onClickGraphButton}
-          >
+          <Collapse label="图形" collapsible isOpen={showingGraph} loading={loading} onToggle={this.onClickGraphButton}>
             {this.renderGraph()}
           </Collapse>
         )}

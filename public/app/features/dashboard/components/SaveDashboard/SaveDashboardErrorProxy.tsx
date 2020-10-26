@@ -38,10 +38,11 @@ export const SaveDashboardErrorProxy: React.FC<SaveDashboardErrorProxyProps> = (
           title="Conflict"
           body={
             <div>
-              Someone else has updated this dashboard <br /> <small>Would you still like to save this dashboard?</small>
+              有人更新了此仪表板
+              <br /> <small>您是否仍要保存此仪表板？</small>
             </div>
           }
-          confirmText="Save & Overwrite"
+          confirmText="保存 & 覆盖"
           onConfirm={async () => {
             await onDashboardSave(dashboardSaveModel, { overwrite: true }, dashboard);
             onDismiss();
@@ -55,11 +56,11 @@ export const SaveDashboardErrorProxy: React.FC<SaveDashboardErrorProxyProps> = (
           title="Conflict"
           body={
             <div>
-              A dashboard with the same name in selected folder already exists. <br />
-              <small>Would you still like to save this dashboard?</small>
+              所选文件夹中具有相同名称的仪表板已经存在。 <br />
+              <small>您是否仍要保存此仪表板？</small>
             </div>
           }
-          confirmText="Save & Overwrite"
+          confirmText="保存 & 覆盖"
           onConfirm={async () => {
             await onDashboardSave(dashboardSaveModel, { overwrite: true }, dashboard);
             onDismiss();
@@ -80,11 +81,11 @@ const ConfirmPluginDashboardSaveModal: React.FC<SaveDashboardModalProps> = ({ on
   const styles = getConfirmPluginDashboardSaveModalStyles(theme);
 
   return (
-    <Modal className={styles.modal} title="Plugin Dashboard" icon="copy" isOpen={true} onDismiss={onDismiss}>
+    <Modal className={styles.modal} title="插件仪表板" icon="copy" isOpen={true} onDismiss={onDismiss}>
       <div className={styles.modalContent}>
         <div className={styles.modalText}>
-          Your changes will be lost when you update the plugin.
-          <br /> <small>Use Save As to create custom version.</small>
+          更新插件后，所做的更改将丢失。
+          <br /> <small>使用“另存为”创建自定义版本。</small>
         </div>
         <HorizontalGroup justify="center">
           <SaveDashboardAsButton dashboard={dashboard} onSaveSuccess={onDismiss} />
@@ -95,10 +96,10 @@ const ConfirmPluginDashboardSaveModal: React.FC<SaveDashboardModalProps> = ({ on
               onDismiss();
             }}
           >
-            Overwrite
+            覆盖
           </Button>
           <Button variant="secondary" onClick={onDismiss}>
-            Cancel
+            取消
           </Button>
         </HorizontalGroup>
       </div>

@@ -51,18 +51,18 @@ export const ImportDashboardForm: FC<Props> = ({
 
   return (
     <>
-      <Legend>Options</Legend>
-      <Field label="Name" invalid={!!errors.title} error={errors.title && errors.title.message}>
+      <Legend>选项</Legend>
+      <Field label="名字" invalid={!!errors.title} error={errors.title && errors.title.message}>
         <Input
           name="title"
           type="text"
           ref={register({
-            required: 'Name is required',
+            required: '名字是必填项',
             validate: async (v: string) => await validateTitle(v, getValues().folder.id),
           })}
         />
       </Field>
-      <Field label="Folder">
+      <Field label="文件夹">
         <InputControl
           as={FolderPicker}
           name="folder"
@@ -73,10 +73,8 @@ export const ImportDashboardForm: FC<Props> = ({
         />
       </Field>
       <Field
-        label="Unique identifier (uid)"
-        description="The unique identifier (uid) of a dashboard can be used for uniquely identify a dashboard between multiple Grafana installs.
-                The uid allows having consistent URL’s for accessing dashboards so changing the title of a dashboard will not break any
-                bookmarked links to that dashboard."
+        label="唯一标识符（uid）"
+        description="仪表板的唯一标识符（uid）可用于在多个Grafana安装之间唯一标识仪表板。 uid允许使用一致的URL来访问仪表板，因此更改仪表板的标题不会破坏指向该仪表板的任何书签链接。"
         invalid={!!errors.uid}
         error={errors.uid && errors.uid.message}
       >
@@ -86,7 +84,7 @@ export const ImportDashboardForm: FC<Props> = ({
               name="uid"
               disabled
               ref={register({ validate: async (v: string) => await validateUid(v) })}
-              addonAfter={!uidReset && <Button onClick={onUidReset}>Change uid</Button>}
+              addonAfter={!uidReset && <Button onClick={onUidReset}>替换uid</Button>}
             />
           ) : (
             <Input name="uid" ref={register({ required: true, validate: async (v: string) => await validateUid(v) })} />
@@ -101,7 +99,7 @@ export const ImportDashboardForm: FC<Props> = ({
               label={input.label}
               key={dataSourceOption}
               invalid={errors.dataSources && !!errors.dataSources[index]}
-              error={errors.dataSources && errors.dataSources[index] && 'A data source is required'}
+              error={errors.dataSources && errors.dataSources[index] && '需要数据源'}
             >
               <InputControl
                 as={DataSourcePicker}
@@ -120,7 +118,7 @@ export const ImportDashboardForm: FC<Props> = ({
           return (
             <Field
               label={input.label}
-              error={errors.constants && errors.constants[index] && `${input.label} needs a value`}
+              error={errors.constants && errors.constants[index] && `${input.label} 需要一个值`}
               invalid={errors.constants && !!errors.constants[index]}
               key={constantIndex}
             >
@@ -139,7 +137,7 @@ export const ImportDashboardForm: FC<Props> = ({
           {getButtonText(errors)}
         </Button>
         <Button type="reset" variant="secondary" onClick={onCancel}>
-          Cancel
+          取消
         </Button>
       </HorizontalGroup>
     </>

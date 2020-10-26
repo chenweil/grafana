@@ -20,15 +20,15 @@ export class AxesEditorCtrl {
     };
 
     this.dataFormats = {
-      'Time series': 'timeseries',
-      'Time series buckets': 'tsbuckets',
+      时间序列: 'timeseries',
+      时间序列桶: 'tsbuckets',
     };
 
     this.yBucketBoundModes = {
-      Auto: 'auto',
-      Upper: 'upper',
-      Lower: 'lower',
-      Middle: 'middle',
+      自动: 'auto',
+      上限: 'upper',
+      下限: 'lower',
+      中: 'middle',
     };
   }
 

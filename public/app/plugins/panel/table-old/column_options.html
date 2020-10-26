@@ -1,15 +1,15 @@
 <div class="edit-tab-content" ng-repeat="style in editor.panel.styles">
   <div class="gf-form-group">
-    <h5 class="section-heading">Options</h5>
+    <h5 class="section-heading">选项</h5>
     <div class="gf-form-inline">
       <div class="gf-form gf-form--grow">
-        <label class="gf-form-label width-8">Name pattern</label>
+        <label class="gf-form-label width-8">名称模式</label>
         <input
           type="text"
-          placeholder="Name or regex"
+          placeholder="名字或正则"
           class="gf-form-input max-width-15"
           ng-model="style.pattern"
-          bs-tooltip="'Specify regex using /my.*regex/ syntax'"
+          bs-tooltip="'使用指定正则表达式语法 /my.*regex/'"
           bs-typeahead="editor.getColumnNames"
           ng-blur="editor.render()"
           data-min-length="0"
@@ -20,14 +20,14 @@
       </div>
     </div>
     <div class="gf-form gf-form--grow" ng-if="style.type !== 'hidden'">
-      <label class="gf-form-label width-8">Column Header</label>
+      <label class="gf-form-label width-8">列标题</label>
       <input
         type="text"
         class="gf-form-input max-width-15"
         ng-model="style.alias"
         ng-change="editor.render()"
         ng-model-onblur
-        placeholder="Override header label"
+        placeholder="覆盖标题标签"
       />
     </div>
     <gf-form-switch
@@ -40,10 +40,10 @@
   </div>
 
   <div class="gf-form-group">
-    <h5 class="section-heading">Type</h5>
+    <h5 class="section-heading">类型</h5>
 
     <div class="gf-form gf-form--grow">
-      <label class="gf-form-label width-8">Type</label>
+      <label class="gf-form-label width-8">类型</label>
       <div class="gf-form-select-wrapper width-16">
         <select
           class="gf-form-input"
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="gf-form gf-form--grow" ng-if="style.type === 'date'">
-      <label class="gf-form-label width-8">Date Format</label>
+      <label class="gf-form-label width-8">日期格式</label>
       <gf-form-dropdown
         model="style.dateFormat"
         css-class="gf-form-input width-16"
@@ -79,7 +79,7 @@
 
     <div ng-if="style.type !== 'hidden'">
       <div class="gf-form gf-form--grow">
-        <label class="gf-form-label width-8">Align</label>
+        <label class="gf-form-label width-8">对齐</label>
         <gf-form-dropdown
           model="style.align"
           css-class="gf-form-input"
@@ -105,11 +105,11 @@
 
     <div ng-if="style.type === 'number'">
       <div class="gf-form">
-        <label class="gf-form-label width-8">Unit</label>
+        <label class="gf-form-label width-8">单元</label>
         <unit-picker onChange="editor.setUnitFormat(style)" value="style.unit" width="16"></unit-picker>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label width-8">Decimals</label>
+        <label class="gf-form-label width-8">小数点</label>
         <input
           type="number"
           class="gf-form-input width-4"
@@ -123,12 +123,12 @@
   </div>
 
   <div class="gf-form-group" ng-if="style.type === 'string'">
-    <h5 class="section-heading">Value Mappings</h5>
+    <h5 class="section-heading">值映射</h5>
     <div class="editor-row">
       <div class="gf-form-group">
         <div class="gf-form">
           <span class="gf-form-label">
-            Type
+            类型
           </span>
           <div class="gf-form-select-wrapper">
             <select
@@ -148,7 +148,7 @@
               type="text"
               class="gf-form-input max-width-6"
               ng-model="map.value"
-              placeholder="Value"
+              placeholder="值"
               ng-blur="editor.render()"
             />
             <label class="gf-form-label">
@@ -158,7 +158,7 @@
               type="text"
               class="gf-form-input max-width-8"
               ng-model="map.text"
-              placeholder="Text"
+              placeholder="文本"
               ng-blur="editor.render()"
             />
           </div>
@@ -173,11 +173,11 @@
             <span class="gf-form-label">
               <icon name="'times'" ng-click="editor.removeRangeMap(style, $index)"></icon>
             </span>
-            <span class="gf-form-label">From</span>
+            <span class="gf-form-label">从</span>
             <input type="text" ng-model="rangeMap.from" class="gf-form-input max-width-6" ng-blur="editor.render()" />
-            <span class="gf-form-label">To</span>
+            <span class="gf-form-label">到</span>
             <input type="text" ng-model="rangeMap.to" class="gf-form-input max-width-6" ng-blur="editor.render()" />
-            <span class="gf-form-label">Text</span>
+            <span class="gf-form-label">文本</span>
             <input type="text" ng-model="rangeMap.text" class="gf-form-input max-width-8" ng-blur="editor.render()" />
           </div>
           <div class="gf-form">
@@ -191,11 +191,11 @@
   </div>
 
   <div class="gf-form-group" ng-if="['number', 'string'].indexOf(style.type) !== -1">
-    <h5 class="section-heading">Thresholds</h5>
+    <h5 class="section-heading">阈值</h5>
     <div class="gf-form">
       <label class="gf-form-label width-8"
-        >Thresholds
-        <tip>Comma separated values</tip>
+        >阈值
+        <tip>逗号分隔值</tip>
       </label>
       <input
         type="text"
@@ -207,7 +207,7 @@
       />
     </div>
     <div class="gf-form">
-      <label class="gf-form-label width-8">Color Mode</label>
+      <label class="gf-form-label width-8">颜色模式</label>
       <div class="gf-form-select-wrapper width-10">
         <select
           class="gf-form-input"
@@ -218,7 +218,7 @@
       </div>
     </div>
     <div class="gf-form">
-      <label class="gf-form-label width-8">Colors</label>
+      <label class="gf-form-label width-8">颜色</label>
       <span class="gf-form-label">
         <color-picker color="style.colors[0]" onChange="editor.onColorChange(style, 0)"></color-picker>
       </span>
@@ -229,28 +229,26 @@
         <color-picker color="style.colors[2]" onChange="editor.onColorChange(style, 2)"></color-picker>
       </span>
       <div class="gf-form-label">
-        <a class="pointer" ng-click="editor.invertColorOrder($index)">Invert</a>
+        <a class="pointer" ng-click="editor.invertColorOrder($index)">颠倒</a>
       </div>
     </div>
   </div>
 
   <div class="section gf-form-group" ng-if="style.link">
-    <h5 class="section-heading">Link</h5>
+    <h5 class="section-heading">链接</h5>
     <div class="gf-form">
       <label class="gf-form-label width-9">
-        Url
+        地址
         <info-popover mode="right-normal">
-          <p>Specify an URL (relative or absolute)</p>
+          <p>指定一个URL（相对或绝对）</p>
           <span>
-            Use special variables to specify cell values:
+            使用特殊变量指定单元格值：
             <br />
-            <em>${__cell}</em> refers to current cell value
+            <em>${__cell}</em> 指当前单元格的值
             <br />
-            <em>${__cell_n}</em> refers to Nth column value in current row. Column indexes are started from 0. For
-            instance, <em>${__cell_1}</em> refers to second column's value.
+            <em>${__cell_n}</em> 引用当前行中的第N列值。 列索引从0开始。例如, <em>${__cell_1}</em> 指第二列的值。
             <br />
-            <em>${__cell:raw}</em> disables all encoding. Useful if the value is a complete URL. By default values are
-            URI encoded.
+            <em>${__cell:raw}</em> 禁用所有编码。 如果值是完整的URL，则很有用。 默认情况下，值是URI编码的。
           </span>
         </info-popover>
       </label>
@@ -265,11 +263,11 @@
     </div>
     <div class="gf-form">
       <label class="gf-form-label width-9">
-        Tooltip
+        工具提示
         <info-popover mode="right-normal">
-          <p>Specify text for link tooltip.</p>
+          <p>指定链接工具提示的文本。</p>
           <span>
-            This title appears when user hovers pointer over the cell with link. Use the same variables as for URL.
+            当用户将指针悬停在带有链接的单元格上方时，将显示此标题。 使用与URL相同的变量。
           </span>
         </info-popover>
       </label>
@@ -285,7 +283,7 @@
     <gf-form-switch
       class="gf-form"
       label-class="width-9"
-      label="Open in new tab"
+      label="在新标签页中打开"
       checked="style.linkTargetBlank"
     ></gf-form-switch>
   </div>
@@ -293,13 +291,11 @@
   <div class="clearfix"></div>
   <div class="gf-form-group">
     <button class="btn btn-danger btn-small" ng-click="editor.removeColumnStyle(style)">
-      <icon name="'trash-alt'"></icon> Remove Rule
+      <icon name="'trash-alt'"></icon> 删除规则
     </button>
   </div>
 
   <hr />
 </div>
 
-<button class="btn btn-inverse" ng-click="editor.addColumnStyle()">
-  <icon name="'plus'"></icon>&nbsp;Add column style
-</button>
+<button class="btn btn-inverse" ng-click="editor.addColumnStyle()"><icon name="'plus'"></icon>&nbsp;添加列样式</button>

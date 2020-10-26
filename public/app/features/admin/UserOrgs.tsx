@@ -46,7 +46,7 @@ export class UserOrgs extends PureComponent<Props, State> {
 
     return (
       <>
-        <h3 className="page-heading">Organisations</h3>
+        <h3 className="page-heading">组织机构</h3>
         <div className="gf-form-group">
           <div className="gf-form">
             <table className="filter-table form-inline">
@@ -64,7 +64,7 @@ export class UserOrgs extends PureComponent<Props, State> {
           </div>
           <div className={addToOrgContainerClass}>
             <Button variant="secondary" onClick={this.showOrgAddModal(true)}>
-              Add user to organisation
+              将用户添加到组织
             </Button>
           </div>
           <AddToOrgModal isOpen={showAddOrgModal} onOrgAdd={onOrgAdd} onDismiss={this.showOrgAddModal(false)} />
@@ -145,24 +145,24 @@ class UnThemedOrgRow extends PureComponent<OrgRowProps, OrgRowState> {
         <td colSpan={1}>
           <div className="pull-right">
             <ConfirmButton
-              confirmText="Save"
+              confirmText="保存"
               onClick={this.onChangeRoleClick}
               onCancel={this.onCancelClick}
               onConfirm={this.onOrgRoleSave}
             >
-              Change role
+              更换角色
             </ConfirmButton>
           </div>
         </td>
         <td colSpan={1}>
           <div className="pull-right">
             <ConfirmButton
-              confirmText="Confirm removal"
+              confirmText="确认移除"
               confirmVariant="destructive"
               onCancel={this.onCancelClick}
               onConfirm={this.onOrgRemove}
             >
-              Remove from organisation
+              从组织中删除
             </ConfirmButton>
           </div>
         </td>
@@ -226,20 +226,20 @@ export class AddToOrgModal extends PureComponent<AddToOrgModalProps, AddToOrgMod
     const styles = getAddToOrgModalStyles();
 
     return (
-      <Modal className={styles.modal} title="Add to an organization" isOpen={isOpen} onDismiss={this.onCancel}>
-        <Field label="Organisation">
+      <Modal className={styles.modal} title="添加到组织" isOpen={isOpen} onDismiss={this.onCancel}>
+        <Field label="组织">
           <OrgPicker onSelected={this.onOrgSelect} />
         </Field>
-        <Field label="Role">
+        <Field label="角色">
           <OrgRolePicker value={role} onChange={this.onOrgRoleChange} />
         </Field>
         <Container padding="md">
           <HorizontalGroup spacing="md" justify="center">
             <Button variant="primary" onClick={this.onAddUserToOrg}>
-              Add to organisation
+              添加到组织
             </Button>
             <Button variant="secondary" onClick={this.onCancel}>
-              Cancel
+              取消
             </Button>
           </HorizontalGroup>
         </Container>

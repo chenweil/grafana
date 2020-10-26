@@ -145,7 +145,7 @@ export class Select<T> extends PureComponent<LegacySelectProps<T>> {
               isSearchable={isSearchable}
               onChange={onChange}
               options={options}
-              placeholder={placeholder || 'Choose'}
+              placeholder={placeholder || '选择'}
               styles={resetSelectStyles()}
               isDisabled={isDisabled}
               isLoading={isLoading}
@@ -174,7 +174,7 @@ export class AsyncSelect<T> extends PureComponent<AsyncProps<T>> {
   static defaultProps: Partial<AsyncProps<any>> = {
     className: '',
     components: {},
-    loadingMessage: () => 'Loading...',
+    loadingMessage: () => '加载中...',
     isDisabled: false,
     isClearable: false,
     isMulti: false,
@@ -245,7 +245,7 @@ export class AsyncSelect<T> extends PureComponent<AsyncProps<T>> {
               loadOptions={loadOptions}
               isLoading={isLoading}
               defaultOptions={defaultOptions}
-              placeholder={placeholder || 'Choose'}
+              placeholder={placeholder || '选择'}
               styles={resetSelectStyles()}
               loadingMessage={() => loadingMessage}
               noOptionsMessage={noOptionsMessage}

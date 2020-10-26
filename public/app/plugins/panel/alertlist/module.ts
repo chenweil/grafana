@@ -12,14 +12,14 @@ class AlertListPanel extends PanelCtrl {
   static scrollable = true;
 
   showOptions = [
-    { text: 'Current state', value: 'current' },
-    { text: 'Recent state changes', value: 'changes' },
+    { text: '当前状态', value: 'current' },
+    { text: '最近状态变更', value: 'changes' },
   ];
 
   sortOrderOptions = [
-    { text: 'Alphabetical (asc)', value: 1 },
-    { text: 'Alphabetical (desc)', value: 2 },
-    { text: 'Importance', value: 3 },
+    { text: '按字母顺序 (升序)', value: 1 },
+    { text: '按字母顺序 (降序)', value: 2 },
+    { text: '重要性', value: 3 },
   ];
 
   stateFilter: any = {};
@@ -131,7 +131,7 @@ class AlertListPanel extends PanelCtrl {
             return al;
           });
 
-          this.noAlertsMessage = this.alertHistory.length === 0 ? 'No alerts in current time range' : '';
+          this.noAlertsMessage = this.alertHistory.length === 0 ? '当前时间范围内无警报' : '';
 
           return this.alertHistory;
         })
@@ -179,7 +179,7 @@ class AlertListPanel extends PanelCtrl {
           if (this.currentAlerts.length > this.panel.limit) {
             this.currentAlerts = this.currentAlerts.slice(0, this.panel.limit);
           }
-          this.noAlertsMessage = this.currentAlerts.length === 0 ? 'No alerts' : '';
+          this.noAlertsMessage = this.currentAlerts.length === 0 ? '无警报' : '';
 
           return this.currentAlerts;
         })
@@ -187,7 +187,7 @@ class AlertListPanel extends PanelCtrl {
   }
 
   onInitEditMode() {
-    this.addEditorTab('Options', 'public/app/plugins/panel/alertlist/editor.html');
+    this.addEditorTab('选项', 'public/app/plugins/panel/alertlist/editor.html');
   }
 }
 

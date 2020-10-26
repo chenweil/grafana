@@ -1,7 +1,7 @@
 <query-editor-row query-ctrl="ctrl" can-collapse="false">
   <div class="gf-form-inline">
     <div class="gf-form">
-      <label class="gf-form-label query-keyword width-9">Service</label>
+      <label class="gf-form-label query-keyword width-9">服务</label>
       <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent">
         <select
           class="gf-form-input service-dropdown min-width-12"
@@ -15,7 +15,7 @@
       class="gf-form"
       ng-if="ctrl.target.queryType === 'Azure Monitor' || ctrl.target.queryType === 'Azure Log Analytics'"
     >
-      <label class="gf-form-label query-keyword width-9">Subscription</label>
+      <label class="gf-form-label query-keyword width-9">订阅</label>
       <gf-form-dropdown
         model="ctrl.target.subscription"
         allow-custom="true"
@@ -33,7 +33,7 @@
   <div ng-if="ctrl.target.queryType === 'Azure Monitor'">
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Resource Group</label>
+        <label class="gf-form-label query-keyword width-9">资源组</label>
         <gf-form-dropdown
           model="ctrl.target.azureMonitor.resourceGroup"
           allow-custom="true"
@@ -45,7 +45,7 @@
         </gf-form-dropdown>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Namespace</label>
+        <label class="gf-form-label query-keyword width-9">命名空间</label>
         <gf-form-dropdown
           model="ctrl.target.azureMonitor.metricDefinition"
           allow-custom="true"
@@ -57,7 +57,7 @@
         </gf-form-dropdown>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Resource Name</label>
+        <label class="gf-form-label query-keyword width-9">资源名称</label>
         <gf-form-dropdown
           model="ctrl.target.azureMonitor.resourceName"
           allow-custom="true"
@@ -74,7 +74,7 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Metric Namespace</label>
+        <label class="gf-form-label query-keyword width-9">指标命名空间</label>
         <gf-form-dropdown
           model="ctrl.target.azureMonitor.metricNamespace"
           allow-custom="true"
@@ -86,7 +86,7 @@
         </gf-form-dropdown>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Metric</label>
+        <label class="gf-form-label query-keyword width-9">指标</label>
         <gf-form-dropdown
           model="ctrl.target.azureMonitor.metricName"
           allow-custom="true"
@@ -98,7 +98,7 @@
         </gf-form-dropdown>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Aggregation</label>
+        <label class="gf-form-label query-keyword width-9">聚合</label>
         <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent">
           <select
             class="gf-form-input width-11"
@@ -114,7 +114,7 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Time Grain</label>
+        <label class="gf-form-label query-keyword width-9">时间粒</label>
         <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent timegrainunit-dropdown-wrapper">
           <select
             class="gf-form-input"
@@ -125,7 +125,7 @@
         </div>
       </div>
       <div class="gf-form" ng-show="ctrl.target.azureMonitor.timeGrain.trim() === 'auto'">
-        <label class="gf-form-label">Auto Interval</label>
+        <label class="gf-form-label">自动间隔</label>
         <label class="gf-form-label">{{ctrl.getAzureMonitorAutoInterval()}}</label>
       </div>
       <div class="gf-form gf-form--grow">
@@ -137,7 +137,7 @@
     <ng-container ng-if="ctrl.target.azureMonitor.dimensionFilters.length < 1">
       <div class="gf-form-inline">
         <div class="gf-form">
-          <label class="gf-form-label query-keyword width-9">Dimension</label>
+          <label class="gf-form-label query-keyword width-9">尺寸</label>
         </div>
         <div class="gf-form">
           <a ng-click="ctrl.azureMonitorAddDimensionFilter()" class="gf-form-label query-part"
@@ -154,7 +154,7 @@
     <ng-container ng-if="ctrl.target.azureMonitor.dimensionFilters.length > 0">
       <div ng-repeat="dim in ctrl.target.azureMonitor.dimensionFilters track by $index" class="gf-form-inline">
         <div class="gf-form">
-          <label class="gf-form-label query-keyword width-9">Dimension</label>
+          <label class="gf-form-label query-keyword width-9">尺寸</label>
           <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent">
             <select
               class="gf-form-input min-width-12"
@@ -163,7 +163,7 @@
               ng-change="ctrl.refresh()"
             ></select>
           </div>
-          <label class="gf-form-label query-keyword width-3">eq</label>
+          <label class="gf-form-label query-keyword width-3">等于</label>
           <input
             type="text"
             class="gf-form-input width-17"
@@ -189,7 +189,7 @@
       </div>
       <div class="gf-form-inline">
         <div class="gf-form">
-          <label class="gf-form-label query-keyword width-9">Top</label>
+          <label class="gf-form-label query-keyword width-9">顶部</label>
           <input
             type="text"
             class="gf-form-input width-3"
@@ -207,13 +207,13 @@
 
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Legend Format</label>
+        <label class="gf-form-label query-keyword width-9">图例</label>
         <input
           type="text"
           class="gf-form-input width-30"
           ng-model="ctrl.target.azureMonitor.alias"
           spellcheck="false"
-          placeholder="alias patterns (see help for more info)"
+          placeholder="别名模式（有关更多信息，请参见帮助）"
           ng-blur="ctrl.refresh()"
         />
       </div>
@@ -227,7 +227,7 @@
   <div ng-if="ctrl.target.queryType === 'Azure Log Analytics'">
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Workspace</label>
+        <label class="gf-form-label query-keyword width-9">工作空间</label>
         <gf-form-dropdown
           model="ctrl.target.azureLogAnalytics.workspace"
           allow-custom="true"
@@ -241,10 +241,10 @@
           <div class="width-1"></div>
         </div>
         <div class="gf-form">
-          <button class="btn btn-primary width-10" ng-click="ctrl.refresh()">Run</button>
+          <button class="btn btn-primary width-10" ng-click="ctrl.refresh()">执行</button>
         </div>
         <div class="gf-form">
-          <label class="gf-form-label">(Run Query: Shift+Enter, Trigger Suggestion: Ctrl+Space)</label>
+          <label class="gf-form-label">（运行查询：Shift + Enter，触发建议：Ctrl +空格）</label>
         </div>
         <div class="gf-form gf-form--grow">
           <div class="gf-form-label gf-form-label--grow"></div>
@@ -265,7 +265,7 @@
 
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">Format As</label>
+        <label class="gf-form-label query-keyword width-7">格式化为</label>
         <div class="gf-form-select-wrapper">
           <select
             class="gf-form-input gf-size-auto"
@@ -277,14 +277,14 @@
       </div>
       <div class="gf-form">
         <label class="gf-form-label query-keyword" ng-click="ctrl.showHelp = !ctrl.showHelp">
-          Show Help
+          显示帮助
           <icon name="'angle-down'" ng-show="ctrl.showHelp" style="margin-top: 3px;"></icon>
           <icon name="'angle-right'" ng-hide="ctrl.showHelp" style="margin-top: 3px;"></icon>
         </label>
       </div>
       <div class="gf-form" ng-show="ctrl.lastQuery">
         <label class="gf-form-label query-keyword" ng-click="ctrl.showLastQuery = !ctrl.showLastQuery">
-          Raw Query
+          原始查询
           <icon name="'angle-down'" ng-show="ctrl.showLastQuery"></icon>
           <icon name="'angle-right'" ng-hide="ctrl.showLastQuery"></icon>
         </label>
@@ -299,15 +299,15 @@
     </div>
     <div class="gf-form" ng-show="ctrl.showHelp">
       <pre class="gf-form-pre alert alert-info">
-    Format as Table:
-    - return any set of columns
+    格式为表格：
+      -返回任何一组列
 
-    Format as Time series:
-    - Requires a column of type datetime
-    - returns the first column with a numeric datatype as the value
-    - (Optional: returns the first column with type string to represent the series name. If no column is found the column name of the value column is used as series name)
+    格式为时间序列：
+      -需要类型为datetime的列
+      -返回具有数字数据类型作为值的第一列
+      -（可选：返回具有字符串类型的第一列以表示序列名称。如果未找到任何列，则将value列的列名称用作序列名称）
 
-    Example Time Series Query:
+    时间序列查询示例：
 
     AzureActivity
     | where $__timeFilter()
@@ -319,14 +319,14 @@
     - $__timeFilter(datetimeColumn) -&gt;  datetimeColumn  &ge; datetime(2018-06-05T18:09:58.907Z) and datetimeColumn &le; datetime(2018-06-05T20:09:58.907Z)
     - $__escapeMulti($myTemplateVar) -&gt; $myTemplateVar should be a multi-value template variables that contains illegal characters
     - $__contains(aColumn, $myTemplateVar) -&gt; aColumn in ($myTemplateVar)
-      If using the All option, then check the Include All Option checkbox and in the Custom all value field type in: all. If All is chosen -&gt; 1 == 1
+      如果使用“全部”选项，则选中“包括所有选项”复选框，然后在“自定义所有值”字段中键入：全部。 如果选择全部-&gt; 1 == 1
 
-    Or build your own conditionals using these built-in variables which just return the values:
+    或使用这些内置变量构建您自己的条件，这些变量仅返回值：
     - $__timeFrom -&gt;  datetime(2018-06-05T18:09:58.907Z)
     - $__timeTo -&gt; datetime(2018-06-05T20:09:58.907Z)
     - $__interval -&gt; 5m
 
-    Examples:
+    例子:
     - ¡ where $__timeFilter
     - | where TimeGenerated &ge; $__timeFrom and TimeGenerated &le; $__timeTo
     - | summarize count() by Category, bin(TimeGenerated, $__interval)
@@ -349,7 +349,7 @@
 
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">Format As</label>
+        <label class="gf-form-label query-keyword width-7">格式化为</label>
         <div class="gf-form-select-wrapper">
           <select
             class="gf-form-input gf-size-auto"
@@ -368,7 +368,7 @@
   <div ng-if="ctrl.target.queryType === 'Application Insights'">
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Metric</label>
+        <label class="gf-form-label query-keyword width-9">指标</label>
         <gf-form-dropdown
           model="ctrl.target.appInsights.metricName"
           allow-custom="true"
@@ -380,7 +380,7 @@
         </gf-form-dropdown>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Aggregation</label>
+        <label class="gf-form-label query-keyword width-9">聚合</label>
         <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent">
           <select
             class="gf-form-input"
@@ -396,7 +396,7 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Group By</label>
+        <label class="gf-form-label query-keyword width-9">分组</label>
       </div>
       <div
         ng-repeat="d in ctrl.target.appInsights.dimension track by $index"
@@ -411,7 +411,7 @@
         <gf-form-dropdown
           allow-custom="true"
           lookup-text="true"
-          placeholder="Add"
+          placeholder="添加"
           model="ctrl.dummyDiminsionString"
           get-options="ctrl.getAppInsightsGroupBySegments($query)"
           on-change="ctrl.getAppInsightsGroupBySegments"
@@ -421,13 +421,13 @@
       </div>
       <div class="gf-form-inline">
         <div class="gf-form">
-          <label class="gf-form-label query-keyword">Filter</label>
+          <label class="gf-form-label query-keyword">过滤</label>
           <input
             type="text"
             class="gf-form-input width-17"
             ng-model="ctrl.target.appInsights.dimensionFilter"
             spellcheck="false"
-            placeholder="your/groupby eq 'a_value'"
+            placeholder="你的/分组 等于 '一个值'"
             ng-blur="ctrl.refresh()"
           />
         </div>
@@ -438,7 +438,7 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Time Grain</label>
+        <label class="gf-form-label query-keyword width-9">时间粒</label>
         <div class="gf-form-select-wrapper gf-form-select-wrapper--caret-indent">
           <select
             class="gf-form-input"
@@ -475,7 +475,7 @@
         </div>
       </div>
       <div class="gf-form" ng-hide="ctrl.target.appInsights.timeGrainType !== 'auto'">
-        <label class="gf-form-label">Auto Interval (see query options)</label>
+        <label class="gf-form-label">自动间隔（请参阅查询选项）</label>
       </div>
       <div class="gf-form gf-form--grow">
         <div class="gf-form-label gf-form-label--grow"></div>
@@ -483,13 +483,13 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-9">Legend Format</label>
+        <label class="gf-form-label query-keyword width-9">图例</label>
         <input
           type="text"
           class="gf-form-input width-30"
           ng-model="ctrl.target.appInsights.alias"
           spellcheck="false"
-          placeholder="alias patterns (see help for more info)"
+          placeholder="别名模式（有关更多信息，请参见帮助）"
           ng-blur="ctrl.refresh()"
         />
       </div>

@@ -1,13 +1,13 @@
-# Graphite Data Source -  Native Plugin
+# 石墨数据源-本机插件
 
-Grafana ships with **built in** support for Graphite (of course!). 
+Grafana 附带对石墨的**内置**支持（当然！）。
 
-Grafana has an advanced Graphite query editor that lets you quickly navigate the metric space, add functions, change function parameters and much more. The editor can handle all types of graphite queries. It can even handle complex nested queries through the use of query references.
+Grafana 具有先进的 Graphite 查询编辑器，可让您快速浏览度量空间，添加函数，更改函数参数等等。 编辑器可以处理所有类型的石墨查询。 它甚至可以通过使用查询引用来处理复杂的嵌套查询。
 
-Read more about it here:
+在这里阅读更多关于它的信息：
 
 [http://docs.grafana.org/datasources/graphite/](http://docs.grafana.org/datasources/graphite/)
 
-Graphite 1.1 Release:
+石墨 1.1 版本：
 
 [https://grafana.com/blog/2018/01/11/graphite-1.1-teaching-an-old-dog-new-tricks/](https://grafana.com/blog/2018/01/11/graphite-1.1-teaching-an-old-dog-new-tricks/)

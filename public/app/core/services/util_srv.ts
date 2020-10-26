@@ -101,7 +101,7 @@ export class UtilSrv {
     scope.altActionText = payload.altActionText;
     scope.icon = payload.icon || 'check';
     scope.yesText = payload.yesText || 'Yes';
-    scope.noText = payload.noText || 'Cancel';
+    scope.noText = payload.noText || '取消';
     scope.confirmTextValid = scope.confirmText ? false : true;
     scope.selectors = selectors.pages.ConfirmModal;
 

@@ -20,13 +20,13 @@ export const LogsConfig = (props: Props) => {
 
   return (
     <>
-      <h3 className="page-heading">Logs</h3>
+      <h3 className="page-heading">日志</h3>
 
       <div className="gf-form-group">
         <div className="gf-form max-width-30">
           <FormField
             labelWidth={11}
-            label="Message field name"
+            label="消息字段名称"
             value={value.logMessageField}
             onChange={changeHandler('logMessageField')}
             placeholder="_source"
@@ -35,7 +35,7 @@ export const LogsConfig = (props: Props) => {
         <div className="gf-form max-width-30">
           <FormField
             labelWidth={11}
-            label="Level field name"
+            label="级别字段名称"
             value={value.logLevelField}
             onChange={changeHandler('logLevelField')}
           />

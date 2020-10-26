@@ -13,8 +13,8 @@ import { containsVariable, isAllVariable } from '../utils';
 export const createDataSourceVariableAdapter = (): VariableAdapter<DataSourceVariableModel> => {
   return {
     id: 'datasource',
-    description: 'Enabled you to dynamically switch the datasource for multiple panels',
-    name: 'Datasource',
+    description: '使您能够动态切换多个面板的数据源',
+    name: '数据源',
     initialState: initialDataSourceVariableModelState,
     reducer: dataSourceVariableReducer,
     picker: OptionsPicker,

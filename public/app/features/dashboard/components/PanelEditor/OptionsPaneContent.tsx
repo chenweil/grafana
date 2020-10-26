@@ -160,7 +160,7 @@ export const TabsBarContent: React.FC<{
                   type="text"
                   prefix={<Icon name="search" />}
                   ref={elem => elem && elem.focus()}
-                  placeholder="Search all options"
+                  placeholder="搜索所有选项"
                   suffix={
                     <Icon name="times" onClick={() => setSearchMode(false)} className={styles.searchRemoveIcon} />
                   }
@@ -214,7 +214,7 @@ export const TabsBarContent: React.FC<{
       <div className={styles.tabsButton}>
         <DashNavButton
           icon="angle-right"
-          tooltip="Close options pane"
+          tooltip="关闭选项窗格"
           classSuffix="close-options"
           onClick={onClose}
           iconSize="lg"
@@ -226,19 +226,19 @@ export const TabsBarContent: React.FC<{
 
 const tabSelections: Array<SelectableValue<string>> = [
   {
-    label: 'Panel',
+    label: '仪表板',
     value: 'options',
-    tooltip: 'Configure panel display options',
+    tooltip: '配置面板显示选项',
   },
   {
-    label: 'Field',
+    label: '字段',
     value: 'defaults',
-    tooltip: 'Configure field options',
+    tooltip: '配置字段选项',
   },
   {
-    label: 'Overrides',
+    label: '覆盖',
     value: 'overrides',
-    tooltip: 'Configure field option overrides',
+    tooltip: '配置字段选项替代',
   },
 ];
 

@@ -39,16 +39,16 @@ export class AdHocVariableEditorUnConnected extends PureComponent<Props> {
     return (
       <>
         <div className="gf-form-group">
-          <h5 className="section-heading">Options</h5>
+          <h5 className="section-heading">选项</h5>
           <div className="gf-form max-width-21">
-            <span className="gf-form-label width-8">Data source</span>
+            <span className="gf-form-label width-8">数据源</span>
             <div className="gf-form-select-wrapper max-width-14">
               <select
                 className="gf-form-input"
                 required
                 onChange={this.onDatasourceChanged}
                 value={variable.datasource ?? ''}
-                aria-label="Variable editor Form AdHoc DataSource select"
+                aria-label="变量编辑器窗体AdHoc数据源选择"
               >
                 {dataSources.map(ds => (
                   <option key={ds.value ?? ''} value={ds.value ?? ''} label={ds.text}>
@@ -61,7 +61,7 @@ export class AdHocVariableEditorUnConnected extends PureComponent<Props> {
         </div>
 
         {infoText && (
-          <div className="alert alert-info gf-form-group" aria-label="Variable editor Form Alert">
+          <div className="alert alert-info gf-form-group" aria-label="变量编辑器表单警报">
             {infoText}
           </div>
         )}

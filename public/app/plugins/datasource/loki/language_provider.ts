@@ -41,12 +41,12 @@ type TypeaheadContext = {
 export function addHistoryMetadata(item: CompletionItem, history: LokiHistoryItem[]): CompletionItem {
   const cutoffTs = Date.now() - HISTORY_COUNT_CUTOFF;
   const historyForItem = history.filter(h => h.ts > cutoffTs && h.query.expr === item.label);
-  let hint = `Queried ${historyForItem.length} times in the last 24h.`;
+  let hint = `在最近24小时内查询 ${historyForItem.length} 次。`;
   const recent = historyForItem[0];
 
   if (recent) {
     const lastQueried = dateTime(recent.ts).fromNow();
-    hint = `${hint} Last queried ${lastQueried}.`;
+    hint = `${hint} 最后查询 ${lastQueried}.`;
   }
 
   return {
@@ -201,7 +201,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
       suggestions.push({
         prefixMatch: true,
         skipSort: true,
-        label: 'History',
+        label: '历史',
         items: historyItems,
       });
     }
@@ -214,7 +214,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
 
     suggestions.push({
       prefixMatch: true,
-      label: 'Functions',
+      label: '功能',
       items: FUNCTIONS.map(suggestion => ({ ...suggestion, kind: 'function' })),
     });
 
@@ -226,7 +226,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
       context: 'context-range',
       suggestions: [
         {
-          label: 'Range vector',
+          label: '范围向量',
           items: [...RATE_RANGES],
         },
       ],
@@ -260,7 +260,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
       // start task gets all labels
       await this.start();
       const allLabels = this.getLabelKeys();
-      return { context, suggestions: [{ label: `Labels`, items: allLabels.map(wrapLabel) }] };
+      return { context, suggestions: [{ label: `标签`, items: allLabels.map(wrapLabel) }] };
     }
 
     const existingKeys = parsedSelector ? parsedSelector.labelKeys : [];
@@ -277,7 +277,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
     }
 
     if (!labelValues) {
-      console.warn(`Server did not return any values for selector = ${selector}`);
+      console.warn(`服务器没为选择器=${selector}返回任何值`);
       return { context, suggestions };
     }
 
@@ -286,7 +286,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
       if (labelKey && labelValues[labelKey]) {
         context = 'context-label-values';
         suggestions.push({
-          label: `Label values for "${labelKey}"`,
+          label: `"${labelKey}"的标签值`,
           items: labelValues[labelKey].map(wrapLabel),
         });
       }
@@ -298,7 +298,7 @@ export default class LokiLanguageProvider extends LanguageProvider {
         const possibleKeys = _.difference(labelKeys, existingKeys);
         if (possibleKeys.length) {
           const newItems = possibleKeys.map(key => ({ label: key }));
-          const newSuggestion: CompletionItemGroup = { label: `Labels`, items: newItems };
+          const newSuggestion: CompletionItemGroup = { label: `标签`, items: newItems };
           suggestions.push(newSuggestion);
         }
       }

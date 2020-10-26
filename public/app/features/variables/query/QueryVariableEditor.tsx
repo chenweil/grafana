@@ -132,10 +132,10 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
     return (
       <>
         <div className="gf-form-group">
-          <h5 className="section-heading">Query Options</h5>
+          <h5 className="section-heading">查询选项</h5>
           <div className="gf-form-inline">
             <div className="gf-form max-width-21">
-              <span className="gf-form-label width-10">Data source</span>
+              <span className="gf-form-label width-10">数据源</span>
               <div className="gf-form-select-wrapper max-width-14">
                 <select
                   className="gf-form-input"
@@ -157,8 +157,8 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
             </div>
 
             <div className="gf-form max-width-22">
-              <InlineFormLabel width={10} tooltip={'When to update the values of this variable.'}>
-                Refresh
+              <InlineFormLabel width={10} tooltip={'何时更新此变量的值。'}>
+                刷新
               </InlineFormLabel>
               <div className="gf-form-select-wrapper width-15">
                 <select
@@ -167,14 +167,14 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
                   onChange={this.onRefreshChange}
                   aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsRefreshSelect}
                 >
-                  <option label="Never" value={VariableRefresh.never}>
-                    Never
+                  <option label="从不" value={VariableRefresh.never}>
+                    从不
                   </option>
-                  <option label="On Dashboard Load" value={VariableRefresh.onDashboardLoad}>
-                    On Dashboard Load
+                  <option label="在仪表板上加载" value={VariableRefresh.onDashboardLoad}>
+                    在仪表板上加载
                   </option>
-                  <option label="On Time Range Change" value={VariableRefresh.onTimeRangeChanged}>
-                    On Time Range Change
+                  <option label="时间段的变化" value={VariableRefresh.onTimeRangeChanged}>
+                    时间段的变化
                   </option>
                 </select>
               </div>
@@ -191,11 +191,8 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
           )}
 
           <div className="gf-form">
-            <InlineFormLabel
-              width={10}
-              tooltip={'Optional, if you want to extract part of a series name or metric node segment.'}
-            >
-              Regex
+            <InlineFormLabel width={10} tooltip={'可选，如果要提取序列名称或度量标准节点段的一部分。'}>
+              正则
             </InlineFormLabel>
             <input
               type="text"
@@ -208,8 +205,8 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
             />
           </div>
           <div className="gf-form max-width-21">
-            <InlineFormLabel width={10} tooltip={'How to sort the values of this variable.'}>
-              Sort
+            <InlineFormLabel width={10} tooltip={'如何对这个变量的值进行排序。'}>
+              排序
             </InlineFormLabel>
             <div className="gf-form-select-wrapper max-width-14">
               <select
@@ -218,32 +215,26 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
                 onChange={this.onSortChange}
                 aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsSortSelect}
               >
-                <option label="Disabled" value={VariableSort.disabled}>
-                  Disabled
+                <option label="禁用" value={VariableSort.disabled}>
+                  禁用
                 </option>
-                <option label="Alphabetical (asc)" value={VariableSort.alphabeticalAsc}>
-                  Alphabetical (asc)
+                <option label="按字母顺序(升序)" value={VariableSort.alphabeticalAsc}>
+                  按字母顺序(升序)
                 </option>
-                <option label="Alphabetical (desc)" value={VariableSort.alphabeticalDesc}>
-                  Alphabetical (desc)
+                <option label="按字母顺序(降序)" value={VariableSort.alphabeticalDesc}>
+                  按字母顺序(降序)
                 </option>
-                <option label="Numerical (asc)" value={VariableSort.numericalAsc}>
-                  Numerical (asc)
+                <option label="按数字(升序)" value={VariableSort.numericalAsc}>
+                  按数字(升序)
                 </option>
-                <option label="Numerical (desc)" value={VariableSort.numericalDesc}>
-                  Numerical (desc)
+                <option label="按数字(降序)" value={VariableSort.numericalDesc}>
+                  按数字(降序)
                 </option>
-                <option
-                  label="Alphabetical (case-insensitive, asc)"
-                  value={VariableSort.alphabeticalCaseInsensitiveAsc}
-                >
-                  Alphabetical (case-insensitive, asc)
+                <option label="按字母顺序(不区分大小写，升序)" value={VariableSort.alphabeticalCaseInsensitiveAsc}>
+                  按字母顺序(不区分大小写，升序)
                 </option>
-                <option
-                  label="Alphabetical (case-insensitive, desc)"
-                  value={VariableSort.alphabeticalCaseInsensitiveDesc}
-                >
-                  Alphabetical (case-insensitive, desc)
+                <option label="按字母顺序(不区分大小写，降序)" value={VariableSort.alphabeticalCaseInsensitiveDesc}>
+                  按字母顺序(不区分大小写，降序)
                 </option>
               </select>
             </div>
@@ -257,12 +248,12 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
         />
 
         <div className="gf-form-group">
-          <h5>Value groups/tags (Experimental feature)</h5>
+          <h5>值组/标签(实验功能)</h5>
           <div
             aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.valueGroupsTagsEnabledSwitch}
           >
             <Switch
-              label="Enabled"
+              label="已启用"
               label-class="width-10"
               checked={this.props.variable.useTags}
               onChange={this.onUseTagsChange}
@@ -271,12 +262,12 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
           {this.props.variable.useTags && (
             <>
               <div className="gf-form last">
-                <span className="gf-form-label width-10">Tags query</span>
+                <span className="gf-form-label width-10">标签查询</span>
                 <input
                   type="text"
                   className="gf-form-input"
                   value={this.state.tagsQuery ?? this.props.variable.tagsQuery}
-                  placeholder="metric name or tags query"
+                  placeholder="指标名称或标签查询"
                   onChange={this.onTagsQueryChange}
                   onBlur={this.onTagsQueryBlur}
                   aria-label={
@@ -285,7 +276,7 @@ export class QueryVariableEditorUnConnected extends PureComponent<Props, State> 
                 />
               </div>
               <div className="gf-form">
-                <li className="gf-form-label width-10">Tag values query</li>
+                <li className="gf-form-label width-10">标签值查询</li>
                 <input
                   type="text"
                   className="gf-form-input"

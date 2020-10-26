@@ -20,22 +20,22 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "discord",
 		Name:        "Discord",
-		Description: "Sends notifications to Discord",
+		Description: "发送通知给Discord",
 		Factory:     newDiscordNotifier,
-		Heading:     "Discord settings",
+		Heading:     "Discord设置",
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Message Content",
-				Description:  "Mention a group using @ or a user using <@ID> when notifying in a channel",
+				Label:        "留言内容",
+				Description:  "在频道中进行通知时，使用@提及组或使用<@ID>提及用户",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				PropertyName: "content",
 			},
 			{
-				Label:        "Webhook URL",
+				Label:        "Webhook地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "Discord webhook URL",
+				Placeholder:  "Discord webhook地址",
 				PropertyName: "url",
 				Required:     true,
 			},
@@ -47,7 +47,7 @@ func newDiscordNotifier(model *models.AlertNotification) (alerting.Notifier, err
 	content := model.Settings.Get("content").MustString()
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find webhook url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到webhook url属性"}
 	}
 
 	return &DiscordNotifier{

@@ -18,39 +18,38 @@ import { TagsInput } from '../TagsInput/TagsInput';
 
 const ACCESS_OPTIONS: Array<SelectableValue<string>> = [
   {
-    label: 'Server (default)',
+    label: '服务器(默认)',
     value: 'proxy',
   },
   {
-    label: 'Browser',
+    label: '浏览器',
     value: 'direct',
   },
 ];
 
 const DEFAULT_ACCESS_OPTION = {
-  label: 'Server (default)',
+  label: '服务器(默认)',
   value: 'proxy',
 };
 
 const HttpAccessHelp = () => (
   <div className="grafana-info-box m-t-2">
     <p>
-      Access mode controls how requests to the data source will be handled.
+      访问模式控制如何处理对数据源的请求。
       <strong>
-        <i>Server</i>
+        <i>服务器</i>
       </strong>{' '}
-      should be the preferred way if nothing else stated.
+      如果没有其他说明，则应该是首选方式。
     </p>
-    <div className="alert-title">Server access mode (Default):</div>
+    <div className="alert-title">服务器访问模式(默认):</div>
     <p>
-      All requests will be made from the browser to Grafana backend/server which in turn will forward the requests to
-      the data source and by that circumvent possible Cross-Origin Resource Sharing (CORS) requirements. The URL needs
-      to be accessible from the grafana backend/server if you select this access mode.
+      所有请求都将从浏览器发出到Grafana后端/服务器，后者再将请求转发到数据源，从而避免可能的跨域资源共享（CORS）要求。
+      如果选择此访问方式，则需要从grafana后端/服务器访问该URL。
     </p>
-    <div className="alert-title">Browser access mode:</div>
+    <div className="alert-title">浏览器访问模式:</div>
     <p>
-      All requests will be made from the browser directly to the data source and may be subject to Cross-Origin Resource
-      Sharing (CORS) requirements. The URL needs to be accessible from the browser if you select this access mode.
+      所有请求都将从浏览器直接向数据源发出，并且可能要遵守跨域资源共享（CORS）的要求。
+      如果选择此访问方式，则需要从浏览器访问URL。
     </p>
   </div>
 );
@@ -75,20 +74,19 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
     case 'direct':
       urlTooltip = (
         <>
-          Your access method is <em>Browser</em>, this means the URL needs to be accessible from the browser.
+          您的访问方法是<em>浏览器</em>，这意味着需要从浏览器访问该URL。
         </>
       );
       break;
     case 'proxy':
       urlTooltip = (
         <>
-          Your access method is <em>Server</em>, this means the URL needs to be accessible from the grafana
-          backend/server.
+          您的访问方法是<em> Server </em>，这意味着需要从grafana后端/服务器访问该URL。
         </>
       );
       break;
     default:
-      urlTooltip = 'Specify a complete HTTP URL (for example http://your_server:8080)';
+      urlTooltip = '指定完整的HTTP URL(例如 http://your_server:8080)';
   }
 
   const accessSelect = (
@@ -132,14 +130,14 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
             <>
               <div className="gf-form-inline">
                 <div className="gf-form">
-                  <FormField label="Access" labelWidth={11} inputWidth={20} inputEl={accessSelect} />
+                  <FormField label="访问" labelWidth={11} inputWidth={20} inputEl={accessSelect} />
                 </div>
                 <div className="gf-form">
                   <label
                     className="gf-form-label query-keyword pointer"
                     onClick={() => setIsAccessHelpVisible(isVisible => !isVisible)}
                   >
-                    Help&nbsp;
+                    帮助&nbsp;
                     <Icon name={isAccessHelpVisible ? 'angle-down' : 'angle-right'} style={{ marginBottom: 0 }} />
                   </label>
                 </div>
@@ -149,11 +147,8 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
           )}
           {dataSourceConfig.access === 'proxy' && (
             <div className="gf-form">
-              <FormLabel
-                width={11}
-                tooltip="Grafana Proxy deletes forwarded cookies by default. Specify cookies by name that should be forwarded to the data source."
-              >
-                Whitelisted Cookies
+              <FormLabel width={11} tooltip="Grafana代理默认删除转发的cookie。 通过名称指定应转发到数据源的cookie。">
+                白名单Cookie
               </FormLabel>
               <TagsInput
                 tags={dataSourceConfig.jsonData.keepCookies}
@@ -168,11 +163,11 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
       </>
 
       <>
-        <h3 className="page-heading">Auth</h3>
+        <h3 className="page-heading">认证</h3>
         <div className="gf-form-group">
           <div className="gf-form-inline">
             <Switch
-              label="Basic auth"
+              label="基本验证"
               labelClass="width-13"
               checked={dataSourceConfig.basicAuth}
               onChange={event => {
@@ -180,13 +175,13 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
               }}
             />
             <Switch
-              label="With Credentials"
+              label="凭证"
               labelClass="width-13"
               checked={dataSourceConfig.withCredentials}
               onChange={event => {
                 onSettingsChange({ withCredentials: event!.currentTarget.checked });
               }}
-              tooltip="Whether credentials such as cookies or auth headers should be sent with cross-site requests."
+              tooltip="诸如cookie或auth标头之类的凭据是否应与跨站点请求一起发送。"
             />
           </div>
 
@@ -199,7 +194,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = props => {
         </div>
         {dataSourceConfig.basicAuth && (
           <>
-            <h6>Basic Auth Details</h6>
+            <h6>基本身份验证详细信息</h6>
             <div className="gf-form-group">
               <BasicAuthSettings {...props} />
             </div>

@@ -49,7 +49,7 @@ export class ResultTransformer {
     let baseTimestamp = start * 1000;
 
     if (metricData.values === undefined) {
-      throw new Error('Prometheus heatmap error: data should be a time series');
+      throw new Error('Prometheus热图错误：数据应为时间序列');
     }
 
     for (const value of metricData.values) {
@@ -209,7 +209,7 @@ export class ResultTransformer {
       const topSeries = seriesList[i].datapoints;
       const bottomSeries = seriesList[i - 1].datapoints;
       if (!topSeries || !bottomSeries) {
-        throw new Error('Prometheus heatmap transform error: data should be a time series');
+        throw new Error('Prometheus热图错误：数据应为时间序列');
       }
 
       for (let j = 0; j < topSeries.length; j++) {

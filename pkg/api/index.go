@@ -28,17 +28,17 @@ func getProfileNode(c *models.ReqContext) *dtos.NavLink {
 
 	children := []*dtos.NavLink{
 		{
-			Text: "Preferences", Id: "profile-settings", Url: setting.AppSubUrl + "/profile", Icon: "sliders-v-alt",
+			Text: "偏好", Id: "profile-settings", Url: setting.AppSubUrl + "/profile", Icon: "sliders-v-alt",
 		},
 		{
-			Text: "Change Password", Id: "change-password", Url: setting.AppSubUrl + "/profile/password",
+			Text: "修改密码", Id: "change-password", Url: setting.AppSubUrl + "/profile/password",
 			Icon: "lock", HideFromMenu: true,
 		},
 	}
 	if !setting.DisableSignoutMenu {
 		// add sign out first
 		children = append(children, &dtos.NavLink{
-			Text:         "Sign out",
+			Text:         "登出",
 			Id:           "sign-out",
 			Url:          setting.AppSubUrl + "/logout",
 			Icon:         "arrow-from-right",
@@ -115,7 +115,7 @@ func getAppLinks(c *models.ReqContext) ([]*dtos.NavLink, error) {
 		if len(appLink.Children) > 0 && c.OrgRole == models.ROLE_ADMIN {
 			appLink.Children = append(appLink.Children, &dtos.NavLink{Divider: true})
 			appLink.Children = append(appLink.Children, &dtos.NavLink{
-				Text: "Plugin Config", Icon: "cog", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/",
+				Text: "插件配置", Icon: "cog", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/",
 			})
 		}
 
@@ -132,20 +132,20 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if hasEditPerm {
 		children := []*dtos.NavLink{
-			{Text: "Dashboard", Icon: "apps", Url: setting.AppSubUrl + "/dashboard/new"},
+			{Text: "仪表板", Icon: "apps", Url: setting.AppSubUrl + "/dashboard/new"},
 		}
 		if c.OrgRole == models.ROLE_ADMIN || c.OrgRole == models.ROLE_EDITOR {
 			children = append(children, &dtos.NavLink{
-				Text: "Folder", SubTitle: "Create a new folder to organize your dashboards", Id: "folder",
+				Text: "文件夹", SubTitle: "创建一个新文件夹来组织您的仪表板", Id: "folder",
 				Icon: "folder-plus", Url: setting.AppSubUrl + "/dashboards/folder/new",
 			})
 		}
 		children = append(children, &dtos.NavLink{
-			Text: "Import", SubTitle: "Import dashboard from file or Grafana.com", Id: "import", Icon: "import",
+			Text: "导入", SubTitle: "从文件或Grafana.com导入仪表板", Id: "import", Icon: "import",
 			Url: setting.AppSubUrl + "/dashboard/import",
 		})
 		navTree = append(navTree, &dtos.NavLink{
-			Text:       "Create",
+			Text:       "创建",
 			Id:         "create",
 			Icon:       "plus",
 			Url:        setting.AppSubUrl + "/dashboard/new",
@@ -155,17 +155,17 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 	}
 
 	dashboardChildNavs := []*dtos.NavLink{
-		{Text: "Home", Id: "home", Url: setting.AppSubUrl + "/", Icon: "home-alt", HideFromTabs: true},
-		{Text: "Divider", Divider: true, Id: "divider", HideFromTabs: true},
-		{Text: "Manage", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "sitemap"},
-		{Text: "Playlists", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "presentation-play"},
-		{Text: "Snapshots", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "camera"},
+		{Text: "主页", Id: "home", Url: setting.AppSubUrl + "/", Icon: "home-alt", HideFromTabs: true},
+		{Text: "分隔器", Divider: true, Id: "divider", HideFromTabs: true},
+		{Text: "管理", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "sitemap"},
+		{Text: "播放列表", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "presentation-play"},
+		{Text: "快照", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "camera"},
 	}
 
 	navTree = append(navTree, &dtos.NavLink{
-		Text:       "Dashboards",
+		Text:       "仪表板",
 		Id:         "dashboards",
-		SubTitle:   "Manage dashboards & folders",
+		SubTitle:   "管理仪表板和文件夹",
 		Icon:       "apps",
 		Url:        setting.AppSubUrl + "/",
 		SortWeight: dtos.WeightDashboard,
@@ -174,9 +174,9 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if setting.ExploreEnabled && (c.OrgRole == models.ROLE_ADMIN || c.OrgRole == models.ROLE_EDITOR || setting.ViewersCanEdit) {
 		navTree = append(navTree, &dtos.NavLink{
-			Text:       "Explore",
+			Text:       "查询器",
 			Id:         "explore",
-			SubTitle:   "Explore your data",
+			SubTitle:   "查询您的数据",
 			Icon:       "compass",
 			SortWeight: dtos.WeightExplore,
 			Url:        setting.AppSubUrl + "/explore",
@@ -189,16 +189,16 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if setting.AlertingEnabled && (c.OrgRole == models.ROLE_ADMIN || c.OrgRole == models.ROLE_EDITOR) {
 		alertChildNavs := []*dtos.NavLink{
-			{Text: "Alert Rules", Id: "alert-list", Url: setting.AppSubUrl + "/alerting/list", Icon: "list-ul"},
+			{Text: "警报规则", Id: "alert-list", Url: setting.AppSubUrl + "/alerting/list", Icon: "list-ul"},
 			{
-				Text: "Notification channels", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications",
+				Text: "通知通道", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications",
 				Icon: "comment-alt-share",
 			},
 		}
 
 		navTree = append(navTree, &dtos.NavLink{
-			Text:       "Alerting",
-			SubTitle:   "Alert rules & notifications",
+			Text:       "警报",
+			SubTitle:   "警报规则和通知",
 			Id:         "alerting",
 			Icon:       "bell",
 			Url:        setting.AppSubUrl + "/alerting/list",
@@ -217,16 +217,16 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if c.OrgRole == models.ROLE_ADMIN {
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "Data Sources",
+			Text:        "数据源",
 			Icon:        "database",
-			Description: "Add and configure data sources",
+			Description: "添加和配置数据源",
 			Id:          "datasources",
 			Url:         setting.AppSubUrl + "/datasources",
 		})
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "Users",
+			Text:        "用户",
 			Id:          "users",
-			Description: "Manage org members",
+			Description: "管理组织成员",
 			Icon:        "user",
 			Url:         setting.AppSubUrl + "/org/users",
 		})
@@ -234,9 +234,9 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if c.OrgRole == models.ROLE_ADMIN || (hs.Cfg.EditorsCanAdmin && c.OrgRole == models.ROLE_EDITOR) {
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "Teams",
+			Text:        "团队",
 			Id:          "teams",
-			Description: "Manage org groups",
+			Description: "管理组织团队",
 			Icon:        "users-alt",
 			Url:         setting.AppSubUrl + "/org/teams",
 		})
@@ -244,24 +244,24 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if c.OrgRole == models.ROLE_ADMIN {
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "Plugins",
+			Text:        "插件",
 			Id:          "plugins",
-			Description: "View and configure plugins",
+			Description: "查看和配置插件",
 			Icon:        "plug",
 			Url:         setting.AppSubUrl + "/plugins",
 		})
 
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "Preferences",
+			Text:        "首选项",
 			Id:          "org-settings",
-			Description: "Organization preferences",
+			Description: "组织首选项",
 			Icon:        "sliders-v-alt",
 			Url:         setting.AppSubUrl + "/org",
 		})
 		configNodes = append(configNodes, &dtos.NavLink{
-			Text:        "API Keys",
+			Text:        "API密钥",
 			Id:          "apikeys",
-			Description: "Create & manage API keys",
+			Description: "创建和管理API密钥",
 			Icon:        "key-skeleton-alt",
 			Url:         setting.AppSubUrl + "/org/apikeys",
 		})
@@ -270,8 +270,8 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 	if len(configNodes) > 0 {
 		navTree = append(navTree, &dtos.NavLink{
 			Id:         "cfg",
-			Text:       "Configuration",
-			SubTitle:   "Organization: " + c.OrgName,
+			Text:       "配置",
+			SubTitle:   "组织: " + c.OrgName,
 			Icon:       "cog",
 			Url:        configNodes[0].Url,
 			SortWeight: dtos.WeightConfig,
@@ -281,10 +281,10 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 
 	if c.IsGrafanaAdmin {
 		adminNavLinks := []*dtos.NavLink{
-			{Text: "Users", Id: "global-users", Url: setting.AppSubUrl + "/admin/users", Icon: "user"},
-			{Text: "Orgs", Id: "global-orgs", Url: setting.AppSubUrl + "/admin/orgs", Icon: "building"},
-			{Text: "Settings", Id: "server-settings", Url: setting.AppSubUrl + "/admin/settings", Icon: "sliders-v-alt"},
-			{Text: "Stats", Id: "server-stats", Url: setting.AppSubUrl + "/admin/stats", Icon: "graph-bar"},
+			{Text: "用户", Id: "global-users", Url: setting.AppSubUrl + "/admin/users", Icon: "user"},
+			{Text: "组织", Id: "global-orgs", Url: setting.AppSubUrl + "/admin/orgs", Icon: "building"},
+			{Text: "设置", Id: "server-settings", Url: setting.AppSubUrl + "/admin/settings", Icon: "sliders-v-alt"},
+			{Text: "状态", Id: "server-stats", Url: setting.AppSubUrl + "/admin/stats", Icon: "graph-bar"},
 		}
 
 		if hs.Live != nil {
@@ -300,8 +300,8 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 		}
 
 		navTree = append(navTree, &dtos.NavLink{
-			Text:         "Server Admin",
-			SubTitle:     "Manage all users & orgs",
+			Text:         "服务器管理员",
+			SubTitle:     "管理所有用户和组织",
 			HideFromTabs: true,
 			Id:           "admin",
 			Icon:         "shield",
@@ -317,7 +317,7 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 	}
 
 	navTree = append(navTree, &dtos.NavLink{
-		Text:         "Help",
+		Text:         "帮助",
 		SubTitle:     helpVersion,
 		Id:           "help",
 		Url:          "#",

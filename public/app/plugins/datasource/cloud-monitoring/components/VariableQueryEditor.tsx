@@ -187,13 +187,13 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
               value={this.state.projectName}
               options={this.insertTemplateVariables(this.state.projects)}
               onValueChange={e => this.onProjectChange(e.target.value)}
-              label="Project"
+              label="项目"
             />
             <SimpleSelect
               value={this.state.selectedService}
               options={this.insertTemplateVariables(this.state.services)}
               onValueChange={e => this.onServiceChange(e.target.value)}
-              label="Service"
+              label="服务"
             />
           </>
         );
@@ -206,26 +206,26 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
               value={this.state.projectName}
               options={this.insertTemplateVariables(this.state.projects)}
               onValueChange={e => this.onProjectChange(e.target.value)}
-              label="Project"
+              label="项目"
             />
             <SimpleSelect
               value={this.state.selectedService}
               options={this.insertTemplateVariables(this.state.services)}
               onValueChange={e => this.onServiceChange(e.target.value)}
-              label="Service"
+              label="服务"
             />
             <SimpleSelect
               value={this.state.selectedMetricType}
               options={this.insertTemplateVariables(this.state.metricTypes)}
               onValueChange={e => this.onMetricTypeChange(e.target.value)}
-              label="Metric Type"
+              label="指标类型"
             />
             {queryType === MetricFindQueryTypes.LabelValues && (
               <SimpleSelect
                 value={this.state.labelKey}
                 options={this.insertTemplateVariables(this.state.labels.map(l => ({ value: l, name: l })))}
                 onValueChange={e => this.onLabelKeyChange(e.target.value)}
-                label="Label Key"
+                label="标签键"
               />
             )}
           </>
@@ -238,13 +238,13 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
               value={this.state.selectedService}
               options={this.insertTemplateVariables(this.state.services)}
               onValueChange={e => this.onServiceChange(e.target.value)}
-              label="Service"
+              label="服务"
             />
             <SimpleSelect
               value={this.state.selectedMetricType}
               options={this.insertTemplateVariables(this.state.metricTypes)}
               onValueChange={e => this.onMetricTypeChange(e.target.value)}
-              label="Metric Type"
+              label="指标类型"
             />
           </>
         );
@@ -255,7 +255,7 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
               value={this.state.projectName}
               options={this.insertTemplateVariables(this.state.projects)}
               onValueChange={e => this.onProjectChange(e.target.value)}
-              label="Project"
+              label="项目"
             />
           </>
         );
@@ -267,7 +267,7 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
               value={this.state.projectName}
               options={this.insertTemplateVariables(this.state.projects)}
               onValueChange={e => this.onProjectChange(e.target.value)}
-              label="Project"
+              label="项目"
             />
             <SimpleSelect
               value={this.state.selectedSLOService}
@@ -278,7 +278,7 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
                   selectedSLOService: e.target.value,
                 });
               }}
-              label="SLO Service"
+              label="SLO服务"
             />
           </>
         );
@@ -291,10 +291,10 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
     if (this.state.loading) {
       return (
         <div className="gf-form max-width-21">
-          <span className="gf-form-label width-10 query-keyword">Query Type</span>
+          <span className="gf-form-label width-10 query-keyword">查询类型</span>
           <div className="gf-form-select-wrapper max-width-12">
             <select className="gf-form-input">
-              <option>Loading...</option>
+              <option>加载...</option>
             </select>
           </div>
         </div>
@@ -307,7 +307,7 @@ export class CloudMonitoringVariableQueryEditor extends PureComponent<VariableQu
           value={this.state.selectedQueryType}
           options={this.queryTypes}
           onValueChange={e => this.onQueryTypeChange(e.target.value)}
-          label="Query Type"
+          label="查询类型"
         />
         {this.renderQueryTypeSwitch(this.state.selectedQueryType)}
       </>

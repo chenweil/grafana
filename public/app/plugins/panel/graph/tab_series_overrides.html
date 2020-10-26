@@ -4,7 +4,7 @@
   ng-controller="SeriesOverridesCtrl"
 >
   <div class="gf-form">
-    <label class="gf-form-label">Alias or regex</label>
+    <label class="gf-form-label">别名或正则表达式</label>
     <input
       type="text"
       ng-model="override.alias"
@@ -13,7 +13,7 @@
       data-min-length="0"
       data-items="100"
       class="gf-form-input width-15"
-      placeholder="For regex use /pattern/"
+      placeholder="正则表达式/模式/"
     />
     <label class="gf-form-label pointer" ng-click="ctrl.removeSeriesOverride(override)">
       <icon name="'trash-alt'"></icon>
@@ -46,6 +46,6 @@
 </div>
 <div class="gf-form-button-row">
   <button class="btn btn-inverse" ng-click="ctrl.addSeriesOverride()">
-    <icon name="'plus'"></icon>&nbsp;Add series override
+    <icon name="'plus'"></icon>&nbsp;添加序列覆盖
   </button>
 </div>

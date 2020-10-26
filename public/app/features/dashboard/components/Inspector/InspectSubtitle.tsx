@@ -53,5 +53,5 @@ function formatStats(data: PanelData) {
   const requestTime = request.endTime ? request.endTime - request.startTime : 0;
   const formatted = formattedValueToString(getValueFormat('ms')(requestTime));
 
-  return `${queryCount} queries with total query time of ${formatted}`;
+  return `${queryCount} 个查询，总查询时间为 ${formatted}`;
 }

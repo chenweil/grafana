@@ -51,15 +51,15 @@ export const DataLink = (props: Props) => {
           labelWidth={6}
           // A bit of a hack to prevent using default value for the width from FormField
           inputWidth={null}
-          label="Field"
+          label="字段"
           type="text"
           value={value.field}
-          tooltip={'Can be exact field name or a regex pattern that will match on the field name.'}
+          tooltip={'可以是确切的字段名称，也可以是与该字段名称匹配的正则表达式模式。'}
           onChange={handleChange('field')}
         />
         <Button
           variant={'destructive'}
-          title="Remove field"
+          title="移除字段"
           icon="times"
           onClick={event => {
             event.preventDefault();
@@ -92,7 +92,7 @@ export const DataLink = (props: Props) => {
 
       <div className={styles.row}>
         <Switch
-          label="Internal link"
+          label="内部链接"
           checked={showInternalLink}
           onChange={() => {
             if (showInternalLink) {

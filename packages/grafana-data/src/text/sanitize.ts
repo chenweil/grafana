@@ -22,7 +22,7 @@ export function sanitize(unsanitizedString: string): string {
   try {
     return sanitizeXSS.process(unsanitizedString);
   } catch (error) {
-    console.error('String could not be sanitized', unsanitizedString);
+    console.error('字符串无法清理', unsanitizedString);
     return unsanitizedString;
   }
 }

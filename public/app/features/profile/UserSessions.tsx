@@ -19,29 +19,29 @@ export class UserSessions extends PureComponent<Props> {
     const { isLoading, sessions, revokeUserSession } = this.props;
 
     if (isLoading) {
-      return <LoadingPlaceholder text="Loading sessions..." />;
+      return <LoadingPlaceholder text="加载会话..." />;
     }
 
     return (
       <>
         {sessions.length > 0 && (
           <>
-            <h3 className="page-sub-heading">Sessions</h3>
+            <h3 className="page-sub-heading">会话</h3>
             <div className="gf-form-group">
               <table className="filter-table form-inline">
                 <thead>
                   <tr>
-                    <th>Last seen</th>
-                    <th>Logged on</th>
-                    <th>IP address</th>
-                    <th>Browser &amp; OS</th>
+                    <th>最后一次</th>
+                    <th>登陆</th>
+                    <th>IP地址</th>
+                    <th>浏览器 &amp; 系统信息</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   {sessions.map((session: UserSession, index) => (
                     <tr key={index}>
-                      {session.isActive ? <td>Now</td> : <td>{session.seenAt}</td>}
+                      {session.isActive ? <td>现在</td> : <td>{session.seenAt}</td>}
                       <td>{session.createdAt}</td>
                       <td>{session.clientIp}</td>
                       <td>

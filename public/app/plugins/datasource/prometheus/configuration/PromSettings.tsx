@@ -24,7 +24,7 @@ export const PromSettings = (props: Props) => {
         <div className="gf-form-inline">
           <div className="gf-form">
             <FormField
-              label="Scrape interval"
+              label="刮擦间隔"
               labelWidth={13}
               inputEl={
                 <Input
@@ -36,14 +36,14 @@ export const PromSettings = (props: Props) => {
                   validationEvents={promSettingsValidationEvents}
                 />
               }
-              tooltip="Set this to the typical scrape and evaluation interval configured in Prometheus. Defaults to 15s."
+              tooltip="将此设置为Prometheus中配置的典型刮擦和评估间隔。 默认值为15秒。"
             />
           </div>
         </div>
         <div className="gf-form-inline">
           <div className="gf-form">
             <FormField
-              label="Query timeout"
+              label="查询超时"
               labelWidth={13}
               inputEl={
                 <Input
@@ -55,16 +55,16 @@ export const PromSettings = (props: Props) => {
                   validationEvents={promSettingsValidationEvents}
                 />
               }
-              tooltip="Set the Prometheus query timeout."
+              tooltip="设置Prometheus查询超时。"
             />
           </div>
         </div>
         <div className="gf-form">
           <InlineFormLabel
             width={13}
-            tooltip="Specify the HTTP Method to query Prometheus. (POST is only available in Prometheus >= v2.1.0)"
+            tooltip="指定用于查询Prometheus的HTTP方法。 （仅在Prometheus> = v2.1.0中可用POST）"
           >
-            HTTP Method
+            HTTP方法
           </InlineFormLabel>
           <Select
             options={httpOptions}
@@ -74,30 +74,30 @@ export const PromSettings = (props: Props) => {
           />
         </div>
       </div>
-      <h3 className="page-heading">Misc</h3>
+      <h3 className="page-heading">杂项</h3>
       <div className="gf-form-group">
         <div className="gf-form">
           <Switch
             checked={options.jsonData.disableMetricsLookup ?? false}
-            label="Disable metrics lookup"
+            label="禁用指标查询"
             labelClass="width-14"
             onChange={onUpdateDatasourceJsonDataOptionChecked(props, 'disableMetricsLookup')}
-            tooltip="Checking this option will disable the metrics chooser and metric/label support in the query field's autocomplete. This helps if you have performance issues with bigger Prometheus instances."
+            tooltip="选中此选项将在查询字段的自动完成功能中禁用指标选择器和指标/标签支持。 如果较大的Prometheus实例遇到性能问题，这会有所帮助。"
           />
         </div>
         <div className="gf-form-inline">
           <div className="gf-form max-width-30">
             <FormField
-              label="Custom query parameters"
+              label="自定义查询参数"
               labelWidth={14}
-              tooltip="Add Custom parameters to Prometheus or Thanos queries."
+              tooltip="将自定义参数添加到Prometheus或Thanos查询。"
               inputEl={
                 <Input
                   className="width-25"
                   value={options.jsonData.customQueryParameters}
                   onChange={onChangeHandler('customQueryParameters', options, onOptionsChange)}
                   spellCheck={false}
-                  placeholder="Example: max_source_resolution=5m&timeout=10"
+                  placeholder="例: max_source_resolution=5m&timeout=10"
                 />
               }
             />
@@ -110,10 +110,7 @@ export const PromSettings = (props: Props) => {
 
 export const promSettingsValidationEvents = {
   [EventsWithValidation.onBlur]: [
-    regexValidation(
-      /^$|^\d+(ms|[Mwdhmsy])$/,
-      'Value is not valid, you can use number with time unit specifier: y, M, w, d, h, m, s'
-    ),
+    regexValidation(/^$|^\d+(ms|[Mwdhmsy])$/, '值无效，您可以将数字与时间单位说明符一起使用: y, M, w, d, h, m, s'),
   ],
 };
 

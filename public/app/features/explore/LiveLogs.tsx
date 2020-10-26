@@ -175,11 +175,11 @@ class LiveLogs extends PureComponent<Props, State> {
           </button>
           <button onClick={this.props.stopLive} className={cx('btn btn-inverse', styles.button)}>
             <Icon name="square-shape" size="lg" type="mono" />
-            &nbsp; Exit live mode
+            &nbsp; 退出直播模式
           </button>
           {isPaused || (
             <span>
-              Last line received: <ElapsedTime resetKey={this.props.logRows} humanize={true} /> ago
+              收到最后一行: <ElapsedTime resetKey={this.props.logRows} humanize={true} /> ago
             </span>
           )}
         </div>

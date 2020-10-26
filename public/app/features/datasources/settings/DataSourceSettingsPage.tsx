@@ -75,9 +75,9 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
 
   onDelete = () => {
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete',
-      text: 'Are you sure you want to delete this data source?',
-      yesText: 'Delete',
+      title: '删除',
+      text: '您确定要删除此数据源吗?',
+      yesText: '删除',
       icon: 'trash-alt',
       onConfirm: () => {
         this.confirmDelete();
@@ -100,8 +100,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
   renderIsReadOnlyMessage() {
     return (
       <div className="grafana-info-box span8">
-        This datasource was added by config and cannot be modified using the UI. Please contact your server admin to
-        update this datasource.
+        此数据源是由config添加的，无法使用UI进行修改。 请与您的服务器管理员联系以更新此数据源。
       </div>
     );
   }
@@ -128,7 +127,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
 
     const node = {
       text: msg,
-      subTitle: 'Data Source Error',
+      subTitle: '数据源错误',
       icon: 'exclamation-triangle',
     };
     const nav = {
@@ -143,11 +142,11 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
             <div className="gf-form-button-row">
               {showDelete && (
                 <button type="submit" className="btn btn-danger" onClick={this.onDelete}>
-                  Delete
+                  删除
                 </button>
               )}
               <a className="btn btn-inverse" href="datasources">
-                Back
+                返回
               </a>
             </div>
           </div>
@@ -168,7 +167,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
       }
     }
 
-    return <div>Page Not Found: {page}</div>;
+    return <div>网页未找到： {page}</div>;
   }
 
   renderSettings() {
@@ -179,7 +178,7 @@ export class DataSourceSettingsPage extends PureComponent<Props> {
         {this.isReadOnly() && this.renderIsReadOnlyMessage()}
         {dataSourceMeta.state && (
           <div className="gf-form">
-            <label className="gf-form-label width-10">Plugin state</label>
+            <label className="gf-form-label width-10">插件状态</label>
             <label className="gf-form-label gf-form-label--transparent">
               <PluginStateinfo state={dataSourceMeta.state} />
             </label>

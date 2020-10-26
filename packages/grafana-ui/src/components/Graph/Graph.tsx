@@ -376,7 +376,7 @@ export class Graph extends PureComponent<GraphProps, GraphState> {
             this.setState({ isTooltipVisible: false });
           }}
         />
-        {noDataToBeDisplayed && <div className="datapoints-warning">No data</div>}
+        {noDataToBeDisplayed && <div className="datapoints-warning">无数据</div>}
         {tooltip}
         {context}
       </div>

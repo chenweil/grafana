@@ -39,7 +39,7 @@ export class Registry<T extends RegistryItem> {
 
   setInit = (init: () => T[]) => {
     if (this.initialized) {
-      throw new Error('Registry already initialized');
+      throw new Error('注册表已初始化');
     }
     this.init = init;
   };
@@ -151,7 +151,7 @@ export class Registry<T extends RegistryItem> {
 
   register(ext: T) {
     if (this.byId.has(ext.id)) {
-      throw new Error('Duplicate Key:' + ext.id);
+      throw new Error('重复密钥:' + ext.id);
     }
 
     this.byId.set(ext.id, ext);

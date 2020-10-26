@@ -54,10 +54,10 @@ export class TimePickerSettings extends PureComponent<Props, State> {
   render() {
     return (
       <div className="editor-row">
-        <h5 className="section-heading">Time Options</h5>
+        <h5 className="section-heading">时间选项</h5>
         <div className="gf-form-group">
           <div className="gf-form" aria-label={selectors.components.TimeZonePicker.container}>
-            <label className="gf-form-label width-7">Timezone</label>
+            <label className="gf-form-label width-7">时区</label>
             <TimeZonePicker
               includeInternal={true}
               value={this.props.timezone}
@@ -71,11 +71,8 @@ export class TimePickerSettings extends PureComponent<Props, State> {
             onRefreshIntervalChange={this.props.onRefreshIntervalChange}
           />
           <div className="gf-form">
-            <span className="gf-form-label width-7">Now delay now-</span>
-            <Tooltip
-              placement="right"
-              content={'Enter 1m to ignore the last minute (because it can contain incomplete metrics)'}
-            >
+            <span className="gf-form-label width-7">现在延迟-</span>
+            <Tooltip placement="right" content={'输入1m以忽略最后一分钟（因为它可能包含不完整的指标）'}>
               <Input
                 width={60}
                 invalid={!this.state.isNowDelayValid}
@@ -89,7 +86,7 @@ export class TimePickerSettings extends PureComponent<Props, State> {
           <div className="gf-form">
             <LegacyForms.Switch
               labelClass="width-7"
-              label="Hide time picker"
+              label="隐藏时间选择器"
               checked={this.props.timePickerHidden ?? false}
               onChange={this.onHideTimePickerChange}
             />

@@ -11,7 +11,7 @@ export const UserSignup: FC<{}> = () => {
         margin-top: 8px;
       `}
     >
-      <span>New to Grafana?</span>
+      <span>Grafana新手?</span>
       <LinkButton
         className={css`
           width: 100%;
@@ -20,7 +20,7 @@ export const UserSignup: FC<{}> = () => {
         href={href}
         variant="secondary"
       >
-        Sign Up
+        注册
       </LinkButton>
     </VerticalGroup>
   );

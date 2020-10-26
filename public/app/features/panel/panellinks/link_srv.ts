@@ -27,20 +27,20 @@ import {
 const timeRangeVars = [
   {
     value: `${DataLinkBuiltInVars.keepTime}`,
-    label: 'Time range',
-    documentation: 'Adds current time range',
+    label: '时间范围',
+    documentation: '添加当前时间范围',
     origin: VariableOrigin.BuiltIn,
   },
   {
     value: `${DataLinkBuiltInVars.timeRangeFrom}`,
-    label: 'Time range: from',
-    documentation: "Adds current time range's from value",
+    label: '时间范围：从',
+    documentation: '从值中添加当前时间范围',
     origin: VariableOrigin.BuiltIn,
   },
   {
     value: `${DataLinkBuiltInVars.timeRangeTo}`,
-    label: 'Time range: to',
-    documentation: "Adds current time range's to value",
+    label: '时间范围: 到',
+    documentation: '将当前时间范围添加到值',
     origin: VariableOrigin.BuiltIn,
   },
 ];
@@ -87,8 +87,8 @@ export const getPanelLinksVariableSuggestions = (): VariableSuggestion[] => [
   })),
   {
     value: `${DataLinkBuiltInVars.includeVars}`,
-    label: 'All variables',
-    documentation: 'Adds current variables',
+    label: '所有变量',
+    documentation: '添加当前变量',
     origin: VariableOrigin.Template,
   },
   ...timeRangeVars,
@@ -114,14 +114,14 @@ const getFieldVars = (dataFrames: DataFrame[]) => {
   return [
     {
       value: `${DataLinkBuiltInVars.fieldName}`,
-      label: 'Name',
-      documentation: 'Field name of the clicked datapoint (in ms epoch)',
+      label: '名字',
+      documentation: '单击的数据点的字段名称（以毫秒为单位）',
       origin: VariableOrigin.Field,
     },
     ...labels.map(label => ({
       value: `__field.labels${buildLabelPath(label)}`,
       label: `labels.${label}`,
-      documentation: `${label} label value`,
+      documentation: `${label} 标签值`,
       origin: VariableOrigin.Field,
     })),
   ];
@@ -144,7 +144,7 @@ export const getDataFrameVars = (dataFrames: DataFrame[]) => {
       suggestions.push({
         value: `__data.fields${buildLabelPath(displayName)}`,
         label: `${displayName}`,
-        documentation: `Formatted value for ${displayName} on the same row`,
+        documentation: `同一行上 ${displayName} 的格式化值`,
         origin: VariableOrigin.Fields,
       });
 
@@ -163,8 +163,8 @@ export const getDataFrameVars = (dataFrames: DataFrame[]) => {
   if (suggestions.length) {
     suggestions.push({
       value: `__data.fields[0]`,
-      label: `Select by index`,
-      documentation: `Enter the field order`,
+      label: `按索引选择`,
+      documentation: `输入现场订单`,
       origin: VariableOrigin.Fields,
     });
   }
@@ -172,14 +172,14 @@ export const getDataFrameVars = (dataFrames: DataFrame[]) => {
   if (numeric) {
     suggestions.push({
       value: `__data.fields${buildLabelPath(numeric.name)}.numeric`,
-      label: `Show numeric value`,
-      documentation: `the numeric field value`,
+      label: `显示数值`,
+      documentation: `数值字段值`,
       origin: VariableOrigin.Fields,
     });
     suggestions.push({
       value: `__data.fields${buildLabelPath(numeric.name)}.text`,
-      label: `Show text value`,
-      documentation: `the text value`,
+      label: `显示文本值`,
+      documentation: `文本值`,
       origin: VariableOrigin.Fields,
     });
   }
@@ -187,8 +187,8 @@ export const getDataFrameVars = (dataFrames: DataFrame[]) => {
   if (title) {
     suggestions.push({
       value: `__data.fields${buildLabelPath(title.name)}`,
-      label: `Select by title`,
-      documentation: `Use the title to pick the field`,
+      label: `按标题选择`,
+      documentation: `使用标题选择字段`,
       origin: VariableOrigin.Fields,
     });
   }
@@ -202,8 +202,8 @@ export const getDataLinksVariableSuggestions = (
 ): VariableSuggestion[] => {
   const valueTimeVar = {
     value: `${DataLinkBuiltInVars.valueTime}`,
-    label: 'Time',
-    documentation: 'Time value of the clicked datapoint (in ms epoch)',
+    label: '时间',
+    documentation: '单击的数据点的时间值（以毫秒为单位）',
     origin: VariableOrigin.Value,
   };
   const includeValueVars = scope === VariableSuggestionsScope.Values;
@@ -229,8 +229,8 @@ export const getCalculationValueDataLinksVariableSuggestions = (dataFrames: Data
   const fieldVars = getFieldVars(dataFrames);
   const valueCalcVar = {
     value: `${DataLinkBuiltInVars.valueCalc}`,
-    label: 'Calculation name',
-    documentation: 'Name of the calculation the value is a result of',
+    label: '计算方式名',
+    documentation: '值的计算名称',
     origin: VariableOrigin.Value,
   };
   return [...seriesVars, ...fieldVars, ...valueVars, valueCalcVar, ...getPanelLinksVariableSuggestions()];

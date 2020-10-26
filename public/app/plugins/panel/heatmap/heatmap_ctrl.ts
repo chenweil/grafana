@@ -151,8 +151,8 @@ export class HeatmapCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode() {
-    this.addEditorTab('Axes', axesEditor, 2);
-    this.addEditorTab('Display', heatmapDisplayEditor, 3);
+    this.addEditorTab('轴', axesEditor, 2);
+    this.addEditorTab('显示', heatmapDisplayEditor, 3);
     this.unitFormats = kbn.getUnitFormats();
   }
 
@@ -312,15 +312,15 @@ export class HeatmapCtrl extends MetricsPanelCtrl {
 
     if (datapointsCount === 0) {
       this.dataWarning = {
-        title: 'No data points',
-        tip: 'No datapoints returned from data query',
+        title: '没有数据点',
+        tip: '数据查询未返回任何数据点',
       };
     } else {
       for (const series of this.series) {
         if (series.isOutsideRange) {
           this.dataWarning = {
-            title: 'Data points outside time range',
-            tip: 'Can be caused by timezone mismatch or missing time filter in query',
+            title: '时间范围外的数据点',
+            tip: '可能是由于时区不匹配或查询中缺少时间过滤器引起的',
           };
           break;
         }

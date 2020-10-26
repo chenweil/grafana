@@ -175,7 +175,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
       <>
         <div className="gf-form-inline">
           <div className="gf-form gf-form--grow">
-            <div className="gf-form-label width-8">Field name</div>
+            <div className="gf-form-label width-8">字段名</div>
             <HorizontalGroup spacing="xs" align="flex-start" wrap>
               {names.map((o, i) => {
                 return (
@@ -194,7 +194,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
         </div>
         <div className="gf-form-inline">
           <div className="gf-form">
-            <div className="gf-form-label width-8">Calculation</div>
+            <div className="gf-form-label width-8">计算方式</div>
             <StatsPicker
               allowMultiple={false}
               className="width-18"
@@ -270,12 +270,12 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
     return (
       <div className="gf-form-inline">
         <div className="gf-form">
-          <div className="gf-form-label width-8">Operation</div>
+          <div className="gf-form-label width-8">操作方式</div>
         </div>
         <div className="gf-form">
           <Select
             allowCustomValue={true}
-            placeholder="Field or number"
+            placeholder="字段或数字"
             options={leftNames}
             className="min-width-18 gf-form-spacing"
             value={options?.left}
@@ -291,7 +291,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
           />
           <Select
             allowCustomValue={true}
-            placeholder="Field or number"
+            placeholder="字段或数字"
             className="min-width-10"
             options={rightNames}
             value={options?.right}
@@ -316,7 +316,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
       <div>
         <div className="gf-form-inline">
           <div className="gf-form">
-            <div className="gf-form-label width-8">Mode</div>
+            <div className="gf-form-label width-8">模式</div>
             <Select
               className="width-18"
               options={calculationModes}
@@ -330,7 +330,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
         {mode === CalculateFieldMode.ReduceRow && this.renderReduceRow(options.reduce)}
         <div className="gf-form-inline">
           <div className="gf-form">
-            <div className="gf-form-label width-8">Alias</div>
+            <div className="gf-form-label width-8">别名</div>
             <Input
               className="width-18"
               value={options.alias ?? ''}
@@ -342,7 +342,7 @@ export class CalculateFieldTransformerEditor extends React.PureComponent<
         <div className="gf-form-inline">
           <div className="gf-form">
             <LegacyForms.Switch
-              label="Replace all fields"
+              label="替换所有字段"
               labelClass="width-8"
               checked={!!options.replaceFields}
               onChange={this.onToggleReplaceFields}
@@ -358,6 +358,6 @@ export const calculateFieldTransformRegistryItem: TransformerRegistyItem<Calcula
   id: DataTransformerID.calculateField,
   editor: CalculateFieldTransformerEditor,
   transformation: standardTransformers.calculateFieldTransformer,
-  name: 'Add field from calculation',
-  description: 'Use the row values to calculate a new field',
+  name: '从计算中添加字段',
+  description: '使用行值来计算新字段',
 };

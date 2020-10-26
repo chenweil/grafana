@@ -5,26 +5,25 @@ import { ThemeContext, LinkButton, CallToActionCard, Icon } from '@grafana/ui';
 export const NoDataSourceCallToAction = () => {
   const theme = useContext(ThemeContext);
 
-  const message =
-    'Explore requires at least one data source. Once you have added a data source, you can query it here.';
+  const message = '浏览至少需要一个数据源。 添加数据源后，可以在此处查询。';
   const footer = (
     <>
       <Icon name="rocket" />
-      <> ProTip: You can also define data sources through configuration files. </>
+      <> 专家提示: 您还可以通过配置文件定义数据源。 </>
       <a
         href="http://docs.grafana.org/administration/provisioning/#datasources?utm_source=explore"
         target="_blank"
         rel="noopener"
         className="text-link"
       >
-        Learn more
+        了解更多
       </a>
     </>
   );
 
   const ctaElement = (
     <LinkButton size="lg" href="datasources/new" icon="database">
-      Add data source
+      添加数据源
     </LinkButton>
   );
 

@@ -41,7 +41,7 @@ export const simple = () => {
   const { containerWidth, ...otherProps } = getKnobs();
   return (
     <div style={{ width: containerWidth }}>
-      <Field label="Graphite API key" description="Your Graphite instance API key" {...otherProps}>
+      <Field label="石墨API密钥" description="您的Graphite实例API密钥" {...otherProps}>
         <Input id="thisField" />
       </Field>
     </div>
@@ -54,7 +54,7 @@ export const horizontalLayout = () => {
   const { containerWidth, ...otherProps } = getKnobs();
   return (
     <div style={{ width: containerWidth }}>
-      <Field horizontal label="Show labels" description="Display thresholds's labels" {...otherProps}>
+      <Field horizontal label="显示标签" description="显示阈值的标签" {...otherProps}>
         <Switch checked={checked} onChange={onChange} />
       </Field>
     </div>

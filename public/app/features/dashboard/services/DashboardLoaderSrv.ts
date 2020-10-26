@@ -44,20 +44,20 @@ export class DashboardLoaderSrv {
       promise = this._loadScriptedDashboard(slug);
     } else if (type === 'snapshot') {
       promise = backendSrv.get('/api/snapshots/' + slug).catch(() => {
-        return this._dashboardLoadFailed('Snapshot not found', true);
+        return this._dashboardLoadFailed('找不到快照', true);
       });
     } else {
       promise = backendSrv
         .getDashboardByUid(uid)
         .then((result: any) => {
           if (result.meta.isFolder) {
-            this.$rootScope.appEvent(AppEvents.alertError, ['Dashboard not found']);
-            throw new Error('Dashboard not found');
+            this.$rootScope.appEvent(AppEvents.alertError, ['找不到仪表板']);
+            throw new Error('找不到仪表板');
           }
           return result;
         })
         .catch(() => {
-          return this._dashboardLoadFailed('Not found', true);
+          return this._dashboardLoadFailed('未找到', true);
         });
     }
 
@@ -90,12 +90,9 @@ export class DashboardLoaderSrv {
           };
         },
         (err: any) => {
-          console.error('Script dashboard error ' + err);
-          this.$rootScope.appEvent(AppEvents.alertError, [
-            'Script Error',
-            'Please make sure it exists and returns a valid dashboard',
-          ]);
-          return this._dashboardLoadFailed('Scripted dashboard');
+          console.error('脚本仪表板错误 ' + err);
+          this.$rootScope.appEvent(AppEvents.alertError, ['脚本错误', '请确保它存在并返回有效的仪表板']);
+          return this._dashboardLoadFailed('脚本化仪表板');
         }
       );
   }

@@ -97,7 +97,7 @@ export const OverrideFieldConfigEditor: React.FC<Props> = props => {
       <Container padding="md">
         <ValuePicker
           icon="plus"
-          label="Add an override for"
+          label="添加替代"
           variant="secondary"
           options={fieldMatchersUI
             .list()
@@ -113,13 +113,13 @@ export const OverrideFieldConfigEditor: React.FC<Props> = props => {
     <div aria-label={selectors.components.OverridesConfigEditor.content}>
       {config.overrides.length === 0 && (
         <FeatureInfoBox
-          title="Overrides"
+          title="覆盖"
           url={getDocsLink(DocsId.FieldConfigOverrides)}
           className={css`
             margin: ${theme.spacing.md};
           `}
         >
-          Field override rules give you a fine grained control over how your data is displayed.
+          字段覆盖规则使您可以更好地控制数据的显示方式。{' '}
         </FeatureInfoBox>
       )}
 

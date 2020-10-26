@@ -119,7 +119,7 @@ export class DashboardPage extends PureComponent<Props, State> {
       this.getPanelByIdFromUrlParam(urlEditPanelId, panel => {
         // if no edit permission show error
         if (!dashboard.canEditPanel(panel)) {
-          this.props.notifyApp(createErrorNotification('Permission to edit panel denied'));
+          this.props.notifyApp(createErrorNotification('编辑面板的权限被拒绝'));
           return;
         }
 
@@ -164,7 +164,7 @@ export class DashboardPage extends PureComponent<Props, State> {
 
     if (!panel) {
       // Panel not found
-      this.props.notifyApp(createErrorNotification(`Panel with id ${urlPanelId} not found`));
+      this.props.notifyApp(createErrorNotification(`找不到ID为 ${urlPanelId} 的面板`));
       // Clear url state
       this.props.updateLocation({
         query: {
@@ -184,7 +184,7 @@ export class DashboardPage extends PureComponent<Props, State> {
       this.props.dashboard!.render();
     } catch (err) {
       console.error(err);
-      this.props.notifyApp(createErrorNotification(`Panel rendering error`, err));
+      this.props.notifyApp(createErrorNotification(`面板渲染错误`, err));
     }
   }
 
@@ -212,7 +212,7 @@ export class DashboardPage extends PureComponent<Props, State> {
     dashboard.addPanel({
       type: 'add-panel',
       gridPos: { x: 0, y: 0, w: 12, h: 8 },
-      title: 'Panel Title',
+      title: '面板标题',
     });
 
     // scroll to top after adding panel
@@ -233,7 +233,7 @@ export class DashboardPage extends PureComponent<Props, State> {
             </HorizontalGroup>{' '}
             <HorizontalGroup align="center" justify="center">
               <Button variant="secondary" size="md" icon="repeat" onClick={this.cancelVariables}>
-                Cancel loading dashboard
+                取消加载仪表板
               </Button>
             </HorizontalGroup>
           </VerticalGroup>

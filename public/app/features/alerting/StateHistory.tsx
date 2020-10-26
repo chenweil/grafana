@@ -64,8 +64,8 @@ class StateHistory extends PureComponent<Props, State> {
       <div>
         {stateHistoryItems.length > 0 && (
           <div className="p-b-1">
-            <span className="muted">Last 50 state changes</span>
-            <ConfirmButton onConfirm={this.clearHistory} confirmVariant="destructive" confirmText="Clear">
+            <span className="muted">最近50次状态更改</span>
+            <ConfirmButton onConfirm={this.clearHistory} confirmVariant="destructive" confirmText="清除">
               <Button
                 className={css`
                   direction: ltr;
@@ -73,7 +73,7 @@ class StateHistory extends PureComponent<Props, State> {
                 variant="destructive"
                 icon="trash-alt"
               >
-                Clear history
+                清除历史
               </Button>
             </ConfirmButton>
           </div>
@@ -100,7 +100,7 @@ class StateHistory extends PureComponent<Props, State> {
               );
             })
           ) : (
-            <i>No state changes recorded</i>
+            <i>没有记录状态变化</i>
           )}
         </ol>
       </div>

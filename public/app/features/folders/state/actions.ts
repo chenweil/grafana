@@ -24,7 +24,7 @@ export function saveFolder(folder: FolderState): ThunkResult<void> {
     });
 
     // this should be redux action at some point
-    appEvents.emit(AppEvents.alertSuccess, ['Folder saved']);
+    appEvents.emit(AppEvents.alertSuccess, ['文件夹已保存']);
 
     dispatch(updateLocation({ path: `${res.url}/settings` }));
   };
@@ -122,7 +122,7 @@ export function addFolderPermission(newItem: NewDashboardAclItem): ThunkResult<v
 export function createNewFolder(folderName: string): ThunkResult<void> {
   return async dispatch => {
     const newFolder = await getBackendSrv().post('/api/folders', { title: folderName });
-    appEvents.emit(AppEvents.alertSuccess, ['Folder Created', 'OK']);
+    appEvents.emit(AppEvents.alertSuccess, ['文件夹已创建', 'OK']);
     dispatch(updateLocation({ path: locationUtil.stripBaseFromUrl(newFolder.url) }));
   };
 }

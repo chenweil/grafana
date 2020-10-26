@@ -36,30 +36,30 @@ export const SelectionOptionsEditor: FunctionComponent<SelectionOptionsEditorPro
   );
   return (
     <div className="section gf-form-group">
-      <h5 className="section-heading">Selection Options</h5>
+      <h5 className="section-heading">选择选项</h5>
       <div className="section">
         <div aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.selectionOptionsMultiSwitch}>
           <Switch
-            label="Multi-value"
+            label="多值"
             labelClass="width-10"
             checked={props.variable.multi}
             onChange={onMultiChanged}
-            tooltip={'Enables multiple values to be selected at the same time'}
+            tooltip={'允许同时选择多个值'}
           />
         </div>
         <div aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.selectionOptionsIncludeAllSwitch}>
           <Switch
-            label="Include All option"
+            label="包括所有选项"
             labelClass="width-10"
             checked={props.variable.includeAll}
             onChange={onIncludeAllChanged}
-            tooltip={'Enables an option to include all variables'}
+            tooltip={'启用选项以包含所有变量'}
           />
         </div>
       </div>
       {props.variable.includeAll && (
         <div className="gf-form">
-          <span className="gf-form-label width-10">Custom all value</span>
+          <span className="gf-form-label width-10">自定义所有值</span>
           <input
             type="text"
             className="gf-form-input max-width-15"

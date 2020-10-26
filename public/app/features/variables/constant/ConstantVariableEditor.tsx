@@ -26,16 +26,16 @@ export class ConstantVariableEditor extends PureComponent<Props> {
     return (
       <>
         <div className="gf-form-group">
-          <h5 className="section-heading">Constant options</h5>
+          <h5 className="section-heading">常数选项</h5>
           <div className="gf-form">
-            <span className="gf-form-label">Value</span>
+            <span className="gf-form-label">值</span>
             <input
               type="text"
               className="gf-form-input"
               value={this.props.variable.query}
               onChange={this.onChange}
               onBlur={this.onBlur}
-              placeholder="your metric prefix"
+              placeholder="您的指标前缀"
               aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.ConstantVariable.constantOptionsQueryInput}
             />
           </div>

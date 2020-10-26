@@ -13,15 +13,15 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "teams",
 		Name:        "Microsoft Teams",
-		Description: "Sends notifications using Incoming Webhook connector to Microsoft Teams",
-		Heading:     "Teams settings",
+		Description: "使用传入回调地址连接器发送通知到微软Teams",
+		Heading:     "Teams设置",
 		Factory:     NewTeamsNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "URL",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "Teams incoming webhook url",
+				Placeholder:  "传入Teams回调地址",
 				PropertyName: "url",
 				Required:     true,
 			},
@@ -33,7 +33,7 @@ func init() {
 func NewTeamsNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "找不到url属性设置在设置中找不到url属性"}
 	}
 
 	return &TeamsNotifier{
@@ -75,7 +75,7 @@ func (tn *TeamsNotifier) Notify(evalContext *alerting.EvalContext) error {
 
 	if evalContext.Error != nil {
 		fields = append(fields, map[string]interface{}{
-			"name":  "Error message",
+			"name":  "错误信息",
 			"value": evalContext.Error.Error(),
 		})
 	}

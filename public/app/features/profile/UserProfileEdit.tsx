@@ -25,7 +25,7 @@ export const UserProfileEdit: FC<Props> = ({ navModel }) => (
         return (
           <Page.Contents>
             {states.loadUser ? (
-              <LoadingPlaceholder text="Loading user profile..." />
+              <LoadingPlaceholder text="加载用户资料..." />
             ) : (
               <UserProfileEditForm
                 updateProfile={api.updateUserProfile}

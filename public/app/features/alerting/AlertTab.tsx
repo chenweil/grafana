@@ -140,15 +140,15 @@ class UnConnectedAlertTab extends PureComponent<Props, State> {
       <ConfirmModal
         isOpen={true}
         icon="trash-alt"
-        title="Delete"
+        title="删除"
         body={
           <div>
-            Are you sure you want to delete this alert rule?
+            您确定要删除此警报规则吗？
             <br />
-            <small>You need to save dashboard for the delete to take effect.</small>
+            <small>您需要保存仪表板才能使删除生效。</small>
           </div>
         }
-        confirmText="Delete Alert"
+        confirmText="删除警报"
         onDismiss={onDismiss}
         onConfirm={() => {
           delete panel.alert;
@@ -171,7 +171,7 @@ class UnConnectedAlertTab extends PureComponent<Props, State> {
     const onDismiss = () => this.onToggleModal('showStateHistory');
 
     return (
-      <Modal isOpen={true} icon="history" title="State history" onDismiss={onDismiss} onClickBackdrop={onDismiss}>
+      <Modal isOpen={true} icon="history" title="状态历史" onDismiss={onDismiss} onClickBackdrop={onDismiss}>
         <StateHistory
           dashboard={dashboard}
           panelId={panel.editSourceId ?? panel.id}
@@ -191,10 +191,10 @@ class UnConnectedAlertTab extends PureComponent<Props, State> {
     }
 
     const model = {
-      title: 'Panel has no alert rule defined',
+      title: '面板未定义警报规则',
       buttonIcon: 'bell' as IconName,
       onClick: this.onAddAlert,
-      buttonTitle: 'Create Alert',
+      buttonTitle: '创建警报',
     };
 
     return (
@@ -203,23 +203,20 @@ class UnConnectedAlertTab extends PureComponent<Props, State> {
           <Container padding="md">
             <div aria-label={selectors.components.AlertTab.content}>
               {alert && hasTransformations && (
-                <Alert
-                  severity={AppNotificationSeverity.Error}
-                  title="Transformations are not supported in alert queries"
-                />
+                <Alert severity={AppNotificationSeverity.Error} title="警报查询不支持转换" />
               )}
 
               <div ref={element => (this.element = element)} />
               {alert && (
                 <HorizontalGroup>
                   <Button onClick={() => this.onToggleModal('showStateHistory')} variant="secondary">
-                    State history
+                    状态历史
                   </Button>
                   <Button onClick={() => this.onToggleModal('showTestRule')} variant="secondary">
-                    Test rule
+                    测试规则
                   </Button>
                   <Button onClick={() => this.onToggleModal('showDeleteConfirmation')} variant="destructive">
-                    Delete
+                    删除
                   </Button>
                 </HorizontalGroup>
               )}

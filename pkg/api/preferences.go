@@ -12,10 +12,10 @@ func SetHomeDashboard(c *models.ReqContext, cmd models.SavePreferencesCommand) R
 	cmd.OrgId = c.OrgId
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to set home dashboard", err)
+		return Error(500, "无法设置主页仪表板", err)
 	}
 
-	return Success("Home dashboard set")
+	return Success("主仪表盘已设置")
 }
 
 // GET /api/user/preferences
@@ -27,7 +27,7 @@ func getPreferencesFor(orgID, userID, teamID int64) Response {
 	prefsQuery := models.GetPreferencesQuery{UserId: userID, OrgId: orgID, TeamId: teamID}
 
 	if err := bus.Dispatch(&prefsQuery); err != nil {
-		return Error(500, "Failed to get preferences", err)
+		return Error(500, "无法获取首选项", err)
 	}
 
 	dto := dtos.Prefs{
@@ -55,10 +55,10 @@ func updatePreferencesFor(orgID, userID, teamId int64, dtoCmd *dtos.UpdatePrefsC
 	}
 
 	if err := bus.Dispatch(&saveCmd); err != nil {
-		return Error(500, "Failed to save preferences", err)
+		return Error(500, "保存首选项失败", err)
 	}
 
-	return Success("Preferences updated")
+	return Success("首选项已更新")
 }
 
 // GET /api/org/preferences

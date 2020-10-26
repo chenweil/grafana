@@ -16,7 +16,7 @@ export interface Props {
 export const TeamSettings: FC<Props> = ({ team, updateTeam }) => {
   return (
     <VerticalGroup>
-      <FieldSet label="Team Settings">
+      <FieldSet label="团队设置">
         <Form
           defaultValues={{ ...team }}
           onSubmit={(formTeam: Team) => {
@@ -25,17 +25,14 @@ export const TeamSettings: FC<Props> = ({ team, updateTeam }) => {
         >
           {({ register }) => (
             <>
-              <Field label="Name">
+              <Field label="名字">
                 <Input name="name" ref={register({ required: true })} />
               </Field>
 
-              <Field
-                label="Email"
-                description="This is optional and is primarily used to set the team profile avatar (via gravatar service)"
-              >
+              <Field label="电子邮件" description="这是可选的，主要用于设置团队资料的头像（通过gravatar服务）">
                 <Input placeholder="team@email.com" type="email" name="email" ref={register} />
               </Field>
-              <Button type="submit">Update</Button>
+              <Button type="submit">更新</Button>
             </>
           )}
         </Form>

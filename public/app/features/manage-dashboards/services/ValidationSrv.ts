@@ -10,11 +10,11 @@ export class ValidationSrv {
   rootName = 'general';
 
   validateNewDashboardName(folderId: any, name: string) {
-    return this.validate(folderId, name, 'A dashboard or a folder with the same name already exists');
+    return this.validate(folderId, name, '仪表板或具有相同名称的文件夹已存在');
   }
 
   validateNewFolderName(name: string) {
-    return this.validate(0, name, 'A folder or dashboard in the general folder with the same name already exists');
+    return this.validate(0, name, '常规文件夹中具有相同名称的文件夹或仪表板已经存在');
   }
 
   private async validate(folderId: any, name: string, existingErrorMessage: string) {
@@ -24,14 +24,14 @@ export class ValidationSrv {
     if (name.length === 0) {
       throw {
         type: 'REQUIRED',
-        message: 'Name is required',
+        message: '名字是必填项',
       };
     }
 
     if (folderId === 0 && nameLowerCased === this.rootName) {
       throw {
         type: 'EXISTING',
-        message: 'This is a reserved name and cannot be used for a folder.',
+        message: '这是保留名称，不能用于文件夹。',
       };
     }
 

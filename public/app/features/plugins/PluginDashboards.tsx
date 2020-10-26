@@ -79,7 +79,7 @@ export class PluginDashboards extends PureComponent<Props, State> {
     return getBackendSrv()
       .post(`/api/dashboards/import`, installCmd)
       .then((res: PluginDashboard) => {
-        appEvents.emit(AppEvents.alertSuccess, ['Dashboard Imported', dash.title]);
+        appEvents.emit(AppEvents.alertSuccess, ['仪表板导入', dash.title]);
         extend(dash, res);
         this.setState({ dashboards: [...this.state.dashboards] });
       });
@@ -97,10 +97,10 @@ export class PluginDashboards extends PureComponent<Props, State> {
   render() {
     const { loading, dashboards } = this.state;
     if (loading) {
-      return <div>loading...</div>;
+      return <div>加载中...</div>;
     }
     if (!dashboards || !dashboards.length) {
-      return <div>No dashboards are included with this plugin</div>;
+      return <div>这个插件不包含仪表板</div>;
     }
 
     return (

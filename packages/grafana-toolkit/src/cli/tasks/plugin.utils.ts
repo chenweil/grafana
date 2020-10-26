@@ -55,7 +55,7 @@ const gitUrlParse = (url: string): { owner: string; name: string } => {
     };
   }
 
-  throw `Could not find a suitable git repository. Received [${url}]`;
+  throw `找不到合适的git存储库。 已收到 [${url}]`;
 };
 
 const prepareRelease = useSpinner<any>('Preparing release', async ({ dryrun, verbose }) => {
@@ -168,10 +168,7 @@ const githubPublishRunner: TaskRunner<GithubPublishOptions> = async ({ dryrun, v
     if (repo && repo.stdout) {
       repoUrl = repo.stdout;
     } else {
-      throw new Error(
-        'The release plugin requires you specify the repository url as environment variable DRONE_REPO_LINK or ' +
-          'CIRCLE_REPOSITORY_URL'
-      );
+      throw new Error('发布插件要求您将存储库URL指定为环境变量DRONE_REPO_LINK或 ' + 'CIRCLE_REPOSITORY_URL');
     }
   }
 
@@ -181,8 +178,8 @@ const githubPublishRunner: TaskRunner<GithubPublishOptions> = async ({ dryrun, v
       process.env['GITHUB_ACCESS_TOKEN'] = process.env['GITHUB_TOKEN'];
     } else {
       throw new Error(
-        `GitHub publish requires that you set the environment variable GITHUB_ACCESS_TOKEN to a valid github api token.
-        See: https://github.com/settings/tokens for more details.`
+        `GitHub publish要求您将环境变量GITHUB_ACCESS_TOKEN设置为有效的github api令牌。
+         有关更多详细信息，请参见：https：//github.com/settings/tokens。`
       );
     }
   }

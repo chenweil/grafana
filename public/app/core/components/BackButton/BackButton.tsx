@@ -10,7 +10,7 @@ export const BackButton: React.FC<Props> = ({ surface, onClick }) => {
   return (
     <IconButton
       name="arrow-left"
-      tooltip="Go back (Esc)"
+      tooltip="返回(Esc)"
       tooltipPlacement="bottom"
       size="xxl"
       surface={surface}

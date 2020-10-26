@@ -13,12 +13,12 @@ export function getQueryHints(query: string, series?: any[], datasource?: Promet
   // ..._bucket metric needs a histogram_quantile()
   const histogramMetric = query.trim().match(/^\w+_bucket$/);
   if (histogramMetric) {
-    const label = 'Time series has buckets, you probably wanted a histogram.';
+    const label = '时间序列有桶，您可能想要直方图。';
     hints.push({
       type: 'HISTOGRAM_QUANTILE',
       label,
       fix: {
-        label: 'Fix by adding histogram_quantile().',
+        label: '通过添加进行更改 histogram_quantile().',
         action: {
           type: 'ADD_HISTOGRAM_QUANTILE',
           query,
@@ -54,20 +54,20 @@ export function getQueryHints(query: string, series?: any[], datasource?: Promet
 
     if (counterNameMetric) {
       const simpleMetric = query.trim().match(/^\w+$/);
-      const verb = certain ? 'is' : 'looks like';
-      let label = `Metric ${counterNameMetric} ${verb} a counter.`;
+      const verb = certain ? '是' : '像';
+      let label = `指标 ${counterNameMetric} ${verb} 计数器。`;
       let fix: QueryFix | undefined;
 
       if (simpleMetric) {
         fix = {
-          label: 'Fix by adding rate().',
+          label: '通过添加进行更改 rate().',
           action: {
             type: 'ADD_RATE',
             query,
           },
         };
       } else {
-        label = `${label} Try applying a rate() function.`;
+        label = `${label} 尝试应用 rate() 函数。`;
       }
 
       hints.push({
@@ -91,12 +91,12 @@ export function getQueryHints(query: string, series?: any[], datasource?: Promet
       return acc;
     }, {});
     if (_.size(mappingForQuery) > 0) {
-      const label = 'Query contains recording rules.';
+      const label = '查询包含记录规则。';
       hints.push({
         type: 'EXPAND_RULES',
         label,
         fix: ({
-          label: 'Expand rules',
+          label: '扩展规则',
           action: {
             type: 'EXPAND_RULES',
             query,
@@ -112,9 +112,9 @@ export function getQueryHints(query: string, series?: any[], datasource?: Promet
     if (simpleMetric) {
       hints.push({
         type: 'ADD_SUM',
-        label: 'Many time series results returned.',
+        label: '返回了许多时间序列结果。',
         fix: {
-          label: 'Consider aggregating with sum().',
+          label: '考虑使用 sum() 进行聚合。',
           action: {
             type: 'ADD_SUM',
             query: query,

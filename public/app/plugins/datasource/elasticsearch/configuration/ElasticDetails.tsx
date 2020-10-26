@@ -30,7 +30,7 @@ export const ElasticDetails = (props: Props) => {
 
   return (
     <>
-      <h3 className="page-heading">Elasticsearch details</h3>
+      <h3 className="page-heading">Elasticsearch细节</h3>
 
       <div className="gf-form-group">
         <div className="gf-form-inline">
@@ -38,7 +38,7 @@ export const ElasticDetails = (props: Props) => {
             <FormField
               labelWidth={10}
               inputWidth={15}
-              label="Index name"
+              label="索引名称"
               value={value.database || ''}
               onChange={changeHandler('database', value, onChange)}
               placeholder={'es-index-name'}
@@ -49,7 +49,7 @@ export const ElasticDetails = (props: Props) => {
           <div className="gf-form width-14">
             <FormField
               labelWidth={10}
-              label="Pattern"
+              label="模式"
               inputEl={
                 <Select
                   options={indexPatternTypes}
@@ -68,7 +68,7 @@ export const ElasticDetails = (props: Props) => {
           <FormField
             labelWidth={10}
             inputWidth={15}
-            label="Time field name"
+            label="时间字段名称"
             value={value.jsonData.timeField || ''}
             onChange={jsonDataChangeHandler('timeField', value, onChange)}
             required
@@ -79,7 +79,7 @@ export const ElasticDetails = (props: Props) => {
           <span className="gf-form-select-wrapper">
             <FormField
               labelWidth={10}
-              label="Version"
+              label="版本"
               inputEl={
                 <Select
                   options={esVersions}
@@ -108,7 +108,7 @@ export const ElasticDetails = (props: Props) => {
             <FormField
               aria-label={'Max concurrent Shard Requests input'}
               labelWidth={15}
-              label="Max concurrent Shard Requests"
+              label="最大并发分片请求"
               value={value.jsonData.maxConcurrentShardRequests || ''}
               onChange={jsonDataChangeHandler('maxConcurrentShardRequests', value, onChange)}
             />
@@ -118,7 +118,7 @@ export const ElasticDetails = (props: Props) => {
           <div className="gf-form">
             <FormField
               labelWidth={10}
-              label="Min time interval"
+              label="最小时间间隔"
               inputEl={
                 <Input
                   className={'width-6'}
@@ -129,7 +129,7 @@ export const ElasticDetails = (props: Props) => {
                     [EventsWithValidation.onBlur]: [
                       regexValidation(
                         /^\d+(ms|[Mwdhmsy])$/,
-                        'Value is not valid, you can use number with time unit specifier: y, M, w, d, h, m, s'
+                        '值无效，您可以使用带时间单位的数字指定: y, M, w, d, h, m, s'
                       ),
                     ],
                   }}
@@ -137,8 +137,7 @@ export const ElasticDetails = (props: Props) => {
               }
               tooltip={
                 <>
-                  A lower limit for the auto group by time interval. Recommended to be set to write frequency, for
-                  example <code>1m</code> if your data is written every minute.
+                  自动分组时间间隔的下限。 建议设置为写入频率，例如，如果每分钟写入一次数据，则为<code> 1m </code>。
                 </>
               }
             />

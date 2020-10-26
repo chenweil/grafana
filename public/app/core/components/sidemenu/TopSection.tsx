@@ -8,7 +8,7 @@ const TopSection: FC<any> = () => {
   const navTree = _.cloneDeep(config.bootData.navTree);
   const mainLinks = _.filter(navTree, item => !item.hideFromMenu);
   const searchLink = {
-    text: 'Search',
+    text: '搜索',
     icon: 'search',
   };
 

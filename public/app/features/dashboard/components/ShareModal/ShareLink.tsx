@@ -76,7 +76,7 @@ export class ShareLink extends PureComponent<Props, State> {
   };
 
   onShareUrlCopy = () => {
-    appEvents.emit(AppEvents.alertSuccess, ['Content copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['内容已复制到剪贴板']);
   };
 
   getShareUrl = () => {
@@ -93,24 +93,22 @@ export class ShareLink extends PureComponent<Props, State> {
         <div className="share-modal-header">
           <Icon name="link" className="share-modal-big-icon" size="xxl" />
           <div className="share-modal-content">
-            <p className="share-modal-info-text">
-              Create a direct link to this dashboard or panel, customized with the options below.
-            </p>
+            <p className="share-modal-info-text">使用以下选项自定义指向该仪表板或面板的直接链接。 </p>
             <div className="gf-form-group">
               <Switch
                 labelClass="width-12"
-                label="Current time range"
+                label="当前时间范围"
                 checked={useCurrentTimeRange}
                 onChange={this.onUseCurrentTimeRangeChange}
               />
               <Switch
                 labelClass="width-12"
-                label="Template variables"
+                label="模板变量"
                 checked={includeTemplateVars}
                 onChange={this.onIncludeTemplateVarsChange}
               />
               <div className="gf-form">
-                <label className="gf-form-label width-12">Theme</label>
+                <label className="gf-form-label width-12">主题</label>
                 <Select width={10} options={themeOptions} value={selectedTheme} onChange={this.onThemeChange} />
               </div>
             </div>
@@ -122,7 +120,7 @@ export class ShareLink extends PureComponent<Props, State> {
                   </div>
                   <div className="gf-form">
                     <ClipboardButton variant="primary" getText={this.getShareUrl} onClipboardCopy={this.onShareUrlCopy}>
-                      Copy
+                      复制
                     </ClipboardButton>
                   </div>
                 </div>
@@ -131,23 +129,23 @@ export class ShareLink extends PureComponent<Props, State> {
             {panel && config.rendererAvailable && (
               <div className="gf-form">
                 <a href={imageUrl} target="_blank" aria-label={selectors.linkToRenderedImage}>
-                  <Icon name="camera" /> Direct link rendered image
+                  <Icon name="camera" /> 直接链接渲染图像
                 </a>
               </div>
             )}
             {panel && !config.rendererAvailable && (
               <InfoBox>
                 <p>
-                  <>To render a panel image, you must install the </>
+                  <>要渲染面板图像，必须安装 </>
                   <a
                     href="https://grafana.com/grafana/plugins/grafana-image-renderer"
                     target="_blank"
                     rel="noopener"
                     className="external-link"
                   >
-                    Grafana Image Renderer plugin
+                    Grafana Image Renderer插件。
                   </a>
-                  . Please contact your Grafana administrator to install the plugin.
+                  请与您的Grafana管理员联系以安装插件。
                 </p>
               </InfoBox>
             )}

@@ -5,7 +5,7 @@
   "category": "sql",
 
   "info": {
-    "description": "Data source for MySQL databases",
+    "description": "MySQL数据库的数据源",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"

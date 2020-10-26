@@ -16,7 +16,7 @@ export function annotationTooltipDirective(
     try {
       return $sanitize(str);
     } catch (err) {
-      console.log('Could not sanitize annotation string, html escaping instead');
+      console.log('无法清除注释字符串，而是转义了html');
       return _.escape(str);
     }
   }

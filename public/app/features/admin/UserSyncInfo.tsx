@@ -44,7 +44,7 @@ export class UserSyncInfo extends PureComponent<Props, State> {
     return (
       <>
         <button className={`btn btn-secondary pull-right`} onClick={this.onSyncClick} disabled={isDisabled}>
-          <span className="btn-title">Sync user</span>
+          <span className="btn-title">同步用户</span>
           {isSyncing && <Icon name="fa fa-spinner" className="fa-fw fa-spin run-icon" />}
         </button>
 
@@ -56,12 +56,12 @@ export class UserSyncInfo extends PureComponent<Props, State> {
             <table className="filter-table form-inline">
               <tbody>
                 <tr>
-                  <td>Last synchronisation</td>
+                  <td>最后同步</td>
                   <td>{prevSyncTime}</td>
-                  {prevSyncSuccessful && <td className="pull-right">Successful</td>}
+                  {prevSyncSuccessful && <td className="pull-right">成功</td>}
                 </tr>
                 <tr>
-                  <td>Next scheduled synchronisation</td>
+                  <td>下一步计划同步</td>
                   <td colSpan={2}>{nextSyncTime}</td>
                 </tr>
               </tbody>

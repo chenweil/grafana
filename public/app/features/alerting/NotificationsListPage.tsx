@@ -27,12 +27,12 @@ const NotificationsListPage: FC = () => {
 
   const deleteNotification = (id: number) => {
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete',
-      text: 'Do you want to delete this notification channel?',
-      text2: `Deleting this notification channel will not delete from alerts any references to it`,
+      title: '删除',
+      text: '您要删除此通知通道吗？',
+      text2: `删除此通知通道不会从警报中删除对其的任何引用`,
       icon: 'trash-alt',
-      confirmText: 'Delete',
-      yesText: 'Delete',
+      confirmText: '删除',
+      yesText: '删除',
       onConfirm: async () => {
         deleteNotificationConfirmed(id);
       },
@@ -54,16 +54,16 @@ const NotificationsListPage: FC = () => {
             <div className="page-action-bar">
               <div className="page-action-bar__spacer" />
               <LinkButton icon="channel-add" href="alerting/notification/new">
-                New channel
+                新通道
               </LinkButton>
             </div>
             <table className="filter-table filter-table--hover">
               <thead>
                 <tr>
                   <th style={{ minWidth: '200px' }}>
-                    <strong>Name</strong>
+                    <strong>名字</strong>
                   </th>
-                  <th style={{ minWidth: '100px' }}>Type</th>
+                  <th style={{ minWidth: '100px' }}>类型</th>
                   <th style={{ width: '1%' }}></th>
                 </tr>
               </thead>
@@ -80,7 +80,7 @@ const NotificationsListPage: FC = () => {
                       <HorizontalGroup justify="flex-end">
                         {notification.isDefault && (
                           <Button disabled variant="secondary" size="sm">
-                            default
+                            默认
                           </Button>
                         )}
                         <Button
@@ -102,13 +102,13 @@ const NotificationsListPage: FC = () => {
 
         {!(notifications.length || state.loading) && (
           <EmptyListCTA
-            title="There are no notification channels defined yet"
+            title="尚未定义通知通道"
             buttonIcon="channel-add"
             buttonLink="alerting/notification/new"
-            buttonTitle="Add channel"
-            proTip="You can include images in your alert notifications."
+            buttonTitle="新增通道"
+            proTip="您可以在警报通知中包含图像。"
             proTipLink="http://docs.grafana.org/alerting/notifications/"
-            proTipLinkTitle="Learn more"
+            proTipLinkTitle="了解更多"
             proTipTarget="_blank"
           />
         )}

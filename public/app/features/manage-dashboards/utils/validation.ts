@@ -6,7 +6,7 @@ export const validateDashboardJson = (json: string) => {
     JSON.parse(json);
     return true;
   } catch (error) {
-    return 'Not valid JSON';
+    return '无效的JSON';
   }
 };
 
@@ -14,7 +14,7 @@ export const validateGcomDashboard = (gcomDashboard: string) => {
   // From DashboardImportCtrl
   const match = /(^\d+$)|dashboards\/(\d+)/.exec(gcomDashboard);
 
-  return match && (match[1] || match[2]) ? true : 'Could not find a valid Grafana.com id';
+  return match && (match[1] || match[2]) ? true : '找不到有效的Grafana.com ID';
 };
 
 export const validateTitle = (newTitle: string, folderId: number) => {
@@ -34,7 +34,7 @@ export const validateUid = (value: string) => {
   return getBackendSrv()
     .get(`/api/dashboards/uid/${value}`)
     .then(existingDashboard => {
-      return `Dashboard named '${existingDashboard?.dashboard.title}' in folder '${existingDashboard?.meta.folderTitle}' has the same uid`;
+      return `仪表板 '${existingDashboard?.dashboard.title}' 在文件夹 '${existingDashboard?.meta.folderTitle}' 内有相同uid`;
     })
     .catch(error => {
       error.isHandled = true;

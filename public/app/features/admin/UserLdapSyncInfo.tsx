@@ -29,14 +29,14 @@ export class UserLdapSyncInfo extends PureComponent<Props, State> {
 
     return (
       <>
-        <h3 className="page-heading">LDAP Synchronisation</h3>
+        <h3 className="page-heading">LDAP同步</h3>
         <div className="gf-form-group">
           <div className="gf-form">
             <table className="filter-table form-inline">
               <tbody>
                 <tr>
-                  <td>External sync</td>
-                  <td>User synced via LDAP – some changes must be done in LDAP or mappings.</td>
+                  <td>外部同步</td>
+                  <td>用户通过LDAP同步-必须在LDAP或映射中进行一些更改。</td>
                   <td>
                     <span className="label label-tag">LDAP</span>
                   </td>
@@ -44,25 +44,25 @@ export class UserLdapSyncInfo extends PureComponent<Props, State> {
                 <tr>
                   {ldapSyncInfo.enabled ? (
                     <>
-                      <td>Next scheduled synchronisation</td>
+                      <td>下一步计划同步</td>
                       <td colSpan={2}>{nextSyncTime}</td>
                     </>
                   ) : (
                     <>
-                      <td>Next scheduled synchronisation</td>
-                      <td colSpan={2}>Not enabled</td>
+                      <td>下一步计划同步</td>
+                      <td colSpan={2}>未启用</td>
                     </>
                   )}
                 </tr>
                 <tr>
                   {prevSyncSuccessful ? (
                     <>
-                      <td>Last synchronisation</td>
+                      <td>最后同步</td>
                       <td>{prevSyncTime}</td>
-                      <td>Successful</td>
+                      <td>成功</td>
                     </>
                   ) : (
-                    <td colSpan={3}>Last synchronisation</td>
+                    <td colSpan={3}>最后同步</td>
                   )}
                 </tr>
               </tbody>
@@ -70,10 +70,10 @@ export class UserLdapSyncInfo extends PureComponent<Props, State> {
           </div>
           <div className="gf-form-button-row">
             <Button variant="secondary" onClick={this.onUserSync}>
-              Sync user
+              同步用户
             </Button>
             <LinkButton variant="secondary" href={debugLDAPMappingURL}>
-              Debug LDAP Mapping
+              调试LDAP映射
             </LinkButton>
           </div>
         </div>

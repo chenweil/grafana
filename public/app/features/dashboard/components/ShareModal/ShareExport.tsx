@@ -95,20 +95,20 @@ export class ShareExport extends PureComponent<Props, State> {
           <div className="share-modal-content">
             <Switch
               labelClass="width-16"
-              label="Export for sharing externally"
+              label="导出以与外部共享"
               checked={shareExternally}
               onChange={this.onShareExternallyChange}
             />
 
             <div className="gf-form-button-row">
               <Button variant="primary" onClick={this.onSaveAsFile}>
-                Save to file
+                保存到文件
               </Button>
               <Button variant="secondary" onClick={this.onViewJson}>
-                View JSON
+                查看JSON
               </Button>
               <Button variant="secondary" onClick={onDismiss}>
-                Cancel
+                取消
               </Button>
             </div>
           </div>

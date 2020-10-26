@@ -2,8 +2,8 @@ package models
 
 import "errors"
 
-var ErrInvalidEmailCode = errors.New("Invalid or expired email code")
-var ErrSmtpNotEnabled = errors.New("SMTP not configured, check your grafana.ini config file's [smtp] section")
+var ErrInvalidEmailCode = errors.New("电子邮件代码无效或已过期")
+var ErrSmtpNotEnabled = errors.New("未配置SMTP，请检查您的grafana.ini配置文件的[smtp]部分")
 
 // SendEmailAttachFile is a definition of the attached files without path
 type SendEmailAttachFile struct {

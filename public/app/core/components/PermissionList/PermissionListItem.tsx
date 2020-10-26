@@ -65,15 +65,15 @@ export default class PermissionsListItem extends PureComponent<Props> {
         <td>
           {item.inherited && folderInfo && (
             <em className="muted no-wrap">
-              Inherited from folder{' '}
+              从文件夹继承{' '}
               <a className="text-link" href={`${folderInfo.url}/permissions`}>
                 {folderInfo.title}
               </a>{' '}
             </em>
           )}
-          {inheritedFromRoot && <em className="muted no-wrap">Default Permission</em>}
+          {inheritedFromRoot && <em className="muted no-wrap">默认权限</em>}
         </td>
-        <td className="query-keyword">Can</td>
+        <td className="query-keyword">能够</td>
         <td>
           <div className="gf-form">
             <Select

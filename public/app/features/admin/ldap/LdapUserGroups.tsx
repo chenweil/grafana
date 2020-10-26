@@ -16,16 +16,16 @@ export const LdapUserGroups: FC<Props> = ({ groups, showAttributeMapping }) => {
         <table className="filter-table form-inline">
           <thead>
             <tr>
-              {showAttributeMapping && <th>LDAP Group</th>}
+              {showAttributeMapping && <th>LDAP组</th>}
               <th>
-                Organization
-                <Tooltip placement="top" content="Only the first match for an Organization will be used" theme={'info'}>
+                组织
+                <Tooltip placement="top" content="仅会使用组织的第一个匹配项" theme={'info'}>
                   <span className="gf-form-help-icon">
                     <Icon name="info-circle" />
                   </span>
                 </Tooltip>
               </th>
-              <th>Role</th>
+              <th>角色</th>
             </tr>
           </thead>
           <tbody>
@@ -40,8 +40,8 @@ export const LdapUserGroups: FC<Props> = ({ groups, showAttributeMapping }) => {
                           <td />
                           <td>
                             <span className="text-warning">
-                              No match
-                              <Tooltip placement="top" content="No matching groups found" theme={'info'}>
+                              没有匹配
+                              <Tooltip placement="top" content="找不到匹配的组" theme={'info'}>
                                 <span className="gf-form-help-icon">
                                   <Icon name="info-circle" />
                                 </span>

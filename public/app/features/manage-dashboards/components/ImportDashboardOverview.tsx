@@ -55,7 +55,7 @@ class ImportDashboardOverviewUnConnected extends PureComponent<Props, State> {
           <div style={{ marginBottom: '24px' }}>
             <div>
               <Legend>
-                Importing Dashboard from{' '}
+                从中导入仪表板{' '}
                 <a
                   href={`https://grafana.com/dashboards/${dashboard.gnetId}`}
                   className="external-link"
@@ -68,11 +68,11 @@ class ImportDashboardOverviewUnConnected extends PureComponent<Props, State> {
             <table className="filter-table form-inline">
               <tbody>
                 <tr>
-                  <td>Published by</td>
+                  <td>发布人</td>
                   <td>{meta.orgName}</td>
                 </tr>
                 <tr>
-                  <td>Updated on</td>
+                  <td>更新于</td>
                   <td>{dateTimeFormat(meta.updatedAt)}</td>
                 </tr>
               </tbody>

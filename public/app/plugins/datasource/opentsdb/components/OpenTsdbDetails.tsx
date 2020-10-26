@@ -25,9 +25,9 @@ export const OpenTsdbDetails = (props: Props) => {
 
   return (
     <>
-      <h5>OpenTSDB settings</h5>
+      <h5>OpenTSDB设置</h5>
       <div className="gf-form">
-        <InlineFormLabel width={7}>Version</InlineFormLabel>
+        <InlineFormLabel width={7}>版本</InlineFormLabel>
         <Select
           options={tsdbVersions}
           value={tsdbVersions.find(version => version.value === value.jsonData.tsdbVersion) ?? tsdbVersions[0]}
@@ -35,7 +35,7 @@ export const OpenTsdbDetails = (props: Props) => {
         />
       </div>
       <div className="gf-form">
-        <InlineFormLabel width={7}>Resolution</InlineFormLabel>
+        <InlineFormLabel width={7}>解析度</InlineFormLabel>
         <Select
           options={tsdbResolutions}
           value={
@@ -45,7 +45,7 @@ export const OpenTsdbDetails = (props: Props) => {
         />
       </div>
       <div className="gf-form">
-        <InlineFormLabel width={7}>Lookup Limit</InlineFormLabel>
+        <InlineFormLabel width={7}>查找限制</InlineFormLabel>
         <Input
           type="number"
           value={value.jsonData.lookupLimit ?? 1000}

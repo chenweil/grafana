@@ -24,10 +24,10 @@ func GetOrgByName(c *models.ReqContext) Response {
 	query := models.GetOrgByNameQuery{Name: c.Params(":name")}
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrOrgNotFound {
-			return Error(404, "Organization not found", err)
+			return Error(404, "找不到组织", err)
 		}
 
-		return Error(500, "Failed to get organization", err)
+		return Error(500, "无法获得组织", err)
 	}
 	org := query.Result
 	result := models.OrgDetailsDTO{
@@ -51,10 +51,10 @@ func getOrgHelper(orgID int64) Response {
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrOrgNotFound {
-			return Error(404, "Organization not found", err)
+			return Error(404, "找不到组织", err)
 		}
 
-		return Error(500, "Failed to get organization", err)
+		return Error(500, "无法获得组织", err)
 	}
 
 	org := query.Result
@@ -77,22 +77,22 @@ func getOrgHelper(orgID int64) Response {
 // POST /api/orgs
 func CreateOrg(c *models.ReqContext, cmd models.CreateOrgCommand) Response {
 	if !c.IsSignedIn || (!setting.AllowUserOrgCreate && !c.IsGrafanaAdmin) {
-		return Error(403, "Access denied", nil)
+		return Error(403, "拒绝访问", nil)
 	}
 
 	cmd.UserId = c.UserId
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrOrgNameTaken {
-			return Error(409, "Organization name taken", err)
+			return Error(409, "机构名称已采用", err)
 		}
-		return Error(500, "Failed to create organization", err)
+		return Error(500, "创建组织失败", err)
 	}
 
 	metrics.MApiOrgCreate.Inc()
 
 	return JSON(200, &util.DynMap{
 		"orgId":   cmd.Result.Id,
-		"message": "Organization created",
+		"message": "组织已创建",
 	})
 }
 
@@ -110,12 +110,12 @@ func updateOrgHelper(form dtos.UpdateOrgForm, orgID int64) Response {
 	cmd := models.UpdateOrgCommand{Name: form.Name, OrgId: orgID}
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrOrgNameTaken {
-			return Error(400, "Organization name taken", err)
+			return Error(400, "机构名称已采用", err)
 		}
-		return Error(500, "Failed to update organization", err)
+		return Error(500, "无法更新组织", err)
 	}
 
-	return Success("Organization updated")
+	return Success("组织更新")
 }
 
 // PUT /api/org/address
@@ -142,21 +142,21 @@ func updateOrgAddressHelper(form dtos.UpdateOrgAddressForm, orgID int64) Respons
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to update org address", err)
+		return Error(500, "无法更新组织地址", err)
 	}
 
-	return Success("Address updated")
+	return Success("地址已更新")
 }
 
 // GET /api/orgs/:orgId
 func DeleteOrgByID(c *models.ReqContext) Response {
 	if err := bus.Dispatch(&models.DeleteOrgCommand{Id: c.ParamsInt64(":orgId")}); err != nil {
 		if err == models.ErrOrgNotFound {
-			return Error(404, "Failed to delete organization. ID not found", nil)
+			return Error(404, "无法删除组织。 找不到ID", nil)
 		}
-		return Error(500, "Failed to update organization", err)
+		return Error(500, "无法更新组织", err)
 	}
-	return Success("Organization deleted")
+	return Success("组织已删除")
 }
 
 func SearchOrgs(c *models.ReqContext) Response {
@@ -175,7 +175,7 @@ func SearchOrgs(c *models.ReqContext) Response {
 	}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to search orgs", err)
+		return Error(500, "无法搜索组织", err)
 	}
 
 	return JSON(200, query.Result)

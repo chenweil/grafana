@@ -27,8 +27,8 @@ func init() {
 				PropertyName: "singleEmail",
 			},
 			{
-				Label:        "Addresses",
-				Description:  "You can enter multiple email addresses using a \";\" separator",
+				Label:        "地址",
+				Description:  "您可以使用 \";\" 分隔符输入多个电子邮件地址",
 				Element:      alerting.ElementTypeTextArea,
 				PropertyName: "addresses",
 				Required:     true,
@@ -53,7 +53,7 @@ func NewEmailNotifier(model *models.AlertNotification) (alerting.Notifier, error
 	singleEmail := model.Settings.Get("singleEmail").MustBool(false)
 
 	if addressesString == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find addresses in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到地址"}
 	}
 
 	// split addresses with a few different ways

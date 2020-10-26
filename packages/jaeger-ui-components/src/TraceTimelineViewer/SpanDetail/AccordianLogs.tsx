@@ -86,7 +86,7 @@ export default function AccordianLogs(props: AccordianLogsProps) {
   return (
     <div className={styles.AccordianLogs}>
       <HeaderComponent className={styles.AccordianLogsHeader} {...headerProps}>
-        {arrow} <strong>Logs</strong> ({logs.length})
+        {arrow} <strong>日志</strong> ({logs.length})
       </HeaderComponent>
       {isOpen && (
         <div className={styles.AccordianLogsContent}>
@@ -104,9 +104,7 @@ export default function AccordianLogs(props: AccordianLogsProps) {
               onToggle={interactive && onItemToggle ? () => onItemToggle(log) : null}
             />
           ))}
-          <small className={styles.AccordianLogsFooter}>
-            Log timestamps are relative to the start time of the full trace.
-          </small>
+          <small className={styles.AccordianLogsFooter}>日志时间戳是相对于完整跟踪的开始时间的。</small>
         </div>
       )}
     </div>

@@ -10,8 +10,8 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel)
     builder
       .addRadio({
         path: 'mode',
-        name: 'Mode',
-        description: 'text mode of the panel',
+        name: '模式',
+        description: '面板的文字模式',
         settings: {
           options: [
             { value: 'markdown', label: 'Markdown' },
@@ -23,11 +23,11 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel)
       .addCustomEditor({
         id: 'content',
         path: 'content',
-        name: 'Content',
-        description: 'Content of the panel',
-        defaultValue: `# Title
+        name: '内容',
+        description: '面板内容',
+        defaultValue: `# 标题
 
-For markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)
+有关 markdown 语法帮助: [commonmark.org/help](https://commonmark.org/help/)
          `,
         editor: TextPanelEditor,
       });

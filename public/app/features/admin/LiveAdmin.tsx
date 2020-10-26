@@ -90,16 +90,13 @@ export class LiveAdmin extends PureComponent<Props, State> {
               featureState={FeatureState.alpha}
               // url={getDocsLink(DocsId.Transformations)}
             >
-              <p>
-                This supports real-time event streams in grafana core. This feature is under heavy development. Expect
-                the intefaces and structures to change as this becomes more production ready.
-              </p>
+              <p>这支持grafana核心中的实时事件流。 此功能正在大力开发中。 随着生产准备就绪，界面和结构会发生变化。</p>
             </FeatureInfoBox>
             <br />
             <br />
           </Container>
 
-          <h2>Channels</h2>
+          <h2>通道</h2>
           <Select options={channels} value={current} onChange={this.onChannelChanged} allowCustomValue={true} />
           <br />
 
@@ -107,10 +104,10 @@ export class LiveAdmin extends PureComponent<Props, State> {
 
           <br />
           <br />
-          <h3>Write to channel</h3>
+          <h3>写入通道</h3>
           <Input value={text} onChange={this.onTextChanged} />
           <Button onClick={this.onPublish} variant={text ? 'primary' : 'secondary'}>
-            Publish
+            发布
           </Button>
         </Page.Contents>
       </Page>

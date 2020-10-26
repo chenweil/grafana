@@ -11,7 +11,7 @@ export const MaxLinesField = (props: Props) => {
   const { value, onChange } = props;
   return (
     <FormField
-      label="Maximum lines"
+      label="最大行数"
       labelWidth={11}
       inputWidth={20}
       inputEl={
@@ -26,9 +26,8 @@ export const MaxLinesField = (props: Props) => {
       }
       tooltip={
         <>
-          Loki queries must contain a limit of the maximum number of lines returned (default: 1000). Increase this limit
-          to have a bigger result set for ad-hoc analysis. Decrease this limit if your browser becomes sluggish when
-          displaying the log results.
+          Loki查询必须包含返回的最大行数限制（默认值：1000）。 增加此限制可为临时分析提供更大的结果集。
+          如果显示日志结果时浏览器变慢，请减小此限制。
         </>
       }
     />

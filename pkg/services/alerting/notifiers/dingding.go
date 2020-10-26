@@ -16,13 +16,13 @@ const defaultDingdingMsgType = "link"
 func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "dingding",
-		Name:        "DingDing",
-		Description: "Sends HTTP POST request to DingDing",
-		Heading:     "DingDing settings",
+		Name:        "钉钉",
+		Description: "发送HTTP POST请求给钉钉",
+		Heading:     "钉钉设置",
 		Factory:     newDingDingNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				Placeholder:  "https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxx",
@@ -30,16 +30,16 @@ func init() {
 				Required:     true,
 			},
 			{
-				Label:        "Message Type",
+				Label:        "消息类型",
 				Element:      alerting.ElementTypeSelect,
 				PropertyName: "msgType",
 				SelectOptions: []alerting.SelectOption{
 					{
 						Value: "link",
-						Label: "Link"},
+						Label: "链接"},
 					{
 						Value: "actionCard",
-						Label: "ActionCard",
+						Label: "行动卡",
 					},
 				},
 			},
@@ -50,7 +50,7 @@ func init() {
 func newDingDingNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	msgType := model.Settings.Get("msgType").MustString(defaultDingdingMsgType)
@@ -73,11 +73,11 @@ type DingDingNotifier struct {
 
 // Notify sends the alert notification to dingding.
 func (dd *DingDingNotifier) Notify(evalContext *alerting.EvalContext) error {
-	dd.log.Info("Sending dingding")
+	dd.log.Info("发送到钉钉")
 
 	messageURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		dd.log.Error("Failed to get messageUrl", "error", err, "dingding", dd.Name)
+		dd.log.Error("获取消息失败", "error", err, "dingding", dd.Name)
 		messageURL = ""
 	}
 
@@ -92,7 +92,7 @@ func (dd *DingDingNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		dd.log.Error("Failed to send DingDing", "error", err, "dingding", dd.Name)
+		dd.log.Error("无法发送到钉钉", "error", err, "dingding", dd.Name)
 		return err
 	}
 
@@ -134,7 +134,7 @@ func (dd *DingDingNotifier) genBody(evalContext *alerting.EvalContext, messageUR
 			"actionCard": map[string]string{
 				"text":        message,
 				"title":       title,
-				"singleTitle": "More",
+				"singleTitle": "更多",
 				"singleURL":   messageURL,
 			},
 		}

@@ -17,11 +17,11 @@ export const getAlertingValidationMessage = async (
   datasourceName: string | null
 ): Promise<string> => {
   if (targets.length === 0) {
-    return 'Could not find any metric queries';
+    return '找不到任何指标查询';
   }
 
   if (transformations && transformations.length) {
-    return 'Transformations are not supported in alert queries';
+    return '警报查询不支持转换';
   }
 
   let alertingNotSupported = 0;
@@ -38,11 +38,11 @@ export const getAlertingValidationMessage = async (
   }
 
   if (alertingNotSupported === targets.length) {
-    return 'The datasource does not support alerting queries';
+    return '数据源不支持警报查询';
   }
 
   if (templateVariablesNotSupported === targets.length) {
-    return 'Template variables are not supported in alert queries';
+    return '警报查询中不支持模板变量';
   }
 
   return '';

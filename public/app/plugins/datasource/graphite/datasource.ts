@@ -581,7 +581,7 @@ export class GraphiteDatasource extends DataSourceApi<GraphiteQuery, GraphiteOpt
         return this.funcDefs;
       })
       .catch((err: any) => {
-        console.error('Fetching graphite functions error', err);
+        console.error('提取石墨功能错误', err);
         this.funcDefs = gfunc.getFuncDefs(this.graphiteVersion);
         return this.funcDefs;
       });
@@ -600,7 +600,7 @@ export class GraphiteDatasource extends DataSourceApi<GraphiteQuery, GraphiteOpt
       maxDataPoints: 300,
     } as unknown) as DataQueryRequest<GraphiteQuery>;
     return this.query(query).then(() => {
-      return { status: 'success', message: 'Data source is working' };
+      return { status: 'success', message: '数据源正在工作' };
     });
   }
 

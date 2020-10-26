@@ -29,8 +29,8 @@ export class UsersActionBar extends PureComponent<Props> {
       showInvites,
     } = this.props;
     const options = [
-      { label: 'Users', value: 'users' },
-      { label: `Pending Invites (${pendingInvitesCount})`, value: 'invites' },
+      { label: '用户', value: 'users' },
+      { label: `发送邀请 (${pendingInvitesCount})`, value: 'invites' },
     ];
 
     return (
@@ -41,7 +41,7 @@ export class UsersActionBar extends PureComponent<Props> {
             inputClassName="gf-form-input width-20"
             value={searchQuery}
             onChange={setUsersSearchQuery}
-            placeholder="Search user by login, email or name"
+            placeholder="通过登录名，电子邮件或姓名搜索用户"
           />
           {pendingInvitesCount > 0 && (
             <div style={{ marginLeft: '1rem' }}>
@@ -49,7 +49,7 @@ export class UsersActionBar extends PureComponent<Props> {
             </div>
           )}
           <div className="page-action-bar__spacer" />
-          {canInvite && <LinkButton href="org/users/invite">Invite</LinkButton>}
+          {canInvite && <LinkButton href="org/users/invite">邀请</LinkButton>}
           {externalUserMngLinkUrl && (
             <LinkButton href={externalUserMngLinkUrl} target="_blank" rel="noopener">
               {externalUserMngLinkName}

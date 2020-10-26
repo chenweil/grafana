@@ -266,7 +266,7 @@ export function getDisplayValueAlignmentFactors(values: FieldDisplay[]): Display
 }
 
 function createNoValuesFieldDisplay(options: GetFieldDisplayValuesOptions): FieldDisplay {
-  const displayName = 'No data';
+  const displayName = '无数据';
   const { fieldConfig, timeZone } = options;
   const { defaults } = fieldConfig;
 

@@ -15,7 +15,7 @@ func init() {
 		Type:        "LINE",
 		Name:        "LINE",
 		Description: "Send notifications to LINE notify",
-		Heading:     "LINE notify settings",
+		Heading:     "LINE notify设置",
 		Factory:     NewLINENotifier,
 		Options: []alerting.NotifierOption{
 			{

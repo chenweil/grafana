@@ -36,9 +36,9 @@ export class InfluxQueryCtrl extends QueryCtrl {
     this.queryBuilder = new InfluxQueryBuilder(this.target, this.datasource.database);
     this.groupBySegment = this.uiSegmentSrv.newPlusButton();
     this.resultFormats = [
-      { text: 'Time series', value: 'time_series' },
-      { text: 'Table', value: 'table' },
-      { text: 'Logs', value: 'logs' },
+      { text: '时间序列', value: 'time_series' },
+      { text: '表格', value: 'table' },
+      { text: '日志', value: 'logs' },
     ];
 
     this.policySegment = uiSegmentSrv.newSegment(this.target.policy);
@@ -72,7 +72,7 @@ export class InfluxQueryCtrl extends QueryCtrl {
     this.buildSelectMenu();
     this.removeTagFilterSegment = uiSegmentSrv.newSegment({
       fake: true,
-      value: '-- remove tag filter --',
+      value: '-- 删除标签过滤器 --',
     });
   }
 
@@ -221,7 +221,7 @@ export class InfluxQueryCtrl extends QueryCtrl {
         break;
       }
       case 'get-part-actions': {
-        return Promise.resolve([{ text: 'Remove', value: 'remove-part' }]);
+        return Promise.resolve([{ text: '移除', value: 'remove-part' }]);
       }
     }
     return Promise.resolve();
@@ -263,7 +263,7 @@ export class InfluxQueryCtrl extends QueryCtrl {
     try {
       this.target.query = this.queryModel.render(false);
     } catch (err) {
-      console.error('query render error');
+      console.error('查询渲染错误');
     }
     this.target.rawQuery = !this.target.rawQuery;
   }
@@ -277,7 +277,7 @@ export class InfluxQueryCtrl extends QueryCtrl {
   }
 
   handleQueryError(err: any): any[] {
-    this.error = err.message || 'Failed to issue metric query';
+    this.error = err.message || '未能发布指标查询';
     return [];
   }
 

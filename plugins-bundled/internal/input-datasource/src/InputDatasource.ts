@@ -28,9 +28,9 @@ export class InputDatasource extends DataSourceApi<InputQuery, InputOptions> {
    */
   getQueryDisplayText(query: InputQuery): string {
     if (query.data) {
-      return 'Panel Data: ' + describeDataFrame(query.data);
+      return '面板数据: ' + describeDataFrame(query.data);
     }
-    return `Shared Data From: ${this.name} (${describeDataFrame(this.data)})`;
+    return `共享数据来自: ${this.name} (${describeDataFrame(this.data)})`;
   }
 
   metricFindQuery(query: string, options?: any): Promise<MetricFindValue[]> {
@@ -71,10 +71,10 @@ export class InputDatasource extends DataSourceApi<InputQuery, InputOptions> {
   testDatasource() {
     return new Promise((resolve, reject) => {
       let rowCount = 0;
-      let info = `${this.data.length} Series:`;
+      let info = `${this.data.length} 序列:`;
       for (const series of this.data) {
         const length = series.length;
-        info += ` [${series.fields.length} Fields, ${length} Rows]`;
+        info += ` [${series.fields.length} 字段, ${length} 行]`;
         rowCount += length;
       }
 
@@ -86,7 +86,7 @@ export class InputDatasource extends DataSourceApi<InputQuery, InputOptions> {
       }
       reject({
         status: 'error',
-        message: 'No Data Entered',
+        message: '未输入数据',
       });
     });
   }
@@ -110,14 +110,14 @@ export function describeDataFrame(data: Array<DataFrameDTO | DataFrame>): string
     const count = data.reduce((acc, series) => {
       return acc + getLength(series);
     }, 0);
-    return `${data.length} Series, ${count} Rows`;
+    return `${data.length} 序列, ${count} 行`;
   }
   const series = data[0];
   if (!series.fields) {
     return 'Missing Fields';
   }
   const length = getLength(series);
-  return `${series.fields.length} Fields, ${length} Rows`;
+  return `${series.fields.length} 字段, ${length} 行`;
 }
 
 export default InputDatasource;

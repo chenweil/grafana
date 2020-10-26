@@ -65,12 +65,12 @@ export default class BottomNavLinks extends PureComponent<Props, State> {
             <li className="sidemenu-org-switcher">
               <a onClick={this.toggleSwitcherModal}>
                 <div>
-                  <div className="sidemenu-org-switcher__org-current">Current Org.:</div>
+                  <div className="sidemenu-org-switcher__org-current">当前组织.:</div>
                   <div className="sidemenu-org-switcher__org-name">{user.orgName}</div>
                 </div>
                 <div className="sidemenu-org-switcher__switch">
                   <Icon name="arrow-random" className={subMenuIconClassName} />
-                  Switch
+                  切换
                 </div>
               </a>
             </li>
@@ -92,7 +92,7 @@ export default class BottomNavLinks extends PureComponent<Props, State> {
           {link.id === 'help' && (
             <li key="keyboard-shortcuts">
               <a onClick={() => this.onOpenShortcuts()}>
-                <Icon name="keyboard" className={subMenuIconClassName} /> Keyboard shortcuts
+                <Icon name="keyboard" className={subMenuIconClassName} /> 快捷键
               </a>
             </li>
           )}

@@ -29,12 +29,12 @@ export const removePanel = (dashboard: DashboardModel, panel: PanelModel, ask: b
     const confirmText = panel.alert ? 'YES' : undefined;
 
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Remove Panel',
-      text: 'Are you sure you want to remove this panel?',
+      title: '移除面板',
+      text: '您确定要删除此面板吗？',
       text2: text2,
       icon: 'trash-alt',
       confirmText: confirmText,
-      yesText: 'Remove',
+      yesText: '移除',
       onConfirm: () => removePanel(dashboard, panel, false),
     });
     return;
@@ -48,7 +48,7 @@ export const duplicatePanel = (dashboard: DashboardModel, panel: PanelModel) => 
 
 export const copyPanel = (panel: PanelModel) => {
   store.set(LS_PANEL_COPY_KEY, JSON.stringify(panel.getSaveModel()));
-  appEvents.emit(AppEvents.alertSuccess, ['Panel copied. Open Add Panel to paste']);
+  appEvents.emit(AppEvents.alertSuccess, ['面板已复制。 打开添加面板以粘贴']);
 };
 
 export const sharePanel = (dashboard: DashboardModel, panel: PanelModel) => {
@@ -66,7 +66,7 @@ export const refreshPanel = (panel: PanelModel) => {
 };
 
 export const toggleLegend = (panel: PanelModel) => {
-  console.warn('Toggle legend is not implemented yet');
+  console.warn('切换图例尚未实现');
   // We need to set panel.legend defaults first
   // panel.legend.show = !panel.legend.show;
   refreshPanel(panel);
@@ -87,7 +87,7 @@ export function applyPanelTimeOverrides(panel: PanelModel, timeRange: TimeRange)
     const timeFromInterpolated = templateSrv.replace(panel.timeFrom, panel.scopedVars);
     const timeFromInfo = rangeUtil.describeTextRange(timeFromInterpolated);
     if (timeFromInfo.invalid) {
-      newTimeData.timeInfo = 'invalid time override';
+      newTimeData.timeInfo = '无效的时间覆盖';
       return newTimeData;
     }
 
@@ -109,7 +109,7 @@ export function applyPanelTimeOverrides(panel: PanelModel, timeRange: TimeRange)
     const timeShiftInterpolated = templateSrv.replace(panel.timeShift, panel.scopedVars);
     const timeShiftInfo = rangeUtil.describeTextRange(timeShiftInterpolated);
     if (timeShiftInfo.invalid) {
-      newTimeData.timeInfo = 'invalid timeshift';
+      newTimeData.timeInfo = '无效的时移';
       return newTimeData;
     }
 

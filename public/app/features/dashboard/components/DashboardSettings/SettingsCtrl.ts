@@ -66,22 +66,22 @@ export class SettingsCtrl {
 
     if (this.dashboard.meta.canEdit) {
       this.sections.push({
-        title: 'General',
+        title: '通常',
         id: 'settings',
         icon: 'sliders-v-alt',
       });
       this.sections.push({
-        title: 'Annotations',
+        title: '注释',
         id: 'annotations',
         icon: 'comment-alt',
       });
       this.sections.push({
-        title: 'Variables',
+        title: '变量',
         id: 'templating',
         icon: 'calculator-alt',
       });
       this.sections.push({
-        title: 'Links',
+        title: '链接',
         id: 'links',
         icon: 'link',
       });
@@ -89,7 +89,7 @@ export class SettingsCtrl {
 
     if (this.dashboard.id && this.dashboard.meta.canSave) {
       this.sections.push({
-        title: 'Versions',
+        title: '版本',
         id: 'versions',
         icon: 'history',
       });
@@ -97,7 +97,7 @@ export class SettingsCtrl {
 
     if (this.dashboard.id && this.dashboard.meta.canAdmin) {
       this.sections.push({
-        title: 'Permissions',
+        title: '权限',
         id: 'permissions',
         icon: 'lock',
       });
@@ -105,14 +105,14 @@ export class SettingsCtrl {
 
     if (this.dashboard.meta.canMakeEditable) {
       this.sections.push({
-        title: 'General',
+        title: '通常',
         icon: 'sliders-v-alt',
         id: 'make_editable',
       });
     }
 
     this.sections.push({
-      title: 'JSON Model',
+      title: 'JSON模型',
       id: 'dashboard_json',
       icon: 'arrow',
     });
@@ -139,7 +139,7 @@ export class SettingsCtrl {
     const currentSection: any = _.find(this.sections, { id: this.viewId } as any);
     if (!currentSection) {
       this.sections.unshift({
-        title: 'Not found',
+        title: '未找到',
         id: '404',
         icon: 'exclamation-triangle',
       });
@@ -185,16 +185,14 @@ export class SettingsCtrl {
 
     if (this.dashboard.meta.provisioned) {
       appEvents.emit(CoreEvents.showConfirmModal, {
-        title: 'Cannot delete provisioned dashboard',
+        title: '无法删除预配置的信息中心',
         text: `
-          This dashboard is managed by Grafanas provisioning and cannot be deleted. Remove the dashboard from the
-          config file to delete it.
+        此仪表板由Grafanas设置管理，无法删除。 从配置文件中删除仪表板以将其删除。
         `,
         text2: `
-          <i>See <a class="external-link" href="http://docs.grafana.org/administration/provisioning/#dashboards" target="_blank">
-          documentation</a> for more information about provisioning.</i>
-          </br>
-          File path: ${this.dashboard.meta.provisionedExternalId}
+        <i>请参见<a class="external-link" href="http://docs.grafana.org/administration/provisioning/#dashboards" target="_blank">
+        文档</a>以获取有关配置的更多信息。</ i> </br>
+          文件路径: ${this.dashboard.meta.provisionedExternalId}
         `,
         text2htmlBind: true,
         icon: 'trash-alt',
@@ -209,16 +207,16 @@ export class SettingsCtrl {
 
     if (alerts > 0) {
       confirmText = 'DELETE';
-      text2 = `This dashboard contains ${alerts} alerts. Deleting this dashboard will also delete those alerts`;
+      text2 = `此信息中心包含 ${alerts} 个警报。 删除此仪表板也将删除那些警报`;
     }
 
     appEvents.emit(CoreEvents.showConfirmModal, {
-      title: 'Delete',
-      text: 'Do you want to delete this dashboard?',
+      title: '删除',
+      text: '您是否要删除此仪表板?',
       text2: text2,
       icon: 'trash-alt',
       confirmText: confirmText,
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         this.dashboard.meta.canSave = false;
         this.deleteDashboardConfirmed();
@@ -229,7 +227,7 @@ export class SettingsCtrl {
   deleteDashboardConfirmed() {
     promiseToDigest(this.$scope)(
       deleteDashboard(this.dashboard.uid, false).then(() => {
-        appEvents.emit(AppEvents.alertSuccess, ['Dashboard Deleted', this.dashboard.title + ' has been deleted']);
+        appEvents.emit(AppEvents.alertSuccess, ['仪表板删除', this.dashboard.title + ' 已删除']);
         this.$location.url('/');
       })
     );

@@ -50,10 +50,10 @@ export class UserSessions extends PureComponent<Props, State> {
             <table className="filter-table form-inline">
               <thead>
                 <tr>
-                  <th>Last seen</th>
-                  <th>Logged on</th>
-                  <th>IP address</th>
-                  <th colSpan={2}>Browser &amp; OS</th>
+                  <th>最后一次登陆</th>
+                  <th>登陆</th>
+                  <th>IP地址</th>
+                  <th colSpan={2}>浏览器 &amp; 设备信息</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,11 +67,11 @@ export class UserSessions extends PureComponent<Props, State> {
                       <td>
                         <div className="pull-right">
                           <ConfirmButton
-                            confirmText="Confirm logout"
+                            confirmText="确认注销"
                             confirmVariant="destructive"
                             onConfirm={this.onSessionRevoke(session.id)}
                           >
-                            Force logout
+                            强制注销
                           </ConfirmButton>
                         </div>
                       </td>
@@ -83,14 +83,14 @@ export class UserSessions extends PureComponent<Props, State> {
           <div className={logoutFromAllDevicesClass}>
             {sessions.length > 0 && (
               <Button variant="secondary" onClick={this.showLogoutConfirmationModal(true)}>
-                Force logout from all devices
+                从所有设备强制注销
               </Button>
             )}
             <ConfirmModal
               isOpen={showLogoutModal}
-              title="Force logout from all devices"
-              body="Are you sure you want to force logout from all devices?"
-              confirmText="Force logout"
+              title="从所有设备强制注销"
+              body="您确定要强制从所有设备注销?"
+              confirmText="强制注销"
               onConfirm={this.onAllSessionsRevoke}
               onDismiss={this.showLogoutConfirmationModal(false)}
             />

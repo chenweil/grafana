@@ -29,7 +29,7 @@ interface InputState {
   invalid: boolean;
 }
 
-const errorMessage = 'Please enter a past date or "now"';
+const errorMessage = '请输入过去的日期或 "now"';
 
 export const TimeRangeForm: React.FC<Props> = props => {
   const { value, isFullscreen = false, timeZone, roundup } = props;
@@ -89,7 +89,7 @@ export const TimeRangeForm: React.FC<Props> = props => {
 
   return (
     <>
-      <Field label="From" invalid={from.invalid} error={errorMessage}>
+      <Field label="从" invalid={from.invalid} error={errorMessage}>
         <Input
           onClick={event => event.stopPropagation()}
           onFocus={onFocus}
@@ -99,7 +99,7 @@ export const TimeRangeForm: React.FC<Props> = props => {
           value={from.value}
         />
       </Field>
-      <Field label="To" invalid={to.invalid} error={errorMessage}>
+      <Field label="到" invalid={to.invalid} error={errorMessage}>
         <Input
           onClick={event => event.stopPropagation()}
           onFocus={onFocus}
@@ -110,7 +110,7 @@ export const TimeRangeForm: React.FC<Props> = props => {
         />
       </Field>
       <Button aria-label="TimePicker submit button" onClick={onApply}>
-        Apply time range
+        应用时间范围
       </Button>
 
       <TimePickerCalendar

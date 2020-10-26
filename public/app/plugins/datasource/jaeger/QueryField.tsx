@@ -77,7 +77,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
       }
 
       const allOperationsOption: CascaderOption = {
-        label: '[ALL]',
+        label: '[所有]',
         value: ALL_OPERATIONS_KEY,
       };
       const operationOptions: CascaderOption[] = [
@@ -116,7 +116,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
       if (traceOptions.length === 0) {
         traceOptions = [
           {
-            label: '[No traces in time range]',
+            label: '[时间范围内无痕迹]',
             value: NO_TRACES_KEY,
           },
         ];
@@ -152,7 +152,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
     try {
       return await datasource.metadataRequest(url);
     } catch (error) {
-      appEvents.emit(AppEvents.alertError, ['Failed to load operations from Jaeger', error]);
+      appEvents.emit(AppEvents.alertError, ['无法从Jaeger加载操作', error]);
     }
     return [];
   };
@@ -175,7 +175,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
     try {
       return await datasource.metadataRequest(url, traceSearch);
     } catch (error) {
-      appEvents.emit(AppEvents.alertError, ['Failed to load traces from Jaeger', error]);
+      appEvents.emit(AppEvents.alertError, ['无法从Jaeger加载跟踪', error]);
     }
     return [];
   };
@@ -199,7 +199,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
         <div className="gf-form-inline gf-form-inline--nowrap">
           <div className="gf-form flex-shrink-0">
             <ButtonCascader options={cascaderOptions} onChange={this.onSelectTrace} loadData={this.onLoadOptions}>
-              Traces
+              追踪
             </ButtonCascader>
           </div>
           <div className="gf-form gf-form--grow flex-shrink-1">
@@ -226,7 +226,7 @@ export class JaegerQueryField extends React.PureComponent<Props, State> {
 
 const noTracesFoundOptions = [
   {
-    label: 'No traces found',
+    label: '没有发现踪迹',
     value: 'no_traces',
     isLeaf: true,
 

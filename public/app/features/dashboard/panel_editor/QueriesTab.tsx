@@ -205,12 +205,7 @@ export class QueriesTab extends PureComponent<Props, State> {
             </Field>
           </div>
           <div className={styles.dataSourceRowItem}>
-            <Button
-              variant="secondary"
-              icon="question-circle"
-              title="Open data source help"
-              onClick={this.onOpenHelp}
-            />
+            <Button variant="secondary" icon="question-circle" title="打开数据源帮助" onClick={this.onOpenHelp} />
           </div>
           <div className={styles.dataSourceRowItemOptions}>
             <QueryOptions panel={panel} dataSource={dataSource} data={data} />
@@ -221,7 +216,7 @@ export class QueriesTab extends PureComponent<Props, State> {
               onClick={this.openQueryInspector}
               aria-label={selectors.components.QueryTab.queryInspectorButton}
             >
-              Query inspector
+              查询检查器
             </Button>
           </div>
         </div>
@@ -310,13 +305,13 @@ export class QueriesTab extends PureComponent<Props, State> {
             variant="secondary"
             aria-label={selectors.components.QueryTab.addQuery}
           >
-            Query
+            查询
           </Button>
         )}
         {isAddingMixed && this.renderMixedPicker()}
         {config.featureToggles.expressions && (
           <Button icon="plus" onClick={this.onAddExpressionClick} variant="secondary">
-            Expression
+            表达式
           </Button>
         )}
       </HorizontalGroup>
@@ -341,7 +336,7 @@ export class QueriesTab extends PureComponent<Props, State> {
           {this.renderAddQueryRow()}
 
           {isHelpOpen && (
-            <Modal title="Data source help" isOpen={true} onDismiss={this.onCloseHelp}>
+            <Modal title="数据源帮助" isOpen={true} onDismiss={this.onCloseHelp}>
               <PluginHelp plugin={this.state.dataSourceItem.meta} type="query_help" />
             </Modal>
           )}

@@ -46,24 +46,24 @@ export class NewDashboardsFolder extends PureComponent<Props> {
     return (
       <Page navModel={this.props.navModel}>
         <Page.Contents>
-          <h3>New Dashboard Folder</h3>
+          <h3>新建仪表板文件夹</h3>
           <Form defaultValues={initialFormModel} onSubmit={this.onSubmit}>
             {({ register, errors }) => (
               <>
                 <Field
-                  label="Folder name"
+                  label="文件夹名字"
                   invalid={!!errors.folderName}
                   error={errors.folderName && errors.folderName.message}
                 >
                   <Input
                     name="folderName"
                     ref={register({
-                      required: 'Folder name is required.',
+                      required: '文件夹名字必填项',
                       validate: async v => await this.validateFolderName(v),
                     })}
                   />
                 </Field>
-                <Button type="submit">Create</Button>
+                <Button type="submit">创建</Button>
               </>
             )}
           </Form>

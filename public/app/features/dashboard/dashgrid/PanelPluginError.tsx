@@ -38,8 +38,8 @@ export function getPanelPluginLoadError(meta: PanelPluginMeta, err: any): PanelP
     render() {
       const text = (
         <>
-          Check the server startup logs for more information. <br />
-          If this plugin was loaded from git, make sure it was compiled.
+          检查服务器启动日志以获取更多信息。 <br />
+          如果此插件是从git加载的，请确保已编译。
         </>
       );
       return <PanelPluginError title={`Error loading: ${meta.id}`} text={text} />;
@@ -54,7 +54,7 @@ export function getPanelPluginLoadError(meta: PanelPluginMeta, err: any): PanelP
 export function getPanelPluginNotFound(id: string): PanelPlugin {
   const NotFound = class NotFound extends PureComponent<PanelProps> {
     render() {
-      return <PanelPluginError title={`Panel plugin not found: ${id}`} />;
+      return <PanelPluginError title={`找不到面板插件： ${id}`} />;
     }
   };
 

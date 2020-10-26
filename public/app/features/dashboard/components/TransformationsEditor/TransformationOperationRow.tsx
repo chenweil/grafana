@@ -37,7 +37,7 @@ export const TransformationOperationRow: React.FC<TransformationOperationRowProp
           }}
         />
 
-        <QueryOperationAction title="Remove" icon="trash-alt" onClick={onRemove} />
+        <QueryOperationAction title="移除" icon="trash-alt" onClick={onRemove} />
       </HorizontalGroup>
     );
   };

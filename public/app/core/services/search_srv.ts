@@ -17,7 +17,7 @@ export class SearchSrv {
     return this.queryForRecentDashboards().then((result: any[]) => {
       if (result.length > 0) {
         sections['recent'] = {
-          title: 'Recent',
+          title: '最近查看',
           icon: 'clock-nine',
           score: -1,
           expanded: store.getBool(`${SECTION_STORAGE_KEY}.recent`, true),
@@ -49,7 +49,7 @@ export class SearchSrv {
     return backendSrv.search({ starred: true, limit: 30 }).then(result => {
       if (result.length > 0) {
         (sections as any)['starred'] = {
-          title: 'Starred',
+          title: '星标',
           icon: 'star',
           score: -2,
           expanded: store.getBool(`${SECTION_STORAGE_KEY}.starred`, true),
@@ -140,7 +140,7 @@ export class SearchSrv {
         } else {
           section = {
             id: 0,
-            title: 'General',
+            title: '通用',
             items: [],
             icon: 'folder-open',
             score: _.keys(sections).length,

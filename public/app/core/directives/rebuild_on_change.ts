@@ -58,7 +58,7 @@ function rebuildOnChange($animate: any) {
         if (!childScope && (value || attrs.showNull)) {
           transclude((clone: any, newScope: any) => {
             childScope = newScope;
-            clone[clone.length++] = document.createComment(' end rebuild on change ');
+            clone[clone.length++] = document.createComment(' 更改结束 ');
             block = { clone: clone };
             $animate.enter(clone, elem.parent(), elem);
           });

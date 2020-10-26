@@ -20,7 +20,7 @@
   },
 
   "info": {
-    "description": "Data source for Amazon AWS monitoring service",
+    "description": "Amazon AWS监控服务的数据源",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"

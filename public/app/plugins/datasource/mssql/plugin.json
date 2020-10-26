@@ -5,7 +5,7 @@
   "category": "sql",
 
   "info": {
-    "description": "Data source for Microsoft SQL Server compatible databases",
+    "description": "Microsoft SQL Server兼容数据库的数据源",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"

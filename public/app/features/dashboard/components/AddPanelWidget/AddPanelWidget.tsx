@@ -68,7 +68,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
 
     const newPanel: any = {
       type: 'graph',
-      title: 'Panel Title',
+      title: '面板标题',
       gridPos: { x: gridPos.x, y: gridPos.y, w: gridPos.w, h: gridPos.h },
     };
 
@@ -90,7 +90,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
 
     const newPanel: any = {
       type: panelPluginInfo.id,
-      title: 'Panel Title',
+      title: '面板标题',
       gridPos: {
         x: gridPos.x,
         y: gridPos.y,
@@ -113,7 +113,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
   const onCreateNewRow = () => {
     const newRow: any = {
       type: 'row',
-      title: 'Row title',
+      title: '行标题',
       gridPos: { x: 0, y: 0 },
     };
 
@@ -130,7 +130,7 @@ export const AddPanelWidgetUnconnected: React.FC<Props> = ({ panel, dashboard, u
         <div>
           <HorizontalGroup justify="center">
             <Button onClick={onCreateNewRow} variant="secondary" size="sm">
-              Convert to row
+              转换为行
             </Button>
           </HorizontalGroup>
         </div>
@@ -169,11 +169,11 @@ const AddPanelWidgetCreate: React.FC<AddPanelWidgetCreateProps> = ({ onCreate, o
     <div className={styles.wrapper}>
       <HorizontalGroup>
         <Button icon="plus" size="md" onClick={onCreate} aria-label={selectors.pages.AddDashboard.addNewPanel}>
-          Add new panel
+          添加新仪表板
         </Button>
         {copiedPanelPlugins.length === 1 && (
           <Button variant="secondary" size="md" onClick={() => onPasteCopiedPanel(copiedPanelPlugins[0])}>
-            Paste copied panel
+            粘贴复制的面板
           </Button>
         )}
       </HorizontalGroup>

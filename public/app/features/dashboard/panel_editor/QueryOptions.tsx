@@ -30,7 +30,7 @@ const timeRangeValidationEvents: ValidationEvents = {
         }
         return rangeUtil.isValidTimeSpan(value);
       },
-      errorMessage: 'Not a valid timespan',
+      errorMessage: '无效的时间跨度',
     },
   ],
 };
@@ -141,8 +141,7 @@ export class QueryOptions extends PureComponent<Props, State> {
   renderCacheTimeoutOption() {
     const { dataSource } = this.props;
     const { cacheTimeout } = this.state;
-    const tooltip = `If your time series store has a query cache this option can override the default cache timeout. Specify a
-    numeric value in seconds.`;
+    const tooltip = `如果您的时间序列存储区具有查询缓存，则此选项可以覆盖默认的缓存超时。 以秒为单位指定一个数值。`;
 
     if (!dataSource.meta.queryOptions?.cacheTimeout) {
       return null;
@@ -182,12 +181,11 @@ export class QueryOptions extends PureComponent<Props, State> {
             width={9}
             tooltip={
               <>
-                The maximum data points per series. Used directly by some data sources and used in calculation of auto
-                interval. With streaming data this value is used for the rolling buffer.
+                每个序列的最大数据点。 由某些数据源直接使用，并用于自动间隔的计算。 对于流数据，此值将用于滚动缓冲区。
               </>
             }
           >
-            Max data points
+            最大数据点
           </InlineFormLabel>
           <Input
             type="number"
@@ -202,7 +200,7 @@ export class QueryOptions extends PureComponent<Props, State> {
           {isAuto && (
             <>
               <div className="gf-form-label query-segment-operator">=</div>
-              <div className="gf-form-label">Width of panel</div>
+              <div className="gf-form-label">面板宽度</div>
             </>
           )}
         </div>
@@ -224,13 +222,12 @@ export class QueryOptions extends PureComponent<Props, State> {
               width={9}
               tooltip={
                 <>
-                  A lower limit for the interval. Recommended to be set to write frequency, for example <code>1m</code>{' '}
-                  if your data is written every minute. Default value can be set in data source settings for most data
-                  sources.
+                  间隔的下限。 建议设置为写入频率，例如，如果每分钟写入一次数据，则为<code> 1m </code> {''}。
+                  可以在大多数数据源的数据源设置中设置默认值。
                 </>
               }
             >
-              Min interval
+              最小间隔
             </InlineFormLabel>
             <Input
               type="text"
@@ -250,16 +247,15 @@ export class QueryOptions extends PureComponent<Props, State> {
               width={9}
               tooltip={
                 <>
-                  The evaluated Interval that is sent to data source and is used in <code>$__interval</code> and{' '}
-                  <code>$__interval_ms</code>
+                  发送到数据源并在<code> $ __ interval </code>和{''} <code> $ __ interval_ms </code>中使用的评估间隔
                 </>
               }
             >
-              Interval
+              间隔
             </InlineFormLabel>
             <InlineFormLabel width={6}>{realInterval}</InlineFormLabel>
             <div className="gf-form-label query-segment-operator">=</div>
-            <div className="gf-form-label">Max data points / time range</div>
+            <div className="gf-form-label">最大数据点/时间范围</div>
           </div>
         </div>
       </>
@@ -309,7 +305,7 @@ export class QueryOptions extends PureComponent<Props, State> {
       <QueryOperationRow
         id="Query options"
         index={0}
-        title="Query options"
+        title="查询选项"
         headerElement={this.renderCollapsedText(styles)}
         isOpen={isOpen}
         onOpen={this.onOpenOptions}
@@ -320,7 +316,7 @@ export class QueryOptions extends PureComponent<Props, State> {
         {this.renderCacheTimeoutOption()}
 
         <div className="gf-form">
-          <InlineFormLabel width={9}>Relative time</InlineFormLabel>
+          <InlineFormLabel width={9}>相对时间</InlineFormLabel>
           <Input
             type="text"
             className="width-6"
@@ -334,7 +330,7 @@ export class QueryOptions extends PureComponent<Props, State> {
         </div>
 
         <div className="gf-form">
-          <span className="gf-form-label width-9">Time shift</span>
+          <span className="gf-form-label width-9">时移</span>
           <Input
             type="text"
             className="width-6"
@@ -349,7 +345,7 @@ export class QueryOptions extends PureComponent<Props, State> {
         {(timeShift || relativeTime) && (
           <div className="gf-form-inline">
             <Switch
-              label="Hide time info"
+              label="隐藏时间信息"
               labelClass="width-9"
               checked={hideTimeOverride}
               onChange={this.onToggleTimeOverride}

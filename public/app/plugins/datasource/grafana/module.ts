@@ -9,8 +9,8 @@ class GrafanaAnnotationsQueryCtrl {
   annotation: any;
 
   types = [
-    { text: 'Dashboard', value: 'dashboard' },
-    { text: 'Tags', value: 'tags' },
+    { text: '仪表板', value: 'dashboard' },
+    { text: '标签', value: 'tags' },
   ];
 
   constructor() {

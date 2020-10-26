@@ -21,13 +21,13 @@ func AddOrgUser(c *models.ReqContext, cmd models.AddOrgUserCommand) Response {
 
 func addOrgUserHelper(cmd models.AddOrgUserCommand) Response {
 	if !cmd.Role.IsValid() {
-		return Error(400, "Invalid role specified", nil)
+		return Error(400, "指定的角色无效", nil)
 	}
 
 	userQuery := models.GetUserByLoginQuery{LoginOrEmail: cmd.LoginOrEmail}
 	err := bus.Dispatch(&userQuery)
 	if err != nil {
-		return Error(404, "User not found", nil)
+		return Error(404, "用户未找到", nil)
 	}
 
 	userToAdd := userQuery.Result
@@ -37,15 +37,15 @@ func addOrgUserHelper(cmd models.AddOrgUserCommand) Response {
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrOrgUserAlreadyAdded {
 			return JSON(409, util.DynMap{
-				"message": "User is already member of this organization",
+				"message": "用户已经是该组织的成员",
 				"userId":  cmd.UserId,
 			})
 		}
-		return Error(500, "Could not add user to organization", err)
+		return Error(500, "无法将用户添加到组织中", err)
 	}
 
 	return JSON(200, util.DynMap{
-		"message": "User added to organization",
+		"message": "用户已添加到组织",
 		"userId":  cmd.UserId,
 	})
 }
@@ -54,7 +54,7 @@ func addOrgUserHelper(cmd models.AddOrgUserCommand) Response {
 func GetOrgUsersForCurrentOrg(c *models.ReqContext) Response {
 	result, err := getOrgUsersHelper(c.OrgId, c.Query("query"), c.QueryInt("limit"))
 	if err != nil {
-		return Error(500, "Failed to get users for current organization", err)
+		return Error(500, "无法获得当前组织的用户", err)
 	}
 
 	return JSON(200, result)
@@ -64,16 +64,16 @@ func GetOrgUsersForCurrentOrg(c *models.ReqContext) Response {
 func GetOrgUsersForCurrentOrgLookup(c *models.ReqContext) Response {
 	isAdmin, err := isOrgAdminFolderAdminOrTeamAdmin(c)
 	if err != nil {
-		return Error(500, "Failed to get users for current organization", err)
+		return Error(500, "无法获得当前组织的用户", err)
 	}
 
 	if !isAdmin {
-		return Error(403, "Permission denied", nil)
+		return Error(403, "没有权限", nil)
 	}
 
 	orgUsers, err := getOrgUsersHelper(c.OrgId, c.Query("query"), c.QueryInt("limit"))
 	if err != nil {
-		return Error(500, "Failed to get users for current organization", err)
+		return Error(500, "无法获得当前组织的用户", err)
 	}
 
 	result := make([]*dtos.UserLookupDTO, 0)
@@ -115,7 +115,7 @@ func isOrgAdminFolderAdminOrTeamAdmin(c *models.ReqContext) (bool, error) {
 func GetOrgUsers(c *models.ReqContext) Response {
 	result, err := getOrgUsersHelper(c.ParamsInt64(":orgId"), "", 0)
 	if err != nil {
-		return Error(500, "Failed to get users for organization", err)
+		return Error(500, "无法获得组织的用户", err)
 	}
 
 	return JSON(200, result)
@@ -155,17 +155,17 @@ func UpdateOrgUser(c *models.ReqContext, cmd models.UpdateOrgUserCommand) Respon
 
 func updateOrgUserHelper(cmd models.UpdateOrgUserCommand) Response {
 	if !cmd.Role.IsValid() {
-		return Error(400, "Invalid role specified", nil)
+		return Error(400, "指定的角色无效", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrLastOrgAdmin {
-			return Error(400, "Cannot change role so that there is no organization admin left", nil)
+			return Error(400, "无法更改角色，因此没有组织管理员", nil)
 		}
-		return Error(500, "Failed update org user", err)
+		return Error(500, "更新组织用户失败", err)
 	}
 
-	return Success("Organization user updated")
+	return Success("组织用户已更新")
 }
 
 // DELETE /api/org/users/:userId
@@ -188,14 +188,14 @@ func RemoveOrgUser(c *models.ReqContext) Response {
 func removeOrgUserHelper(cmd *models.RemoveOrgUserCommand) Response {
 	if err := bus.Dispatch(cmd); err != nil {
 		if err == models.ErrLastOrgAdmin {
-			return Error(400, "Cannot remove last organization admin", nil)
+			return Error(400, "无法删除最后一个组织管理员", nil)
 		}
-		return Error(500, "Failed to remove user from organization", err)
+		return Error(500, "无法从组织中删除用户", err)
 	}
 
 	if cmd.UserWasDeleted {
-		return Success("User deleted")
+		return Success("用户已删除")
 	}
 
-	return Success("User removed from organization")
+	return Success("用户已从组织中删除")
 }

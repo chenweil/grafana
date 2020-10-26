@@ -7,7 +7,7 @@ export const fromBaseUrl = (url = '') => new URL(url, getBaseUrl()).href;
 export const getDashboardUid = (url: string): string => {
   const matches = new URL(url).pathname.match(/\/d\/([^/]+)/);
   if (!matches) {
-    throw new Error(`Couldn't parse uid from ${url}`);
+    throw new Error(`无法解析uid来自 ${url}`);
   } else {
     return matches[1];
   }
@@ -16,7 +16,7 @@ export const getDashboardUid = (url: string): string => {
 export const getDataSourceId = (url: string): string => {
   const matches = new URL(url).pathname.match(/\/edit\/([^/]+)/);
   if (!matches) {
-    throw new Error(`Couldn't parse id from ${url}`);
+    throw new Error(`无法解析来自的ID ${url}`);
   } else {
     return matches[1];
   }

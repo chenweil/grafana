@@ -18,26 +18,26 @@ function getSignatureDisplayModel(signature?: PluginSignatureStatus): BadgeProps
 
   switch (signature) {
     case PluginSignatureStatus.internal:
-      return { text: 'Core', icon: 'cube', color: 'blue', tooltip: 'Core plugin that is bundled with Grafana' };
+      return { text: '核心', icon: 'cube', color: 'blue', tooltip: '与Grafana捆绑在一起的核心插件' };
     case PluginSignatureStatus.valid:
-      return { text: 'Signed', icon: 'lock', color: 'green', tooltip: 'Signed and verified plugin' };
+      return { text: '签名', icon: 'lock', color: 'green', tooltip: '签名并验证的插件' };
     case PluginSignatureStatus.invalid:
       return {
-        text: 'Invalid',
+        text: '无效',
         icon: 'exclamation-triangle',
         color: 'red',
-        tooltip: 'Invalid plugin signature',
+        tooltip: '无效的插件签名',
       };
     case PluginSignatureStatus.modified:
       return {
-        text: 'Modified',
+        text: '已修改',
         icon: 'exclamation-triangle',
         color: 'red',
-        tooltip: 'Valid signature but content has been modified',
+        tooltip: '有效签名，但内容已被修改',
       };
   }
 
-  return { text: 'Unsigned', icon: 'exclamation-triangle', color: 'red', tooltip: 'Unsigned external plugin' };
+  return { text: '未签名', icon: 'exclamation-triangle', color: 'red', tooltip: '未签名的外部插件' };
 }
 
 PluginSignatureBadge.displayName = 'PluginSignatureBadge';

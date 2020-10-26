@@ -12,7 +12,7 @@
   "tracing": true,
 
   "info": {
-    "description": "Placeholder for the distributed tracing system.",
+    "description": "分布式跟踪系统的占位符。",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"
@@ -23,7 +23,7 @@
     },
     "links": [
       {
-        "name": "Learn more",
+        "name": "了解更多",
         "url": "https://zipkin.io"
       }
     ]

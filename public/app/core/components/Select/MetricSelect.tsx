@@ -33,7 +33,7 @@ export const MetricSelect: FC<Props> = props => {
       isSearchable={isSearchable}
       maxMenuHeight={500}
       placeholder={placeholder}
-      noOptionsMessage={() => 'No options found'}
+      noOptionsMessage={() => '找不到选项'}
       value={selected}
     />
   );
@@ -47,7 +47,7 @@ const useSelectOptions = ({ variables = [], options }: Props): Array<SelectableV
 
     return [
       {
-        label: 'Template Variables',
+        label: '=模板变量',
         options: variables.map(({ name }) => ({
           label: `$${name}`,
           value: `$${name}`,

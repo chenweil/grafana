@@ -29,10 +29,10 @@ export function SegmentAsync<T>({
     return (
       <Label
         onClick={async () => {
-          setSelectPlaceholder('Loading options...');
+          setSelectPlaceholder('加载选项...');
           const opts = await loadOptions();
           setLoadedOptions(opts);
-          setSelectPlaceholder(opts.length ? '' : 'No options found');
+          setSelectPlaceholder(opts.length ? '' : '找不到选项');
         }}
         Component={
           Component || (

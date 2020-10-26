@@ -23,7 +23,7 @@ export const SaveProvisionedDashboardForm: React.FC<SaveDashboardFormProps> = ({
   }, [dashboardJSON]);
 
   const onCopyToClipboardSuccess = useCallback(() => {
-    appEvents.emit(AppEvents.alertSuccess, ['Dashboard JSON copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['仪表板JSON复制到剪贴板']);
   }, []);
 
   const styles = getStyles(theme);
@@ -31,8 +31,8 @@ export const SaveProvisionedDashboardForm: React.FC<SaveDashboardFormProps> = ({
     <>
       <VerticalGroup spacing="lg">
         <small>
-          This dashboard cannot be saved from Grafana's UI since it has been provisioned from another source. Copy the
-          JSON or save it to a file below. Then you can update your dashboard in corresponding provisioning source.
+          无法从Grafana的UI保存该仪表板，因为它是从其他来源提供的。 复制JSON或将其保存到下面的文件中。
+          然后，您可以在相应的配置源中更新仪表板。
           <br />
           <i>
             See{' '}
@@ -41,13 +41,13 @@ export const SaveProvisionedDashboardForm: React.FC<SaveDashboardFormProps> = ({
               href="http://docs.grafana.org/administration/provisioning/#dashboards"
               target="_blank"
             >
-              documentation
+              文档
             </a>{' '}
-            for more information about provisioning.
+            有关配置的更多信息。
           </i>
         </small>
         <div>
-          <strong>File path: </strong> {dashboard.meta.provisionedExternalId}
+          <strong>文件路径: </strong> {dashboard.meta.provisionedExternalId}
         </div>
         <TextArea
           spellCheck={false}
@@ -59,11 +59,11 @@ export const SaveProvisionedDashboardForm: React.FC<SaveDashboardFormProps> = ({
         />
         <HorizontalGroup>
           <CopyToClipboard text={() => dashboardJSON} elType={Button} onSuccess={onCopyToClipboardSuccess}>
-            Copy JSON to clipboard
+            将JSON复制到剪贴板
           </CopyToClipboard>
-          <Button onClick={saveToFile}>Save JSON to file</Button>
+          <Button onClick={saveToFile}>将JSON保存到文件</Button>
           <Button variant="secondary" onClick={onCancel}>
-            Cancel
+            取消
           </Button>
         </HorizontalGroup>
       </VerticalGroup>

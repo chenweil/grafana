@@ -21,7 +21,7 @@ const getDashboards = (query = '') => {
     return result.map((item: DashboardSearchHit) => ({
       id: item.id,
       value: item.id,
-      label: `${item.folderTitle ? item.folderTitle : 'General'}/${item.title}`,
+      label: `${item.folderTitle ? item.folderTitle : '通用'}/${item.title}`,
     }));
   });
 };
@@ -49,8 +49,8 @@ export const DashboardPicker: FC<Props> = ({
       defaultOptions={true}
       loadOptions={searchDashboards}
       onChange={onSelected}
-      placeholder="Select dashboard"
-      noOptionsMessage="No dashboards found"
+      placeholder="选择仪表板"
+      noOptionsMessage="找不到仪表板"
       value={currentDashboard}
       invalid={invalid}
       disabled={disabled}

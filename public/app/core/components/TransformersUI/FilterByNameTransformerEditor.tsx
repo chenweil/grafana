@@ -164,17 +164,17 @@ export class FilterByNameTransformerEditor extends React.PureComponent<
     return (
       <div className="gf-form-inline">
         <div className="gf-form gf-form--grow">
-          <div className="gf-form-label width-8">Identifier</div>
+          <div className="gf-form-label width-8">识别码</div>
           <HorizontalGroup spacing="xs" align="flex-start" wrap>
             <Field
               invalid={!isRegexValid}
-              error={!isRegexValid ? 'Invalid pattern' : undefined}
+              error={!isRegexValid ? '模式无效' : undefined}
               className={css`
                 margin-bottom: 0;
               `}
             >
               <Input
-                placeholder="Regular expression pattern"
+                placeholder="正则表达式模式"
                 value={this.state.regex || ''}
                 onChange={e => this.setState({ regex: e.currentTarget.value })}
                 onBlur={this.onInputBlur}
@@ -206,6 +206,6 @@ export const filterFieldsByNameTransformRegistryItem: TransformerRegistyItem<Fil
   id: DataTransformerID.filterFieldsByName,
   editor: FilterByNameTransformerEditor,
   transformation: standardTransformers.filterFieldsByNameTransformer,
-  name: 'Filter by name',
-  description: 'Removes part of the query results using a regex pattern. The pattern can be inclusive or exclusive.',
+  name: '按名称过滤',
+  description: '使用正则表达式模式删除部分查询结果。模式可以是包含性或排他性的。',
 };

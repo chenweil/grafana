@@ -60,7 +60,7 @@ export class TableContainer extends PureComponent<TableContainerProps> {
     }
 
     return (
-      <Collapse label="Table" loading={loading} collapsible isOpen={showingTable} onToggle={this.onClickTableButton}>
+      <Collapse label="表格" loading={loading} collapsible isOpen={showingTable} onToggle={this.onClickTableButton}>
         {hasTableResult ? (
           <Table
             ariaLabel={ariaLabel}
@@ -70,7 +70,7 @@ export class TableContainer extends PureComponent<TableContainerProps> {
             onCellFilterAdded={onCellFilterAdded}
           />
         ) : (
-          <MetaInfoText metaItems={[{ value: '0 series returned' }]} />
+          <MetaInfoText metaItems={[{ value: '0 序列返回' }]} />
         )}
       </Collapse>
     );

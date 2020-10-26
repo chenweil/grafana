@@ -19,11 +19,11 @@ const UsersTable: FC<Props> = props => {
       <thead>
         <tr>
           <th />
-          <th>Login</th>
-          <th>Email</th>
-          <th>Name</th>
-          <th>Seen</th>
-          <th>Role</th>
+          <th>登陆</th>
+          <th>电子邮件</th>
+          <th>名字</th>
+          <th>最近访问</th>
+          <th>角色</th>
           <th style={{ width: '34px' }} />
         </tr>
       </thead>
@@ -59,9 +59,9 @@ const UsersTable: FC<Props> = props => {
               <td>
                 <Button size="sm" variant="destructive" onClick={() => setShowRemoveModal(user.login)} icon="times" />
                 <ConfirmModal
-                  body={`Are you sure you want to delete user ${user.login}?`}
-                  confirmText="Delete"
-                  title="Delete"
+                  body={`您确定要删除用户 ${user.login}?`}
+                  confirmText="删除"
+                  title="删除"
                   onDismiss={() => setShowRemoveModal(false)}
                   isOpen={user.login === showRemoveModal}
                   onConfirm={() => {

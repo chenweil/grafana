@@ -66,10 +66,10 @@ export class NewsPanel extends PureComponent<Props, State> {
     const styles = getStyles(config.theme);
 
     if (isError) {
-      return <div>Error Loading News</div>;
+      return <div>加载错误消息</div>;
     }
     if (!news) {
-      return <div>loading...</div>;
+      return <div>加载中...</div>;
     }
 
     return (

@@ -54,7 +54,7 @@ export class DashboardSettings extends PureComponent<Props> {
           </div>
           <div className="navbar-page-btn">
             {haveFolder && <div className="navbar-page-btn__folder">{folderTitle} / </div>}
-            <span>{dashboard.title} / Settings</span>
+            <span>{dashboard.title} / 设置</span>
           </div>
         </div>
         <CustomScrollbar>

@@ -63,7 +63,7 @@ export class VariableOptions extends PureComponent<Props> {
 
     return (
       <div className="variable-options-column">
-        <div className="variable-options-column-header text-center">Tags</div>
+        <div className="variable-options-column-header text-center">标签</div>
         {tags.map(tag => this.renderTag(tag))}
       </div>
     );
@@ -122,7 +122,7 @@ export class VariableOptions extends PureComponent<Props> {
           data-placement="top"
         >
           <span className="variable-option-icon"></span>
-          Selected ({selectedValues.length})
+          选择 ({selectedValues.length})
         </a>
       </Tooltip>
     );

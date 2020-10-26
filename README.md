@@ -2,6 +2,14 @@
 
 The open-source platform for monitoring and observability.
 
+## 此分之为汉化工作分之
+
+之前汉化版本由于后续变动比较大。顾现在开始从7版本开始汉化。
+
+坚持多久不知道
+
+Docker: [https://hub.docker.com/repository/docker/chenwl2016/grafana-chs](https://hub.docker.com/repository/docker/chenwl2016/grafana-chs)
+
 [![License](https://img.shields.io/github/license/grafana/grafana)](LICENSE)
 [![Circle CI](https://img.shields.io/circleci/build/gh/grafana/grafana)](https://circleci.com/gh/grafana/grafana)
 [![Go Report Card](https://goreportcard.com/badge/github.com/grafana/grafana)](https://goreportcard.com/report/github.com/grafana/grafana)

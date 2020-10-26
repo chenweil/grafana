@@ -23,9 +23,9 @@ export default {
 };
 
 export const Default = () => {
-  return <ThresholdsEditor thresholds={{} as ThresholdsConfig} onChange={action('Thresholds changed')} />;
+  return <ThresholdsEditor thresholds={{} as ThresholdsConfig} onChange={action('阈值已更改')} />;
 };
 
 export const WithThreshold = () => {
-  return <ThresholdsEditor thresholds={thresholds} onChange={action('Thresholds changed')} />;
+  return <ThresholdsEditor thresholds={thresholds} onChange={action('阈值已更改')} />;
 };

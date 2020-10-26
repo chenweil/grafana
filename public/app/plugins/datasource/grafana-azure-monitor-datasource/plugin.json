@@ -5,7 +5,7 @@
   "category": "cloud",
 
   "info": {
-    "description": "Data source for Microsoft Azure Monitor & Application Insights",
+    "description": "DMicrosoft Azure Monitor和应用程序见解的源代码",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"
@@ -16,8 +16,8 @@
       "large": "img/logo.jpg"
     },
     "links": [
-      { "name": "Learn more", "url": "https://github.com/grafana/azure-monitor-datasource" },
-      { "name": "Apache License", "url": "https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE" }
+      { "name": "了解更多", "url": "https://github.com/grafana/azure-monitor-datasource" },
+      { "name": "Apache许可证", "url": "https://github.com/grafana/azure-monitor-datasource/blob/master/LICENSE" }
     ],
     "screenshots": [
       { "name": "Azure Contoso Loans", "path": "img/contoso_loans_grafana_dashboard.png" },

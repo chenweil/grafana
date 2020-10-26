@@ -11,14 +11,14 @@ export const plugin = new PanelPlugin<GaugeOptions>(GaugePanel)
     builder
       .addBooleanSwitch({
         path: 'showThresholdLabels',
-        name: 'Show threshold labels',
-        description: 'Render the threshold values around the gauge bar',
+        name: '显示阈值标签',
+        description: '渲染量规周围的阈值',
         defaultValue: false,
       })
       .addBooleanSwitch({
         path: 'showThresholdMarkers',
-        name: 'Show threshold markers',
-        description: 'Renders the thresholds as an outer bar',
+        name: '显示阈值标记',
+        description: '将阈值渲染为外栏',
         defaultValue: true,
       });
   })

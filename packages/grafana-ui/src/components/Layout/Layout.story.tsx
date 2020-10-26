@@ -27,8 +27,8 @@ export const horizontal = () => {
   const spacing = select('Elements spacing', spacingVariants, 'sm');
   return (
     <HorizontalGroup justify={justify as any} spacing={spacing as any}>
-      <Button>Save</Button>
-      <Button>Cancel</Button>
+      <Button>保存</Button>
+      <Button>取消</Button>
     </HorizontalGroup>
   );
 };
@@ -38,8 +38,8 @@ export const vertical = () => {
   const spacing = select('Elements spacing', spacingVariants, 'sm');
   return (
     <VerticalGroup justify={justify as any} spacing={spacing as any}>
-      <Button>Save</Button>
-      <Button>Cancel</Button>
+      <Button>保存</Button>
+      <Button>取消</Button>
     </VerticalGroup>
   );
 };

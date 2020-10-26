@@ -12,9 +12,9 @@ export default {
 };
 
 const options = [
-  { value: 'first', label: 'First' },
-  { value: 'second', label: 'Second' },
-  { value: 'third', label: 'Third' },
+  { value: 'first', label: '第一' },
+  { value: 'second', label: '第二' },
+  { value: 'third', label: '第三' },
 ];
 
 export const basic = () => {
@@ -26,7 +26,7 @@ export const basic = () => {
     >
       {(value, updateValue) => {
         return (
-          <ToggleButtonGroup label="Options">
+          <ToggleButtonGroup label="选项">
             {options.map((option, index) => {
               return (
                 <ToggleButton

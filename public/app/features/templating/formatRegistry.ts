@@ -18,7 +18,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'lucene',
       name: 'Lucene',
-      description: 'Values are lucene escaped and multi-valued variables generate an OR expression',
+      description: '值是lucene转义的，多值变量生成OR表达式',
       formatter: ({ value }) => {
         if (typeof value === 'string') {
           return luceneEscape(value);
@@ -38,13 +38,13 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'raw',
       name: 'raw',
-      description: 'Keep value as is',
+      description: '保持原有价值',
       formatter: ({ value }) => value,
     },
     {
       id: 'regex',
       name: 'Regex',
-      description: 'Values are regex escaped and multi-valued variables generate a (<value>|<value>) expression',
+      description: '值是regex转义的，多值变量生成一个(<value>|<value>)表达式',
       formatter: ({ value }) => {
         if (typeof value === 'string') {
           return kbn.regexEscape(value);
@@ -60,7 +60,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'pipe',
       name: 'Pipe',
-      description: 'Values are seperated by | character',
+      description: '值之间由|字符分隔',
       formatter: ({ value }) => {
         if (typeof value === 'string') {
           return value;
@@ -71,7 +71,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'distributed',
       name: 'Distributed',
-      description: 'Multiple values are formatted like variable=value',
+      description: '多个值的格式类似于variable=value',
       formatter: ({ value }, variable) => {
         if (typeof value === 'string') {
           return value;
@@ -90,7 +90,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'csv',
       name: 'Csv',
-      description: 'Comma seperated values',
+      description: '逗号分隔的值',
       formatter: ({ value }) => {
         if (isArray(value)) {
           return value.join(',');
@@ -101,7 +101,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'html',
       name: 'HTML',
-      description: 'HTML escaping of values',
+      description: '值的HTML转义',
       formatter: ({ value }) => {
         if (isArray(value)) {
           return textUtil.escapeHtml(value.join(', '));
@@ -112,7 +112,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'json',
       name: 'JSON',
-      description: 'JSON stringify valu',
+      description: 'JSON字符串化值',
       formatter: ({ value }) => {
         return JSON.stringify(value);
       },
@@ -120,7 +120,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'percentencode',
       name: 'Percent encode',
-      description: 'Useful for url escaping values',
+      description: '有用的url转义值',
       formatter: ({ value }) => {
         // like glob, but url escaped
         if (isArray(value)) {
@@ -132,7 +132,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'singlequote',
       name: 'Single quote',
-      description: 'Single quoted values',
+      description: '单引号',
       formatter: ({ value }) => {
         // escape single quotes with backslash
         const regExp = new RegExp(`'`, 'g');
@@ -145,7 +145,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'doublequote',
       name: 'Double quote',
-      description: 'Double quoted values',
+      description: '双引号',
       formatter: ({ value }) => {
         // escape double quotes with backslash
         const regExp = new RegExp('"', 'g');
@@ -158,7 +158,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'sqlstring',
       name: 'SQL string',
-      description: 'SQL string quoting and commas for use in IN statements and other scenarios',
+      description: '在语句和其他场景中使用的SQL字符串引号和逗号',
       formatter: ({ value }) => {
         // escape single quotes by pairing them
         const regExp = new RegExp(`'`, 'g');
@@ -171,7 +171,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'date',
       name: 'Date',
-      description: 'Format date in different ways',
+      description: '用不同的方式格式化日期',
       formatter: ({ value, args }) => {
         const arg = args[0] ?? 'iso';
 
@@ -190,7 +190,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'glob',
       name: 'Glob',
-      description: 'Format multi valued variables using glob syntax, example {value1,value2}',
+      description: '使用glob语法格式化多值变量，例如{value1,value2}',
       formatter: ({ value }) => {
         if (isArray(value) && value.length > 1) {
           return '{' + value.join(',') + '}';
@@ -201,7 +201,7 @@ export const formatRegistry = new Registry<FormatRegistryItem>(() => {
     {
       id: 'text',
       name: 'Text',
-      description: 'Format variables in their text representation. Example in multi variable scenario A + B + C.',
+      description: '在文本表示中格式化变量。多变量场景A + B + C的例子。',
       formatter: (options, variable) => {
         if (typeof options.text === 'string') {
           return options.text;

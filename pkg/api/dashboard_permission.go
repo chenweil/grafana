@@ -25,7 +25,7 @@ func GetDashboardPermissionList(c *models.ReqContext) Response {
 
 	acl, err := g.GetAcl()
 	if err != nil {
-		return Error(500, "Failed to get dashboard permissions", err)
+		return Error(500, "无法获得仪表板权限", err)
 	}
 
 	for _, perm := range acl {
@@ -78,18 +78,18 @@ func UpdateDashboardPermissions(c *models.ReqContext, apiCmd dtos.UpdateDashboar
 				return Error(400, err.Error(), err)
 			}
 
-			return Error(500, "Error while checking dashboard permissions", err)
+			return Error(500, "检查仪表板权限时出错", err)
 		}
 
-		return Error(403, "Cannot remove own admin permission for a folder", nil)
+		return Error(403, "无法删除自己的文件夹管理权限", nil)
 	}
 
 	if err := bus.Dispatch(&cmd); err != nil {
 		if err == models.ErrDashboardAclInfoMissing || err == models.ErrDashboardPermissionDashboardEmpty {
 			return Error(409, err.Error(), err)
 		}
-		return Error(500, "Failed to create permission", err)
+		return Error(500, "创建权限失败", err)
 	}
 
-	return Success("Dashboard permissions updated")
+	return Success("仪表板权限已更新")
 }

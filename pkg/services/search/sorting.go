@@ -9,16 +9,16 @@ import (
 var (
 	sortAlphaAsc = SortOption{
 		Name:        "alpha-asc",
-		DisplayName: "Alphabetically (A-Z)",
-		Description: "Sort results in an alphabetically ascending order",
+		DisplayName: "按字母升序 (A-Z)",
+		Description: "以字母升序对结果进行排序",
 		Filter: []SortOptionFilter{
 			searchstore.TitleSorter{},
 		},
 	}
 	sortAlphaDesc = SortOption{
 		Name:        "alpha-desc",
-		DisplayName: "Alphabetically (Z-A)",
-		Description: "Sort results in an alphabetically descending order",
+		DisplayName: "按字母降序 (Z-A)",
+		Description: "以字母降序对结果进行排序",
 		Filter: []SortOptionFilter{
 			searchstore.TitleSorter{Descending: true},
 		},

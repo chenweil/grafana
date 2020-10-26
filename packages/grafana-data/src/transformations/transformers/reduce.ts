@@ -18,8 +18,8 @@ export interface ReduceTransformerOptions {
 
 export const reduceTransformer: DataTransformerInfo<ReduceTransformerOptions> = {
   id: DataTransformerID.reduce,
-  name: 'Reduce',
-  description: 'Reduce all rows or data points to a single value using a function like max, min, mean or last',
+  name: '缩减',
+  description: '使用max、min、mean或last等函数将所有行或数据点缩减为单个值',
   defaultOptions: {
     reducers: [ReducerID.max],
   },

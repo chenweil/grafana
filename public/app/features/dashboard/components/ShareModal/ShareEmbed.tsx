@@ -84,25 +84,25 @@ export class ShareEmbed extends PureComponent<Props, State> {
             <div className="gf-form-group">
               <Switch
                 labelClass="width-12"
-                label="Current time range"
+                label="当前时间范围"
                 checked={useCurrentTimeRange}
                 onChange={this.onUseCurrentTimeRangeChange}
               />
               <Switch
                 labelClass="width-12"
-                label="Template variables"
+                label="模版变量"
                 checked={includeTemplateVars}
                 onChange={this.onIncludeTemplateVarsChange}
               />
               <div className="gf-form">
-                <label className="gf-form-label width-12">Theme</label>
+                <label className="gf-form-label width-12">主题</label>
                 <Select width={10} options={themeOptions} value={selectedTheme} onChange={this.onThemeChange} />
               </div>
             </div>
 
             <p className="share-modal-info-text">
-              The html code below can be pasted and included in another web page. Unless anonymous access is enabled,
-              the user viewing that page need to be signed into grafana for the graph to load.
+              可以将下面的html代码粘贴并包含在另一个网页中。
+              除非启用了匿名访问，否则查看该页面的用户需要登录到grafana中才能加载图形。
             </p>
 
             <div className="gf-form-group gf-form--grow">

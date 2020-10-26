@@ -20,9 +20,9 @@ export const DashboardActions: FC<Props> = ({ folderId, isEditor, canEdit }) => 
 
   return (
     <HorizontalGroup spacing="md" align="center">
-      {canEdit && <LinkButton href={actionUrl('new')}>New Dashboard</LinkButton>}
-      {!folderId && isEditor && <LinkButton href="dashboards/folder/new">New Folder</LinkButton>}
-      {canEdit && <LinkButton href={actionUrl('import')}>Import</LinkButton>}
+      {canEdit && <LinkButton href={actionUrl('new')}>新建仪表板</LinkButton>}
+      {!folderId && isEditor && <LinkButton href="dashboards/folder/new">新建文件夹</LinkButton>}
+      {canEdit && <LinkButton href={actionUrl('import')}>导入</LinkButton>}
     </HorizontalGroup>
   );
 };

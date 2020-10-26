@@ -1,9 +1,9 @@
-# Alert List Panel - Native plugin
+# 警报列表面板-本机插件
 
-This Alert List panel is **included** with Grafana.
+此警报列表面板随 Grafana 一起 **包含** 在内。
 
-The Alert List panel allows you to display alerts on a dashboard. The list can be configured to show either the current state of your alerts or recent alert state changes. You can read more about alerts [here](http://docs.grafana.org/alerting/rules).
+警报列表面板允许您在仪表板上显示警报。 可以将列表配置为显示警报的当前状态或最近的警报状态更改。 您可以阅读有关警报的更多信息 [here](http://docs.grafana.org/alerting/rules).
 
-Read more about it here:
+在这里阅读更多关于它的信息：
 
 [http://docs.grafana.org/features/panels/alertlist/](http://docs.grafana.org/features/panels/alertlist/)

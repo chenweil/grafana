@@ -17,27 +17,27 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "prometheus-alertmanager",
 		Name:        "Prometheus Alertmanager",
-		Description: "Sends alert to Prometheus Alertmanager",
-		Heading:     "Alertmanager settings",
+		Description: "向Prometheus警报管理器发送警报",
+		Heading:     "Alertmanager设置",
 		Factory:     NewAlertmanagerNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "As specified in Alertmanager documentation, do not specify a load balancer here. Enter all your Alertmanager URLs comma-separated.",
+				Description:  "如Alertmanager文档中所述，请勿在此处指定负载平衡器。输入所有Alertmanager URL，以逗号分隔。",
 				Placeholder:  "http://localhost:9093",
 				PropertyName: "url",
 				Required:     true,
 			},
 			{
-				Label:        "Basic Auth User",
+				Label:        "基本身份验证用户",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				PropertyName: "basicAuthUser",
 			},
 			{
-				Label:        "Basic Auth Password",
+				Label:        "基本身份验证密码",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypePassword,
 				PropertyName: "basicAuthPassword",
@@ -51,7 +51,7 @@ func init() {
 func NewAlertmanagerNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	urlString := model.Settings.Get("url").MustString()
 	if urlString == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	var url []string
@@ -151,7 +151,7 @@ func (am *AlertmanagerNotifier) Notify(evalContext *alerting.EvalContext) error 
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		am.log.Error("Failed get rule link", "error", err)
+		am.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -181,7 +181,7 @@ func (am *AlertmanagerNotifier) Notify(evalContext *alerting.EvalContext) error 
 		}
 
 		if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-			am.log.Error("Failed to send alertmanager", "error", err, "alertmanager", am.Name, "url", url)
+			am.log.Error("发送alertmanager失败", "error", err, "alertmanager", am.Name, "url", url)
 			return err
 		}
 	}

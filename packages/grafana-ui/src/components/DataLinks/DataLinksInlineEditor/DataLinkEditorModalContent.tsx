@@ -38,10 +38,10 @@ export const DataLinkEditorModalContent: FC<DataLinkEditorModalContentProps> = (
             onSave(index, dirtyLink);
           }}
         >
-          Save
+          保存
         </Button>
         <Button variant="secondary" onClick={() => onCancel(index)}>
-          Cancel
+          取消
         </Button>
       </HorizontalGroup>
     </>

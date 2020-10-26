@@ -32,7 +32,7 @@ export const basic = () => {
       {(value, updateValue) => {
         return (
           <Select
-            placeholder="Choose..."
+            placeholder="选择..."
             options={options}
             width={20}
             onChange={value => {
@@ -55,7 +55,7 @@ export const withAllowCustomValue = () => {
       {(value, updateValue) => {
         return (
           <Select
-            placeholder="Choose..."
+            placeholder="选择..."
             options={options}
             width={20}
             allowCustomValue={true}

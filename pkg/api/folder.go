@@ -144,7 +144,7 @@ func toFolderError(err error) Response {
 	}
 
 	if err == models.ErrFolderAccessDenied {
-		return Error(403, "Access denied", err)
+		return Error(403, "拒绝访问", err)
 	}
 
 	if err == models.ErrFolderNotFound {
@@ -155,5 +155,5 @@ func toFolderError(err error) Response {
 		return JSON(412, util.DynMap{"status": "version-mismatch", "message": models.ErrFolderVersionMismatch.Error()})
 	}
 
-	return Error(500, "Folder API error", err)
+	return Error(500, "文件夹API错误", err)
 }

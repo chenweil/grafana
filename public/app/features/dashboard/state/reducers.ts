@@ -56,7 +56,7 @@ const dashbardSlice = createSlice({
       state.initPhase = DashboardInitPhase.Failed;
       state.initError = action.payload;
       state.getModel = () => {
-        return new DashboardModel({ title: 'Dashboard init failed' }, { canSave: false, canEdit: false });
+        return new DashboardModel({ title: '仪表板初始化失败' }, { canSave: false, canEdit: false });
       };
     },
     cleanUpDashboard: (state, action: PayloadAction) => {

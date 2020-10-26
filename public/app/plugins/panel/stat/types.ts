@@ -29,12 +29,12 @@ export function addStandardDataReduceOptions(
 ) {
   builder.addRadio({
     path: 'reduceOptions.values',
-    name: 'Show',
-    description: 'Calculate a single value per column or series or show each row',
+    name: '显示',
+    description: '计算每列或每列一个值或显示每一行',
     settings: {
       options: [
-        { value: false, label: 'Calculate' },
-        { value: true, label: 'All values' },
+        { value: false, label: '计算' },
+        { value: true, label: '所有值' },
       ],
     },
     defaultValue: false,
@@ -42,8 +42,8 @@ export function addStandardDataReduceOptions(
 
   builder.addNumberInput({
     path: 'reduceOptions.limit',
-    name: 'Limit',
-    description: 'Max number of rows to display',
+    name: '限制',
+    description: '显示的最大行数',
     settings: {
       placeholder: '5000',
       integer: true,
@@ -56,8 +56,8 @@ export function addStandardDataReduceOptions(
   builder.addCustomEditor({
     id: 'reduceOptions.calcs',
     path: 'reduceOptions.calcs',
-    name: 'Calculation',
-    description: 'Choose a reducer function / calculation',
+    name: '计算方式',
+    description: '选择减速器功能/计算',
     editor: standardEditorsRegistry.get('stats-picker').editor as any,
     defaultValue: [ReducerID.mean],
     // Hides it when all values mode is on
@@ -67,15 +67,15 @@ export function addStandardDataReduceOptions(
   if (includeFieldMatcher) {
     builder.addSelect({
       path: 'reduceOptions.fields',
-      name: 'Fields',
-      description: 'Select the fields that should be included in the panel',
+      name: '字段',
+      description: '选择面板中应包含的字段',
       settings: {
         allowCustomValue: true,
         options: [],
         getOptions: async (context: FieldOverrideContext) => {
           const options = [
-            { value: '', label: 'Numeric Fields' },
-            { value: '/.*/', label: 'All Fields' },
+            { value: '', label: '数值字段' },
+            { value: '/.*/', label: '所有字段' },
           ];
           if (context && context.data) {
             for (const frame of context.data) {
@@ -96,13 +96,13 @@ export function addStandardDataReduceOptions(
   if (includeOrientation) {
     builder.addRadio({
       path: 'orientation',
-      name: 'Orientation',
-      description: 'Stacking direction in case of multiple series or fields',
+      name: '方向',
+      description: '多个序列或多个字段的堆叠方向',
       settings: {
         options: [
-          { value: 'auto', label: 'Auto' },
-          { value: 'horizontal', label: 'Horizontal' },
-          { value: 'vertical', label: 'Vertical' },
+          { value: 'auto', label: '自动' },
+          { value: 'horizontal', label: '水平' },
+          { value: 'vertical', label: '垂直' },
         ],
       },
       defaultValue: 'auto',

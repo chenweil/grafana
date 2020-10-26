@@ -29,14 +29,14 @@ export default class DefaultVariableQueryEditor extends PureComponent<VariableQu
   render() {
     return (
       <div className="gf-form">
-        <span className="gf-form-label width-10">Query</span>
+        <span className="gf-form-label width-10">查询</span>
         <textarea
           rows={this.getLineCount()}
           className="gf-form-input"
           value={this.state.value}
           onChange={this.onChange}
           onBlur={this.onBlur}
-          placeholder="metric name or tags query"
+          placeholder="指标名称或标签查询"
           required
           aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.QueryVariable.queryOptionsQueryInput}
         />

@@ -48,10 +48,10 @@ export const SnapshotListTable: FC<Props> = ({ url }) => {
         <thead>
           <tr>
             <th>
-              <strong>Name</strong>
+              <strong>名字</strong>
             </th>
             <th>
-              <strong>Snapshot url</strong>
+              <strong>快照地址</strong>
             </th>
             <th style={{ width: '70px' }}></th>
             <th style={{ width: '30px' }}></th>
@@ -68,10 +68,10 @@ export const SnapshotListTable: FC<Props> = ({ url }) => {
                 <td>
                   <a href={snapshot.url}>{snapshot.url}</a>
                 </td>
-                <td>{snapshot.external && <span className="query-keyword">External</span>}</td>
+                <td>{snapshot.external && <span className="query-keyword">外部</span>}</td>
                 <td className="text-center">
                   <LinkButton href={snapshot.url} variant="secondary" size="sm" icon="eye">
-                    View
+                    查看
                   </LinkButton>
                 </td>
                 <td className="text-right">
@@ -86,9 +86,9 @@ export const SnapshotListTable: FC<Props> = ({ url }) => {
       <ConfirmModal
         isOpen={!!removeSnapshot}
         icon="trash-alt"
-        title="Delete"
-        body={`Are you sure you want to delete '${removeSnapshot?.name}'?`}
-        confirmText="Delete"
+        title="删除"
+        body={`你确定你要删除 '${removeSnapshot?.name}'?`}
+        confirmText="删除"
         onDismiss={() => setRemoveSnapshot(undefined)}
         onConfirm={() => {
           doRemoveSnapshot(removeSnapshot!);

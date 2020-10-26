@@ -109,9 +109,9 @@ const getDataSourceOptions = (input: { pluginId: string; pluginName: string }, i
   );
 
   if (sources.length === 0) {
-    inputModel.info = 'No data sources of type ' + input.pluginName + ' found';
+    inputModel.info = '找不到类型为 ' + input.pluginName + ' 的数据源';
   } else if (!inputModel.info) {
-    inputModel.info = 'Select a ' + input.pluginName + ' data source';
+    inputModel.info = '选择一个 ' + input.pluginName + ' 数据源';
   }
 
   inputModel.options = sources.map(val => {

@@ -277,7 +277,7 @@ export class BackendSrv implements BackendService {
 
     // Validation
     if (err.status === 422) {
-      message = 'Validation failed';
+      message = '验证失败';
     }
 
     this.dependencies.appEvents.emit(err.status < 500 ? AppEvents.alertWarning : AppEvents.alertError, [
@@ -287,7 +287,7 @@ export class BackendSrv implements BackendService {
   }
 
   processRequestError(options: BackendSrvRequest, err: FetchError): FetchError {
-    err.data = err.data ?? { message: 'Unexpected error' };
+    err.data = err.data ?? { message: '意外的错误' };
 
     if (typeof err.data === 'string') {
       err.data = {
@@ -345,7 +345,7 @@ export class BackendSrv implements BackendService {
           cancelled: true,
           data: null,
           status: this.HTTP_REQUEST_CANCELED,
-          statusText: 'Request was aborted',
+          statusText: '请求被中止',
           config: options,
         }))
       );

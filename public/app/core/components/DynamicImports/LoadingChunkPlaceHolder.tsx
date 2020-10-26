@@ -3,7 +3,7 @@ import { LoadingPlaceholder } from '@grafana/ui';
 
 export const LoadingChunkPlaceHolder: FunctionComponent = React.memo(() => (
   <div className="preloader">
-    <LoadingPlaceholder text={'Loading...'} />
+    <LoadingPlaceholder text={'加载中...'} />
   </div>
 ));
 

@@ -110,14 +110,14 @@ function ExploreQueryInspector(props: Props) {
   const styles = getPanelInspectorStyles();
 
   const statsTab: TabConfig = {
-    label: 'Stats',
+    label: '状态',
     value: 'stats',
     icon: 'chart-line',
     content: <InspectStatsTab data={queryResponse!} timeZone={queryResponse?.request?.timezone as TimeZone} />,
   };
 
   const inspectorTab: TabConfig = {
-    label: 'Query Inspector',
+    label: '查询检查器',
     value: 'query_inspector',
     icon: 'info-circle',
     content: (
@@ -131,7 +131,7 @@ function ExploreQueryInspector(props: Props) {
                 className={styles.toolbarItem}
                 onClick={onToggleExpand}
               >
-                {allNodesExpanded ? 'Collapse' : 'Expand'} all
+                {allNodesExpanded ? '关闭' : '展开'} 所有
               </Button>
 
               <CopyToClipboard
@@ -141,7 +141,7 @@ function ExploreQueryInspector(props: Props) {
                 className={styles.toolbarItem}
               >
                 <Button icon="copy" variant="secondary">
-                  Copy to clipboard
+                  复制到剪切板
                 </Button>
               </CopyToClipboard>
             </>
@@ -149,13 +149,11 @@ function ExploreQueryInspector(props: Props) {
           <div className="flex-grow-1" />
         </div>
         <div className={styles.contentQueryInspector}>
-          {loading && <LoadingPlaceholder text="Loading query inspector..." />}
+          {loading && <LoadingPlaceholder text="加载查询检查器..." />}
           {!loading && haveData && (
             <JSONFormatter json={response!} open={getOpenNodeCount()} onDidRender={setFormattedJSON} />
           )}
-          {!loading && !haveData && (
-            <p className="muted">No request & response collected yet. Run query to collect request & response.</p>
-          )}
+          {!loading && !haveData && <p className="muted">尚未收集任何请求和响应。 运行查询以收集请求和响应。</p>}
         </div>
       </>
     ),
@@ -164,7 +162,7 @@ function ExploreQueryInspector(props: Props) {
   const tabs = [statsTab, inspectorTab];
   return (
     <ExploreDrawer width={width} onResize={() => {}}>
-      <TabbedContainer tabs={tabs} onClose={onClose} closeIconTooltip="Close query inspector" />
+      <TabbedContainer tabs={tabs} onClose={onClose} closeIconTooltip="关闭查询检查器" />
     </ExploreDrawer>
   );
 }

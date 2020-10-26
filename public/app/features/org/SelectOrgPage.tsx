@@ -37,10 +37,7 @@ export const SelectOrgPage: FC = () => {
     <Page navModel={navModel}>
       <Page.Contents>
         <div>
-          <p>
-            You have been added to another Organization due to an open invitation! Please select which organization you
-            want to use right now (you can change this later at any time).
-          </p>
+          <p>由于有公开邀请，您已被添加到另一个组织！ 请立即选择您要使用的组织（您以后可以随时更改此组织）。</p>
           <HorizontalGroup wrap>
             {orgs &&
               orgs.map(org => (

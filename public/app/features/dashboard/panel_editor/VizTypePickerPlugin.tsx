@@ -25,7 +25,7 @@ const VizTypePickerPlugin: React.FC<Props> = ({ isCurrent, plugin, onClick, disa
       <div
         className={cssClass}
         onClick={disabled ? () => {} : onClick}
-        title={isCurrent ? 'Click again to close this section' : plugin.name}
+        title={isCurrent ? '再次单击以关闭此部分' : plugin.name}
       >
         <div className={styles.bg} />
         <div className={styles.itemContent}>
@@ -145,10 +145,10 @@ function getPanelStateBadgeDisplayModel(panel: PanelPluginMeta): BadgeProps {
   switch (panel.state) {
     case PluginState.deprecated:
       return {
-        text: 'Deprecated',
+        text: '不推荐使用',
         icon: 'exclamation-triangle',
         color: 'red',
-        tooltip: `${panel.name} panel is deprecated`,
+        tooltip: `${panel.name} 面板已弃用`,
       };
   }
 
@@ -156,7 +156,7 @@ function getPanelStateBadgeDisplayModel(panel: PanelPluginMeta): BadgeProps {
     text: 'Alpha',
     icon: 'rocket',
     color: 'blue',
-    tooltip: `${panel.name} panel is experimental`,
+    tooltip: `${panel.name} 面板是实验性的`,
   };
 }
 

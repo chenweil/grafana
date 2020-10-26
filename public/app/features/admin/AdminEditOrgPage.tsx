@@ -54,7 +54,7 @@ export const AdminEditOrgPage: FC = () => {
     <Page navModel={navModel}>
       <Page.Contents>
         <>
-          <Legend>Edit Organization</Legend>
+          <Legend>编辑组织</Legend>
 
           {orgState.value && (
             <Form
@@ -63,10 +63,10 @@ export const AdminEditOrgPage: FC = () => {
             >
               {({ register, errors }) => (
                 <>
-                  <Field label="Name" invalid={!!errors.orgName} error="Name is required">
+                  <Field label="名称" invalid={!!errors.orgName} error="名称为必填项">
                     <Input name="orgName" ref={register({ required: true })} />
                   </Field>
-                  <Button>Update</Button>
+                  <Button>更新</Button>
                 </>
               )}
             </Form>
@@ -77,7 +77,7 @@ export const AdminEditOrgPage: FC = () => {
               margin-top: 20px;
             `}
           >
-            <Legend>Organization Users</Legend>
+            <Legend>组织用户</Legend>
             {!!users.length && (
               <UsersTable
                 users={users}

@@ -30,7 +30,7 @@ export const PanelOptionsEditor: React.FC<PanelOptionsEditorProps<any>> = ({
 }) => {
   const optionEditors = useMemo<Record<string, PanelOptionsEditorItem[]>>(() => {
     return groupBy(plugin.optionEditors.list(), i => {
-      return i.category ? i.category[0] : 'Display';
+      return i.category ? i.category[0] : '显示';
     });
   }, [plugin]);
 

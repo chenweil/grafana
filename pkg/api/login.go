@@ -140,12 +140,12 @@ func tryOAuthAutoLogin(c *models.ReqContext) bool {
 	}
 	oauthInfos := setting.OAuthService.OAuthInfos
 	if len(oauthInfos) != 1 {
-		log.Warnf("Skipping OAuth auto login because multiple OAuth providers are configured")
+		log.Warnf("跳过OAuth自动登录，因为配置了多个OAuth提供程序")
 		return false
 	}
 	for key := range setting.OAuthService.OAuthInfos {
 		redirectUrl := setting.AppSubUrl + "/login/" + key
-		log.Infof("OAuth auto login enabled. Redirecting to " + redirectUrl)
+		log.Infof("启用了OAuth自动登录。重定向到 " + redirectUrl)
 		c.Redirect(redirectUrl, 307)
 		return true
 	}
@@ -154,10 +154,10 @@ func tryOAuthAutoLogin(c *models.ReqContext) bool {
 
 func (hs *HTTPServer) LoginAPIPing(c *models.ReqContext) Response {
 	if c.IsSignedIn || c.IsAnonymous {
-		return JSON(200, "Logged in")
+		return JSON(200, "已登陆")
 	}
 
-	return Error(401, "Unauthorized", nil)
+	return Error(401, "未经授权", nil)
 }
 
 func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Response {
@@ -180,7 +180,7 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Res
 	}()
 
 	if setting.DisableLoginForm {
-		response = Error(http.StatusUnauthorized, "Login is disabled", nil)
+		response = Error(http.StatusUnauthorized, "登录被禁用", nil)
 		return response
 	}
 
@@ -196,7 +196,7 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Res
 		action += fmt.Sprintf("-%s", authQuery.AuthModule)
 	}
 	if err != nil {
-		response = Error(401, "Invalid username or password", err)
+		response = Error(401, "用户名或密码无效", err)
 		if err == login.ErrInvalidCredentials || err == login.ErrTooManyLoginAttempts || err == models.ErrUserNotFound {
 			return response
 		}
@@ -204,11 +204,11 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Res
 		// Do not expose disabled status,
 		// just show incorrect user credentials error (see #17947)
 		if err == login.ErrUserDisabled {
-			hs.log.Warn("User is disabled", "user", cmd.User)
+			hs.log.Warn("用户被禁用", "user", cmd.User)
 			return response
 		}
 
-		response = Error(500, "Error while trying to authenticate user", err)
+		response = Error(500, "尝试验证用户时出错", err)
 		return response
 	}
 
@@ -216,19 +216,19 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Res
 
 	err = hs.loginUserWithUser(user, c)
 	if err != nil {
-		response = Error(http.StatusInternalServerError, "Error while signing in user", err)
+		response = Error(http.StatusInternalServerError, "登录用户时出错", err)
 		return response
 	}
 
 	result := map[string]interface{}{
-		"message": "Logged in",
+		"message": "已登录",
 	}
 
 	if redirectTo, _ := url.QueryUnescape(c.GetCookie("redirect_to")); len(redirectTo) > 0 {
 		if err := hs.ValidateRedirectTo(redirectTo); err == nil {
 			result["redirectUrl"] = redirectTo
 		} else {
-			log.Infof("Ignored invalid redirect_to cookie value: %v", redirectTo)
+			log.Infof("忽略无效的redirect_to cookie值: %v", redirectTo)
 		}
 		middleware.DeleteCookie(c.Resp, "redirect_to", hs.CookieOptionsFromCfg)
 	}
@@ -240,22 +240,22 @@ func (hs *HTTPServer) LoginPost(c *models.ReqContext, cmd dtos.LoginCommand) Res
 
 func (hs *HTTPServer) loginUserWithUser(user *models.User, c *models.ReqContext) error {
 	if user == nil {
-		return errors.New("could not login user")
+		return errors.New("无法登录用户")
 	}
 
 	userToken, err := hs.AuthTokenService.CreateToken(c.Req.Context(), user.Id, c.RemoteAddr(), c.Req.UserAgent())
 	if err != nil {
-		return errutil.Wrap("failed to create auth token", err)
+		return errutil.Wrap("无法创建身份验证令牌", err)
 	}
 
-	hs.log.Info("Successful Login", "User", user.Email)
+	hs.log.Info("成功登录", "User", user.Email)
 	middleware.WriteSessionCookie(c, userToken.UnhashedToken, hs.Cfg.LoginMaxLifetime)
 	return nil
 }
 
 func (hs *HTTPServer) Logout(c *models.ReqContext) {
 	if err := hs.AuthTokenService.RevokeToken(c.Req.Context(), c.UserToken); err != nil && err != models.ErrUserTokenNotFound {
-		hs.log.Error("failed to revoke auth token", "error", err)
+		hs.log.Error("无法撤消身份验证令牌", "error", err)
 	}
 
 	middleware.WriteSessionCookie(c, "", -1)
@@ -297,7 +297,7 @@ func (hs *HTTPServer) trySetEncryptedCookie(ctx *models.ReqContext, cookieName s
 func (hs *HTTPServer) redirectWithError(ctx *models.ReqContext, err error, v ...interface{}) {
 	ctx.Logger.Error(err.Error(), v...)
 	if err := hs.trySetEncryptedCookie(ctx, LoginErrorCookieName, err.Error(), 60); err != nil {
-		hs.log.Error("Failed to set encrypted cookie", "err", err)
+		hs.log.Error("无法设置加密的cookie", "err", err)
 	}
 
 	ctx.Redirect(setting.AppSubUrl + "/login")
@@ -306,7 +306,7 @@ func (hs *HTTPServer) redirectWithError(ctx *models.ReqContext, err error, v ...
 func (hs *HTTPServer) RedirectResponseWithError(ctx *models.ReqContext, err error, v ...interface{}) *RedirectResponse {
 	ctx.Logger.Error(err.Error(), v...)
 	if err := hs.trySetEncryptedCookie(ctx, LoginErrorCookieName, err.Error(), 60); err != nil {
-		hs.log.Error("Failed to set encrypted cookie", "err", err)
+		hs.log.Error("无法设置加密的cookie", "err", err)
 	}
 
 	return Redirect(setting.AppSubUrl + "/login")
@@ -315,7 +315,7 @@ func (hs *HTTPServer) RedirectResponseWithError(ctx *models.ReqContext, err erro
 func (hs *HTTPServer) SendLoginLog(cmd *models.SendLoginLogCommand) {
 	if err := bus.Dispatch(cmd); err != nil {
 		if err != bus.ErrHandlerNotFound {
-			hs.log.Warn("Error while sending login log", "err", err)
+			hs.log.Warn("发送登录日志时出错", "err", err)
 		}
 	}
 }

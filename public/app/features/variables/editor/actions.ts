@@ -59,18 +59,18 @@ export const changeVariableName = (identifier: VariableIdentifier, newName: stri
   return (dispatch, getState) => {
     let errorText = null;
     if (!newName.match(/^(?!__).*$/)) {
-      errorText = "Template names cannot begin with '__', that's reserved for Grafana's global variables";
+      errorText = "模板名称不能以'__'开头，这是为Grafana的全局变量保留的";
     }
 
     if (!newName.match(/^\w+$/)) {
-      errorText = 'Only word and digit characters are allowed in variable names';
+      errorText = '变量名称中仅允许使用字母和数字字符';
     }
 
     const variables = getVariables(getState());
     const foundVariables = variables.filter(v => v.name === newName && v.id !== identifier.id);
 
     if (foundVariables.length) {
-      errorText = 'Variable with the same name already exists';
+      errorText = '具有相同名称的变量已存在';
     }
 
     if (errorText) {

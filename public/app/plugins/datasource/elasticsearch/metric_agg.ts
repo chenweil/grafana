@@ -43,7 +43,7 @@ export class ElasticMetricAggCtrl {
 
       if (queryDef.isPipelineAgg($scope.agg.type)) {
         if (queryDef.isPipelineAggWithMultipleBucketPaths($scope.agg.type)) {
-          $scope.variablesLinkText = 'Options';
+          $scope.variablesLinkText = '选项';
 
           if ($scope.agg.settings.script) {
             $scope.variablesLinkText = 'Script: ' + $scope.agg.settings.script.replace(new RegExp('params.', 'g'), '');
@@ -58,7 +58,7 @@ export class ElasticMetricAggCtrl {
           _.each(pipelineOptions, opt => {
             $scope.agg.settings[opt.text] = $scope.agg.settings[opt.text] || opt.default;
           });
-          $scope.settingsLinkText = 'Options';
+          $scope.settingsLinkText = '选项';
         }
       } else if (!$scope.agg.field) {
         $scope.agg.field = 'select field';
@@ -122,7 +122,7 @@ export class ElasticMetricAggCtrl {
         }
 
         if ($scope.settingsLinkText === '') {
-          $scope.settingsLinkText = 'Options';
+          $scope.settingsLinkText = '选项';
         }
       }
     };

@@ -15,9 +15,9 @@ import PromLink from './PromLink';
 export type Props = QueryEditorProps<PrometheusDatasource, PromQuery, PromOptions>;
 
 const FORMAT_OPTIONS: Array<SelectableValue<string>> = [
-  { label: 'Time series', value: 'time_series' },
-  { label: 'Table', value: 'table' },
-  { label: 'Heatmap', value: 'heatmap' },
+  { label: '时间序列', value: 'time_series' },
+  { label: '表格', value: 'table' },
+  { label: '热图', value: 'heatmap' },
 ];
 
 const INTERVAL_FACTOR_OPTIONS: Array<SelectableValue<number>> = _.map([1, 2, 3, 4, 5, 10], (value: number) => ({
@@ -114,15 +114,14 @@ export class PromQueryEditor extends PureComponent<Props, State> {
           <div className="gf-form">
             <InlineFormLabel
               width={7}
-              tooltip="Controls the name of the time series, using name or pattern. For example
-        {{hostname}} will be replaced with label value for the label hostname."
+              tooltip="使用名称或模式控制时间序列的名称。 例如，{{hostname}}将替换为标签主机名的标签值。"
             >
-              Legend
+              图例
             </InlineFormLabel>
             <input
               type="text"
               className="gf-form-input"
-              placeholder="legend format"
+              placeholder="图例格式"
               value={legendFormat}
               onChange={this.onLegendChange}
               onBlur={this.onRunQuery}
@@ -134,13 +133,13 @@ export class PromQueryEditor extends PureComponent<Props, State> {
               width={7}
               tooltip={
                 <>
-                  An additional lower limit for the step parameter of the Prometheus query and for the{' '}
-                  <code>$__interval</code> and <code>$__rate_interval</code> variables. The limit is absolute and not
-                  modified by the "Resolution" setting.
+                  Prometheus查询的step参数和{''}的附加下限
+                  <code>$__interval</code> 和 <code>$__rate_interval</code> 变量。
+                  该限制是绝对的，不能通过“分辨率”设置进行修改。
                 </>
               }
             >
-              Min step
+              最小步长
             </InlineFormLabel>
             <input
               type="text"
@@ -153,7 +152,7 @@ export class PromQueryEditor extends PureComponent<Props, State> {
           </div>
 
           <div className="gf-form">
-            <div className="gf-form-label">Resolution</div>
+            <div className="gf-form-label">解析度</div>
             <Select
               isSearchable={false}
               menuPlacement="bottom"
@@ -164,7 +163,7 @@ export class PromQueryEditor extends PureComponent<Props, State> {
           </div>
 
           <div className="gf-form">
-            <div className="gf-form-label width-7">Format</div>
+            <div className="gf-form-label width-7">格式</div>
             <Select
               width={16}
               isSearchable={false}
@@ -172,9 +171,9 @@ export class PromQueryEditor extends PureComponent<Props, State> {
               onChange={this.onFormatChange}
               value={formatOption}
             />
-            <Switch label="Instant" checked={instant} onChange={this.onInstantChange} />
+            <Switch label="瞬间" checked={instant} onChange={this.onInstantChange} />
 
-            <InlineFormLabel width={10} tooltip="Link to Graph in Prometheus">
+            <InlineFormLabel width={10} tooltip="链接到Prometheus中的图">
               <PromLink
                 datasource={datasource}
                 query={this.query} // Use modified query

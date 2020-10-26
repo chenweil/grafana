@@ -7,9 +7,9 @@ import mdx from './ConfirmModal.mdx';
 
 const getKnobs = () => {
   return {
-    title: text('Title', 'Delete user'),
-    body: text('Body', 'Are you sure you want to delete this user?'),
-    confirm: text('Confirm', 'Delete'),
+    title: text('Title', '删除用户'),
+    body: text('Body', '您确定要删除该用户吗？'),
+    confirm: text('Confirm', '删除'),
     visible: boolean('Visible', true),
     icon: select('Icon', ['exclamation-triangle', 'power', 'cog', 'lock'], 'exclamation-triangle'),
   };

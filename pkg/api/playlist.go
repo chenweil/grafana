@@ -42,7 +42,7 @@ func SearchPlaylists(c *models.ReqContext) Response {
 
 	err := bus.Dispatch(&searchQuery)
 	if err != nil {
-		return Error(500, "Search failed", err)
+		return Error(500, "搜索失败", err)
 	}
 
 	return JSON(200, searchQuery.Result)
@@ -53,7 +53,7 @@ func GetPlaylist(c *models.ReqContext) Response {
 	cmd := models.GetPlaylistByIdQuery{Id: id}
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Playlist not found", err)
+		return Error(500, "找不到播放列表", err)
 	}
 
 	playlistDTOs, _ := LoadPlaylistItemDTOs(id)
@@ -107,7 +107,7 @@ func GetPlaylistItems(c *models.ReqContext) Response {
 	playlistDTOs, err := LoadPlaylistItemDTOs(id)
 
 	if err != nil {
-		return Error(500, "Could not load playlist items", err)
+		return Error(500, "无法加载播放列表项", err)
 	}
 
 	return JSON(200, playlistDTOs)
@@ -118,7 +118,7 @@ func GetPlaylistDashboards(c *models.ReqContext) Response {
 
 	playlists, err := LoadPlaylistDashboards(c.OrgId, c.SignedInUser, playlistID)
 	if err != nil {
-		return Error(500, "Could not load dashboards", err)
+		return Error(500, "无法加载仪表板", err)
 	}
 
 	return JSON(200, playlists)
@@ -129,7 +129,7 @@ func DeletePlaylist(c *models.ReqContext) Response {
 
 	cmd := models.DeletePlaylistCommand{Id: id, OrgId: c.OrgId}
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to delete playlist", err)
+		return Error(500, "删除播放列表失败", err)
 	}
 
 	return JSON(200, "")
@@ -139,7 +139,7 @@ func CreatePlaylist(c *models.ReqContext, cmd models.CreatePlaylistCommand) Resp
 	cmd.OrgId = c.OrgId
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to create playlist", err)
+		return Error(500, "创建播放列表失败", err)
 	}
 
 	return JSON(200, cmd.Result)
@@ -150,12 +150,12 @@ func UpdatePlaylist(c *models.ReqContext, cmd models.UpdatePlaylistCommand) Resp
 	cmd.Id = c.ParamsInt64(":id")
 
 	if err := bus.Dispatch(&cmd); err != nil {
-		return Error(500, "Failed to save playlist", err)
+		return Error(500, "无法保存播放列表", err)
 	}
 
 	playlistDTOs, err := LoadPlaylistItemDTOs(cmd.Id)
 	if err != nil {
-		return Error(500, "Failed to save playlist", err)
+		return Error(500, "无法保存播放列表", err)
 	}
 
 	cmd.Result.Items = playlistDTOs

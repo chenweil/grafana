@@ -26,9 +26,9 @@ class PluginListCtrl extends PanelCtrl {
     this.isAdmin = contextSrv.hasRole('Admin');
     this.pluginList = [];
     this.viewModel = [
-      { header: 'Installed Apps', list: [], type: 'app' },
-      { header: 'Installed Panels', list: [], type: 'panel' },
-      { header: 'Installed Datasources', list: [], type: 'datasource' },
+      { header: '已安装APP', list: [], type: 'app' },
+      { header: '已安装面板', list: [], type: 'panel' },
+      { header: '已安装数据源', list: [], type: 'datasource' },
     ];
 
     this.update();

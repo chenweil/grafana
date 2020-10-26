@@ -33,7 +33,7 @@
       "search": false,
       "starred": true,
       "tags": [],
-      "title": "Dashboards",
+      "title": "仪表板",
       "type": "dashlist"
     },
     {
@@ -49,7 +49,7 @@
       "options": {
         "feedUrl": "https://grafana.com/blog/news.xml"
       },
-      "title": "Latest from the blog",
+      "title": "最新博客",
       "type": "news"
     }
   ],
@@ -69,5 +69,5 @@
     "type": "timepicker"
   },
   "timezone": "browser",
-  "title": "Home"
+  "title": "主页"
 }

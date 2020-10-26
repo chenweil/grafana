@@ -5,13 +5,13 @@ export const mockStandardProperties = () => {
   const title = {
     id: 'displayName',
     path: 'displayName',
-    name: 'Display name',
-    description: "Field's display name",
+    name: '显示名字',
+    description: '字段显示的名字',
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,
     settings: {
-      placeholder: 'none',
+      placeholder: '无',
       expandTemplateVars: true,
     },
     shouldApply: () => true,
@@ -20,15 +20,15 @@ export const mockStandardProperties = () => {
   const unit = {
     id: 'unit',
     path: 'unit',
-    name: 'Unit',
-    description: 'Value units',
+    name: '单位',
+    description: '值单位',
 
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,
 
     settings: {
-      placeholder: 'none',
+      placeholder: '无',
     },
 
     shouldApply: () => true,
@@ -37,15 +37,15 @@ export const mockStandardProperties = () => {
   const min = {
     id: 'min',
     path: 'min',
-    name: 'Min',
-    description: 'Minimum expected value',
+    name: '最小',
+    description: '最小值',
 
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
     },
     shouldApply: () => true,
   };
@@ -53,15 +53,15 @@ export const mockStandardProperties = () => {
   const max = {
     id: 'max',
     path: 'max',
-    name: 'Max',
-    description: 'Maximum expected value',
+    name: '最大',
+    description: '最大值',
 
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
     },
 
     shouldApply: () => true,
@@ -70,8 +70,8 @@ export const mockStandardProperties = () => {
   const decimals = {
     id: 'decimals',
     path: 'decimals',
-    name: 'Decimals',
-    description: 'Number of decimal to be shown for a value',
+    name: '小数点',
+    description: '显示值的小数位数',
 
     editor: () => null,
     override: () => null,
@@ -90,8 +90,8 @@ export const mockStandardProperties = () => {
   const thresholds = {
     id: 'thresholds',
     path: 'thresholds',
-    name: 'Thresholds',
-    description: 'Manage thresholds',
+    name: '阈值',
+    description: '管理阈值',
 
     editor: () => null,
     override: () => null,
@@ -110,8 +110,8 @@ export const mockStandardProperties = () => {
   const mappings = {
     id: 'mappings',
     path: 'mappings',
-    name: 'Value mappings',
-    description: 'Manage value mappings',
+    name: '值映射',
+    description: '管理值映射',
 
     editor: () => null,
     override: () => null,
@@ -124,8 +124,8 @@ export const mockStandardProperties = () => {
   const noValue = {
     id: 'noValue',
     path: 'noValue',
-    name: 'No Value',
-    description: 'What to show when there is no value',
+    name: '无值',
+    description: '没有值时显示什么',
 
     editor: () => null,
     override: () => null,
@@ -141,8 +141,8 @@ export const mockStandardProperties = () => {
   const links = {
     id: 'links',
     path: 'links',
-    name: 'DataLinks',
-    description: 'Manage date links',
+    name: '数据连接',
+    description: '管理数据连接',
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,
@@ -155,8 +155,8 @@ export const mockStandardProperties = () => {
   const color = {
     id: 'color',
     path: 'color',
-    name: 'Color',
-    description: 'Customise color',
+    name: '颜色',
+    description: '自定义颜色',
     editor: () => null,
     override: () => null,
     process: identityOverrideProcessor,

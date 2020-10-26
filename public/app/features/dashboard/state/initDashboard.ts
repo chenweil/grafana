@@ -108,7 +108,7 @@ async function fetchDashboard(
         return getNewDashboardModelData(args.urlFolderId);
       }
       default:
-        throw { message: 'Unknown route ' + args.routeInfo };
+        throw { message: '未知路由 ' + args.routeInfo };
     }
   } catch (err) {
     // Ignore cancelled errors
@@ -116,7 +116,7 @@ async function fetchDashboard(
       return null;
     }
 
-    dispatch(dashboardInitFailed({ message: 'Failed to fetch dashboard', error: err }));
+    dispatch(dashboardInitFailed({ message: '未能获取仪表板', error: err }));
     console.error(err);
     return null;
   }
@@ -160,7 +160,7 @@ export function initDashboard(args: InitDashboardArgs): ThunkResult<void> {
     try {
       dashboard = new DashboardModel(dashDTO.dashboard, dashDTO.meta);
     } catch (err) {
-      dispatch(dashboardInitFailed({ message: 'Failed create dashboard model', error: err }));
+      dispatch(dashboardInitFailed({ message: '创建仪表板模型失败', error: err }));
       console.error(err);
       return;
     }
@@ -215,7 +215,7 @@ export function initDashboard(args: InitDashboardArgs): ThunkResult<void> {
       unsavedChangesSrv.init(dashboard, args.$scope);
       keybindingSrv.setupDashboardBindings(args.$scope, dashboard);
     } catch (err) {
-      dispatch(notifyApp(createErrorNotification('Dashboard init failed', err)));
+      dispatch(notifyApp(createErrorNotification('仪表板初始化失败', err)));
       console.error(err);
     }
 
@@ -246,12 +246,12 @@ function getNewDashboardModelData(urlFolderId?: string): any {
       folderId: 0,
     },
     dashboard: {
-      title: 'New dashboard',
+      title: '新建仪表板',
       panels: [
         {
           type: 'add-panel',
           gridPos: { x: 0, y: 0, w: 12, h: 9 },
-          title: 'Panel Title',
+          title: '面板标题',
         },
       ],
     },

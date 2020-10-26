@@ -20,7 +20,7 @@ export function uploadDashboardDirective(timer: any, $location: ILocationService
       btnText: '@?',
     },
     link: (scope: any, elem: JQuery) => {
-      scope.btnText = angular.isDefined(scope.btnText) ? scope.btnText : 'Upload .json file';
+      scope.btnText = angular.isDefined(scope.btnText) ? scope.btnText : '上传 .json 文件';
 
       function file_selected(evt: any) {
         const files = evt.target.files; // FileList object
@@ -31,10 +31,7 @@ export function uploadDashboardDirective(timer: any, $location: ILocationService
               dash = JSON.parse(e.target.result);
             } catch (err) {
               console.error(err);
-              appEvents.emit(AppEvents.alertError, [
-                'Import failed',
-                'JSON -> JS Serialization failed: ' + err.message,
-              ]);
+              appEvents.emit(AppEvents.alertError, ['倒入失败', 'JSON-> JS序列化失败： ' + err.message]);
               return;
             }
 
@@ -62,7 +59,7 @@ export function uploadDashboardDirective(timer: any, $location: ILocationService
         // Something
         elem[0].addEventListener('change', file_selected, false);
       } else {
-        appEvents.emit(AppEvents.alertError, ['Oops', 'The HTML5 File APIs are not fully supported in this browser']);
+        appEvents.emit(AppEvents.alertError, ['Oops', '此浏览器不完全支持HTML5文件API']);
       }
     },
   };

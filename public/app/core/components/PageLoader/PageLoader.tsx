@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PageLoader: FC<Props> = ({ pageName = '' }) => {
-  const loadingText = `Loading ${pageName}...`;
+  const loadingText = `加载${pageName}中...`;
   return (
     <div className="page-loader-wrapper">
       <LoadingPlaceholder text={loadingText} />

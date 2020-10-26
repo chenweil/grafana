@@ -32,12 +32,12 @@ export class AxesEditorCtrl {
     };
 
     this.xAxisStatOptions = [
-      { text: 'Avg', value: 'avg' },
-      { text: 'Min', value: 'min' },
-      { text: 'Max', value: 'max' },
-      { text: 'Total', value: 'total' },
-      { text: 'Count', value: 'count' },
-      { text: 'Current', value: 'current' },
+      { text: '平均', value: 'avg' },
+      { text: '最小', value: 'min' },
+      { text: '最大', value: 'max' },
+      { text: '总计', value: 'total' },
+      { text: '计数', value: 'count' },
+      { text: '当前', value: 'current' },
     ];
 
     if (this.panel.xaxis.mode === 'custom') {

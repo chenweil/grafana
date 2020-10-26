@@ -3,13 +3,13 @@ import { DataSourcePluginCategory } from 'app/types';
 
 export function buildCategories(plugins: DataSourcePluginMeta[]): DataSourcePluginCategory[] {
   const categories: DataSourcePluginCategory[] = [
-    { id: 'tsdb', title: 'Time series databases', plugins: [] },
-    { id: 'logging', title: 'Logging & document databases', plugins: [] },
-    { id: 'tracing', title: 'Distributed tracing', plugins: [] },
+    { id: 'tsdb', title: '时间序列数据库', plugins: [] },
+    { id: 'logging', title: '记录和文档数据库', plugins: [] },
+    { id: 'tracing', title: '分布式跟踪', plugins: [] },
     { id: 'sql', title: 'SQL', plugins: [] },
-    { id: 'cloud', title: 'Cloud', plugins: [] },
-    { id: 'enterprise', title: 'Enterprise plugins', plugins: [] },
-    { id: 'other', title: 'Others', plugins: [] },
+    { id: 'cloud', title: '云', plugins: [] },
+    { id: 'enterprise', title: '企业插件', plugins: [] },
+    { id: 'other', title: '其他', plugins: [] },
   ].filter(item => item);
 
   const categoryIndex: Record<string, DataSourcePluginCategory> = {};
@@ -30,7 +30,7 @@ export function buildCategories(plugins: DataSourcePluginMeta[]): DataSourcePlug
     // Fix link name
     if (plugin.info.links) {
       for (const link of plugin.info.links) {
-        link.name = 'Learn more';
+        link.name = '了解更多';
       }
     }
 
@@ -91,42 +91,42 @@ function getEnterprisePhantomPlugins(): DataSourcePluginMeta[] {
     getPhantomPlugin({
       id: 'grafana-splunk-datasource',
       name: 'Splunk',
-      description: 'Visualize & explore Splunk logs',
+      description: '可视化和浏览Splunk日志',
       imgUrl: 'public/img/plugins/splunk_logo_128.png',
     }),
     getPhantomPlugin({
       id: 'grafana-oracle-datasource',
       name: 'Oracle',
-      description: 'Visualize & explore Oracle SQL',
+      description: '可视化和探索Oracle SQL',
       imgUrl: 'public/img/plugins/oracle.png',
     }),
     getPhantomPlugin({
       id: 'grafana-dynatrace-datasource',
       name: 'Dynatrace',
-      description: 'Visualize & explore Dynatrace data',
+      description: '可视化并浏览Dynatrace数据',
       imgUrl: 'public/img/plugins/dynatrace.png',
     }),
     getPhantomPlugin({
       id: 'grafana-servicenow-datasource',
-      description: 'ServiceNow integration & data source',
+      description: 'ServiceNow集成和数据源',
       name: 'ServiceNow',
       imgUrl: 'public/img/plugins/servicenow.svg',
     }),
     getPhantomPlugin({
       id: 'grafana-datadog-datasource',
-      description: 'DataDog integration & data source',
+      description: 'DataDog集成和数据源',
       name: 'DataDog',
       imgUrl: 'public/img/plugins/datadog.png',
     }),
     getPhantomPlugin({
       id: 'grafana-newrelic-datasource',
-      description: 'New Relic integration & data source',
+      description: '新的Relic集成和数据源',
       name: 'New Relic',
       imgUrl: 'public/img/plugins/newrelic.svg',
     }),
     getPhantomPlugin({
       id: 'dlopes7-appdynamics-datasource',
-      description: 'AppDynamics integration & data source',
+      description: 'AppDynamics集成和数据源',
       name: 'AppDynamics',
       imgUrl: 'public/img/plugins/appdynamics.svg',
     }),
@@ -141,13 +141,13 @@ function getGrafanaCloudPhantomPlugin(): DataSourcePluginMeta {
     module: 'phantom',
     baseUrl: '',
     info: {
-      description: 'Hosted Graphite, Prometheus and Loki',
+      description: '托管石墨，普罗米修斯和洛基',
       logos: { small: 'public/img/grafana_icon.svg', large: 'asd' },
       author: { name: 'Grafana Labs' },
       links: [
         {
           url: 'https://grafana.com/products/cloud/',
-          name: 'Learn more',
+          name: '了解更多',
         },
       ],
       screenshots: [],
@@ -178,7 +178,7 @@ function getPhantomPlugin(options: GetPhantomPluginOptions): DataSourcePluginMet
       links: [
         {
           url: 'https://grafana.com/grafana/plugins/' + options.id,
-          name: 'Install now',
+          name: '现在安装',
         },
       ],
       screenshots: [],

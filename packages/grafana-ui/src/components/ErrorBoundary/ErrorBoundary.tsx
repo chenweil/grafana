@@ -52,7 +52,7 @@ interface WithAlertBoxProps {
 
 export class ErrorBoundaryAlert extends PureComponent<WithAlertBoxProps> {
   static defaultProps: Partial<WithAlertBoxProps> = {
-    title: 'An unexpected error happened',
+    title: '发生意外错误',
     style: 'alertbox',
   };
 

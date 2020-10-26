@@ -1,2 +1,1 @@
-# Plugin List Panel -  Native Plugin
-
+# 插件列表面板-本机插件

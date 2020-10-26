@@ -5,7 +5,7 @@
   "category": "logging",
 
   "info": {
-    "description": "Open source logging & analytics database",
+    "description": "开源日志记录和分析数据库",
     "author": {
       "name": "Grafana Labs",
       "url": "https://grafana.com"
@@ -15,7 +15,7 @@
       "small": "img/elasticsearch.svg",
       "large": "img/elasticsearch.svg"
     },
-    "links": [{ "name": "Learn more", "url": "https://grafana.com/docs/features/datasources/elasticsearch/" }]
+    "links": [{ "name": "了解更多", "url": "https://grafana.com/docs/features/datasources/elasticsearch/" }]
   },
 
   "alerting": true,

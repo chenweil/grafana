@@ -15,8 +15,8 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "opsgenie",
 		Name:        "OpsGenie",
-		Description: "Sends notifications to OpsGenie",
-		Heading:     "OpsGenie settings",
+		Description: "发送通知到OpsGenie",
+		Heading:     "OpsGenie设置",
 		Factory:     NewOpsGenieNotifier,
 		Options: []alerting.NotifierOption{
 			{

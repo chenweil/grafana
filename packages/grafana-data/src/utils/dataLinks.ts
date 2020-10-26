@@ -40,7 +40,7 @@ export function mapInternalLinkToExplore(
   options: Options
 ): LinkModel<Field> {
   if (!link.internal) {
-    throw new Error('Trying to map external link as internal');
+    throw new Error('尝试将外部链接映射为内部链接');
   }
   const { onClickFn, replaceVariables, getDataSourceSettingsByUid } = options;
 

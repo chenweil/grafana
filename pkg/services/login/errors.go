@@ -3,7 +3,7 @@ package login
 import "errors"
 
 var (
-	ErrInvalidCredentials = errors.New("Invalid Username or Password")
-	ErrUsersQuotaReached  = errors.New("Users quota reached")
-	ErrGettingUserQuota   = errors.New("Error getting user quota")
+	ErrInvalidCredentials = errors.New("无效的用户名或密码")
+	ErrUsersQuotaReached  = errors.New("已达到用户配额")
+	ErrGettingUserQuota   = errors.New("获取用户配额时出错")
 )

@@ -21,7 +21,7 @@ func (*OSSLicensingService) Expiry() int64 {
 }
 
 func (*OSSLicensingService) Edition() string {
-	return "Open Source"
+	return "开源"
 }
 
 func (*OSSLicensingService) StateInfo() string {
@@ -41,7 +41,7 @@ func (l *OSSLicensingService) Init() error {
 		for _, node := range indexData.NavTree {
 			if node.Id == "admin" {
 				node.Children = append(node.Children, &dtos.NavLink{
-					Text: "Upgrade",
+					Text: "更新",
 					Id:   "upgrading",
 					Url:  l.LicenseURL(req.SignedInUser),
 					Icon: "unlock",

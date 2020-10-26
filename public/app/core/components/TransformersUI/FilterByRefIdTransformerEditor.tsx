@@ -106,7 +106,7 @@ export class FilterByRefIdTransformerEditor extends React.PureComponent<
     return (
       <div className="gf-form-inline">
         <div className="gf-form gf-form--grow">
-          <div className="gf-form-label width-8">Series refId</div>
+          <div className="gf-form-label width-8">序列ID</div>
           <HorizontalGroup spacing="xs" align="flex-start" wrap>
             {options.map((o, i) => {
               const label = `${o.refId}${o.count > 1 ? ' (' + o.count + ')' : ''}`;
@@ -133,7 +133,7 @@ export const filterFramesByRefIdTransformRegistryItem: TransformerRegistyItem<Fi
   id: DataTransformerID.filterByRefId,
   editor: FilterByRefIdTransformerEditor,
   transformation: standardTransformers.filterFramesByRefIdTransformer,
-  name: 'Filter data by query',
+  name: '通过查询过滤数据',
   description:
-    'Filter data by query. This is useful if you are sharing the results from a different panel that has many queries and you want to only visualize a subset of that in this panel.',
+    '通过查询过滤数据。如果您要共享来自具有许多查询的另一个面板的结果，并且只想在该面板中可视化该结果的子集，则这很有用。',
 };

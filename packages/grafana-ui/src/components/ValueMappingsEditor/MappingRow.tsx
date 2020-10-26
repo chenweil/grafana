@@ -12,8 +12,8 @@ export interface Props {
 }
 
 const MAPPING_OPTIONS: Array<SelectableValue<MappingType>> = [
-  { value: MappingType.ValueToText, label: 'Value' },
-  { value: MappingType.RangeToText, label: 'Range' },
+  { value: MappingType.ValueToText, label: '值' },
+  { value: MappingType.RangeToText, label: '范围' },
 ];
 
 export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }) => {
@@ -50,7 +50,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
       return (
         <>
           <HorizontalGroup>
-            <Field label="From">
+            <Field label="从">
               <Input
                 type="number"
                 defaultValue={(valueMapping as RangeMap).from!}
@@ -58,7 +58,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
                 onKeyDown={onKeyDown(onMappingFromChange)}
               />
             </Field>
-            <Field label="To">
+            <Field label="到">
               <Input
                 type="number"
                 defaultValue={(valueMapping as RangeMap).to}
@@ -68,7 +68,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
             </Field>
           </HorizontalGroup>
 
-          <Field label="Text">
+          <Field label="文本">
             <Input
               defaultValue={valueMapping.text}
               onBlur={e => onMappingTextChange(e.currentTarget.value)}
@@ -81,7 +81,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
 
     return (
       <>
-        <Field label="Value">
+        <Field label="值">
           <Input
             defaultValue={(valueMapping as ValueMap).value}
             onBlur={e => onMappingValueChange(e.currentTarget.value)}
@@ -89,7 +89,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
           />
         </Field>
 
-        <Field label="Text">
+        <Field label="文本">
           <Input
             defaultValue={valueMapping.text}
             onBlur={e => onMappingTextChange(e.currentTarget.value)}
@@ -102,7 +102,7 @@ export const MappingRow: React.FC<Props> = ({ valueMapping, onUpdate, onRemove }
 
   const label = (
     <HorizontalGroup justify="space-between" align="center">
-      <Label>Mapping type</Label>
+      <Label>映射类型</Label>
       <IconButton name="times" onClick={onRemove} aria-label="ValueMappingsEditor remove button" />
     </HorizontalGroup>
   );

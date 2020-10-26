@@ -50,7 +50,7 @@ export const UnThemedLogLabels: FunctionComponent<Props> = ({ labels, theme }) =
   if (displayLabels.length === 0) {
     return (
       <span className={cx([styles.logsLabels])}>
-        <span className={cx([styles.logsLabel])}>(no unique labels)</span>
+        <span className={cx([styles.logsLabel])}>(没有唯一标签)</span>
       </span>
     );
   }

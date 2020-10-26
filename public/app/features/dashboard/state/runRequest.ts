@@ -105,7 +105,7 @@ export function runRequest(datasource: DataSourceApi, request: DataQueryRequest)
     // Transform response packets into PanelData with merged results
     map((packet: DataQueryResponse) => {
       if (!isArray(packet.data)) {
-        throw new Error(`Expected response data to be array, got ${typeof packet.data}.`);
+        throw new Error(`预期响应数据为数组, 获取到 ${typeof packet.data}.`);
       }
 
       request.endTime = Date.now();

@@ -17,8 +17,8 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "pagerduty",
 		Name:        "PagerDuty",
-		Description: "Sends notifications to PagerDuty",
-		Heading:     "PagerDuty settings",
+		Description: "发送通知到PagerDuty",
+		Heading:     "PagerDuty设置",
 		Factory:     NewPagerdutyNotifier,
 		Options: []alerting.NotifierOption{
 			{

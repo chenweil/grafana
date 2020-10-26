@@ -15,7 +15,7 @@ export interface Props {
 export const DeleteButton: FC<Props> = ({ size, disabled, onConfirm }) => {
   return (
     <ConfirmButton
-      confirmText="Delete"
+      confirmText="删除"
       confirmVariant="destructive"
       size={size || 'md'}
       disabled={disabled}

@@ -21,13 +21,13 @@ export const RepeatRowSelect: FC<Props> = ({ repeat, onChange }) => {
 
     if (options.length === 0) {
       options.unshift({
-        label: 'No template variables found',
+        label: '找不到模板变量',
         value: null,
       });
     }
 
     options.unshift({
-      label: 'Disable repeating',
+      label: '禁用重复',
       value: null,
     });
 

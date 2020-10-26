@@ -29,13 +29,12 @@ export class ConfigEditor extends PureComponent<Props> {
   renderTypeHelp = () => {
     return (
       <p>
-        There are different types of Graphite compatible backends. Here you can specify the type you are using. If you
-        are using{' '}
+        有不同类型的石墨兼容后端。 您可以在此处指定使用的类型。 如果您正在使用{' '}
         <a href="https://github.com/grafana/metrictank" className="pointer" target="_blank">
           Metrictank
         </a>{' '}
-        then select that here. This will enable Metrictank specific features like query processing meta data. Metrictank
-        is a multi-tenant timeseries engine for Graphite and friends.
+        然后在这里选择 这将启用Metrictank特定的功能，例如查询处理元数据。
+        Metrictank是面向Graphite和朋友的多租户时间序列引擎。
       </p>
     );
   };
@@ -53,13 +52,11 @@ export class ConfigEditor extends PureComponent<Props> {
           dataSourceConfig={options}
           onChange={onOptionsChange}
         />
-        <h3 className="page-heading">Graphite details</h3>
+        <h3 className="page-heading">石墨细节</h3>
         <div className="gf-form-group">
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel tooltip="This option controls what functions are available in the Graphite query editor.">
-                Version
-              </InlineFormLabel>
+              <InlineFormLabel tooltip="此选项控制Graphite查询编辑器中可用的功能。">版本</InlineFormLabel>
               <Select
                 value={currentVersion}
                 options={graphiteVersions}
@@ -70,7 +67,7 @@ export class ConfigEditor extends PureComponent<Props> {
           </div>
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel tooltip={this.renderTypeHelp}>Type</InlineFormLabel>
+              <InlineFormLabel tooltip={this.renderTypeHelp}>类型</InlineFormLabel>
               <Select
                 options={graphiteTypes}
                 value={graphiteTypes.find(type => type.value === options.jsonData.graphiteType)}
@@ -83,9 +80,9 @@ export class ConfigEditor extends PureComponent<Props> {
             <div className="gf-form-inline">
               <div className="gf-form">
                 <Switch
-                  label="Rollup indicator"
+                  label="汇总指示器"
                   labelClass={'width-10'}
-                  tooltip="Shows up as an info icon in panel headers when data is aggregated"
+                  tooltip="汇总数据时在面板标题中显示为信息图标"
                   checked={!!options.jsonData.rollupIndicatorEnabled}
                   onChange={onUpdateDatasourceJsonDataOptionChecked(this.props, 'rollupIndicatorEnabled')}
                 />

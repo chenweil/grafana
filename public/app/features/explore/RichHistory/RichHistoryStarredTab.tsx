@@ -126,7 +126,7 @@ export function RichHistoryStarredTab(props: Props) {
                 isMulti={true}
                 options={listOfDatasources}
                 value={datasourceFilters}
-                placeholder="Filter queries for specific data sources(s)"
+                placeholder="过滤查询特定数据源"
                 onChange={onSelectDatasourceFilters}
               />
             </div>
@@ -135,7 +135,7 @@ export function RichHistoryStarredTab(props: Props) {
             <FilterInput
               labelClassName="gf-form--has-input-icon gf-form--grow"
               inputClassName="gf-form-input"
-              placeholder="Search queries"
+              placeholder="搜索查询"
               value={searchInput}
               onChange={(value: string) => {
                 setSearchInput(value);
@@ -147,7 +147,7 @@ export function RichHistoryStarredTab(props: Props) {
             <Select
               options={sortOrderOptions}
               value={sortOrderOptions.filter(order => order.value === sortOrder)}
-              placeholder="Sort queries by"
+              placeholder="查询排序"
               onChange={e => onChangeSortOrder(e.value as SortOrder)}
             />
           </div>
@@ -164,7 +164,7 @@ export function RichHistoryStarredTab(props: Props) {
             />
           );
         })}
-        <div className={styles.footer}>The history is local to your browser and is not shared with others.</div>
+        <div className={styles.footer}>历史记录在您的浏览器中是本地的，不会与其他人共享。</div>
       </div>
     </div>
   );

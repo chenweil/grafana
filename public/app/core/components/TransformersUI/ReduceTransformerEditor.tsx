@@ -20,11 +20,11 @@ export const ReduceTransformerEditor: React.FC<TransformerUIProps<ReduceTransfor
     <div className="gf-form-inline">
       <div className="gf-form gf-form--grow">
         <div className="gf-form-label width-8" aria-label={selectors.components.Transforms.Reduce.calculationsLabel}>
-          Calculations
+          计算方式
         </div>
         <StatsPicker
           className="flex-grow-1"
-          placeholder="Choose Stat"
+          placeholder="选择统计"
           allowMultiple
           stats={options.reducers || []}
           onChange={stats => {

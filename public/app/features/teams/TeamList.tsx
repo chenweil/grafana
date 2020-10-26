@@ -76,11 +76,11 @@ export class TeamList extends PureComponent<Props, any> {
   renderEmptyList() {
     return (
       <EmptyListCTA
-        title="You haven't created any teams yet."
+        title="您尚未创建任何团队。"
         buttonIcon="users-alt"
         buttonLink="org/teams/new"
-        buttonTitle=" New team"
-        proTip="Assign folder and dashboard permissions to teams instead of users to ease administration."
+        buttonTitle=" 新建团队"
+        proTip="将文件夹和仪表板权限分配给团队而不是用户，以简化管理。"
         proTipLink=""
         proTipLinkTitle=""
         proTipTarget="_blank"
@@ -101,7 +101,7 @@ export class TeamList extends PureComponent<Props, any> {
             <FilterInput
               labelClassName="gf-form--has-input-icon gf-form--grow"
               inputClassName="gf-form-input"
-              placeholder="Search teams"
+              placeholder="搜索团队"
               value={searchQuery}
               onChange={this.onSearchQueryChange}
             />
@@ -110,7 +110,7 @@ export class TeamList extends PureComponent<Props, any> {
           <div className="page-action-bar__spacer" />
 
           <LinkButton className={disabledClass} href={newTeamHref}>
-            New Team
+            新建团队
           </LinkButton>
         </div>
 
@@ -119,9 +119,9 @@ export class TeamList extends PureComponent<Props, any> {
             <thead>
               <tr>
                 <th />
-                <th>Name</th>
-                <th>Email</th>
-                <th>Members</th>
+                <th>名字</th>
+                <th>电子邮件</th>
+                <th>成员</th>
                 <th style={{ width: '1%' }} />
               </tr>
             </thead>

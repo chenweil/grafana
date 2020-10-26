@@ -866,7 +866,7 @@ export class CloudWatchDatasource extends DataSourceApi<CloudWatchQuery, CloudWa
 
     return this.getDimensionValues(region, namespace, metricName, 'ServiceName', dimensions).then(() => ({
       status: 'success',
-      message: 'Data source is working',
+      message: '数据源正在工作',
     }));
   }
 
@@ -938,10 +938,7 @@ export class CloudWatchDatasource extends DataSourceApi<CloudWatchQuery, CloudWa
         .getVariables()
         .find(({ name }) => name === this.templateSrv.getVariableName(target));
       if (variable && ((variable as unknown) as VariableWithMultiSupport).multi) {
-        this.debouncedCustomAlert(
-          'CloudWatch templating error',
-          `Multi template variables are not supported for ${fieldName || target}`
-        );
+        this.debouncedCustomAlert('CloudWatch模板错误', `不支持多模板变量 ${fieldName || target}`);
       }
     }
 

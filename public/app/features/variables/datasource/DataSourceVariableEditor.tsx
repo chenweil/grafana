@@ -66,10 +66,10 @@ export class DataSourceVariableEditorUnConnected extends PureComponent<Props> {
     return (
       <>
         <div className="gf-form-group">
-          <h5 className="section-heading">Data source options</h5>
+          <h5 className="section-heading">数据源选项</h5>
 
           <div className="gf-form">
-            <label className="gf-form-label width-12">Type</label>
+            <label className="gf-form-label width-12">类型</label>
             <div className="gf-form-select-wrapper max-width-18">
               <select
                 className="gf-form-input"
@@ -91,15 +91,14 @@ export class DataSourceVariableEditorUnConnected extends PureComponent<Props> {
               width={12}
               tooltip={
                 <div>
-                  Regex filter for which data source instances to choose from in the variable value dropdown. Leave
-                  empty for all.
+                  正则表达式过滤器在变量值下拉列表中从中选择数据源实例。 所有人都留空。
                   <br />
                   <br />
-                  Example: <code>/^prod/</code>
+                  例如: <code>/^prod/</code>
                 </div>
               }
             >
-              Instance name filter
+              实例名称过滤器
             </InlineFormLabel>
             <input
               type="text"

@@ -91,13 +91,13 @@ export class GettingStarted extends PureComponent<PanelProps, State> {
       <div className={styles.container}>
         {!checksDone ? (
           <div className={styles.loading}>
-            <div className={styles.loadingText}>Checking completed setup steps</div>
+            <div className={styles.loadingText}>检查完成的设置步骤</div>
             <Spinner size={24} inline />
           </div>
         ) : (
           <>
             <div className={styles.dismiss}>
-              <div onClick={this.dismiss}>Remove this panel</div>
+              <div onClick={this.dismiss}>移除此面板</div>
             </div>
             {currentStep === steps.length - 1 && (
               <div className={cx(styles.backForwardButtons, styles.previous)} onClick={this.onPreviousClick}>

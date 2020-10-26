@@ -25,7 +25,7 @@ export const DocsCard: FC<Props> = ({ card }) => {
         </a>
       </div>
       <a href={`${card.learnHref}?utm_source=grafana_gettingstarted`} className={styles.url} target="_blank">
-        Learn how in the docs <Icon name="external-link-alt" />
+        在文档中了解更多 <Icon name="external-link-alt" />
       </a>
     </div>
   );

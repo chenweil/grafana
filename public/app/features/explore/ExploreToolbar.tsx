@@ -199,7 +199,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
                       margin-bottom: 3px;
                     `}
                   />
-                  Explore
+                  查询器
                 </span>
               )}
             </div>
@@ -239,7 +239,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
                 {originDashboardIsEditable && (
                   <ButtonSelect
                     className="navbar-button--attached btn--radius-left-0$"
-                    options={[{ label: 'Return to panel with changes', value: '' }]}
+                    options={[{ label: '返回更改面板', value: '' }]}
                     onChange={() => this.returnToPanel({ withChanges: true })}
                     maxMenuHeight={380}
                   />
@@ -251,7 +251,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item explore-icon-align">
                 <ResponsiveButton
                   splitted={splitted}
-                  title="Split"
+                  title="分裂"
                   /* This way ResponsiveButton doesn't add event as a parameter when invoking split function
                    * which breaks splitting functionality
                    */
@@ -282,7 +282,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item explore-icon-align">
                 <ResponsiveButton
                   splitted={splitted}
-                  title="Clear All"
+                  title="清除所有"
                   onClick={this.onClearAll}
                   icon="trash-alt"
                   iconClassName="icon-margin-right"

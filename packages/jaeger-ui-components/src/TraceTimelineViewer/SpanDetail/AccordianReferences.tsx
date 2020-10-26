@@ -98,7 +98,7 @@ export function References(props: ReferenceItemProps) {
                       <small className="endpoint-name">{reference.span.operationName}</small>
                     </span>
                   ) : (
-                    <span className="span-svc-name">&lt; span in another trace &gt;</span>
+                    <span className="span-svc-name">&lt; 跨度另一个跟踪 &gt;</span>
                   )}
                   <small className={styles.debugInfo}>
                     <span className={styles.debugLabel} data-label="Reference Type:">
@@ -144,7 +144,7 @@ export default class AccordianReferences extends React.PureComponent<AccordianRe
         <div {...headerProps}>
           {arrow}
           <strong>
-            <span>References</span>
+            <span>参考文献</span>
           </strong>{' '}
           ({data.length})
         </div>

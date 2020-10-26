@@ -25,8 +25,8 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "telegram",
 		Name:        "Telegram",
-		Description: "Sends notifications to Telegram",
-		Heading:     "Telegram API settings",
+		Description: "发送通知到Telegram",
+		Heading:     "Telegram API设置",
 		Factory:     NewTelegramNotifier,
 		Options: []alerting.NotifierOption{
 			{

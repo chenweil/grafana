@@ -1,3 +1,3 @@
-# Loki Data Source -  Native Plugin
+# Loki 数据源-本机插件
 
-This is a **built in** data source that allows you to connect to the Loki logging service.
+这是一个**内置**数据源，可让您连接到 Loki 日志记录服务。

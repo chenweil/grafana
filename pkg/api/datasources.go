@@ -22,7 +22,7 @@ func GetDataSources(c *models.ReqContext) Response {
 	query := models.GetDataSourcesQuery{OrgId: c.OrgId}
 
 	if err := bus.Dispatch(&query); err != nil {
-		return Error(500, "Failed to query datasources", err)
+		return Error(500, "查询数据源失败", err)
 	}
 
 	result := make(dtos.DataSourceList, 0)
@@ -65,9 +65,9 @@ func GetDataSourceById(c *models.ReqContext) Response {
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrDataSourceNotFound {
-			return Error(404, "Data source not found", nil)
+			return Error(404, "找不到数据源", nil)
 		}
-		return Error(500, "Failed to query datasources", err)
+		return Error(500, "查询数据源失败", err)
 	}
 
 	ds := query.Result
@@ -80,55 +80,55 @@ func DeleteDataSourceById(c *models.ReqContext) Response {
 	id := c.ParamsInt64(":id")
 
 	if id <= 0 {
-		return Error(400, "Missing valid datasource id", nil)
+		return Error(400, "缺少有效的数据源ID", nil)
 	}
 
 	ds, err := getRawDataSourceById(id, c.OrgId)
 	if err != nil {
-		return Error(400, "Failed to delete datasource", nil)
+		return Error(400, "删除数据源失败", nil)
 	}
 
 	if ds.ReadOnly {
-		return Error(403, "Cannot delete read-only data source", nil)
+		return Error(403, "无法删除只读数据源", nil)
 	}
 
 	cmd := &models.DeleteDataSourceByIdCommand{Id: id, OrgId: c.OrgId}
 
 	err = bus.Dispatch(cmd)
 	if err != nil {
-		return Error(500, "Failed to delete datasource", err)
+		return Error(500, "删除数据源失败", err)
 	}
 
-	return Success("Data source deleted")
+	return Success("数据源已删除")
 }
 
 func DeleteDataSourceByName(c *models.ReqContext) Response {
 	name := c.Params(":name")
 
 	if name == "" {
-		return Error(400, "Missing valid datasource name", nil)
+		return Error(400, "缺少有效的数据源名称", nil)
 	}
 
 	getCmd := &models.GetDataSourceByNameQuery{Name: name, OrgId: c.OrgId}
 	if err := bus.Dispatch(getCmd); err != nil {
 		if err == models.ErrDataSourceNotFound {
-			return Error(404, "Data source not found", nil)
+			return Error(404, "找不到数据源", nil)
 		}
-		return Error(500, "Failed to delete datasource", err)
+		return Error(500, "删除数据源失败", err)
 	}
 
 	if getCmd.Result.ReadOnly {
-		return Error(403, "Cannot delete read-only data source", nil)
+		return Error(403, "无法删除只读数据源", nil)
 	}
 
 	cmd := &models.DeleteDataSourceByNameCommand{Name: name, OrgId: c.OrgId}
 	err := bus.Dispatch(cmd)
 	if err != nil {
-		return Error(500, "Failed to delete datasource", err)
+		return Error(500, "删除数据源失败", err)
 	}
 
 	return JSON(200, util.DynMap{
-		"message": "Data source deleted",
+		"message": "数据源已删除",
 		"id":      getCmd.Result.Id,
 	})
 }
@@ -136,9 +136,9 @@ func DeleteDataSourceByName(c *models.ReqContext) Response {
 func validateURL(tp string, u string) Response {
 	if u != "" {
 		if _, err := datasource.ValidateURL(tp, u); err != nil {
-			datasourcesLogger.Error("Received invalid data source URL as part of data source command",
+			datasourcesLogger.Error("接收到无效的数据源URL作为数据源命令的一部分",
 				"url", u)
-			return Error(400, fmt.Sprintf("Validation error, invalid URL: %q", u), err)
+			return Error(400, fmt.Sprintf("Validation error, 无效的网址: %q", u), err)
 		}
 	}
 
@@ -157,12 +157,12 @@ func AddDataSource(c *models.ReqContext, cmd models.AddDataSourceCommand) Respon
 			return Error(409, err.Error(), err)
 		}
 
-		return Error(500, "Failed to add datasource", err)
+		return Error(500, "无法添加数据源", err)
 	}
 
 	ds := convertModelToDtos(cmd.Result)
 	return JSON(200, util.DynMap{
-		"message":    "Datasource added",
+		"message":    "数据源已添加",
 		"id":         cmd.Result.Id,
 		"name":       cmd.Result.Name,
 		"datasource": ds,
@@ -179,15 +179,15 @@ func UpdateDataSource(c *models.ReqContext, cmd models.UpdateDataSourceCommand) 
 
 	err := fillWithSecureJSONData(&cmd)
 	if err != nil {
-		return Error(500, "Failed to update datasource", err)
+		return Error(500, "无法更新数据源", err)
 	}
 
 	err = bus.Dispatch(&cmd)
 	if err != nil {
 		if err == models.ErrDataSourceUpdatingOldVersion {
-			return Error(500, "Failed to update datasource. Reload new version and try again", err)
+			return Error(500, "无法更新数据源。 重新加载新版本，然后重试", err)
 		}
-		return Error(500, "Failed to update datasource", err)
+		return Error(500, "无法更新数据源", err)
 	}
 
 	query := models.GetDataSourceByIdQuery{
@@ -197,15 +197,15 @@ func UpdateDataSource(c *models.ReqContext, cmd models.UpdateDataSourceCommand) 
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrDataSourceNotFound {
-			return Error(404, "Data source not found", nil)
+			return Error(404, "找不到数据源", nil)
 		}
-		return Error(500, "Failed to query datasources", err)
+		return Error(500, "查询数据源失败", err)
 	}
 
 	dtos := convertModelToDtos(query.Result)
 
 	return JSON(200, util.DynMap{
-		"message":    "Datasource updated",
+		"message":    "数据源已更新",
 		"id":         cmd.Id,
 		"name":       cmd.Name,
 		"datasource": dtos,
@@ -255,9 +255,9 @@ func GetDataSourceByName(c *models.ReqContext) Response {
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrDataSourceNotFound {
-			return Error(404, "Data source not found", nil)
+			return Error(404, "找不到数据源", nil)
 		}
-		return Error(500, "Failed to query datasources", err)
+		return Error(500, "查询数据源失败", err)
 	}
 
 	dtos := convertModelToDtos(query.Result)
@@ -270,9 +270,9 @@ func GetDataSourceIdByName(c *models.ReqContext) Response {
 
 	if err := bus.Dispatch(&query); err != nil {
 		if err == models.ErrDataSourceNotFound {
-			return Error(404, "Data source not found", nil)
+			return Error(404, "找不到数据源", nil)
 		}
-		return Error(500, "Failed to query datasources", err)
+		return Error(500, "查询数据源失败", err)
 	}
 
 	ds := query.Result
@@ -289,23 +289,23 @@ func (hs *HTTPServer) CallDatasourceResource(c *models.ReqContext) {
 	ds, err := hs.DatasourceCache.GetDatasource(datasourceID, c.SignedInUser, c.SkipCache)
 	if err != nil {
 		if err == models.ErrDataSourceAccessDenied {
-			c.JsonApiErr(403, "Access denied to datasource", err)
+			c.JsonApiErr(403, "拒绝访问数据源", err)
 			return
 		}
-		c.JsonApiErr(500, "Unable to load datasource meta data", err)
+		c.JsonApiErr(500, "无法加载数据源元数据", err)
 		return
 	}
 
 	// find plugin
 	plugin, ok := plugins.DataSources[ds.Type]
 	if !ok {
-		c.JsonApiErr(500, "Unable to find datasource plugin", err)
+		c.JsonApiErr(500, "找不到数据源插件", err)
 		return
 	}
 
 	dsInstanceSettings, err := wrapper.ModelToInstanceSettings(ds)
 	if err != nil {
-		c.JsonApiErr(500, "Unable to process datasource instance model", err)
+		c.JsonApiErr(500, "无法处理数据源实例模型", err)
 	}
 
 	pCtx := backend.PluginContext{
@@ -356,19 +356,19 @@ func (hs *HTTPServer) CheckDatasourceHealth(c *models.ReqContext) Response {
 	ds, err := hs.DatasourceCache.GetDatasource(datasourceID, c.SignedInUser, c.SkipCache)
 	if err != nil {
 		if err == models.ErrDataSourceAccessDenied {
-			return Error(403, "Access denied to datasource", err)
+			return Error(403, "拒绝访问数据源", err)
 		}
-		return Error(500, "Unable to load datasource metadata", err)
+		return Error(500, "无法加载数据源元数据", err)
 	}
 
 	plugin, ok := hs.PluginManager.GetDatasource(ds.Type)
 	if !ok {
-		return Error(500, "Unable to find datasource plugin", err)
+		return Error(500, "找不到数据源插件", err)
 	}
 
 	dsInstanceSettings, err := wrapper.ModelToInstanceSettings(ds)
 	if err != nil {
-		return Error(500, "Unable to get datasource model", err)
+		return Error(500, "无法获取数据源模型", err)
 	}
 	pCtx := backend.PluginContext{
 		User:                       wrapper.BackendUserFromSignedInUser(c.SignedInUser),
@@ -392,7 +392,7 @@ func (hs *HTTPServer) CheckDatasourceHealth(c *models.ReqContext) Response {
 		var jsonDetails map[string]interface{}
 		err = json.Unmarshal(resp.JSONDetails, &jsonDetails)
 		if err != nil {
-			return Error(500, "Failed to unmarshal detailed response from backend plugin", err)
+			return Error(500, "无法解组来自后端插件的详细响应", err)
 		}
 
 		payload["details"] = jsonDetails

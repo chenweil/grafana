@@ -94,7 +94,7 @@ export class PanelHeader extends Component<Props, State> {
   private renderLoadingState(): JSX.Element {
     return (
       <div className="panel-loading" onClick={this.onCancelQuery}>
-        <Tooltip content="Cancel query">
+        <Tooltip content="取消查询">
           <Icon className="panel-loading__spinner spin-clockwise" name="sync" />
         </Tooltip>
       </div>

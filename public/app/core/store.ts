@@ -23,7 +23,7 @@ export class Store {
       try {
         ret = JSON.parse(json);
       } catch (error) {
-        console.error(`Error parsing store object: ${key}. Returning default: ${def}. [${error}]`);
+        console.error(`解析存储对象时出错： ${key}. 返回默认值： ${def}. [${error}]`);
       }
     }
     return ret;
@@ -35,13 +35,13 @@ export class Store {
     try {
       json = JSON.stringify(value);
     } catch (error) {
-      throw new Error(`Could not stringify object: ${key}. [${error}]`);
+      throw new Error(`无法字符串化对象： ${key}. [${error}]`);
     }
     try {
       this.set(key, json);
     } catch (error) {
       // Likely hitting storage quota
-      throw new Error(`Could not save item in localStorage: ${key}. [${error}]`);
+      throw new Error(`无法将项目保存在localStorage中： ${key}. [${error}]`);
     }
     return true;
   }

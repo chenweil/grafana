@@ -33,7 +33,7 @@ import { ContextSrv } from '../../core/services/context_srv';
 
 export function getLoadingNav(): NavModel {
   const node = {
-    text: 'Loading...',
+    text: '加载中...',
     icon: 'icon-gf icon-gf-panel',
   };
   return {
@@ -145,7 +145,7 @@ class PluginPage extends PureComponent<Props, State> {
     const { plugin, nav } = this.state;
 
     if (!plugin) {
-      return <Alert severity={AppNotificationSeverity.Error} title="Plugin Not Found" />;
+      return <Alert severity={AppNotificationSeverity.Error} title="找不到插件" />;
     }
 
     const active = nav.main.children!.find(tab => tab.active);
@@ -188,13 +188,13 @@ class PluginPage extends PureComponent<Props, State> {
 
     return (
       <section className="page-sidebar-section">
-        <h4>Version</h4>
+        <h4>版本</h4>
         <span>{meta.info.version}</span>
         {meta.hasUpdate && (
           <div>
             <Tooltip content={meta.latestVersion!} theme="info" placement="top">
               <a href="#" onClick={this.showUpdateInfo}>
-                Update Available!
+                更新可用！
               </a>
             </Tooltip>
           </div>
@@ -250,7 +250,7 @@ class PluginPage extends PureComponent<Props, State> {
 
     return (
       <section className="page-sidebar-section">
-        <h4>Dependencies</h4>
+        <h4>依存关系</h4>
         <ul className="ui-list plugin-info-list">
           <li className="plugin-info-list-item">
             <img src="public/img/grafana_icon.svg" />
@@ -277,7 +277,7 @@ class PluginPage extends PureComponent<Props, State> {
 
     return (
       <section className="page-sidebar-section">
-        <h4>Links</h4>
+        <h4>链接</h4>
         <ul className="ui-list">
           {info.links.map(link => {
             return (
@@ -307,11 +307,11 @@ class PluginPage extends PureComponent<Props, State> {
                 {plugin.loadError && (
                   <Alert
                     severity={AppNotificationSeverity.Error}
-                    title="Error Loading Plugin"
+                    title="加载插件时出错"
                     children={
                       <>
-                        Check the server startup logs for more information. <br />
-                        If this plugin was loaded from git, make sure it was compiled.
+                        检查服务器启动日志以获取更多信息。 <br />
+                        如果此插件是从git加载的，请确保已编译。
                       </>
                     }
                   />
@@ -347,7 +347,7 @@ function getPluginTabsNav(
 
   if (true) {
     pages.push({
-      text: 'Readme',
+      text: '自述文件',
       icon: 'fa fa-fw fa-file-text-o',
       url: `${appSubUrl}${path}?page=${PAGE_ID_README}`,
       id: PAGE_ID_README,
@@ -362,7 +362,7 @@ function getPluginTabsNav(
       // Legacy App Config
       if (plugin.angularConfigCtrl) {
         pages.push({
-          text: 'Config',
+          text: '配置',
           icon: 'gicon gicon-cog',
           url: `${appSubUrl}${path}?page=${PAGE_ID_CONFIG_CTRL}`,
           id: PAGE_ID_CONFIG_CTRL,
@@ -388,7 +388,7 @@ function getPluginTabsNav(
       // Check for the dashboard pages
       if (find(meta.includes, { type: PluginIncludeType.dashboard })) {
         pages.push({
-          text: 'Dashboards',
+          text: '仪表板',
           icon: 'gicon gicon-dashboard',
           url: `${appSubUrl}${path}?page=${PAGE_ID_DASHBOARDS}`,
           id: PAGE_ID_DASHBOARDS,
@@ -405,7 +405,7 @@ function getPluginTabsNav(
     text: meta.name,
     img: meta.info.logos.large,
     subTitle: meta.info.author.name,
-    breadcrumbs: [{ title: 'Plugins', url: 'plugins' }],
+    breadcrumbs: [{ title: '插件', url: 'plugins' }],
     url: `${appSubUrl}${path}`,
     children: setActivePage(query.page as string, pages, defaultPage!),
   };

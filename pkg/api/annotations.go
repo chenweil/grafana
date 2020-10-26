@@ -29,7 +29,7 @@ func GetAnnotations(c *models.ReqContext) Response {
 
 	items, err := repo.Find(query)
 	if err != nil {
-		return Error(500, "Failed to get annotations", err)
+		return Error(500, "无法获取注释", err)
 	}
 
 	for _, item := range items {
@@ -57,8 +57,8 @@ func PostAnnotation(c *models.ReqContext, cmd dtos.PostAnnotationsCmd) Response 
 	repo := annotations.GetRepository()
 
 	if cmd.Text == "" {
-		err := &CreateAnnotationError{"text field should not be empty"}
-		return Error(500, "Failed to save annotation", err)
+		err := &CreateAnnotationError{"文本字段不能为空"}
+		return Error(500, "无法保存注释", err)
 	}
 
 	item := annotations.Item{
@@ -74,13 +74,13 @@ func PostAnnotation(c *models.ReqContext, cmd dtos.PostAnnotationsCmd) Response 
 	}
 
 	if err := repo.Save(&item); err != nil {
-		return Error(500, "Failed to save annotation", err)
+		return Error(500, "无法保存注释", err)
 	}
 
 	startID := item.Id
 
 	return JSON(200, util.DynMap{
-		"message": "Annotation added",
+		"message": "添加了注释",
 		"id":      startID,
 	})
 }
@@ -97,8 +97,8 @@ func PostGraphiteAnnotation(c *models.ReqContext, cmd dtos.PostGraphiteAnnotatio
 	repo := annotations.GetRepository()
 
 	if cmd.What == "" {
-		err := &CreateAnnotationError{"what field should not be empty"}
-		return Error(500, "Failed to save Graphite annotation", err)
+		err := &CreateAnnotationError{"哪个字段不能为空"}
+		return Error(500, "无法保存石墨标注", err)
 	}
 
 	text := formatGraphiteAnnotation(cmd.What, cmd.Data)
@@ -117,13 +117,13 @@ func PostGraphiteAnnotation(c *models.ReqContext, cmd dtos.PostGraphiteAnnotatio
 			if tagStr, ok := t.(string); ok {
 				tagsArray = append(tagsArray, tagStr)
 			} else {
-				err := &CreateAnnotationError{"tag should be a string"}
-				return Error(500, "Failed to save Graphite annotation", err)
+				err := &CreateAnnotationError{"标签应该是一个字符串"}
+				return Error(500, "无法保存石墨标注", err)
 			}
 		}
 	default:
-		err := &CreateAnnotationError{"unsupported tags format"}
-		return Error(500, "Failed to save Graphite annotation", err)
+		err := &CreateAnnotationError{"不支持的标签格式"}
+		return Error(500, "无法保存石墨标注", err)
 	}
 
 	item := annotations.Item{
@@ -135,11 +135,11 @@ func PostGraphiteAnnotation(c *models.ReqContext, cmd dtos.PostGraphiteAnnotatio
 	}
 
 	if err := repo.Save(&item); err != nil {
-		return Error(500, "Failed to save Graphite annotation", err)
+		return Error(500, "无法保存石墨标注", err)
 	}
 
 	return JSON(200, util.DynMap{
-		"message": "Graphite annotation added",
+		"message": "添加了石墨注释",
 		"id":      item.Id,
 	})
 }
@@ -164,10 +164,10 @@ func UpdateAnnotation(c *models.ReqContext, cmd dtos.UpdateAnnotationsCmd) Respo
 	}
 
 	if err := repo.Update(&item); err != nil {
-		return Error(500, "Failed to update annotation", err)
+		return Error(500, "无法更新注释", err)
 	}
 
-	return Success("Annotation updated")
+	return Success("注释已更新")
 }
 
 func PatchAnnotation(c *models.ReqContext, cmd dtos.PatchAnnotationsCmd) Response {
@@ -182,7 +182,7 @@ func PatchAnnotation(c *models.ReqContext, cmd dtos.PatchAnnotationsCmd) Respons
 	items, err := repo.Find(&annotations.ItemQuery{AnnotationId: annotationID, OrgId: c.OrgId})
 
 	if err != nil || len(items) == 0 {
-		return Error(404, "Could not find annotation to update", err)
+		return Error(404, "找不到要更新的注释", err)
 	}
 
 	existing := annotations.Item{
@@ -212,10 +212,10 @@ func PatchAnnotation(c *models.ReqContext, cmd dtos.PatchAnnotationsCmd) Respons
 	}
 
 	if err := repo.Update(&existing); err != nil {
-		return Error(500, "Failed to update annotation", err)
+		return Error(500, "无法更新注释", err)
 	}
 
-	return Success("Annotation patched")
+	return Success("注释已更新")
 }
 
 func DeleteAnnotations(c *models.ReqContext, cmd dtos.DeleteAnnotationsCmd) Response {
@@ -229,10 +229,10 @@ func DeleteAnnotations(c *models.ReqContext, cmd dtos.DeleteAnnotationsCmd) Resp
 	})
 
 	if err != nil {
-		return Error(500, "Failed to delete annotations", err)
+		return Error(500, "删除注释失败", err)
 	}
 
-	return Success("Annotations deleted")
+	return Success("注释已删除")
 }
 
 func DeleteAnnotationByID(c *models.ReqContext) Response {
@@ -249,10 +249,10 @@ func DeleteAnnotationByID(c *models.ReqContext) Response {
 	})
 
 	if err != nil {
-		return Error(500, "Failed to delete annotation", err)
+		return Error(500, "删除注释失败", err)
 	}
 
-	return Success("Annotation deleted")
+	return Success("注释已删除")
 }
 
 func canSaveByDashboardID(c *models.ReqContext, dashboardID int64) (bool, error) {
@@ -274,7 +274,7 @@ func canSave(c *models.ReqContext, repo annotations.Repository, annotationID int
 	items, err := repo.Find(&annotations.ItemQuery{AnnotationId: annotationID, OrgId: c.OrgId})
 
 	if err != nil || len(items) == 0 {
-		return Error(500, "Could not find annotation to update", err)
+		return Error(500, "找不到要更新的注释", err)
 	}
 
 	dashboardID := items[0].DashboardId

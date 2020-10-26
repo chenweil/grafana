@@ -20,24 +20,24 @@ const gelTypes: Array<SelectableValue<GELQueryType>> = [
 ];
 
 const reducerTypes: Array<SelectableValue<string>> = [
-  { value: ReducerID.min, label: 'Min', description: 'Get the minimum value' },
-  { value: ReducerID.max, label: 'Max', description: 'Get the maximum value' },
-  { value: ReducerID.mean, label: 'Mean', description: 'Get the average value' },
-  { value: ReducerID.sum, label: 'Sum', description: 'Get the sum of all values' },
-  { value: ReducerID.count, label: 'Count', description: 'Get the number of values' },
+  { value: ReducerID.min, label: 'Min', description: '获取最小值' },
+  { value: ReducerID.max, label: 'Max', description: '获得最大值' },
+  { value: ReducerID.mean, label: 'Mean', description: '获取平均值' },
+  { value: ReducerID.sum, label: 'Sum', description: '获取所有值的总和' },
+  { value: ReducerID.count, label: 'Count', description: '获取Count值数' },
 ];
 
 const downsamplingTypes: Array<SelectableValue<string>> = [
-  { value: ReducerID.min, label: 'Min', description: 'Fill with the minimum value' },
-  { value: ReducerID.max, label: 'Max', description: 'Fill with the maximum value' },
-  { value: ReducerID.mean, label: 'Mean', description: 'Fill with the average value' },
-  { value: ReducerID.sum, label: 'Sum', description: 'Fill with the sum of all values' },
+  { value: ReducerID.min, label: 'Min', description: '填写最小值' },
+  { value: ReducerID.max, label: 'Max', description: '填写最大值' },
+  { value: ReducerID.mean, label: 'Mean', description: '填写平均值' },
+  { value: ReducerID.sum, label: 'Sum', description: '填写所有值的总和' },
 ];
 
 const upsamplingTypes: Array<SelectableValue<string>> = [
-  { value: 'pad', label: 'pad', description: 'fill with the last known value' },
-  { value: 'backfilling', label: 'backfilling', description: 'fill with the next known value' },
-  { value: 'fillna', label: 'fillna', description: 'Fill with NaNs' },
+  { value: 'pad', label: 'pad', description: '用最后一个已知值填充' },
+  { value: 'backfilling', label: 'backfilling', description: '用下一个已知值填充' },
+  { value: 'fillna', label: 'fillna', description: '用NaN填充' },
 ];
 
 export class ExpressionQueryEditor extends PureComponent<Props, State> {

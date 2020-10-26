@@ -89,7 +89,7 @@ export const SearchResults: FC<Props> = ({
   if (loading) {
     return <Spinner className={styles.spinner} />;
   } else if (!results || !results.length) {
-    return <div className={styles.noResults}>No dashboards matching your query were found.</div>;
+    return <div className={styles.noResults}>找不到与您的查询匹配的仪表板。</div>;
   }
 
   return (

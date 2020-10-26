@@ -78,7 +78,7 @@ export class TeamMembers extends PureComponent<Props, State> {
             <FilterInput
               labelClassName="gf-form--has-input-icon gf-form--grow"
               inputClassName="gf-form-input"
-              placeholder="Search members"
+              placeholder="搜索成员"
               value={searchMemberQuery}
               onChange={this.onSearchQueryChange}
             />
@@ -91,7 +91,7 @@ export class TeamMembers extends PureComponent<Props, State> {
             onClick={this.onToggleAdding}
             disabled={isAdding || !isTeamAdmin}
           >
-            Add member
+            添加成员
           </button>
         </div>
 
@@ -100,12 +100,12 @@ export class TeamMembers extends PureComponent<Props, State> {
             <button className="cta-form__close btn btn-transparent" onClick={this.onToggleAdding}>
               <Icon name="times" />
             </button>
-            <h5>Add team member</h5>
+            <h5>添加团队成员</h5>
             <div className="gf-form-inline">
               <UserPicker onSelected={this.onUserSelected} className="min-width-30" />
               {this.state.newTeamMember && (
                 <button className="btn btn-primary gf-form-btn" type="submit" onClick={this.onAddUserToTeam}>
-                  Add to team
+                  加入团队
                 </button>
               )}
             </div>
@@ -117,11 +117,11 @@ export class TeamMembers extends PureComponent<Props, State> {
             <thead>
               <tr>
                 <th />
-                <th>Login</th>
-                <th>Email</th>
-                <th>Name</th>
+                <th>登陆</th>
+                <th>电子邮件</th>
+                <th>名字</th>
                 <WithFeatureToggle featureToggle={editorsCanAdmin}>
-                  <th>Permission</th>
+                  <th>权限</th>
                 </WithFeatureToggle>
                 {syncEnabled && <th />}
                 <th style={{ width: '1%' }} />

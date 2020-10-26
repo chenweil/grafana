@@ -21,7 +21,7 @@ export const GraphPanel: React.FunctionComponent<GraphPanelProps> = ({
   if (!data) {
     return (
       <div className="panel-empty">
-        <p>No data found in response</p>
+        <p>没有响应发现数据</p>
       </div>
     );
   }
