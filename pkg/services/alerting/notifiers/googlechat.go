@@ -16,15 +16,15 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "googlechat",
 		Name:        "Google Hangouts Chat",
-		Description: "Sends notifications to Google Hangouts Chat via webhooks based on the official JSON message format",
+		Description: "根据官方JSON消息格式通过Webhooks向Google Hangouts Chat发送通知",
 		Factory:     newGoogleChatNotifier,
-		Heading:     "Google Hangouts Chat settings",
+		Heading:     "Google Hangouts Chat设置",
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "Google Hangouts Chat incoming webhook url",
+				Placeholder:  "Google环聊聊天传入的Webhook网址",
 				PropertyName: "url",
 				Required:     true,
 			},
@@ -35,7 +35,7 @@ func init() {
 func newGoogleChatNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	return &GoogleChatNotifier{
@@ -119,7 +119,7 @@ type openLink struct {
 
 // Notify send an alert notification to Google Chat.
 func (gcn *GoogleChatNotifier) Notify(evalContext *alerting.EvalContext) error {
-	gcn.log.Info("Executing Google Chat notification")
+	gcn.log.Info("执行Google聊天通知")
 
 	headers := map[string]string{
 		"Content-Type": "application/json; charset=UTF-8",
@@ -127,7 +127,7 @@ func (gcn *GoogleChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		gcn.log.Error("evalContext returned an invalid rule URL")
+		gcn.log.Error("evalContext返回了无效的规则URL")
 	}
 
 	widgets := []widget{}
@@ -167,7 +167,7 @@ func (gcn *GoogleChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 				},
 			})
 		} else {
-			gcn.log.Info("Could not retrieve a public image URL.")
+			gcn.log.Info("无法检索公共图像地址。")
 		}
 	}
 
@@ -176,7 +176,7 @@ func (gcn *GoogleChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 		Buttons: []button{
 			{
 				TextButton: textButton{
-					Text: "OPEN IN GRAFANA",
+					Text: "在GRAFANA打开",
 					OnClick: onClick{
 						OpenLink: openLink{
 							URL: ruleURL,
@@ -221,7 +221,7 @@ func (gcn *GoogleChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		gcn.log.Error("Failed to send Google Hangouts Chat alert", "error", err, "webhook", gcn.Name)
+		gcn.log.Error("无法发送Google环聊聊天提醒", "error", err, "webhook", gcn.Name)
 		return err
 	}
 

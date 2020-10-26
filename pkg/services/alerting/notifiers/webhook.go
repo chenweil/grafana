@@ -89,7 +89,7 @@ type WebhookNotifier struct {
 // Notify send alert notifications as
 // webhook as http requests.
 func (wn *WebhookNotifier) Notify(evalContext *alerting.EvalContext) error {
-	wn.log.Info("Sending webhook")
+	wn.log.Info("发送到webhook")
 
 	bodyJSON := simplejson.New()
 	bodyJSON.Set("title", evalContext.GetNotificationTitle())

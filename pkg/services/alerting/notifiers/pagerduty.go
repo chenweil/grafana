@@ -31,7 +31,7 @@ func init() {
 				Secure:       true,
 			},
 			{
-				Label:   "Severity",
+				Label:   "严重程度",
 				Element: alerting.ElementTypeSelect,
 				SelectOptions: []alerting.SelectOption{
 					{
@@ -54,15 +54,15 @@ func init() {
 				PropertyName: "severity",
 			},
 			{
-				Label:        "Auto resolve incidents",
+				Label:        "自动解决事件",
 				Element:      alerting.ElementTypeCheckbox,
-				Description:  "Resolve incidents in pagerduty once the alert goes back to ok.",
+				Description:  "警报恢复正常后，解决传呼事件。",
 				PropertyName: "autoResolve",
 			},
 			{
-				Label:        "Include message in details",
+				Label:        "包含详细信息",
 				Element:      alerting.ElementTypeCheckbox,
-				Description:  "Move the alert message from the PD summary into the custom details. This changes the custom details object and may break event rules you have configured",
+				Description:  "将警报消息从PD摘要移到自定义详细信息中。这会更改自定义详细信息对象，并可能破坏您已配置的事件规则",
 				PropertyName: "messageInDetails",
 			},
 		},
@@ -80,7 +80,7 @@ func NewPagerdutyNotifier(model *models.AlertNotification) (alerting.Notifier, e
 	key := model.DecryptedValue("integrationKey", model.Settings.Get("integrationKey").MustString())
 	messageInDetails := model.Settings.Get("messageInDetails").MustBool(false)
 	if key == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find integration key property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到集成密钥属性"}
 	}
 
 	return &PagerdutyNotifier{
@@ -124,7 +124,7 @@ func (pn *PagerdutyNotifier) buildEventPayload(evalContext *alerting.EvalContext
 		}
 	}
 
-	pn.log.Info("Notifying Pagerduty", "event_type", eventType)
+	pn.log.Info("通知Pagerduty", "event_type", eventType)
 
 	payloadJSON := simplejson.New()
 
@@ -160,7 +160,7 @@ func (pn *PagerdutyNotifier) buildEventPayload(evalContext *alerting.EvalContext
 			case "critical":
 				payloadJSON.Set("severity", sev)
 			default:
-				pn.log.Warn("Ignoring invalid severity tag", "severity", sev)
+				pn.log.Warn("忽略无效的严重性标签", "severity", sev)
 			}
 		}
 		customData.Set(tag.Key, tag.Value)
@@ -190,7 +190,7 @@ func (pn *PagerdutyNotifier) buildEventPayload(evalContext *alerting.EvalContext
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		pn.log.Error("Failed get rule link", "error", err)
+		pn.log.Error("获取规则链接失败", "error", err)
 		return []byte{}, err
 	}
 	links := make([]interface{}, 1)
@@ -218,13 +218,13 @@ func (pn *PagerdutyNotifier) buildEventPayload(evalContext *alerting.EvalContext
 // Notify sends an alert notification to PagerDuty
 func (pn *PagerdutyNotifier) Notify(evalContext *alerting.EvalContext) error {
 	if evalContext.Rule.State == models.AlertStateOK && !pn.AutoResolve {
-		pn.log.Info("Not sending a trigger to Pagerduty", "state", evalContext.Rule.State, "auto resolve", pn.AutoResolve)
+		pn.log.Info("不向Pagerduty发送触发器", "state", evalContext.Rule.State, "auto resolve", pn.AutoResolve)
 		return nil
 	}
 
 	body, err := pn.buildEventPayload(evalContext)
 	if err != nil {
-		pn.log.Error("Unable to build PagerDuty event payload", "error", err)
+		pn.log.Error("无法建立PagerDuty事件有效负载", "error", err)
 		return err
 	}
 
@@ -238,7 +238,7 @@ func (pn *PagerdutyNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		pn.log.Error("Failed to send notification to Pagerduty", "error", err, "body", string(body))
+		pn.log.Error("无法将通知发送到Pagerduty", "error", err, "body", string(body))
 		return err
 	}
 	return nil

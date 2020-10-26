@@ -16,13 +16,13 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "email",
 		Name:        "Email",
-		Description: "Sends notifications using Grafana server configured SMTP settings",
+		Description: "使用Grafana服务器配置的SMTP设置发送通知",
 		Factory:     NewEmailNotifier,
-		Heading:     "Email settings",
+		Heading:     "Email设置",
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Single email",
-				Description:  "Send a single email to all recipients",
+				Label:        "单封邮件",
+				Description:  "向所有收件人发送一封电子邮件",
 				Element:      alerting.ElementTypeCheckbox,
 				PropertyName: "singleEmail",
 			},
@@ -69,11 +69,11 @@ func NewEmailNotifier(model *models.AlertNotification) (alerting.Notifier, error
 
 // Notify sends the alert notification.
 func (en *EmailNotifier) Notify(evalContext *alerting.EvalContext) error {
-	en.log.Info("Sending alert notification to", "addresses", en.Addresses, "singleEmail", en.SingleEmail)
+	en.log.Info("发送警报通知到", "addresses", en.Addresses, "singleEmail", en.SingleEmail)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		en.log.Error("Failed get rule link", "error", err)
+		en.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -120,7 +120,7 @@ func (en *EmailNotifier) Notify(evalContext *alerting.EvalContext) error {
 	err = bus.DispatchCtx(evalContext.Ctx, cmd)
 
 	if err != nil {
-		en.log.Error("Failed to send alert notification email", "error", err)
+		en.log.Error("无法发送警报通知电子邮件", "error", err)
 		return err
 	}
 

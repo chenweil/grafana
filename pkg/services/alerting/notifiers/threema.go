@@ -19,37 +19,36 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "threema",
 		Name:        "Threema Gateway",
-		Description: "Sends notifications to Threema using the Threema Gateway",
-		Heading:     "Threema Gateway settings",
-		Info: "Notifications can be configured for any Threema Gateway ID of type \"Basic\". End-to-End IDs are not currently supported." +
-			"The Threema Gateway ID can be set up at https://gateway.threema.ch/.",
+		Description: "使用Threema Gateway将通知发送到Threema",
+		Heading:     "Threema Gateway设置",
+		Info: "可以为任何类型为“基本”的Threema GatewayID配置通知。当前不支持端到端ID。“ +”可以在https://gateway.threema.ch/上设置Threema Gateway ID。",
 		Factory: NewThreemaNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:          "Gateway ID",
+				Label:          "网关ID",
 				Element:        alerting.ElementTypeInput,
 				InputType:      alerting.InputTypeText,
 				Placeholder:    "*3MAGWID",
-				Description:    "Your 8 character Threema Gateway ID (starting with a *).",
+				Description:    "您的8个字符的Threema Gateway ID（以*开头）。",
 				PropertyName:   "gateway_id",
 				Required:       true,
 				ValidationRule: "\\*[0-9A-Z]{7}",
 			},
 			{
-				Label:          "Recipient ID",
+				Label:          "收件人ID",
 				Element:        alerting.ElementTypeInput,
 				InputType:      alerting.InputTypeText,
 				Placeholder:    "YOUR3MID",
-				Description:    "The 8 character Threema ID that should receive the alerts.",
+				Description:    "应接收警报的8个字符的Threema ID。",
 				PropertyName:   "recipient_id",
 				Required:       true,
 				ValidationRule: "[0-9A-Z]{8}",
 			},
 			{
-				Label:        "API Secret",
+				Label:        "API秘密",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Your Threema Gateway API secret.",
+				Description:  "您的Threema Gateway API秘密。",
 				PropertyName: "api_secret",
 				Required:     true,
 				Secure:       true,
@@ -71,7 +70,7 @@ type ThreemaNotifier struct {
 // NewThreemaNotifier is the constructor for the Threema notifier
 func NewThreemaNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	if model.Settings == nil {
-		return nil, alerting.ValidationError{Reason: "No Settings Supplied"}
+		return nil, alerting.ValidationError{Reason: "未提供设置"}
 	}
 
 	gatewayID := model.Settings.Get("gateway_id").MustString()
@@ -80,22 +79,22 @@ func NewThreemaNotifier(model *models.AlertNotification) (alerting.Notifier, err
 
 	// Validation
 	if gatewayID == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find Threema Gateway ID in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到Threema Gateway ID"}
 	}
 	if !strings.HasPrefix(gatewayID, "*") {
-		return nil, alerting.ValidationError{Reason: "Invalid Threema Gateway ID: Must start with a *"}
+		return nil, alerting.ValidationError{Reason: "无效的Threema Gateway ID：必须以*开头"}
 	}
 	if len(gatewayID) != 8 {
-		return nil, alerting.ValidationError{Reason: "Invalid Threema Gateway ID: Must be 8 characters long"}
+		return nil, alerting.ValidationError{Reason: "无效的Threema GatewayID：必须为8个字符长"}
 	}
 	if recipientID == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find Threema Recipient ID in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到Threema收件人ID"}
 	}
 	if len(recipientID) != 8 {
-		return nil, alerting.ValidationError{Reason: "Invalid Threema Recipient ID: Must be 8 characters long"}
+		return nil, alerting.ValidationError{Reason: "无效的Threema收件人ID：必须为8个字符长"}
 	}
 	if apiSecret == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find Threema API secret in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到Threema API机密"}
 	}
 
 	return &ThreemaNotifier{
@@ -109,8 +108,8 @@ func NewThreemaNotifier(model *models.AlertNotification) (alerting.Notifier, err
 
 // Notify send an alert notification to Threema
 func (notifier *ThreemaNotifier) Notify(evalContext *alerting.EvalContext) error {
-	notifier.log.Info("Sending alert notification from", "threema_id", notifier.GatewayID)
-	notifier.log.Info("Sending alert notification to", "threema_id", notifier.RecipientID)
+	notifier.log.Info("从发送警报通知", "threema_id", notifier.GatewayID)
+	notifier.log.Info("发送警报通知到", "threema_id", notifier.RecipientID)
 
 	// Set up basic API request data
 	data := url.Values{}
@@ -155,7 +154,7 @@ func (notifier *ThreemaNotifier) Notify(evalContext *alerting.EvalContext) error
 		HttpHeader: headers,
 	}
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		notifier.log.Error("Failed to send webhook", "error", err, "webhook", notifier.Name)
+		notifier.log.Error("无法发送Webhook", "error", err, "webhook", notifier.Name)
 		return err
 	}
 

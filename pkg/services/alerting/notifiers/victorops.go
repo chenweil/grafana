@@ -22,21 +22,21 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "victorops",
 		Name:        "VictorOps",
-		Description: "Sends notifications to VictorOps",
-		Heading:     "VictorOps settings",
+		Description: "发送通知到VictorOps",
+		Heading:     "VictorOps设置",
 		Factory:     NewVictoropsNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "VictorOps url",
+				Placeholder:  "VictorOps地址",
 				PropertyName: "url",
 				Required:     true,
 			},
 			{
-				Label:        "Auto resolve incidents",
-				Description:  "Resolve incidents in VictorOps once the alert goes back to ok.",
+				Label:        "自动解决事件",
+				Description:  "警报恢复正常后，解决VictorOps中的事件。",
 				Element:      alerting.ElementTypeCheckbox,
 				PropertyName: "autoResolve",
 			},
@@ -50,7 +50,7 @@ func NewVictoropsNotifier(model *models.AlertNotification) (alerting.Notifier, e
 	autoResolve := model.Settings.Get("autoResolve").MustBool(true)
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find victorops url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到victorops url属性"}
 	}
 	noDataAlertType := model.Settings.Get("noDataAlertType").MustString(AlertStateWarning)
 
@@ -76,16 +76,16 @@ type VictoropsNotifier struct {
 
 // Notify sends notification to Victorops via POST to URL endpoint
 func (vn *VictoropsNotifier) Notify(evalContext *alerting.EvalContext) error {
-	vn.log.Info("Executing victorops notification", "ruleId", evalContext.Rule.ID, "notification", vn.Name)
+	vn.log.Info("执行victorops通知", "ruleId", evalContext.Rule.ID, "notification", vn.Name)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		vn.log.Error("Failed get rule link", "error", err)
+		vn.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
 	if evalContext.Rule.State == models.AlertStateOK && !vn.AutoResolve {
-		vn.log.Info("Not alerting VictorOps", "state", evalContext.Rule.State, "auto resolve", vn.AutoResolve)
+		vn.log.Info("不提醒VictorOps", "state", evalContext.Rule.State, "auto resolve", vn.AutoResolve)
 		return nil
 	}
 
@@ -131,7 +131,7 @@ func (vn *VictoropsNotifier) Notify(evalContext *alerting.EvalContext) error {
 	cmd := &models.SendWebhookSync{Url: vn.URL, Body: string(data)}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		vn.log.Error("Failed to send Victorops notification", "error", err, "webhook", vn.Name)
+		vn.log.Error("无法发送Victorops通知", "error", err, "webhook", vn.Name)
 		return err
 	}
 

@@ -48,8 +48,8 @@ const timeRangeVars = [
 const seriesVars = [
   {
     value: `${DataLinkBuiltInVars.seriesName}`,
-    label: 'Name',
-    documentation: 'Name of the series',
+    label: '名称',
+    documentation: '序列名称',
     origin: VariableOrigin.Series,
   },
 ];
@@ -57,20 +57,20 @@ const seriesVars = [
 const valueVars = [
   {
     value: `${DataLinkBuiltInVars.valueNumeric}`,
-    label: 'Numeric',
-    documentation: 'Numeric representation of selected value',
+    label: '数字',
+    documentation: '所选值的数字表示',
     origin: VariableOrigin.Value,
   },
   {
     value: `${DataLinkBuiltInVars.valueText}`,
-    label: 'Text',
-    documentation: 'Text representation of selected value',
+    label: '文本',
+    documentation: '所选值的文字表示',
     origin: VariableOrigin.Value,
   },
   {
     value: `${DataLinkBuiltInVars.valueRaw}`,
-    label: 'Raw',
-    documentation: 'Raw value',
+    label: '原生',
+    documentation: '原生值',
     origin: VariableOrigin.Value,
   },
 ];

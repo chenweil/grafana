@@ -191,7 +191,7 @@ func (hs *HTTPServer) getNavTree(c *models.ReqContext, hasEditPerm bool) ([]*dto
 		alertChildNavs := []*dtos.NavLink{
 			{Text: "警报规则", Id: "alert-list", Url: setting.AppSubUrl + "/alerting/list", Icon: "list-ul"},
 			{
-				Text: "通知通道", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications",
+				Text: "通知频道", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications",
 				Icon: "comment-alt-share",
 			},
 		}

@@ -24,10 +24,10 @@ export const BasicSettings: FC<Props> = ({
 }) => {
   return (
     <>
-      <Field label="Name" invalid={!!errors.name} error={errors.name && errors.name.message}>
-        <Input name="name" ref={register({ required: 'Name is required' })} />
+      <Field label="名字" invalid={!!errors.name} error={errors.name && errors.name.message}>
+        <Input name="name" ref={register({ required: '名字必填项' })} />
       </Field>
-      <Field label="Type">
+      <Field label="类型">
         <InputControl name="type" as={Select} options={channels} control={control} rules={{ required: true }} />
       </Field>
       <NotificationChannelOptions

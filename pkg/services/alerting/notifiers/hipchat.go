@@ -17,28 +17,28 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "hipchat",
 		Name:        "HipChat",
-		Description: "Sends notifications uto a HipChat Room",
-		Heading:     "HipChat settings",
+		Description: "向HipChat室发送通知",
+		Heading:     "HipChat设置",
 		Factory:     NewHipChatNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Hip Chat Url",
+				Label:        "Hip Chat地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "HipChat URL (ex https://grafana.hipchat.com)",
+				Placeholder:  "HipChat地址(ex https://grafana.hipchat.com)",
 				PropertyName: "url",
 				Required:     true,
 			},
 			{
-				Label:        "API Key",
+				Label:        "API密钥",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "HipChat API Key",
+				Placeholder:  "HipChat API密钥",
 				PropertyName: "apiKey",
 				Required:     true,
 			},
 			{
-				Label:        "Room ID",
+				Label:        "房间ID",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				PropertyName: "roomid",
@@ -59,7 +59,7 @@ func NewHipChatNotifier(model *models.AlertNotification) (alerting.Notifier, err
 		url = url[:len(url)-1]
 	}
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	apikey := model.Settings.Get("apikey").MustString()
@@ -86,11 +86,11 @@ type HipChatNotifier struct {
 
 // Notify sends an alert notification to HipChat
 func (hc *HipChatNotifier) Notify(evalContext *alerting.EvalContext) error {
-	hc.log.Info("Executing hipchat notification", "ruleId", evalContext.Rule.ID, "notification", hc.Name)
+	hc.log.Info("执行hipchat通知", "ruleId", evalContext.Rule.ID, "notification", hc.Name)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		hc.log.Error("Failed get rule link", "error", err)
+		hc.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -113,7 +113,7 @@ func (hc *HipChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 
 	if evalContext.Error != nil {
 		attributes = append(attributes, map[string]interface{}{
-			"label": "Error message",
+			"label": "错误信息",
 			"value": map[string]interface{}{
 				"label": evalContext.Error.Error(),
 			},
@@ -176,7 +176,7 @@ func (hc *HipChatNotifier) Notify(evalContext *alerting.EvalContext) error {
 	cmd := &models.SendWebhookSync{Url: hipURL, Body: string(data)}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		hc.log.Error("Failed to send hipchat notification", "error", err, "webhook", hc.Name)
+		hc.log.Error("无法发送hipchat通知", "error", err, "webhook", hc.Name)
 		return err
 	}
 

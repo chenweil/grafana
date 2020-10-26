@@ -85,13 +85,13 @@ export const NotificationChannelForm: FC<Props> = ({
       </div>
       <div className={styles.formButtons}>
         <HorizontalGroup>
-          <Button type="submit">Save</Button>
+          <Button type="submit">保存</Button>
           <Button type="button" variant="secondary" onClick={() => onTestChannel(getValues({ nest: true }))}>
-            Test
+            测试
           </Button>
           <a href="/alerting/notifications">
             <Button type="button" variant="secondary">
-              Back
+              返回
             </Button>
           </a>
         </HorizontalGroup>

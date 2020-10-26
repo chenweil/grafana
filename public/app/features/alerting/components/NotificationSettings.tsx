@@ -8,47 +8,42 @@ interface Props extends NotificationSettingsProps {
 
 export const NotificationSettings: FC<Props> = ({ currentFormValues, imageRendererAvailable, register }) => {
   return (
-    <CollapsableSection label="Notification settings" isOpen={false}>
+    <CollapsableSection label="通知设置" isOpen={false}>
       <Field>
-        <Checkbox name="isDefault" ref={register} label="Default" description="Use this notification for all alerts" />
+        <Checkbox name="isDefault" ref={register} label="默认" description="将此通知用于所有警报" />
       </Field>
       <Field>
         <Checkbox
           name="settings.uploadImage"
           ref={register}
-          label="Include image"
-          description="Captures an image and include it in the notification"
+          label="包含图片"
+          description="捕获图像并将其包含在通知中"
         />
       </Field>
       {currentFormValues.uploadImage && !imageRendererAvailable && (
-        <InfoBox title="No image renderer available/installed">
-          Grafana cannot find an image renderer to capture an image for the notification. Please make sure the Grafana
-          Image Renderer plugin is installed. Please contact your Grafana administrator to install the plugin.
+        <InfoBox title="没有可用的图像渲染器/未安装">
+          Grafana找不到用于渲染通知图像的图像渲染器。 请确保已安装Grafana Image Renderer插件。
+          请与您的Grafana管理员联系以安装插件。
         </InfoBox>
       )}
       <Field>
         <Checkbox
           name="disableResolveMessage"
           ref={register}
-          label="Disable Resolve Message"
-          description="Disable the resolve message [OK] that is sent when alerting state returns to false"
+          label="禁用解决消息"
+          description="禁用警报状态返回为false时发送的解决消息[OK]"
         />
       </Field>
       <Field>
-        <Checkbox
-          name="sendReminder"
-          ref={register}
-          label="Send reminders"
-          description="Send additional notifications for triggered alerts"
-        />
+        <Checkbox name="sendReminder" ref={register} label="发送提醒" description="发送其他通知以触发警报" />
       </Field>
       {currentFormValues.sendReminder && (
         <>
           <Field
-            label="Send reminder every"
-            description="Specify how often reminders should be sent, e.g. every 30s, 1m, 10m, 30m or 1h etc.
-            Alert reminders are sent after rules are evaluated. Therefore a reminder can never be sent more frequently
-            than a configured alert rule evaluation interval."
+            label="每天发送提醒"
+            description="指定应该多久发送一次提醒，例如
+            每30s，1m，10m，30m或1h等。评估规则后将发送警报提醒。
+            因此，永远不会比配置的警报规则评估间隔更频繁地发送提醒。"
           >
             <Input name="frequency" ref={register} width={8} />
           </Field>

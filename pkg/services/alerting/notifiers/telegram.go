@@ -30,10 +30,10 @@ func init() {
 		Factory:     NewTelegramNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "BOT API Token",
+				Label:        "BOT API令牌",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "Telegram BOT API Token",
+				Placeholder:  "Telegram BOT API令牌",
 				PropertyName: "bottoken",
 				Required:     true,
 				Secure:       true,
@@ -42,7 +42,7 @@ func init() {
 				Label:        "Chat ID",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Integer Telegram Chat Identifier",
+				Description:  "整数telegram聊天标识符",
 				PropertyName: "chatid",
 				Required:     true,
 			},
@@ -63,7 +63,7 @@ type TelegramNotifier struct {
 // NewTelegramNotifier is the constructor for the Telegram notifier
 func NewTelegramNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	if model.Settings == nil {
-		return nil, alerting.ValidationError{Reason: "No Settings Supplied"}
+		return nil, alerting.ValidationError{Reason: "未提供设置"}
 	}
 
 	botToken := model.DecryptedValue("bottoken", model.Settings.Get("bottoken").MustString())
@@ -71,11 +71,11 @@ func NewTelegramNotifier(model *models.AlertNotification) (alerting.Notifier, er
 	uploadImage := model.Settings.Get("uploadImage").MustBool()
 
 	if botToken == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find Bot Token in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到Bot令牌"}
 	}
 
 	if chatID == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find Chat Id in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到聊天ID"}
 	}
 
 	return &TelegramNotifier{
@@ -94,7 +94,7 @@ func (tn *TelegramNotifier) buildMessage(evalContext *alerting.EvalContext, send
 			return cmd, nil
 		}
 
-		tn.log.Error("Could not generate Telegram message with inline image.", "err", err)
+		tn.log.Error("无法生成带有嵌入式图像的telgram消息。", "err", err)
 	}
 
 	return tn.buildMessageLinkedImage(evalContext)
@@ -120,12 +120,12 @@ func (tn *TelegramNotifier) buildMessageLinkedImage(evalContext *alerting.EvalCo
 	return tn.generateTelegramCmd(message, "text", "sendMessage", func(w *multipart.Writer) {
 		fw, err := w.CreateFormField("parse_mode")
 		if err != nil {
-			tn.log.Error("Failed to create form file", "err", err)
+			tn.log.Error("创建表单文件失败", "err", err)
 			return
 		}
 
 		if _, err := fw.Write([]byte("html")); err != nil {
-			tn.log.Error("Failed to write to form field", "err", err)
+			tn.log.Error("无法写入表格栏位", "err", err)
 		}
 	})
 }
@@ -142,7 +142,7 @@ func (tn *TelegramNotifier) buildMessageInlineImage(evalContext *alerting.EvalCo
 	defer func() {
 		err := imageFile.Close()
 		if err != nil {
-			tn.log.Error("Could not close Telegram inline image.", "err", err)
+			tn.log.Error("无法关闭telgram内联图像。", "err", err)
 		}
 	}()
 
@@ -157,12 +157,12 @@ func (tn *TelegramNotifier) buildMessageInlineImage(evalContext *alerting.EvalCo
 	return tn.generateTelegramCmd(message, "caption", "sendPhoto", func(w *multipart.Writer) {
 		fw, err := w.CreateFormFile("photo", evalContext.ImageOnDiskPath)
 		if err != nil {
-			tn.log.Error("Failed to create form file", "err", err)
+			tn.log.Error("创建表单文件失败", "err", err)
 			return
 		}
 
 		if _, err := io.Copy(fw, imageFile); err != nil {
-			tn.log.Error("Failed to write to form file", "err", err)
+			tn.log.Error("无法写入表格文件", "err", err)
 		}
 	})
 }
@@ -191,7 +191,7 @@ func (tn *TelegramNotifier) generateTelegramCmd(message string, messageField str
 
 	w.Close()
 
-	tn.log.Info("Sending telegram notification", "chat_id", tn.ChatID, "bot_token", tn.BotToken, "apiAction", apiAction)
+	tn.log.Info("发送Telegram通知", "chat_id", tn.ChatID, "bot_token", tn.BotToken, "apiAction", apiAction)
 	url := fmt.Sprintf(telegramAPIURL, tn.BotToken, apiAction)
 
 	cmd := &models.SendWebhookSync{
@@ -245,7 +245,7 @@ func appendIfPossible(message string, extra string, sizeLimit int) string {
 	if len(extra)+len(message) <= sizeLimit {
 		return message + extra
 	}
-	log.Debugf("Line too long for image caption. value: %s", extra)
+	log.Debugf("行太长，无法显示图像标题。 value: %s", extra)
 	return message
 }
 
@@ -263,7 +263,7 @@ func (tn *TelegramNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		tn.log.Error("Failed to send webhook", "error", err, "webhook", tn.Name)
+		tn.log.Error("无法发送Webhook", "error", err, "webhook", tn.Name)
 		return err
 	}
 

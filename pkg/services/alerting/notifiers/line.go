@@ -14,7 +14,7 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "LINE",
 		Name:        "LINE",
-		Description: "Send notifications to LINE notify",
+		Description: "发送通知到LINE通知",
 		Heading:     "LINE notify设置",
 		Factory:     NewLINENotifier,
 		Options: []alerting.NotifierOption{
@@ -38,7 +38,7 @@ const (
 func NewLINENotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	token := model.DecryptedValue("token", model.Settings.Get("token").MustString())
 	if token == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find token in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到令牌"}
 	}
 
 	return &LineNotifier{
@@ -58,7 +58,7 @@ type LineNotifier struct {
 
 // Notify send an alert notification to LINE
 func (ln *LineNotifier) Notify(evalContext *alerting.EvalContext) error {
-	ln.log.Info("Executing line notification", "ruleId", evalContext.Rule.ID, "notification", ln.Name)
+	ln.log.Info("执行LINE通知", "ruleId", evalContext.Rule.ID, "notification", ln.Name)
 	if evalContext.Rule.State == models.AlertStateAlerting {
 		return ln.createAlert(evalContext)
 	}
@@ -70,7 +70,7 @@ func (ln *LineNotifier) createAlert(evalContext *alerting.EvalContext) error {
 	ln.log.Info("Creating Line notify", "ruleId", evalContext.Rule.ID, "notification", ln.Name)
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		ln.log.Error("Failed get rule link", "error", err)
+		ln.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -94,7 +94,7 @@ func (ln *LineNotifier) createAlert(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		ln.log.Error("Failed to send notification to LINE", "error", err, "body", body)
+		ln.log.Error("无法将通知发送到LINE", "error", err, "body", body)
 		return err
 	}
 

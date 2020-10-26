@@ -94,8 +94,8 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "pushover",
 		Name:        "Pushover",
-		Description: "Sends HTTP POST request to the Pushover API",
-		Heading:     "Pushover settings",
+		Description: "将HTTP POST请求发送到Pushover API",
+		Heading:     "Pushover设置",
 		Factory:     NewPushoverNotifier,
 		Options: []alerting.NotifierOption{
 			{
@@ -117,14 +117,14 @@ func init() {
 				Secure:       true,
 			},
 			{
-				Label:        "Device(s) (optional)",
+				Label:        "设备(可选)",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "comma-separated list; leave empty to send to all devices",
+				Placeholder:  "以逗号分隔的列表；留空以发送到所有设备",
 				PropertyName: "device",
 			},
 			{
-				Label:   "Priority",
+				Label:   "优先",
 				Element: alerting.ElementTypeSelect,
 				SelectOptions: []alerting.SelectOption{
 					{
@@ -151,10 +151,10 @@ func init() {
 				PropertyName: "priority",
 			},
 			{
-				Label:        "Retry",
+				Label:        "重试",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "minimum 30 seconds",
+				Placeholder:  "最少30秒",
 				PropertyName: "retry",
 				ShowWhen: alerting.ShowWhen{
 					Field: "priority",
@@ -162,10 +162,10 @@ func init() {
 				},
 			},
 			{
-				Label:        "Expire",
+				Label:        "期限",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "maximum 86400 seconds",
+				Placeholder:  "最长86400秒",
 				PropertyName: "expire",
 				ShowWhen: alerting.ShowWhen{
 					Field: "priority",
@@ -173,13 +173,13 @@ func init() {
 				},
 			},
 			{
-				Label:         "Alerting sound",
+				Label:         "警报声",
 				Element:       alerting.ElementTypeSelect,
 				SelectOptions: soundOptions,
 				PropertyName:  "sound",
 			},
 			{
-				Label:         "OK sound",
+				Label:         "OK声",
 				Element:       alerting.ElementTypeSelect,
 				SelectOptions: soundOptions,
 				PropertyName:  "okSound",
@@ -201,10 +201,10 @@ func NewPushoverNotifier(model *models.AlertNotification) (alerting.Notifier, er
 	uploadImage := model.Settings.Get("uploadImage").MustBool(true)
 
 	if userKey == "" {
-		return nil, alerting.ValidationError{Reason: "User key not given"}
+		return nil, alerting.ValidationError{Reason: "未提供用户密钥"}
 	}
 	if APIToken == "" {
-		return nil, alerting.ValidationError{Reason: "API token not given"}
+		return nil, alerting.ValidationError{Reason: "未提供API令牌"}
 	}
 	return &PushoverNotifier{
 		NotifierBase:  NewNotifierBase(model),
@@ -241,7 +241,7 @@ type PushoverNotifier struct {
 func (pn *PushoverNotifier) Notify(evalContext *alerting.EvalContext) error {
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		pn.log.Error("Failed get rule link", "error", err)
+		pn.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -253,16 +253,16 @@ func (pn *PushoverNotifier) Notify(evalContext *alerting.EvalContext) error {
 		}
 	}
 	if evalContext.Error != nil {
-		message += fmt.Sprintf("\n<b>Error message:</b> %s", evalContext.Error.Error())
+		message += fmt.Sprintf("\n<b>错误信息:</b> %s", evalContext.Error.Error())
 	}
 
 	if message == "" {
-		message = "Notification message missing (Set a notification message to replace this text.)"
+		message = "缺少通知消息（设置通知消息以替换此文本。）"
 	}
 
 	headers, uploadBody, err := pn.genPushoverBody(evalContext, message, ruleURL)
 	if err != nil {
-		pn.log.Error("Failed to generate body for pushover", "error", err)
+		pn.log.Error("无法产生body到pushover", "error", err)
 		return err
 	}
 
@@ -274,7 +274,7 @@ func (pn *PushoverNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		pn.log.Error("Failed to send pushover notification", "error", err, "webhook", pn.Name)
+		pn.log.Error("无法发送推送通知", "error", err, "webhook", pn.Name)
 		return err
 	}
 

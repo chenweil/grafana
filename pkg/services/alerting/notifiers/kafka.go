@@ -15,13 +15,13 @@ import (
 func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "kafka",
-		Name:        "Kafka REST Proxy",
-		Description: "Sends notifications to Kafka Rest Proxy",
-		Heading:     "Kafka settings",
+		Name:        "Kafka REST代理",
+		Description: "发送通知到Kafka Rest代理",
+		Heading:     "Kafka设置",
 		Factory:     NewKafkaNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Kafka REST Proxy",
+				Label:        "Kafka REST代理",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				Placeholder:  "http://localhost:8082",
@@ -44,11 +44,11 @@ func init() {
 func NewKafkaNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	endpoint := model.Settings.Get("kafkaRestProxy").MustString()
 	if endpoint == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find kafka rest proxy endpoint property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到kafka rest代理端点属性"}
 	}
 	topic := model.Settings.Get("kafkaTopic").MustString()
 	if topic == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find kafka topic property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到kafka主题属性"}
 	}
 
 	return &KafkaNotifier{
@@ -77,7 +77,7 @@ func (kn *KafkaNotifier) Notify(evalContext *alerting.EvalContext) error {
 		customData += fmt.Sprintf("%s: %v\n", evt.Metric, evt.Value)
 	}
 
-	kn.log.Info("Notifying Kafka", "alert_state", state)
+	kn.log.Info("通知Kafka", "alert_state", state)
 
 	recordJSON := simplejson.New()
 	records := make([]interface{}, 1)
@@ -92,7 +92,7 @@ func (kn *KafkaNotifier) Notify(evalContext *alerting.EvalContext) error {
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		kn.log.Error("Failed get rule link", "error", err)
+		kn.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 	bodyJSON.Set("client_url", ruleURL)
@@ -125,7 +125,7 @@ func (kn *KafkaNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		kn.log.Error("Failed to send notification to Kafka", "error", err, "body", string(body))
+		kn.log.Error("无法发送通知到Kafka", "error", err, "body", string(body))
 		return err
 	}
 

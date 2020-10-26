@@ -28,8 +28,8 @@ const NotificationsListPage: FC = () => {
   const deleteNotification = (id: number) => {
     appEvents.emit(CoreEvents.showConfirmModal, {
       title: '删除',
-      text: '您要删除此通知通道吗？',
-      text2: `删除此通知通道不会从警报中删除对其的任何引用`,
+      text: '您要删除此通知频道吗？',
+      text2: `删除此通知频道不会从警报中删除对其的任何引用`,
       icon: 'trash-alt',
       confirmText: '删除',
       yesText: '删除',
@@ -102,7 +102,7 @@ const NotificationsListPage: FC = () => {
 
         {!(notifications.length || state.loading) && (
           <EmptyListCTA
-            title="尚未定义通知通道"
+            title="尚未定义通知频道"
             buttonIcon="channel-add"
             buttonLink="alerting/notification/new"
             buttonTitle="新增通道"

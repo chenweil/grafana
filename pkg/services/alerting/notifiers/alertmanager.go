@@ -147,7 +147,7 @@ func (am *AlertmanagerNotifier) createAlert(evalContext *alerting.EvalContext, m
 
 // Notify sends alert notifications to the alert manager
 func (am *AlertmanagerNotifier) Notify(evalContext *alerting.EvalContext) error {
-	am.log.Info("Sending Alertmanager alert", "ruleId", evalContext.Rule.ID, "notification", am.Name)
+	am.log.Info("发送Alertmanager警报", "ruleId", evalContext.Rule.ID, "notification", am.Name)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {

@@ -53,11 +53,11 @@ type TeamsNotifier struct {
 
 // Notify send an alert notification to Microsoft teams.
 func (tn *TeamsNotifier) Notify(evalContext *alerting.EvalContext) error {
-	tn.log.Info("Executing teams notification", "ruleId", evalContext.Rule.ID, "notification", tn.Name)
+	tn.log.Info("执行teams通知", "ruleId", evalContext.Rule.ID, "notification", tn.Name)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		tn.log.Error("Failed get rule link", "error", err)
+		tn.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -136,7 +136,7 @@ func (tn *TeamsNotifier) Notify(evalContext *alerting.EvalContext) error {
 	cmd := &models.SendWebhookSync{Url: tn.URL, Body: string(data)}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		tn.log.Error("Failed to send teams notification", "error", err, "webhook", tn.Name)
+		tn.log.Error("无法发送teams通知", "error", err, "webhook", tn.Name)
 		return err
 	}
 

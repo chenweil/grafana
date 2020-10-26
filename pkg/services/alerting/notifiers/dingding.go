@@ -16,7 +16,7 @@ const defaultDingdingMsgType = "link"
 func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "dingding",
-		Name:        "钉钉",
+		Name:        "DingDing",
 		Description: "发送HTTP POST请求给钉钉",
 		Heading:     "钉钉设置",
 		Factory:     newDingDingNotifier,

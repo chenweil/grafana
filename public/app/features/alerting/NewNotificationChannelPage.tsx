@@ -51,7 +51,7 @@ class NewNotificationChannelPage extends PureComponent<Props> {
     return (
       <Page navModel={navModel}>
         <Page.Contents>
-          <h2 className="page-sub-heading">New notification channel</h2>
+          <h2 className="page-sub-heading">新的通知频道</h2>
           <Form onSubmit={this.onSubmit} validateOn="onChange" defaultValues={defaultValues} maxWidth={600}>
             {({ register, errors, control, getValues, watch }) => {
               const selectedChannel = notificationChannelTypes.find(c => c.value === getValues().type.value);

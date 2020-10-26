@@ -24,86 +24,86 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "slack",
 		Name:        "Slack",
-		Description: "Sends notifications to Slack via Slack Webhooks",
-		Heading:     "Slack settings",
+		Description: "通过Slack Webhooks向Slack发送通知",
+		Heading:     "Slack设置",
 		Factory:     NewSlackNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Placeholder:  "Slack incoming webhook url",
+				Placeholder:  "Slack传入webhook url",
 				PropertyName: "url",
 				Required:     true,
 				Secure:       true,
 			},
 			{
-				Label:        "Recipient",
+				Label:        "接受者",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Override default channel or user, use #channel-name, @username (has to be all lowercase, no whitespace), or user/channel Slack ID",
+				Description:  "覆盖默认的通道或用户，使用#通道名，@用户名(必须是小写的，没有空格)，或用户/通道闲置ID",
 				PropertyName: "recipient",
 			},
 			{
-				Label:        "Username",
+				Label:        "用户名",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Set the username for the bot's message",
+				Description:  "为机器人的消息设置用户名",
 				PropertyName: "username",
 			},
 			{
-				Label:        "Icon emoji",
+				Label:        "图标表情符号",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Provide an emoji to use as the icon for the bot's message. Overrides the icon URL.",
+				Description:  "提供一个表情符号，用作机器人消息的图标。覆盖图标URL。",
 				PropertyName: "iconEmoji",
 			},
 			{
-				Label:        "Icon URL",
+				Label:        "图标地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Provide a URL to an image to use as the icon for the bot's message",
+				Description:  "提供图像的URL用作机器人消息的图标",
 				PropertyName: "iconUrl",
 			},
 			{
-				Label:        "Mention Users",
+				Label:        "提及用户",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Mention one or more users (comma separated) when notifying in a channel, by ID (you can copy this from the user's Slack profile)",
+				Description:  "在频道中通过ID通知一个或多个用户（以逗号分隔）（您可以从用户的Slack个人资料中复制该内容）",
 				PropertyName: "mentionUsers",
 			},
 			{
-				Label:        "Mention Groups",
+				Label:        "提及组",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Mention one or more groups (comma separated) when notifying in a channel (you can copy this from the group's Slack profile URL)",
+				Description:  "在频道中进行通知时提及一个或多个组（以逗号分隔）（您可以从组的Slack个人资料网址中复制该组）",
 				PropertyName: "mentionGroups",
 			},
 			{
-				Label:   "Mention Channel",
+				Label:   "提及频道",
 				Element: alerting.ElementTypeSelect,
 				SelectOptions: []alerting.SelectOption{
 					{
 						Value: "",
-						Label: "Disabled",
+						Label: "禁用",
 					},
 					{
 						Value: "here",
-						Label: "Every active channel member",
+						Label: "每个活跃频道成员",
 					},
 					{
 						Value: "channel",
-						Label: "Every channel member",
+						Label: "每个频道成员",
 					},
 				},
-				Description:  "Mention whole channel or just active members when notifying",
+				Description:  "通知时提及整个频道或活跃会员",
 				PropertyName: "mentionChannel",
 			},
 			{
-				Label:        "Token",
+				Label:        "令牌",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "Provide a bot token to use the Slack file.upload API (starts with \"xoxb\"). Specify Recipient for this to work",
+				Description:  "提供一个机器人令牌以使用Slack file.upload API（以“xoxb”开头）。指定收件人才能使用",
 				PropertyName: "token",
 				Secure:       true,
 			},
@@ -117,12 +117,12 @@ var reRecipient *regexp.Regexp = regexp.MustCompile("^((@[a-z0-9][a-zA-Z0-9._-]*
 func NewSlackNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.DecryptedValue("url", model.Settings.Get("url").MustString())
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	recipient := strings.TrimSpace(model.Settings.Get("recipient").MustString())
 	if recipient != "" && !reRecipient.MatchString(recipient) {
-		return nil, alerting.ValidationError{Reason: fmt.Sprintf("Recipient on invalid format: %q", recipient)}
+		return nil, alerting.ValidationError{Reason: fmt.Sprintf("收件人格式无效: %q", recipient)}
 	}
 	username := model.Settings.Get("username").MustString()
 	iconEmoji := model.Settings.Get("icon_emoji").MustString()
@@ -136,7 +136,7 @@ func NewSlackNotifier(model *models.AlertNotification) (alerting.Notifier, error
 
 	if mentionChannel != "" && mentionChannel != "here" && mentionChannel != "channel" {
 		return nil, alerting.ValidationError{
-			Reason: fmt.Sprintf("Invalid value for mentionChannel: %q", mentionChannel),
+			Reason: fmt.Sprintf("提及频道的值无效: %q", mentionChannel),
 		}
 	}
 	mentionUsers := []string{}
@@ -189,11 +189,11 @@ type SlackNotifier struct {
 
 // Notify send alert notification to Slack.
 func (sn *SlackNotifier) Notify(evalContext *alerting.EvalContext) error {
-	sn.log.Info("Executing slack notification", "ruleId", evalContext.Rule.ID, "notification", sn.Name)
+	sn.log.Info("执行slack通知", "ruleId", evalContext.Rule.ID, "notification", sn.Name)
 
 	ruleURL, err := evalContext.GetRuleURL()
 	if err != nil {
-		sn.log.Error("Failed get rule link", "error", err)
+		sn.log.Error("获取规则链接失败", "error", err)
 		return err
 	}
 
@@ -212,7 +212,7 @@ func (sn *SlackNotifier) Notify(evalContext *alerting.EvalContext) error {
 
 	if evalContext.Error != nil {
 		fields = append(fields, map[string]interface{}{
-			"title": "Error message",
+			"title": "错误信息",
 			"value": evalContext.Error.Error(),
 			"short": false,
 		})
@@ -311,13 +311,13 @@ func (sn *SlackNotifier) Notify(evalContext *alerting.EvalContext) error {
 		HttpMethod: http.MethodPost,
 	}
 	if sn.Token != "" {
-		sn.log.Debug("Adding authorization header to HTTP request")
+		sn.log.Debug("向HTTP请求添加授权标头")
 		cmd.HttpHeader = map[string]string{
 			"Authorization": fmt.Sprintf("Bearer %s", sn.Token),
 		}
 	}
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		sn.log.Error("Failed to send slack notification", "error", err, "webhook", sn.Name)
+		sn.log.Error("无法发送slack通知", "error", err, "webhook", sn.Name)
 		return err
 	}
 	if sn.Token != "" && sn.UploadImage {
@@ -333,14 +333,14 @@ func slackFileUpload(evalContext *alerting.EvalContext, log log.Logger, url stri
 	if evalContext.ImageOnDiskPath == "" {
 		evalContext.ImageOnDiskPath = filepath.Join(setting.HomePath, "public/img/mixed_styles.png")
 	}
-	log.Info("Uploading to slack via file.upload API")
+	log.Info("通过file.upload API上传到Slack")
 	headers, uploadBody, err := generateSlackBody(evalContext.ImageOnDiskPath, token, recipient)
 	if err != nil {
 		return err
 	}
 	cmd := &models.SendWebhookSync{Url: url, Body: uploadBody.String(), HttpHeader: headers, HttpMethod: "POST"}
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		log.Error("Failed to upload slack image", "error", err, "webhook", "file.upload")
+		log.Error("无法上传slack图片", "error", err, "webhook", "file.upload")
 		return err
 	}
 	return nil

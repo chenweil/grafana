@@ -15,12 +15,12 @@ func init() {
 	alerting.RegisterNotifier(&alerting.NotifierPlugin{
 		Type:        "sensu",
 		Name:        "Sensu",
-		Description: "Sends HTTP POST request to a Sensu API",
-		Heading:     "Sensu settings",
+		Description: "将HTTP POST请求发送到Sensu API",
+		Heading:     "Sensu设置",
 		Factory:     NewSensuNotifier,
 		Options: []alerting.NotifierOption{
 			{
-				Label:        "Url",
+				Label:        "地址",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				Placeholder:  "http://sensu-api.local:4567/results",
@@ -28,27 +28,27 @@ func init() {
 				Required:     true,
 			},
 			{
-				Label:        "Source",
+				Label:        "源",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
-				Description:  "If empty rule id will be used",
+				Description:  "如果空将使用空规则ID",
 				PropertyName: "source",
 			},
 			{
-				Label:        "Handler",
+				Label:        "处理器",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				Placeholder:  "default",
 				PropertyName: "handler",
 			},
 			{
-				Label:        "Username",
+				Label:        "用户名",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypeText,
 				PropertyName: "username",
 			},
 			{
-				Label:        "Password",
+				Label:        "密码",
 				Element:      alerting.ElementTypeInput,
 				InputType:    alerting.InputTypePassword,
 				PropertyName: "passsword ",
@@ -62,7 +62,7 @@ func init() {
 func NewSensuNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
 	url := model.Settings.Get("url").MustString()
 	if url == "" {
-		return nil, alerting.ValidationError{Reason: "Could not find url property in settings"}
+		return nil, alerting.ValidationError{Reason: "在设置中找不到url属性"}
 	}
 
 	return &SensuNotifier{
@@ -145,7 +145,7 @@ func (sn *SensuNotifier) Notify(evalContext *alerting.EvalContext) error {
 	}
 
 	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
-		sn.log.Error("Failed to send sensu event", "error", err, "sensu", sn.Name)
+		sn.log.Error("无法发送sensu事件", "error", err, "sensu", sn.Name)
 		return err
 	}
 

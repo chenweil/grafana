@@ -124,7 +124,7 @@ export class AlertNotificationEditCtrl {
     appEvents.emit(CoreEvents.showConfirmModal, {
       title: '删除',
       text: '您要删除此通知频道吗？',
-      text2: `删除此通知通道不会从警报中删除对其的任何引用`,
+      text2: `删除此通知频道不会从警报中删除对其的任何引用`,
       icon: 'trash-alt',
       confirmText: '删除',
       yesText: '删除',
