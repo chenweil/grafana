@@ -138,7 +138,7 @@ export class TestDataDataSource extends DataSourceApi<TestDataQuery> {
   testDatasource() {
     return Promise.resolve({
       status: 'success',
-      message: 'Data source is working',
+      message: '数据源工作正常',
     });
   }
 

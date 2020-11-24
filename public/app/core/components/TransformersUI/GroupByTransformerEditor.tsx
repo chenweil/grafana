@@ -58,8 +58,8 @@ export const GroupByTransformerEditor: React.FC<TransformerUIProps<GroupByTransf
 };
 
 const options = [
-  { label: 'Group by', value: GroupByOperationID.groupBy },
-  { label: 'Calculate', value: GroupByOperationID.aggregate },
+  { label: '分组', value: GroupByOperationID.groupBy },
+  { label: '计算', value: GroupByOperationID.aggregate },
 ];
 
 export const GroupByFieldConfiguration: React.FC<FieldProps> = ({ fieldName, config, onConfigChange }) => {
@@ -87,7 +87,7 @@ export const GroupByFieldConfiguration: React.FC<FieldProps> = ({ fieldName, con
             className="width-12"
             options={options}
             value={config?.operation}
-            placeholder="Ignored"
+            placeholder="忽略"
             onChange={onChange}
             isClearable
             menuPlacement="bottom"
@@ -99,7 +99,7 @@ export const GroupByFieldConfiguration: React.FC<FieldProps> = ({ fieldName, con
         <div className={cx('gf-form', 'gf-form--grow', styles.calculations)}>
           <StatsPicker
             className={cx('flex-grow-1', styles.rowSpacing)}
-            placeholder="Select Stats"
+            placeholder="选择统计"
             allowMultiple
             stats={config.aggregations}
             onChange={stats => {

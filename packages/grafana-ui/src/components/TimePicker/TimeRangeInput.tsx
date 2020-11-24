@@ -39,7 +39,7 @@ export const TimeRangeInput: FC<Props> = ({
   clearable,
   hideTimeZone = true,
   timeZone = 'browser',
-  placeholder = 'Select time range',
+  placeholder = '选择时间范围',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const styles = useStyles(getStyles);

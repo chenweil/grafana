@@ -78,7 +78,7 @@ export const mockStandardProperties = () => {
     process: identityOverrideProcessor,
 
     settings: {
-      placeholder: 'auto',
+      placeholder: '自动',
       min: 0,
       max: 15,
       integer: true,

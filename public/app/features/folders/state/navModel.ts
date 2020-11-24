@@ -8,7 +8,7 @@ export function buildNavModel(folder: FolderDTO): NavModelItem {
     subTitle: '管理文件夹仪表板和权限',
     url: '',
     text: folder.title,
-    breadcrumbs: [{ title: 'Dashboards', url: 'dashboards' }],
+    breadcrumbs: [{ title: '仪表板', url: 'dashboards' }],
     children: [
       {
         active: false,

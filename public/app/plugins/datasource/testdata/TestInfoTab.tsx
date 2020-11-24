@@ -14,7 +14,7 @@ export class TestInfoTab extends PureComponent<Props> {
   render() {
     return (
       <div>
-        See github for more information about setting up a reproducable test environment.
+        有关设置可重复测试环境的更多信息，请参阅github。
         <br />
         <br />
         <a

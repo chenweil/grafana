@@ -9,7 +9,7 @@ export class FolderPageLoader {
         subTitle: '管理文件夹仪表板和权限',
         url: '',
         text: '',
-        breadcrumbs: [{ title: 'Dashboards', url: 'dashboards' }],
+        breadcrumbs: [{ title: '仪表板', url: 'dashboards' }],
         children: [
           {
             active: activeChildId === 'manage-folder-dashboards',

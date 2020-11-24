@@ -15,22 +15,22 @@ export const Alignments: FC<Props> = ({ perSeriesAligner, templateVariableOption
     <>
       <div className="gf-form-inline">
         <div className="gf-form offset-width-9">
-          <label className="gf-form-label query-keyword width-15">Aligner</label>
+          <label className="gf-form-label query-keyword width-15">对齐</label>
           <Segment
             onChange={({ value }) => onChange(value!)}
             value={[...alignOptions, ...templateVariableOptions].find(s => s.value === perSeriesAligner)}
             options={[
               {
-                label: 'Template Variables',
+                label: '模板变量',
                 options: templateVariableOptions,
               },
               {
-                label: 'Alignment options',
+                label: '对齐选项',
                 expanded: true,
                 options: alignOptions,
               },
             ]}
-            placeholder="Select Alignment"
+            placeholder="选择对齐"
           ></Segment>
         </div>
       </div>

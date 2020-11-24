@@ -20,14 +20,14 @@ export function Project({ projectName, datasource, onChange, templateVariableOpt
         loadOptions={() =>
           datasource.getProjects().then(projects => [
             {
-              label: 'Template Variables',
+              label: '模板变量',
               options: templateVariableOptions,
             },
             ...projects,
           ])
         }
         value={projectName}
-        placeholder="Select Project"
+        placeholder="选择项目"
       />
       <div className="gf-form gf-form--grow">
         <div className="gf-form-label gf-form-label--grow" />

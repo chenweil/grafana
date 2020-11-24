@@ -43,11 +43,11 @@ export function SLOQueryEditor({
         <SegmentAsync
           allowCustomValue
           value={query?.serviceId}
-          placeholder="Select service"
+          placeholder="选择服务"
           loadOptions={() =>
             datasource.getSLOServices(query.projectName).then(services => [
               {
-                label: 'Template Variables',
+                label: '模板变量',
                 options: variableOptionGroup.options,
               },
               ...services,
@@ -61,11 +61,11 @@ export function SLOQueryEditor({
         <SegmentAsync
           allowCustomValue
           value={query?.sloId}
-          placeholder="Select SLO"
+          placeholder="选择SLO"
           loadOptions={() =>
             datasource.getServiceLevelObjectives(query.projectName, query.serviceId).then(sloIds => [
               {
-                label: 'Template Variables',
+                label: '模板变量',
                 options: variableOptionGroup.options,
               },
               ...sloIds,
@@ -85,7 +85,7 @@ export function SLOQueryEditor({
           value={[...selectors, ...variableOptionGroup.options].find(s => s.value === query?.selectorName ?? '')}
           options={[
             {
-              label: 'Template Variables',
+              label: '模板变量',
               options: variableOptionGroup.options,
             },
             ...selectors,

@@ -65,7 +65,7 @@ export const SelectionOptionsEditor: FunctionComponent<SelectionOptionsEditorPro
             className="gf-form-input max-width-15"
             value={props.variable.allValue ?? ''}
             onChange={onAllValueChanged}
-            placeholder="blank = auto"
+            placeholder="空白 = auto"
             aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.selectionOptionsCustomAllInput}
           />
         </div>

@@ -56,7 +56,7 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
         {section.title}
         {section.url && (
           <a href={section.url} className={styles.link}>
-            <span className={styles.separator}>|</span> <Icon name="folder-upload" /> Go to folder
+            <span className={styles.separator}>|</span> <Icon name="folder-upload" /> 进入文件夹
           </a>
         )}
       </div>

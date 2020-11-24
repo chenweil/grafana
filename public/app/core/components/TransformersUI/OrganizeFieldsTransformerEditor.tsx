@@ -135,7 +135,7 @@ const DraggableFieldName: React.FC<DraggableFieldProps> = ({
         >
           <div className="gf-form gf-form--grow">
             <div className="gf-form-label gf-form-label--justify-left width-30">
-              <Icon name="draggabledots" title="Drag and drop to reorder" size="lg" className={styles.draggable} />
+              <Icon name="draggabledots" title="拖放以重新排序" size="lg" className={styles.draggable} />
               <IconButton
                 className={styles.toggle}
                 size="md"

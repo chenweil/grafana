@@ -9,10 +9,10 @@ const navModel = {
   main: {
     icon: 'grafana',
     subTitle: 'Preferences',
-    text: 'Select active organization',
+    text: '选择活跃的组织',
   },
   node: {
-    text: 'Select active organization',
+    text: '选择活跃的组织',
   },
 };
 

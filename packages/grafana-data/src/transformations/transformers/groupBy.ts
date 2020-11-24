@@ -23,8 +23,8 @@ export interface GroupByTransformerOptions {
 
 export const groupByTransformer: DataTransformerInfo<GroupByTransformerOptions> = {
   id: DataTransformerID.groupBy,
-  name: 'Group by',
-  description: 'Group the data by a field values then process calculations for each group',
+  name: '分组',
+  description: '按字段值对数据进行分组，然后处理每组的计算',
   defaultOptions: {
     fields: {},
   },

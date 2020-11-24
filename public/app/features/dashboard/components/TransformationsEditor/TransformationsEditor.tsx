@@ -272,7 +272,7 @@ export class TransformationsEditor extends React.PureComponent<TransformationsEd
                 key={t.name}
                 title={t.name}
                 description={t.description}
-                actions={<Button>Select</Button>}
+                actions={<Button>选择</Button>}
                 ariaLabel={selectors.components.TransformTab.newTransform(t.name)}
                 onClick={() => {
                   this.onTransformationAdd({ value: t.id });
@@ -294,7 +294,7 @@ export class TransformationsEditor extends React.PureComponent<TransformationsEd
     const hasTransforms = transformations.length > 0;
 
     if (!hasTransforms && alert) {
-      return <PanelNotSupported message="Transformations can't be used on a panel with existing alerts" />;
+      return <PanelNotSupported message="不能在具有现有警报的面板上使用转换" />;
     }
 
     return (
@@ -302,10 +302,7 @@ export class TransformationsEditor extends React.PureComponent<TransformationsEd
         <Container padding="md">
           <div aria-label={selectors.components.TransformTab.content}>
             {hasTransforms && alert ? (
-              <Alert
-                severity={AppNotificationSeverity.Error}
-                title="Transformations can't be used on a panel with alerts"
-              />
+              <Alert severity={AppNotificationSeverity.Error} title="不能在带有警报的面板上使用转换" />
             ) : null}
             {!hasTransforms && this.renderNoAddedTransformsState()}
             {hasTransforms && this.renderTransformationEditors()}

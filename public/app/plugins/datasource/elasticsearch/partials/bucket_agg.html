@@ -1,8 +1,8 @@
 <div class="gf-form-inline">
   <div class="gf-form">
     <label class="gf-form-label query-keyword width-7">
-      <span ng-show="isFirst">Group by</span>
-      <span ng-hide="isFirst">Then by</span>
+      <span ng-show="isFirst">分组</span>
+      <span ng-hide="isFirst">然后</span>
     </label>
 
     <gf-form-dropdown
@@ -50,7 +50,7 @@
 <div class="gf-form-group" ng-if="showOptions">
   <div ng-if="agg.type === 'date_histogram'">
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Interval</label>
+      <label class="gf-form-label width-10">间隔</label>
       <gf-form-dropdown
         model="agg.settings.interval"
         get-options="getIntervalOptions()"
@@ -63,7 +63,7 @@
     </div>
 
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Min Doc Count</label>
+      <label class="gf-form-label width-10">最小文件数</label>
       <input
         type="text"
         class="gf-form-input max-width-12"
@@ -74,9 +74,9 @@
 
     <div class="gf-form offset-width-7">
       <label class="gf-form-label width-10">
-        Trim edges
+        修剪边缘
         <info-popover mode="right-normal">
-          Trim the edges on the timeseries datapoints
+          修剪时间序列数据点上的边
         </info-popover>
       </label>
       <input
@@ -88,10 +88,9 @@
     </div>
     <div class="gf-form offset-width-7">
       <label class="gf-form-label width-10">
-        Offset
+        偏移
         <info-popover mode="right-normal">
-          Change the start value of each bucket by the specified positive (+) or negative offset (-) duration, such as
-          1h for an hour, or 1d for a day
+          通过指定的正（+）或负偏移（-）持续时间来更改每个存储桶的起始值，例如1h表示一个小时，或1d表示一天
         </info-popover>
       </label>
       <input
@@ -105,7 +104,7 @@
 
   <div ng-if="agg.type === 'histogram'">
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Interval</label>
+      <label class="gf-form-label width-10">间隔</label>
       <input
         type="number"
         class="gf-form-input max-width-12"
@@ -114,7 +113,7 @@
       />
     </div>
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Min Doc Count</label>
+      <label class="gf-form-label width-10">最小文件数</label>
       <input
         type="text"
         class="gf-form-input max-width-12"
@@ -126,7 +125,7 @@
 
   <div ng-if="agg.type === 'terms'">
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Order</label>
+      <label class="gf-form-label width-10">排序</label>
       <gf-form-dropdown
         model="agg.settings.order"
         lookup-text="true"
@@ -138,7 +137,7 @@
       </gf-form-dropdown>
     </div>
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Size</label>
+      <label class="gf-form-label width-10">尺寸</label>
       <gf-form-dropdown
         model="agg.settings.size"
         lookup-text="true"
@@ -151,7 +150,7 @@
       </gf-form-dropdown>
     </div>
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Min Doc Count</label>
+      <label class="gf-form-label width-10">最小文件数</label>
       <input
         type="text"
         class="gf-form-input max-width-12"
@@ -160,7 +159,7 @@
       />
     </div>
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Order By</label>
+      <label class="gf-form-label width-10">排序</label>
       <gf-form-dropdown
         model="agg.settings.orderBy"
         lookup-text="true"
@@ -173,10 +172,9 @@
     </div>
     <div class="gf-form offset-width-7">
       <label class="gf-form-label width-10">
-        Missing
+        忽略
         <info-popover mode="right-normal">
-          The missing parameter defines how documents that are missing a value should be treated. By default they will
-          be ignored but it is also possible to treat them as if they had a value
+          missing参数定义应如何处理缺少值的文档。默认情况下，它们将被忽略，但是也可以将它们视为具有值
         </info-popover>
       </label>
       <input
@@ -193,7 +191,7 @@
   <div ng-if="agg.type === 'filters'">
     <div class="gf-form-inline offset-width-7" ng-repeat="filter in agg.settings.filters">
       <div class="gf-form">
-        <label class="gf-form-label width-10">Query {{$index + 1}}</label>
+        <label class="gf-form-label width-10">查询 {{$index + 1}}</label>
         <input
           type="text"
           class="gf-form-input max-width-12"
@@ -202,7 +200,7 @@
           placeholder="Lucene query"
           ng-blur="onChangeInternal()"
         />
-        <label class="gf-form-label width-10">Label {{$index + 1}}</label>
+        <label class="gf-form-label width-10">标签 {{$index + 1}}</label>
         <input
           type="text"
           class="gf-form-input max-width-12"
@@ -225,7 +223,7 @@
 
   <div ng-if="agg.type === 'geohash_grid'">
     <div class="gf-form offset-width-7">
-      <label class="gf-form-label width-10">Precision</label>
+      <label class="gf-form-label width-10">精确</label>
       <input
         type="number"
         class="gf-form-input max-width-12"

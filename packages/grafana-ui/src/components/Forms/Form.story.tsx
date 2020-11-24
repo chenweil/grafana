@@ -31,15 +31,15 @@ export default {
 
 const selectOptions = [
   {
-    label: 'Option 1',
+    label: '选项1',
     value: 'option1',
   },
   {
-    label: 'Option 2',
+    label: '选项2',
     value: 'option2',
   },
   {
-    label: 'Option 3',
+    label: '选项3',
     value: 'option3',
   },
 ];
@@ -70,38 +70,38 @@ const renderForm = (defaultValues?: Partial<FormDTO>) => (
         <>
           <Legend>Edit user</Legend>
 
-          <Field label="Name" invalid={!!errors.name} error="Name is required">
+          <Field label="名字" invalid={!!errors.name} error="名称为必填项">
             <Input name="name" placeholder="Roger Waters" ref={register({ required: true })} />
           </Field>
 
-          <Field label="Email" invalid={!!errors.email} error="E-mail is required">
+          <Field label="邮箱" invalid={!!errors.email} error="邮箱为必填项">
             <Input id="email" name="email" placeholder="roger.waters@grafana.com" ref={register({ required: true })} />
           </Field>
 
-          <Field label="Username">
+          <Field label="用户名">
             <Input name="username" placeholder="mr.waters" ref={register} />
           </Field>
-          <Field label="Nested object">
-            <Input name="nested.path" placeholder="Nested path" ref={register} />
+          <Field label="嵌套对象">
+            <Input name="nested.path" placeholder="嵌套路径" ref={register} />
           </Field>
 
-          <Field label="Textarea" invalid={!!errors.text} error="Text is required">
-            <TextArea name="text" placeholder="Long text" ref={register({ required: true })} />
+          <Field label="文字域" invalid={!!errors.text} error="文字为必填项">
+            <TextArea name="text" placeholder="一段文字" ref={register({ required: true })} />
           </Field>
 
-          <Field label="Checkbox" invalid={!!errors.checkbox} error="We need your consent">
-            <Checkbox name="checkbox" label="Do you consent?" ref={register({ required: true })} />
+          <Field label="复选框" invalid={!!errors.checkbox} error="我们需要您的同意">
+            <Checkbox name="checkbox" label="你同意吗" ref={register({ required: true })} />
           </Field>
 
-          <Field label="Switch">
+          <Field label="开关">
             <Switch name="switch" ref={register} />
           </Field>
 
-          <Field label="RadioButton">
+          <Field label="单选按钮">
             <InputControl name="radio" control={control} options={selectOptions} as={RadioButtonGroup} />
           </Field>
 
-          <Field label="Select" invalid={!!errors.select} error="Select is required">
+          <Field label="选择" invalid={!!errors.select} error="需要选择">
             <InputControl
               name="select"
               control={control}
@@ -113,7 +113,7 @@ const renderForm = (defaultValues?: Partial<FormDTO>) => (
             />
           </Field>
 
-          <Button type="submit">Update</Button>
+          <Button type="submit">更新</Button>
         </>
       )
     }
@@ -185,7 +185,7 @@ export const asyncValidation = () => {
               </Field>
 
               <Button type="submit" disabled={formState.isSubmitting}>
-                Submit
+                提交
               </Button>
             </>
           )
@@ -202,7 +202,7 @@ const validateAsync = (shouldPass: boolean) => async () => {
         if (shouldPass) {
           resolve();
         } else {
-          reject('Something went wrong...');
+          reject('出了些问题...');
         }
       }, 2000);
     });

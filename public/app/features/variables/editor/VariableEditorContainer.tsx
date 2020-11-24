@@ -72,7 +72,7 @@ class VariableEditorContainerUnconnected extends PureComponent<Props> {
               onClick={this.onChangeToListMode}
               aria-label={selectors.pages.Dashboard.Settings.Variables.Edit.General.headerLink}
             >
-              Variables
+              变量
             </a>
             {this.props.idInEditor === NEW_VARIABLE_ID && (
               <span>

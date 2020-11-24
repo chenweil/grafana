@@ -42,16 +42,16 @@ export const AlignmentPeriods: FC<Props> = ({
           value={[...options, ...templateVariableOptions].find(s => s.value === alignmentPeriod)}
           options={[
             {
-              label: 'Template Variables',
+              label: '模板变量',
               options: templateVariableOptions,
             },
             {
-              label: 'Aggregations',
+              label: '聚合',
               expanded: true,
               options: visibleOptions,
             },
           ]}
-          placeholder="Select Alignment"
+          placeholder="选择对齐"
         ></Segment>
         <div className="gf-form gf-form--grow">
           {usedAlignmentPeriod && <label className="gf-form-label gf-form-label--grow">{formatAlignmentText}</label>}

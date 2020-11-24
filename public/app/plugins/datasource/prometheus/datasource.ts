@@ -677,7 +677,7 @@ export class PrometheusDatasource extends DataSourceApi<PromQuery, PromOptions> 
     const query = { expr: '1+1' } as PromQueryRequest;
     const response = await this.performInstantQuery(query, now / 1000).toPromise();
     return response.data.status === 'success'
-      ? { status: 'success', message: 'Data source is working' }
+      ? { status: 'success', message: '数据源工作正常' }
       : { status: 'error', message: response.error };
   }
 

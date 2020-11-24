@@ -287,12 +287,12 @@ export class QueryInspector extends PureComponent<Props, State> {
 
           {haveData && allNodesExpanded && (
             <Button icon="minus" variant="secondary" className={styles.toolbarItem} onClick={this.onToggleExpand}>
-              展开所有
+              合并所有
             </Button>
           )}
           {haveData && !allNodesExpanded && (
             <Button icon="plus" variant="secondary" className={styles.toolbarItem} onClick={this.onToggleExpand}>
-              合并所有
+              展开所有
             </Button>
           )}
 

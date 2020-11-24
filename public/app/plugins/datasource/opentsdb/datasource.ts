@@ -313,7 +313,7 @@ export default class OpenTsDatasource extends DataSourceApi<OpenTsdbQuery, OpenT
 
   testDatasource() {
     return this._performSuggestQuery('cpu', 'metrics').then(() => {
-      return { status: 'success', message: 'Data source is working' };
+      return { status: 'success', message: '数据源工作正常' };
     });
   }
 

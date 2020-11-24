@@ -119,19 +119,19 @@ export function Metrics(props: Props) {
           value={[...services, ...templateVariableOptions].find(s => s.value === service)}
           options={[
             {
-              label: 'Template Variables',
+              label: '模板变量',
               options: templateVariableOptions,
             },
             ...services,
           ]}
-          placeholder="Select Services"
+          placeholder="选择服务"
         ></Segment>
         <div className="gf-form gf-form--grow">
           <div className="gf-form-label gf-form-label--grow" />
         </div>
       </div>
       <div className="gf-form-inline">
-        <span className="gf-form-label width-9 query-keyword">Metric</span>
+        <span className="gf-form-label width-9 query-keyword">指标</span>
 
         <Segment
           className="query-part"
@@ -139,12 +139,12 @@ export function Metrics(props: Props) {
           value={[...metrics, ...templateVariableOptions].find(s => s.value === metricType)}
           options={[
             {
-              label: 'Template Variables',
+              label: '模板变量',
               options: templateVariableOptions,
             },
             ...metrics,
           ]}
-          placeholder="Select Metric"
+          placeholder="选择指标"
         ></Segment>
         <div className="gf-form gf-form--grow">
           <div className="gf-form-label gf-form-label--grow" />

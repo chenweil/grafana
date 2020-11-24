@@ -78,7 +78,7 @@ export const OverrideFieldConfigEditor: React.FC<Props> = props => {
           // TODO:  apply matcher to retrieve fields
           return (
             <OverrideEditor
-              name={`Override ${i + 1}`}
+              name={`覆盖 ${i + 1}`}
               key={`${o.matcher.id}/${i}`}
               data={data}
               override={o}

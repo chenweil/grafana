@@ -214,7 +214,7 @@ export const buttonSelect = () => {
   const icon = getIconKnob();
   return (
     <ButtonSelect
-      placeholder="Select all the things..."
+      placeholder="选择所有东西..."
       value={value}
       options={generateOptions()}
       onChange={v => {
